@@ -1,0 +1,35 @@
+Cary Jones
+116 N Marengo Ave Apt F
+Alhambra, CA 91801
+(626) 474-6870
+cgjonesdev@gmail.com
+
+October 9, 2025
+
+Hiring Manager
+DataHub
+
+Subject: Application for Software Engineer Position
+
+Dear Hiring Manager,
+
+I am thrilled to apply for the Software Engineer position at DataHub, inspired by your mission to bring order to data chaos through an AI and data context platform trusted by industry leaders like Apple and CVS Health. With over five years of experience in Python-based software engineering and a strong background in building scalable, distributed systems, I am eager to contribute to enhancing DataHub’s ingestion framework and cloud-native solutions.
+
+In my role as a Senior Software Engineer at CVS, Inc., I redesigned a legacy monolithic codebase into a modular microservices architecture using Python, Docker, and Kubernetes, improving scalability and fault tolerance for high-traffic applications. At Disney Corporation, I developed Python-based financial reporting systems that integrated with modern data ecosystems, leveraging tools like Pandas and NumPy for data processing and analysis, which aligns with DataHub’s focus on metadata ingestion from systems like Snowflake and Redshift. Additionally, my work at CT-REI, Inc. involved building and maintaining MongoDB-based data pipelines, demonstrating my ability to design robust connectors for complex data stacks.
+
+Key highlights of my qualifications include:
+
+• Python Expertise: Extensive experience with Python frameworks like Flask and Django, used to build scalable APIs and data ingestion pipelines, as seen in my work on a healthcare web application at Alan Health & Science Corp.
+
+• Distributed Systems & Scalability: At CGJSoftware, Inc., I implemented containerized solutions on AWS and Google Cloud Platform, ensuring fault-tolerant architectures that support high-throughput data processing.
+
+• Modern Data Ecosystem: Familiarity with ETL pipelines and data integration, including optimizing data flows for real-time analytics, as demonstrated in my financial reporting projects at Disney.
+
+• Cloud-Native Development: Proficient in deploying applications in cloud-native environments using Docker and Kubernetes, with CI/CD pipelines to ensure reliable and scalable deployments.
+
+DataHub’s commitment to AI-powered discovery and governance resonates with my passion for creating efficient, scalable data solutions. For example, at CVS, I optimized a payment processing system by integrating event-driven data flows, reducing latency by 30%, which mirrors the challenges of building connectors for DataHub’s ingestion framework. My experience collaborating with cross-functional teams, including data scientists, ensures I can effectively contribute to integrating usage statistics, lineage, and operational metadata from diverse systems like Kafka.
+
+Thank you for considering my application. I have attached my resume for your review and am excited about the opportunity to contribute to DataHub’s innovative platform. I can be reached at cgjonesdev@gmail.com to discuss how my skills align with your needs.
+
+Sincerely,
+Cary Jones

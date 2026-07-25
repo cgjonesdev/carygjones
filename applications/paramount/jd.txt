@@ -1,0 +1,20 @@
+Title: Sr. AWS Python Developer (Media & Entertainment Domain)
+
+Location: Onsite in New York, NY or Los Angeles, CA
+Duration: Fulltime Role
+MOI: Virtual
+Salary: $140k/annum + Benefits
+Client: LTIM/Paramount
+
+Job Title: Software Engineer - Media Platform (Python/AWS)
+Work Mode: Onsite
+
+Mandatory Skills: AWS Lambda, Python
+
+Develop and maintain highly scalable, high performance and highly available systems.
+Write well tested, efficient, and readable code with reusability in mind.
+Ensure deliverables follow best practices around source control, CI/CD.
+Proficiency with serverless (AWS Lambda, ECS), Step Functions, event-driven architectures.
+PostgreSQL/MSSQL, NoSQL (DynamoDB).
+AI assisted coding tools (Cursor, Claude Code, CoPilot).
+Kubernetes, CDK preferred. LangChain, vector databases, Bedrock preferred.

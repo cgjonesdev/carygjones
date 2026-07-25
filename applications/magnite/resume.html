@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Senior Software Engineer</title>
+    <style>
+      :root {
+        --text: #1a1a1a;
+        --muted: #444;
+        --accent: #0066cc;
+        --rule: #d4d4d4;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10.5pt;
+        line-height: 1.45;
+        color: var(--text);
+        background: #fff;
+      }
+
+      main {
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 0.55in 0.65in;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 1.4rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 3px solid var(--accent);
+      }
+
+      .fullname {
+        font-size: 1.85rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .title {
+        margin-top: 0.35rem;
+        font-size: 0.95rem;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+      }
+
+      .contact {
+        margin-top: 0.75rem;
+        font-size: 0.82rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      a { color: var(--text); text-decoration: none; }
+
+      h1 {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin: 1.25rem 0 0.55rem;
+        padding-bottom: 0.2rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      p, li { color: var(--text); }
+
+      section p {
+        text-align: justify;
+        margin-bottom: 0.5rem;
+      }
+
+      ul { margin-left: 1.1rem; }
+      li { margin-bottom: 0.35rem; }
+
+      dl { margin-bottom: 0.85rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); }
+      dl:last-child { border-bottom: none; }
+
+      dt { font-size: 0.92rem; margin-bottom: 0.15rem; }
+      dd ul { margin-top: 0.35rem; }
+
+      b { font-weight: 700; }
+
+      @media print {
+        main { padding: 0.45in 0.55in; }
+        body { font-size: 10pt; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Senior Software Engineer | Distributed Systems, Data Pipelines &amp; High-Scale Platforms</p>
+        <div class="contact">
+          <span>Temple City, CA 91780</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Senior Software Engineer</b> with 15+ years building production systems optimized for <b>high throughput, low latency, and reliability</b>. Deep experience architecting <b>distributed services</b>, near-real-time <b>data pipelines</b>, and cloud infrastructure on <b>AWS</b> using <b>Docker</b>, event-driven messaging, and rigorous observability practices. Strong <b>SQL and relational database</b> expertise with a data-driven approach to technical and product trade-offs. Collaborative engineer who owns features from design through deployment, leads cross-functional delivery, and mentors teams through complex platform modernization.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies</h1>
+        <ul>
+          <li><b>Distributed Systems:</b> High-concurrency microservices, event-driven architecture, low-latency API design, fault tolerance, performance tuning</li>
+          <li><b>Data &amp; Analytics Platforms:</b> ETL/near-real-time pipelines, Apache Airflow, SQL optimization, PostgreSQL, MySQL, Redis, schema design</li>
+          <li><b>Cloud &amp; Infrastructure:</b> AWS (ECS, Fargate, Lambda, RDS, S3, Pub/Sub), Docker, Kubernetes, CI/CD, Linux, production observability</li>
+          <li><b>Languages:</b> Python (FastAPI, Django, Flask), SQL, Java (unit/integration testing), Go, JavaScript, Bash</li>
+          <li><b>Engineering Practices:</b> Full SDLC ownership, cross-team collaboration, code review, Agile/Scrum leadership, pytest, Git</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Selected Impact</h1>
+        <ul>
+          <li>Engineered event-driven ETL pipelines on AWS ECS, Fargate, and Airflow processing <b>2.5M+ daily transactions</b> with <b>99.95% accuracy</b>.</li>
+          <li>Architected containerized microservices on AWS, increasing throughput by <b>45%</b> and reducing API latency to under <b>120ms</b>.</li>
+          <li>Built enterprise financial backend modules processing <b>$10M+ in daily transaction metrics</b> with <b>99.99% uptime</b> on AWS.</li>
+          <li>Co-architected automated reconciliation systems, cutting end-of-month batch processing from <b>8 hours to 45 minutes</b>.</li>
+          <li>Refactored monolithic services into distributed architectures, improving integration test speed by <b>50%</b> and system availability to <b>99.99%</b>.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Design and deliver pragmatic, production-ready backend solutions for enterprise clients across data-intensive domains, owning architecture through deployment.</li>
+              <li>Build high-performance distributed services and data pipelines on AWS with Docker, optimizing for reliability, latency, and operational visibility.</li>
+              <li>Collaborate with cross-functional stakeholders to translate business requirements into scalable SQL schemas, API contracts, and pipeline controls.</li>
+              <li>Lead code reviews and CI/CD improvements, continuously improving system quality and delivery predictability.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>May 2023 – July 2023 | CVS, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Decoupled legacy monolithic systems into modular, containerized microservices with improved testability and deployment isolation.</li>
+              <li>Advised engineering leadership on domain-driven design patterns to reduce coupling across high-traffic backend modules.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Engineered scalable backend modules for enterprise financial and reporting systems with strict data integrity and availability requirements.</li>
+              <li>Optimized PostgreSQL interfaces and AWS-hosted reporting infrastructure, achieving <b>99.99% uptime</b> for mission-critical workloads.</li>
+              <li>Developed high-performance Python database layers and <b>Java unit test suites</b> supporting large-scale system migration with <b>100% data integrity</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Software Developer and System Architect</u></dt>
+          <dt>July 2019 – October 2021 | CGJSoftware, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Designed asynchronous, event-driven architectures using AWS Pub/Sub messaging, ensuring <b>zero data loss</b> during peak load windows.</li>
+              <li>Optimized complex SQL workloads for AWS Redshift reporting, improving query performance by <b>38%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health &amp; Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Architected secure REST APIs and relational data models supporting <b>500k+ active user profiles</b> with HIPAA-compliant controls.</li>
+              <li>Managed cross-functional engineering delivery as Scrum Master, establishing CI/CD guardrails and production release discipline.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Field Wireman &amp; Communications Specialist</u></dt>
+          <dt>September 1995 – September 1999 | United States Marine Corps</dt>
+          <dd>
+            <ul>
+              <li>Deployed and maintained high-availability communications systems under strict operational uptime requirements.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education</h1>
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>2010 – 2013 | ITT Technical Institute, San Diego, CA (GPA 3.67)</dt>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>

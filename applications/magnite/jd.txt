@@ -1,0 +1,12 @@
+Senior Software Engineer — Budgeting & Pacing Team
+
+Location: West Los Angeles, CA (Hybrid) — also Broomfield CO, Boston MA, US Remote
+Hybrid: M/F remote, T/W/Th in-office
+
+Magnite (NASDAQ: MGNI) — world's largest independent sell-side advertising platform.
+Budgeting & Pacing team: near-real-time data pipelines, ML techniques, real-time ad serving controls.
+
+Key stack: Java, AWS, Databricks, Docker
+Requirements: 4+ years, distributed systems, SQL, REST, Agile, full SDLC ownership
+Preferred: Ad tech familiarity
+Salary range: $135,000 - $175,000

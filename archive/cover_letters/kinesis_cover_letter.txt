@@ -1,0 +1,25 @@
+Cary Jones
+
+116 N Marengo Ave Apt F
+Alhambra, CA 91801
+(626) 474-6870
+cgjonesdev@gmail.com
+
+September 17, 2025
+
+Robin Starinieri
+Director of Recruiting
+Systems Engineering Services
+
+Dear Ms. Starinieri,
+
+I am eager to apply for the AWS Python Developer position at Systems Engineering Services, as advertised through Dice. With over a decade of experience as a Senior Python Developer, specializing in AWS cloud technologies, API development, and data-driven solutions, I am confident in my ability to deliver robust, scalable systems that align with SES’s commitment to excellence in technology solutions. My expertise in Python, AWS services like Redshift, EC2, S3, Lambda, and RDS, combined with my Agile leadership experience, positions me to excel in supporting your team’s goals during MST or CST hours.
+
+In my recent role at CVS, Inc., I led the transformation of a legacy monolith into a modular, domain-driven architecture using Docker and AWS ECS, ensuring seamless integration across application, data, and infrastructure domains—directly relevant to SES’s requirement for multi-domain expertise. At Disney Corporation, I developed Python interfaces for PostgreSQL, leveraging AWS Redshift and S3 for financial reporting applications, while configuring CloudWatch for monitoring, aligning with your emphasis on CloudWatch and DevOps practices. My 4+ years of experience with SQL and DBMS (including Redshift, PostgreSQL, and MongoDB) and proficiency in Git for source control further complement the technical skills outlined in the job description.
+
+As a Scrum Master and system architect at Alan Health & Science Corp., I drove Agile processes using JIRA and Confluence, fostering full team engagement in sprints and delivering secure APIs with custom authentication schemes. My strong communication skills ensured effective incident response and stakeholder collaboration, meeting SES’s soft skill expectations. Additionally, my hands-on experience with AWS IAM, Kubernetes, and Linux environments, coupled with a security-minded approach to building performant systems, positions me to contribute to SES’s high standards in regulated industries.
+
+I am excited about the opportunity to bring my technical expertise and proactive mindset to SES, supporting innovative solutions in a dynamic, customer-facing environment. I would welcome the chance to discuss how my skills align with your needs. Thank you for considering my application, and I look forward to the possibility of speaking with you soon.
+
+Sincerely,
+Cary Jones

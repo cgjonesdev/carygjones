@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="resume.css">
+  </head>
+  <body>
+    <main>
+      <div class="name">
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Senior Backend Engineer | Python &amp; Distributed AI Systems</p>
+      </div>
+
+      <div class="contact">
+        <div class="address">
+          <p>6355 Oak Avenue Apt 18</p>
+          <p>Temple City, CA 91780</p>
+        </div>
+        <div class="phone_email">
+          <p><a href="tel:+1.626.272.2567">(626) 272-2567</a></p>
+          <p><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></p>
+        </div>
+      </div>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Senior Backend Engineer &amp; Solutions Architect</b> with over 15 years of experience architecting scalable <b>distributed systems</b>, high-concurrency microservices, and modern data processing pipelines using <b>Python</b> (FastAPI, Asyncio, Django, Flask) and deep <b>SQL data modeling</b>. Early adopter of <b>agentic AI development tools</b> (Cursor, GitHub Copilot, Claude Code) to accelerate delivery cycles while maintaining rigorous code quality. Proven expertise in deploying production LLM architectures (RAG, vector databases) with acute focus on latency, cost, and reliability trade-offs. Accomplished technical lead and Scrum Master proficient in mentoring engineers, driving architecture discussions, and collaborating cross-functionally with Data Science, Product, and QA teams.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies &amp; Technical Skills</h1>
+        <ul>
+          <li><b>Languages &amp; Core Stack:</b> Python (Asyncio, FastAPI, Django, Flask, Sanic), SQL, Go (Golang), JavaScript (ES6+), React.js, Bash/Zsh</li>
+          <li><b>Distributed Systems &amp; APIs:</b> Distributed Systems Architecture, High Concurrency, RESTful APIs, gRPC, Event-Driven Messaging, Microservices</li>
+          <li><b>AI &amp; Agentic Workflows:</b> Agentic Coding (Cursor, GitHub Copilot, Claude Code), Production LLM Systems, RAG Architectures, Vector Databases, Prompt Engineering</li>
+          <li><b>Modern Data Stack &amp; Databases:</b> SQL Data Modeling (Relational &amp; Non-Relational), PostgreSQL, MySQL, Redis, AWS RDS, Apache Airflow, ETL/Data Pipelines</li>
+          <li><b>DevOps &amp; Infrastructure:</b> Docker, Kubernetes, CI/CD (GitHub Actions, GitLab CI), AWS (ECS, Fargate, S3, RDS, Lambda), GCP, Git Version Control</li>
+          <li><b>Engineering Leadership:</b> Architecture Reviews, Code Reviews, Mentorship &amp; Coaching, Agile/Scrum Leadership, Cross-Functional Collaboration</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Key Accomplishments</h1>
+        <ul>
+          <li>Engineered event-driven distributed ETL data pipelines using AWS RDS, Fargate, and Airflow, executing mission-critical SQL queries handling <b>2.5M+ daily transaction events</b> with <b>99.95% accuracy</b>.</li>
+          <li>Integrated agentic coding workflows (Cursor, Copilot, Claude Code) into software engineering practices, accelerating feature shipping speed by <b>40%</b> without sacrificing test coverage or reliability.</li>
+          <li>Architected and deployed production-grade LLM applications and RAG vector search endpoints, optimizing chunking strategies and caching to reduce query latency by <b>35%</b> and cloud inference costs by <b>25%</b>.</li>
+          <li>Mentored and coached junior and mid-level software developers through peer code reviews and architectural workshops, driving a <b>35% increase in sprint throughput</b>.</li>
+          <li>Refactored legacy monolithic services into distributed Python microservices, cutting p99 API latency below <b>120ms</b> and achieving <b>99.99% system availability</b>.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Backend Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present</dt>
+          <dt>Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Architect, build, and ship distributed backend microservices and data pipelines using Python (FastAPI, Asyncio) and advanced SQL schema design.</li>
+              <li>Evaluate and deploy production LLM integrations and RAG systems, balancing inference costs, token overhead, and sub-second execution SLAs.</li>
+              <li>Leverage agentic developer tooling (Cursor, Copilot) to rapidly prototype and deliver production features daily while enforcing strict peer code review standards.</li>
+              <li>Provide technical vision and active mentorship to client engineering teams, establishing architectural patterns and distributed system best practices.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>May 2023 – July 2023</dt>
+          <dt><b>CVS, Inc. &mdash; (100% Remote)</b></dt>
+          <dd>
+            <ul>
+              <li>Deconstructed complex legacy backend infrastructure into modular, distributed microservices deployed via Docker containers.</li>
+              <li>Designed robust database models and caching strategies in PostgreSQL to support high-concurrency request throughput.</li>
+              <li>Collaborated across engineering, QA, and business stakeholders to align system architecture with enterprise data processing goals.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Backend Engineer &amp; Scrum Master</u></dt>
+          <dt>October 2021 – November 2022</dt>
+          <dt><b>Disney Corporation, Inc. &mdash; (100% Remote)</b></dt>
+          <dd>
+            <ul>
+              <li>Architected high-scale backend services and relational data models processing enterprise financial analytics and real-time report generation.</li>
+              <li>Authored complex SQL queries and optimized ORM performance, reducing background batch calculation times by <b>28%</b>.</li>
+              <li>Facilitated cross-functional agile ceremonies as Scrum Master, prioritizing roadmap deliverables with Product and Data Engineering.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Software Developer &amp; Scrum Master</u></dt>
+          <dt>April 2014 – August 2015</dt>
+          <dt><b>KeyIngredient &mdash; Austin, TX</b></dt>
+          <dd>
+            <ul>
+              <li>Designed backend REST endpoints and automated ETL processing workflows handling large-scale consumer recipe data ingest.</li>
+              <li>Automated data pipelines and validation routines, eliminating manual backend processing tasks by <b>90%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Field Wireman &amp; Communications Specialist</u></dt>
+          <dt>September 1995 – September 1999</dt>
+          <dt><b>United States Marine Corps &mdash; San Diego, CA &amp; Overseas</b></dt>
+          <dd>
+            <ul>
+              <li>Deployed and maintained high-availability tactical communications networks in high-stress operational settings under strict uptime requirements.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education &amp; Certifications</h1>
+        <dl>
+          <dt><u>Associate of Science : Computer Electronics</u></dt>
+          <dt>2010 to 2013</dt>
+          <dt><b>ITT Technical Institute &mdash; San Diego, CA</b></dt>
+          <dd>
+            <ul>
+              <li>Degree in Computer and Electronics Engineering Technology (GPA 3.67)</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>

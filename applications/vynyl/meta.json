@@ -1,0 +1,13 @@
+{
+  "company": "Vynyl",
+  "client": null,
+  "role": "Senior Full Stack Developer",
+  "location": null,
+  "match_score": 88,
+  "status": "ready",
+  "created": "2026-07-24",
+  "updated": "2026-07-24",
+  "salary": null,
+  "styling_notes": "Consulting/modern tech — deep teal (#0f766e) + charcoal, AI-forward hierarchy, regulated-industry trust cues",
+  "notes": "AI tooling is major differentiator; DynamoDB single-table and explicit event sourcing are partial gaps"
+}

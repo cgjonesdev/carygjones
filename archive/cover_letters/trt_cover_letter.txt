@@ -1,0 +1,24 @@
+Cary Jones  
+116 N Marengo Ave Apt F  
+Alhambra, CA 91801  
+(626) 474-6870  
+cgjonesdev@gmail.com  
+
+September 23, 2025  
+
+Hiring Manager  
+TRT  
+
+Dear Hiring Manager,  
+
+As a Senior Python Developer with over a decade of experience in architecting scalable backend solutions and leading Agile teams, I was excited to discover the career opportunities at TRT, a company renowned for its commitment to global-standard services and fostering professional growth through international exposure. Your emphasis on excellence, collaboration, and a supportive environment—highlighted by employee testimonials praising the flexible work culture and continuous learning—deeply resonates with my own passion for innovative, team-driven projects that deliver real impact. I am eager to bring my expertise in Python-based API development and cloud infrastructure to TRT, contributing to your dynamic team while advancing in a fast-paced, rewarding setting.  
+
+In my recent role as Senior Software Engineer at CVS, Inc., I led the rework of a legacy monolith codebase toward a domain-driven, modular architecture, containerizing domain modules with Docker and docker-compose to enhance scalability and maintainability—skills that align seamlessly with TRT's focus on high-performance, global projects. Previously at Disney Corporation, I developed Python interfaces for PostgreSQL to support financial reporting applications, collaborating with cross-functional teams to implement functional changes and unit tests, ensuring robust cloud-based architectures using AWS services like EC2 and Pub/Sub. These experiences mirror the collaborative and creative culture at TRT, where, as Employer Branding Analyst Sam Dasco notes, innovation and passion drive every initiative, much like my work in event-driven ETL pipelines with AWS ECS and Fargate.  
+
+My technical proficiency spans Python frameworks such as Flask RESTful, Django REST Framework, and Sanic, alongside tools like Git, Kubernetes, and GCP for deploying microservices and securing applications with custom authentication schemes. As a certified Scrum Master, I have successfully guided overseas development teams through SDLC processes, from epics and user stories to deployment, resulting in fully functional APIs and web applications that attracted investors—much like the professional growth opportunities celebrated by TRT employees such as Jerome Sison and Ezequiel Jave Panlilio. I am particularly drawn to TRT's perks, including above-market salaries, health insurance, and rewards for excellence, which would enable me to thrive while contributing to your mission of pushing boundaries in a diverse, high-expectation environment.  
+
+I would welcome the opportunity to discuss how my background in backend web services, cloud orchestration, and Agile leadership can support TRT's global initiatives. Thank you for considering my application. I look forward to the possibility of speaking with you soon.  
+
+Sincerely,  
+
+Cary Jones

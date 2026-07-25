@@ -1,0 +1,40 @@
+**Cary Jones**  
+Senior Software Engineer  
+New Taipei City, Taiwan 231  
+USA: +1.626.272.2567 | TW: +886.910.097.615  
+cgjonesdev@gmail.com  
+
+[Date]  
+
+Hiring Manager  
+Zealogics  
+
+**Subject: Application for Senior / Lead Python Developer – Zealogics**  
+
+Dear Hiring Manager,  
+
+I am applying for the **Senior / Lead Python Developer** position at Zealogics. With **12+ years of experience** building complex, scalable, and high-performance Python applications, I bring deep expertise in backend architecture, modern API development, microservices, and enterprise-grade data systems — exactly what you are looking for.  
+
+I offer a strong match to your requirements:  
+
+- **Python & Frameworks**: Over 12 years of professional Python development with extensive production experience using **FastAPI, Sanic, Flask/Flask-RESTful**, and **Django REST Framework**. I have designed and delivered numerous large-scale RESTful APIs and microservices.  
+- **Databases**: Strong hands-on expertise with both **PostgreSQL** (schema design, complex queries, performance tuning) and **MongoDB** (document modeling, custom ORMs, aggregation pipelines). I have built and maintained systems using meta-programming and descriptors for flexible multi-database ORM solutions.  
+- **System Architecture & Scalability**: Architected and deployed fault-tolerant microservices using **Docker, Kubernetes**, and cloud platforms (**AWS, GCP, Linode**). I have optimized performance, implemented robust security (SSL, Fernet encryption, custom auth), logging, monitoring, and CI/CD practices.  
+- **Leadership & Collaboration**: Served as **Scrum Master** and technical leader, mentoring junior developers, reviewing code, managing distributed (often overseas) teams, and guiding projects end-to-end. I excel at stakeholder communication, requirements gathering, and delivering high-quality, production-ready systems.  
+- **AI/ML Readiness**: While my core strength is in building robust data-heavy backend systems and integration platforms, I have worked extensively with analytics, financial reporting, and large dataset processing using **Pandas, NumPy**, and visualization tools. I am very familiar with **GitHub Copilot** and similar AI productivity tools and am eager to contribute to AI/ML and LLM-based initiatives.  
+
+I am highly experienced in writing clean, testable code, implementing SOLID principles and Clean Architecture, and working within Agile environments. I have successfully delivered complex data pipelines, real-time/event-driven systems, and scalable web applications across finance, healthcare, and real estate domains.  
+
+I am excited about the opportunity to bring my technical leadership and deep Python/backend expertise to Zealogics and would welcome the chance to discuss how I can contribute to your AI/ML-driven solutions and backend platforms.  
+
+Thank you for your consideration. I am available at your earliest convenience and can be reached at +1.626.272.2567 or cgjonesdev@gmail.com.  
+
+Sincerely,  
+
+**Cary Jones**  
+
+---
+
+This cover letter is tailored specifically for Zealogics and strongly addresses the **12+ years**, **FastAPI**, **PostgreSQL + MongoDB**, **microservices**, and **leadership** requirements while being transparent yet positive about the AI/ML aspects.  
+
+Would you like any sections strengthened, shortened, or adjusted?

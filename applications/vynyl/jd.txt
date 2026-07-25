@@ -1,0 +1,11 @@
+Senior Full Stack Developer — Vynyl
+
+Consulting: system modernization, new product development, regulated industries (healthcare, financial services, government, education).
+
+Stack: Python, AWS Serverless (Lambda, DynamoDB, SQS, EventBridge, API Gateway), event-sourced/event-driven systems, Terraform/CloudFormation IaC.
+
+Required: 5+ years full-stack, expert Python, strong Node.js, serverless AWS, DynamoDB, event sourcing, CI/CD, AI-assisted development fluency with thoughtful perspective on limitations/security.
+
+Nice to have: Kinesis, SageMaker, TypeScript, React, regulated environments.
+
+Interview focus: practical AI tool usage, limitations, strategic opportunity, evolution of engineering role.

@@ -1,0 +1,29 @@
+Cary Jones
+No. 4 5F, Lane 61 Mingde Rd
+Xindian District, New Taipei City
+Taiwan 231
+US: +1.626.272.2567
+TW: +886.910.097.615
+cgjonesdev@gmail.com
+
+[Date]
+
+Hiring Team
+WB Solutions
+Dear Hiring Team,
+
+I am excited to apply for the Python Backend Developer position (Remote, long-term contract) at WB Solutions. With over 12 years of hands-on experience as a Senior Python Developer and System Architect, I specialize in designing and implementing scalable backend web services, RESTful APIs, data engineering pipelines, and secure cloud-deployed applications. My deep expertise in Python frameworks, async-capable architectures, Pydantic-style data validation, SQL databases, and comprehensive testing aligns closely with your requirements for FastAPI, async programming, API integrations, data engineering, and SQL.
+
+In my recent roles, I have built and deployed production-grade Python APIs using frameworks such as Flask, Flask-RESTful, Django REST Framework, and Sanic—all of which emphasize clean, high-performance web services similar to FastAPI. I architected custom MVC architectures around Flask, including lightweight ORMs for MongoDB and multi-database interfacing with Python objects and descriptors. I have extensive experience with async programming patterns through event-driven ETL pipelines, Pub/Sub messaging (AWS), and non-blocking microservices deployed via Docker and cloud services (AWS ECS/Fargate, GCP).
+
+My data engineering and SQL expertise spans 7+ years: I created robust ETL processes integrating Redis, PostgreSQL, Airtable, Jira, REST/GraphQL APIs, and streaming services for data merging, sanitization, schema consistency, and financial reporting. I built Python interfaces for PostgreSQL CRUD operations, used Pandas/NumPy for data analysis and Matplotlib charting, and developed ORM solutions for seamless object-to-database mapping. I am highly proficient with Pydantic principles through strict data modeling, validation schemas, and event-driven structures in healthcare and logistics applications. For testing frameworks, I have designed and executed unit/integration tests, automated test suites (Unittest, Nosetests), refactored test harnesses, and created object-oriented test generators—ensuring code integrity across monoliths and modular architectures.
+
+While my primary domain experience includes healthcare (Alan Health & Science, where I led API and React portal development), real estate/finance systems (CT-REI, Disney, Fidelity), and general enterprise applications (CVS, Rackspace, Dell), I bring strong transferable skills from network and embedded systems work. At Hospira, I provided TCP/IP network support for medical devices over wired/wireless LANs, built wireless security architectures with EAP protocols, developed recovery scripts, and created telnet clients for device communication—skills directly relevant to telecom environments involving reliable data flows, integrations, and high-availability systems. I have also containerized applications with Docker, managed cloud infrastructure (AWS/GCP), implemented custom authentication/encryption (Fernet), and led Scrum teams as a Scrum Master.
+
+I am eager to bring my proven ability to deliver robust, scalable Python backend solutions to WB Solutions and contribute immediately to your long-term contract needs. I would welcome the opportunity to discuss how my background in async-capable services, FastAPI-adjacent frameworks, Pydantic data handling, SQL/data engineering, and rigorous testing can support your team's goals.
+
+Thank you for your consideration. I am available at your earliest convenience for an interview and can be reached at
+(626) 272-2567 or cgjonesdev@gmail.com.
+
+Sincerely,
+Cary Jones

@@ -1,0 +1,23 @@
+Cary Jones
+Temple City, CA 91780
+(626) 272-2567 | cgjonesdev@gmail.com
+
+July 15, 2026
+
+Hiring Team O’Reilly Media Remote, United States
+
+Subject: Application for Senior Software Engineer (Backend)
+
+Dear O’Reilly Media Hiring Team,
+
+I am writing to express my strong interest in the Senior Software Engineer (Backend) position at O’Reilly Media. As a Senior Software Engineer with over a decade of hands-on experience designing and operating high-performance backend systems, I am deeply inspired by O’Reilly’s mission to share the knowledge of innovators. Throughout my career, I have embraced a culture of continuous learning, sharing expertise, and technical excellence, making this role an exceptional match for my professional values and background.
+
+My technical experience directly aligns with your core stack and engineering goals. I bring expert-level proficiency in Python and extensive production experience developing scalable microservices with Django, FastAPI, and Flask. In my previous role at Alan Health & Science Corp, I designed robust APIs, optimized relational databases using Postgres, and engineered high-throughput event-driven workflows with Redis and Celery. I also possess solid experience containerizing applications with Docker, deploying workloads on GCP and AWS, and maintaining thorough test coverage using PyTest to support rapid, confident releases. Additionally, I have worked with JavaScript, Node.js, and React, which aligns perfectly with your efforts to stitch microservices together for client-side applications.
+
+Furthermore, I am a strong advocate for modern, AI-augmented development. I routinely leverage AI enablement tools like Cursor and Claude Code to streamline debugging, generate robust test suites, and rapidly author infrastructure-as-code. Beyond individual technical contributions, I thrive in distributed, collaborative environments where code reviews are treated as active avenues for knowledge sharing. As a veteran of the U.S. Marine Corps, I approach software delivery with extreme accountability, clear communication, and a passion for mentoring team members as we build tools that empower users.
+
+Thank you for your time and consideration. I look forward to discussing how my Python and Django expertise, combined with my commitment to continuous learning, can help elevate O’Reilly’s interactive learning platform.
+
+Sincerely,
+
+Cary Jones Senior Software Engineer (Backend)

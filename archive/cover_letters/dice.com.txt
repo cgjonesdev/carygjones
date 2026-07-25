@@ -1,0 +1,35 @@
+Cary Jones
+Senior Software Engineer
+New Taipei City, Taiwan 231
+USA: +1.626.272.2567 | TW: +886.910.097.615
+cgjonesdev@gmail.com
+
+May 8, 2026
+
+Hiring Manager
+Dice.com
+
+Dear Hiring Manager,
+
+I am writing to apply for the Senior Python Developer position focused on quantitative investing infrastructure. With more than 12 years of professional Python development experience — including over 7 years building production-grade data pipelines, financial reporting systems, and backend infrastructure — I am confident I can contribute immediately to your quantitative investing platforms.
+In previous roles I have repeatedly delivered the exact capabilities you are looking for:
+
+NumPy & Pandas in Production: Extensively used Pandas and NumPy to build financial reporting dashboards and analytical charts (including Matplotlib visualizations) for financial data at Disney Corporation and for investment analysis tools in real estate finance. I have also built ETL pipelines that merge, sanitize, and transform large datasets from multiple sources while maintaining schema consistency.
+
+Quantitative Investing & Financial Infrastructure: Served as Python API Developer at Fidelity Investments, where I developed backend systems using Django REST Framework that automated network device configuration for a corporate datacenter and supported financial workflows. At Disney, I developed financial and reporting applications and collaborated on an accounting costing system. I also designed and implemented property analysis tools for real estate investors to evaluate offers, project profits, and calculate ROI.
+
+REST APIs & Microservices: Designed, developed, and deployed multiple production RESTful APIs using FastAPI, Flask/Flask-RESTful, Django REST Framework, and Sanic. I have extensive experience with microservice architecture, having containerized services with Docker, orchestrated them via Kubernetes, and deployed them on AWS, GCP, and Linode.
+
+Data Ingestion & Integration: Built robust ETL processes integrating Redis, PostgreSQL, Airtable, Jira, REST/GraphQL APIs, and streaming services. I have deep experience with data ingestion pipelines using AWS ECS/Fargate, Airflow, and custom event-driven architectures.
+
+Technical Foundation: Strong fluency in SQL (PostgreSQL, Redshift, etc.), Unix/Linux environments, Bash/Zsh scripting, object-oriented design, data structures & algorithms, version control (Git), and full SDLC practices. I have successfully maintained system stability, implemented security measures (SSL, Fernet encryption, custom auth), troubleshot production issues, and led releases.
+
+I thrive both as an independent contributor and collaborative team member — having served as Scrum Master leading multiple engineering teams while also mentoring junior developers. My pragmatic, creative problem-solving approach consistently delivers robust, scalable solutions.
+
+I am excited by the opportunity to bring my deep Python, data engineering, and financial systems experience to your quantitative investing platform. I would welcome the chance to discuss how I can contribute to your team’s success.
+
+Thank you for your consideration. I am available at your earliest convenience for an interview and can be reached at +1.626.272.2567 or cgjonesdev@gmail.com.
+
+
+Sincerely,
+Cary Jones

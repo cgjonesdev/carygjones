@@ -1,0 +1,4 @@
+tabnew
+term
+
+tabnext

@@ -1,0 +1,30 @@
+Cary Jones
+116 N Marengo Ave
+Alhambra, CA 91801
+(626) 474-6870
+cgjonesdev@gmail.com  
+
+September 23, 2025  
+
+Hiring Manager
+Farmers Insurance
+R_US - United States  
+
+Dear Hiring Manager,
+
+I am excited to apply for the Lead Python Developer position at Farmers Insurance, as advertised (Job ID: 30262). With over a decade of experience as a Senior Python Developer, I bring a proven track record of architecting and delivering high-quality, scalable backend solutions using Python, Pandas, and Pytest, alongside expertise in AWS, API development, and leading Agile teams. My background aligns seamlessly with Farmers’ commitment to innovation, collaboration, and delivering impactful solutions in a high-performance culture.
+
+In my recent role as a Senior Software Engineer at CVS, Inc. (May 2023–July 2023), I restructured a legacy monolithic codebase into a modular, domain-driven architecture, leveraging Docker and AWS ECS to enhance scalability and maintainability. I also advised management on best practices for modularization, ensuring alignment with strategic goals. At Disney Corporation (October 2021–November 2022), I developed Python-based financial reporting applications, interfacing with PostgreSQL databases and utilizing Pandas for data analysis and visualization with Matplotlib. These experiences honed my ability to write clean, well-documented code adhering to strict quality standards, a key requirement for this role.
+
+My expertise extends to leading QA/QC efforts, as demonstrated at Alan Health & Science Corp (January 2018–July 2019), where I architected Python APIs, implemented custom authentication schemes, and enforced coding standards across teams. I also have extensive experience collaborating with data science teams, as seen in my work at CGJSoftware, where I built ETL pipelines integrating Redis, PostgreSQL, and Airtable, ensuring data consistency for analytics and reporting. This directly supports your need for a developer who can bridge software engineering and data science to enhance machine learning model development.
+
+As an experienced Scrum Master, I have successfully led Agile teams, fostering trust, inclusion, and accountability while delivering projects that exceeded business objectives. For instance, at KeyIngredient (April 2014–August 2015), I guided a cross-functional team to implement a hierarchical ticketing system, improving development efficiency. My ability to provide clear feedback, mentor junior developers, and align technical solutions with business goals makes me well-suited to lead and drive Farmers’ custom in-house software initiatives.
+
+I am particularly drawn to Farmers’ culture of innovation and its hybrid work model, which aligns with my experience thriving in remote, collaborative environments. My deep knowledge of Python, Pandas, AWS, and object-oriented programming, combined with my insurance industry exposure through financial reporting projects, positions me to contribute immediately to your team’s success.
+
+I would welcome the opportunity to discuss how my skills and experiences align with Farmers’ needs. Thank you for considering my application. I look forward to the possibility of contributing to your mission of delivering peace of mind to customers.
+
+Sincerely,
+
+
+Cary Jones

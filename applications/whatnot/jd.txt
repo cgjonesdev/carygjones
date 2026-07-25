@@ -1,0 +1,10 @@
+Senior Software Engineer — Whatnot
+
+Remote co-located; must live within commuting distance of LA, NYC, SF, or Seattle hub.
+Stack: Python, Elixir, JavaScript; modern cloud and data platforms.
+
+Pillars: Buyer Growth, Seller Growth, Trust & Risk, Discovery & Personalization, Search, Customer Experience, Core Infrastructure.
+
+Requirements: 5+ years, scalable backend/full-stack, own complex projects, distributed systems, cross-functional leadership, mentoring, product instincts, high-growth marketplace experience a plus.
+
+Design/build/operate scalable distributed systems for live commerce marketplace at global scale.

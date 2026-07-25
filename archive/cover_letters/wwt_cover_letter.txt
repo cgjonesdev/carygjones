@@ -1,0 +1,36 @@
+Cary Jones
+116 N Marengo Ave Apt F
+Alhambra, CA 91801
+(626) 474-6870
+cgjonesdev@gmail.com
+
+September 24, 2025
+
+Hiring Manager
+World Wide Technology (WWT)
+
+Dear Hiring Manager,
+
+I am excited to apply for the Python Developer position at World Wide Technology (WWT) to support Fiserv’s platform network management initiatives. With over a decade of experience as a Senior Python Developer, I bring a proven track record of designing, developing, and maintaining robust back-end systems, RESTful APIs, and microservices, aligning perfectly with the requirements of this role.
+
+In my recent role as a Senior Software Engineer at CVS, Inc., I successfully restructured a legacy monolith codebase into a modular, domain-driven architecture using Docker and docker-compose, enhancing scalability and maintainability. At Disney Corporation, I developed Python-based interfaces for PostgreSQL databases, enabling efficient CRUD operations and contributing to financial reporting applications. My expertise in event-driven architecture, demonstrated through projects like ETL pipelines for Redis, PostgreSQL, and GraphQL APIs, ensures seamless data handling and system integration, which directly supports WWT’s goal of unifying BlueCat systems for Fiserv.
+
+Key qualifications that align with your requirements include:
+• Python Software Engineering (7+ years): Extensive experience building APIs and backend services using Flask, Flask RESTful, Django, and Sanic, with a focus on event-driven architectures.
+• Native SQL and PostgreSQL (5+ years): Proficient in writing optimized SQL queries and data modeling, including stress testing with AWS Redshift and creating Python ORMs for multi-database integration.
+• Pytest, Unit, and Integration Testing (3+ years): Developed comprehensive test suites to ensure code integrity, including unit and functional tests for APIs and microservices.
+• Containers and Orchestration (4+ years): Skilled in Docker and Kubernetes for deploying microservices in AWS and GCP environments, ensuring scalable and reliable deployments.
+• Agile/Scrum Leadership (5+ years): Led multiple Scrum teams as a Scrum Master, implementing branching/rebasing strategies and guiding cross-functional teams to deliver high-quality solutions.
+• Git and GitHub (6+ years): Established branching policies and conducted code reviews to maintain clean, maintainable codebases.
+
+Additionally, my experience with large-scale data processing, such as leveraging Pandas and NumPy for financial reporting and handling terabytes of data, equips me to tackle the challenges of unifying disparate IP management systems. My familiarity with Redis, FastAPI, and Django, along with my ability to collaborate with cross-functional teams, positions me to contribute effectively to your team’s objectives.
+
+I am particularly drawn to this role’s focus on creating a standardized, automated experience for BlueCat systems, as it aligns with my passion for architecting efficient, scalable solutions. My leadership mentality, honed through mentoring junior developers and guiding teams at companies like Alan Health & Science Corp, ensures I can take ownership of tasks while fostering collaboration.
+
+I am eager to bring my technical expertise and collaborative spirit to WWT to drive the success of this project. I would welcome the opportunity to discuss how my skills and experiences align with your needs. Please feel free to contact me at (626) 474-6870 or cgjonesdev@gmail.com to schedule a conversation.
+
+Thank you for considering my application. I look forward to the possibility of contributing to WWT’s innovative solutions for Fiserv.
+
+Sincerely,
+
+Cary Jones

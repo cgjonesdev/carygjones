@@ -1,0 +1,32 @@
+Cary Jones
+6355 Oak Avenue Apt 18
+Temple City, CA 91780
+(626) 272-2567 | cgjonesdev@gmail.com
+
+July 15, 2026
+
+Hiring Team Oscar Health
+
+Los Angeles, CA
+
+Subject: Application for Senior Software Engineer, Backend
+
+Dear Oscar Hiring Team,
+
+I am writing to express my strong interest in the Senior Software Engineer, Backend position at Oscar. Having spent over a decade designing, scaling, and maintaining production-grade backend applications—coupled with deep domain expertise in secure healthcare web platforms—I am highly motivated by Oscar's mission to build a full-stack health insurance platform that makes interacting with the healthcare system seamless. Based in Temple City, California, I am fully prepared to join your Los Angeles office on a hybrid schedule, including your required team-focused Thursdays.
+
+My technical profile and previous accomplishments directly align with both Oscar's core engineering responsibilities and your preferred "bonus points" criteria:
+
+• Healthcare Domain Expertise: In my previous role with Alan Health & Science Corp, I engineered data-modeling structures and highly secure APIs for predictive healthcare applications. I understand the critical balance between shipping innovative features and managing the legacy constraints and compliance frameworks inherent to the healthcare industry.
+• Proficiency in Python and Go: Your backend environment is a perfect match for my technical toolkit. I offer extensive production experience developing, refactoring, and optimizing scalable microservices in both Python (utilizing FastAPI, Django, and Flask) and Go (Golang). I focus on writing modular, stable, and highly maintainable code using clean architecture and S.O.L.I.D. design principles.
+• Data Pipelines & Engineering Tooling: I have a proven track record of creating custom Object-Relational Mappers (ORMs), managing schema consistency, and constructing complex ETL pipelines to merge, sanitize, and transfer large datasets. I have hands-on experience handling authorization and authentication protocols (OAuth2, JWT) to keep internal data securely locked down.
+• Infrastructure and Observability Stack: I am highly proficient in managing containerized microservices across Kubernetes and Docker. I design and build event-driven pipelines utilizing AWS (including ECS, Fargate, Security Groups, and VPCs) and GCP, and I strongly value keeping systems visible through structured logging, metrics, and modern observability tooling.
+• Collaborative & Independent Leadership: As a certified Scrum Master, I excel at taking ownership of projects from initial concept to deployment. I thrive when working cross-functionally with product managers, designers, and other engineering stakeholders to plan technical roadmaps, execute step-wise migrations, and mentor fellow developers.
+
+As a veteran of the U.S. Marine Corps, I approach software engineering with a disciplined, high-accountability mindset, moving technical initiatives forward with clear communication and minimal oversight. I would love to bring this experience to Oscar to build robust backend services that improve the lives of your members and providers.
+
+Thank you for your time and consideration. I look forward to discussing how my software engineering capabilities and healthcare background can support the Oscar team in Los Angeles.
+
+Warm regards,
+
+Cary Jones Senior Software Engineer

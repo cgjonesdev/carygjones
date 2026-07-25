@@ -1,0 +1,35 @@
+Cary Jones
+6355 Oak Avenue Apt 18
+Temple City, CA 91780
+(626) 272-2567 | cgjonesdev@gmail.com
+
+July 13, 2026
+
+Hiring Team Nextdoor, Inc.
+
+San Francisco, CA
+
+Subject: Application for Senior Software Engineer
+
+Dear Nextdoor Hiring Team,
+
+I am writing to express my enthusiastic interest in the Senior Software Engineer position at Nextdoor. As a seasoned developer with over a decade of experience designing, scaling, and maintaining performant web services, I am deeply aligned with Nextdoor’s mission to cultivate a kinder world through innovative technology. Based in the Los Angeles area (Temple City, CA), I welcome the opportunity to engage in your hybrid model and build strong, in-person relationships at your Los Angeles office or San Francisco headquarters.
+
+Nextdoor’s engineering philosophy values high-performing engineers who wear multiple hats, prioritize impact, and take full stake over the product lifecycle. My background directly mirrors these expectations across your tech stack and team principles:
+
+• Multilingual Backend Expertise & Tooling: I bring extensive experience in your primary backend languages, specializing in Python/Django and Go , alongside robust data systems utilizing SQL (PostgreSQL), Redis, and GraphQL. I have a proven track record of constructing flexible backend architectures and data pipelines from scratch , backed by containerization tools like Docker and cloud infrastructure on AWS.
+
+• Leadership & Collaborative Impact: I am a high-initiative leader who excels at driving technical vision while
+remaining delivery-focused. As an experienced Scrum Master , I routinely collaborate across cross-functional bounds
+with product managers and stakeholders to refine product direction. I have a rich history of mentoring junior
+developers and successfully aligning distributed teams across various geographies.
+
+• AI-First & Continuous Learning Mindset: I treat cutting-edge technical environments as an opportunity to learn and evolve. I actively integrate modern AI tools into my engineering workflow to challenge assumptions, automate boilerplate tasks, and ensure that AI-assisted outputs are held to the highest standards of production quality and reliability.
+
+As a U.S. Marine Corps veteran, I approach software development with a disciplined work ethic, strong organizational accountability, and a desire to contribute meaningfully to company culture. I am excited to bring this mindset to Nextdoor, where I can help engineer the next generation of neighbor-centric platform frameworks.
+
+Thank you for your time and consideration. I look forward to discussing how my engineering background and collaborative leadership style can support Nextdoor's community goals.
+
+Warm regards,
+
+Cary Jones Senior Software Engineer 

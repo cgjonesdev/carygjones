@@ -1,0 +1,36 @@
+Cary Jones
+116 N Marengo Ave Apt F
+Alhambra, CA 91801
+(626) 474-6870
+cgjonesdev@gmail.com
+
+October 9, 2025
+
+Hiring Manager
+
+Subject: Application for Full Stack Engineer Position
+
+Dear Hiring Manager,
+
+I am excited to apply for the Full Stack Engineer position at your company, inspired by your mission to transform global talent connections through AI-driven solutions. With over five years of professional software engineering experience and a proven track record of leading complex projects, I am eager to contribute my expertise in distributed systems, AI-powered architectures, and full-stack development to drive your platform’s innovation and scalability.
+
+In my role as a Senior Software Engineer at CVS, Inc., I transformed a legacy monolithic codebase into a modular, domain-driven microservices architecture using Docker and Kubernetes, enhancing system scalability and reliability. At Disney Corporation, I developed full-stack financial applications using Python, Flask, and JavaScript, integrating RESTful APIs with front-end interfaces and deploying them on Google Cloud Platform. My work at Alan Health & Science Corp. included collaborating with data scientists to integrate machine learning models into a healthcare web application, aligning closely with your need for AI-powered talent-matching features.
+
+Key highlights of my qualifications include:
+
+• System Design & Implementation: I architected a custom MVC framework using Flask and MongoDB, incorporating AI-driven data processing for real-time analytics, which supports your goal of building scalable systems for complex matching algorithms.
+
+• Cross-Functional Collaboration: At CGJSoftware, Inc., I worked closely with product managers and security teams to deliver secure, globally compliant applications, ensuring adherence to data privacy regulations.
+
+• Technical Leadership: As a certified Scrum Master, I’ve mentored engineers and driven technical excellence, leading cross-functional teams to deliver high-impact projects like a real estate investment platform at CT-REI, Inc.
+
+• AI & Data Processing: My experience with Pandas and NumPy for large-scale data processing in financial reporting applications equips me to contribute to your AI/ML platform development and talent-matching algorithms.
+
+Your focus on technical excellence and cross-functional impact resonates with my collaborative, low-ego approach. For example, at CVS, I partnered with product and QA teams to resolve performance bottlenecks in a payment system, achieving a 30% improvement in transaction speed. My experience in distributed, remote teams, combined with my proficiency in Git, CI/CD pipelines, and cloud platforms like AWS and GCP, positions me to deliver robust, maintainable solutions for your global user base.
+
+I am particularly drawn to your innovative culture and the opportunity to shape technical strategy for a platform that connects talent worldwide. My background in building scalable marketplace systems and my passion for mentoring engineers make me a strong fit for this role.
+
+Thank you for considering my application. I have attached my resume for your review and would welcome the opportunity to discuss how my skills align with your vision. I can be reached at cgjonesdev@gmail.com to schedule a conversation.
+
+Sincerely,
+Cary Jones

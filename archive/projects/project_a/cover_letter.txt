@@ -1,0 +1,27 @@
+Cary Jones
+Lane 61 Mingde Rd. No. 4, 5F
+Xindian District, New Taipei City, 231
++886.0910.603.820 | cgjonesdev@gmail.com
+December 27, 2024
+
+Hiring Manager
+Project A
+Taipei, Taiwan
+
+Dear Hiring Manager,
+
+I am excited to apply for the Senior Software Engineer (Trading Infrastructure) position at Project A. With extensive experience in backend development, API solutions, and a strong foundation in Python, I believe I would bring valuable skills to your innovative fintech startup as you reshape the cryptocurrency landscape.
+
+I hold an Associate of Science in Computer Electronics and have a depth of experience in backend services, particularly using frameworks like Flask, Django, and Sanic. My proficiency in Python, coupled with my recent roles as a Senior Software Engineer at CVS and Disney, has provided me with hands-on experience in designing robust applications, optimizing performance, and enhancing system scalability. For instance, I successfully reworked a legacy codebase at CVS to prepare for a domain-driven, modular architecture, which aligns well with the demands of developing high-performance trading systems.
+
+Moreover, I have a comprehensive understanding of networking technologies and protocols, having developed APIs and web services that involve secure communications and data processing. My work with AWS and GCP cloud environments enhances my ability to architect solutions that are both scalable and cost-effective.
+
+In my previous role at CGJSoftware, I led a team that deployed containerized applications using Docker in cloud infrastructures, which instilled in me a strong emphasis on testing and monitoring system performance. My experience with Agile methodologies and leading cross-functional teams ensures that I can effectively collaborate with software engineers and quantitative researchers at Project A to deliver efficient trading algorithms and strategies.
+
+I am inspired by Project A's commitment to leveraging advanced trading technology to increase efficiency and liquidity in the cryptocurrency industry. I am eager to contribute my technical expertise and leadership abilities to your innovative projects while helping to create a vibrant work culture in your stunning new office in central Taipei.
+
+Thank you for considering my application. I look forward to the opportunity to discuss how my background and skills align with the goals of Project A. I am excited about potentially contributing to your team and helping propel the future of cryptocurrency trading.
+
+Warm regards,
+
+Cary Jones

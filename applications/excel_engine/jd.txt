@@ -1,0 +1,13 @@
+Location: USA - Remote
+Employment Type: Full Time
+Experience Level: Senior–Staff (8–14 years)
+
+Role: Strong Python/C++ engineer with deep production experience automating desktop Microsoft Excel and COM/VSTO add-ins as a reliable server workload.
+
+Build server-side Excel execution engine for Fortune 500 financial-services client — macro-heavy, add-in-dependent valuation workbooks on Windows, proprietary/third-party add-ins (e.g., Capital IQ), recalculate, capture results, version to cloud storage.
+
+Key stack: Python backend services, Excel COM/Office interop, Windows interactive sessions, worker pools, queues, retries, idempotency, output validation, observability.
+
+Required: 8–13 years, Python, production backend APIs, concurrency, Excel COM automation, macro-heavy workbooks, failure recovery, capacity engineering.
+
+Good to have: Financial services/valuation, VBA/VSTO, Capital IQ/Bloomberg/FactSet add-ins, RPA, OpenTelemetry, Terraform, Azure, regulated environments.

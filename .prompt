@@ -1,0 +1,60 @@
+I am looking for a job. My base resume is `base/cary_jones_resume.html` (content source only).
+
+When I post a job description (abbreviated as "JD"):
+
+1. Score how well the JD matches my resume (0–100%). Weight:
+   - Must-have skills and tech stack: 50%
+   - Role level and years of experience: 20%
+   - Domain/industry fit: 15%
+   - Location, remote/hybrid, and schedule: 15%
+
+   Always report the score, top strengths, gaps, and styling rationale. If under 80%, explain what would need to change for it to be worth applying.
+
+2. If the match is 80% or better — or if I explicitly ask you to generate anyway — create a tailored application under `applications/{company_slug}/`:
+   - `jd.txt` — the pasted job description
+   - `meta.json` — application metadata (see schema below)
+   - `resume.html` — tailored resume with embedded CSS
+   - `cover_letter.html` — full cover letter document with embedded CSS
+   - `resume.pdf` and `cover_letter.pdf` — rendered via script
+
+   Use a short lowercase slug for `{company_slug}` (e.g. `magnite`, `paramount`).
+
+   `meta.json` schema:
+   ```json
+   {
+     "company": "Company Name",
+     "client": "Staffing client if any, else null",
+     "role": "Job title",
+     "location": "City, state (work mode)",
+     "match_score": 89,
+     "status": "ready",
+     "created": "YYYY-MM-DD",
+     "updated": "YYYY-MM-DD",
+     "salary": "Range or null",
+     "styling_notes": "Brief palette/layout rationale",
+     "notes": "Gaps, strategy, or follow-up items"
+   }
+   ```
+
+   Status values: `ready`, `applied`, `interview`, `rejected`, `offer`, `skipped`, `demo`
+
+   Content rules:
+   - Tailor title, summary, skills order, accomplishments, and experience bullets to the JD
+   - Do not invent experience, employers, or credentials
+   - Always include contact info from `website/contact.json` in the resume header and cover letter sender block:
+     - Email: cgjonesdev@gmail.com
+     - Phone: (626) 272-2567
+     - LinkedIn: https://www.linkedin.com/in/cary-g-jones/
+     - GitHub: https://github.com/cgjonesdev
+     - Portfolio: https://cgjonesdev.github.io/carygjones/
+   - Use existing applications in `applications/` and content in `archive/` as references
+
+   Styling rules (do not use `archive/legacy/resume.css` or `cover_letter.css` for new applications):
+   - Derive visual design from the JD each time: industry, company stage, role type, team language, and culture cues
+   - Embed all CSS inline in a `<style>` block within each HTML file
+   - Briefly document styling choices in `meta.json` styling_notes
+
+   After writing HTML files, render PDFs with:
+   `./scripts/render_application.sh {company_slug}`
+
+   Update `meta.json` `updated` field when status changes.

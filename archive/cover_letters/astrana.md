@@ -1,0 +1,29 @@
+**Cary Jones** Temple City, CA 91780 | (626) 272-2567 | cgjonesdev@gmail.com
+
+**Hiring Team & Engineering Leadership** Astrana Health
+
+1600 Corporate Center Dr.
+
+Monterey Park, CA 91754
+
+**Re: Software Engineer Application**
+
+Dear Hiring Team at Astrana Health,
+
+I am writing to express my enthusiastic interest in the Software Engineer position at Astrana Health. With over 15 years of experience building scalable backend APIs, complex SQL database architectures, and full-stack web applications, I bring deep technical expertise across your primary stack—**Python, React, JavaScript, and SQL**. Additionally, having prior hands-on experience building HIPAA-compliant healthcare microservices, I am eager to contribute to software solutions used internally by your teams and externally by physicians and patients.
+
+Throughout my career as a Senior Software Engineer and Technical Lead, I have driven end-to-end software development across cross-functional agile teams alongside Product, UX, and QA. Key highlights of my background that directly match your requirements include:
+
+* **Backend & API Architecture at Scale:** Architecting high-throughput Python REST microservices (FastAPI, Django, Flask) and event-driven ETL data pipelines handling millions of daily transactions.
+* **SQL & Database Mastery:** Designing relational database schemas, optimizing complex queries, and building mission-critical database abstractions in PostgreSQL and MySQL.
+* **Full-Stack & Front-End Integration:** Connecting robust Python backend systems with React.js and JavaScript user interfaces to create responsive web applications.
+* **Technical Leadership & Mentorship:** Serving as a Scrum Master and Lead Developer where I have established reusable project template repositories, coached junior engineers, and set long-term technical vision.
+* **DevOps & Delivery:** Orchestrating CI/CD deployment pipelines using Docker, Kubernetes, AWS, and Git.
+
+As a local resident in Temple City, CA, the hybrid work arrangement at your Monterey Park office is ideal for me. I am a disciplined, solution-driven developer who thrives on solving complex engineering problems and guiding teams toward technical excellence.
+
+Thank you for your time and consideration. I welcome the opportunity to discuss how my technical leadership and healthcare software experience can support Astrana Health’s mission.
+
+Sincerely,
+
+**Cary Jones** Senior Software Engineer

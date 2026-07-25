@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="resume.css">
+  </head>
+  <body>
+    <main>
+      <div class="name">
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Senior Software Engineer | Full-Stack &amp; Python Technical Lead</p>
+      </div>
+
+      <div class="contact">
+        <div class="address">
+          <p>6355 Oak Avenue Apt 18</p>
+          <p>Temple City, CA 91780</p>
+        </div>
+        <div class="phone_email">
+          <p><a href="tel:+1.626.272.2567">(626) 272-2567</a></p>
+          <p><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></p>
+        </div>
+      </div>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Senior Software Engineer &amp; Technical Lead</b> with over 15 years of experience architecting, building, and maintaining scalable <b>Python microservices</b>, full-stack web applications, and mission-critical <b>REST APIs</b>. Proven record leading agile engineering teams, mentoring junior developers, and establishing reusable project templates and development best practices. Strong expertise in core technology stack including <b>Python, React.js, JavaScript, and SQL/PostgreSQL</b>, combined with hands-on experience delivering secure, HIPAA-compliant healthcare solutions, complex ETL pipelines, and automated CI/CD deployments.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies &amp; Technical Skills</h1>
+        <ul>
+          <li><b>Core Stack &amp; Languages:</b> Python (Asyncio, FastAPI, Django, Flask, Sanic), JavaScript (ES6+), React.js / Redux, SQL, Go (Golang), HTML5, CSS3, Zsh/Bash</li>
+          <li><b>Backend Architecture &amp; APIs:</b> Microservices Architecture, RESTful API Design, Event-Driven Systems, ETL &amp; Data Pipelines, Web Scraping &amp; Automation Scripting</li>
+          <li><b>Databases &amp; Data Engineering:</b> PostgreSQL, MySQL, Redis, SQL Query Optimization, ORM/SQLAlchemy, Database Schema Design, Mission-Critical Queries</li>
+          <li><b>DevOps &amp; Infrastructure:</b> Docker, Kubernetes, CI/CD (GitHub Actions, GitLab CI), AWS (ECS, Fargate, Lambda, S3, RDS), GCP, NGINX, Git Version Control</li>
+          <li><b>Leadership &amp; Engineering Culture:</b> Technical Leadership, Agile/Scrum Coaching, Project Architypes &amp; Starter Templates, Code Reviews, Cross-Functional Team Collaboration</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Key Accomplishments</h1>
+        <ul>
+          <li>Engineered event-driven ETL data pipelines using AWS ECS, Fargate, and Airflow, executing mission-critical SQL queries handling <b>2.5M+ daily transactions</b> with <b>99.95% accuracy</b>.</li>
+          <li>Created standardized project starter templates and architectural guidelines for microservices, reducing new engineer onboarding time and speeding up MVP project delivery by <b>3 weeks</b>.</li>
+          <li>Architected secure microservices and patient-facing web applications adhering to healthcare security standards (OAuth2, Fernet encryption, HIPAA rulesets), uncovering and mitigating key vulnerabilities.</li>
+          <li>Integrated React.js and modern JavaScript frontends with high-throughput Python backend APIs, increasing application performance by <b>45%</b> and lowering API latency below <b>120ms</b>.</li>
+          <li>Mentored and coached junior and mid-level software engineers through structured pair programming and code reviews, resulting in a <b>35% increase in team engineering velocity</b>.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present</dt>
+          <dt>Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Lead cross-functional engineering efforts across product, design, and QA to design, test, deploy, and maintain mission-critical software solutions.</li>
+              <li>Architect containerized Python backend microservices (FastAPI, Django) and high-performance SQL database systems, scaling API throughput by <b>45%</b>.</li>
+              <li>Establish reusable project scaffolding templates and standardized CI/CD pipelines (Docker, Kubernetes, GitHub Actions) for client development teams.</li>
+              <li>Provide long-term technical vision and mentorship for junior developers, driving code quality improvements and reducing bug resolution turnaround by <b>40%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>May 2023 – July 2023</dt>
+          <dt><b>CVS, Inc. &mdash; (100% Remote)</b></dt>
+          <dd>
+            <ul>
+              <li>Analyzed and decoupled complex monolithic healthcare backend systems into modular, scalable microservices.</li>
+              <li>Constructed containerized domain modules using Docker and Docker-Compose, increasing localized automated integration testing speed by <b>50%</b>.</li>
+              <li>Advised engineering leadership on system architecture and Domain-Driven Design (DDD) to isolate core business processes and improve platform stability.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer &amp; Scrum Master</u></dt>
+          <dt>October 2021 – November 2022</dt>
+          <dt><b>Disney Corporation, Inc. &mdash; (100% Remote)</b></dt>
+          <dd>
+            <ul>
+              <li>Engineered scalable full-stack backend services and complex SQL data models processing enterprise financial datasets.</li>
+              <li>Led cross-functional agile teams through sprint planning and daily standups as Scrum Master, prioritizing project requirements and delivery timelines.</li>
+              <li>Refactored legacy database schemas and wrote mission-critical SQL queries that improved data processing speed by <b>28%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Software Developer &amp; Scrum Master</u></dt>
+          <dt>April 2014 – August 2015</dt>
+          <dt><b>KeyIngredient &mdash; Austin, TX</b></dt>
+          <dd>
+            <ul>
+              <li>Guided cross-functional agile teams, conducted peer code reviews, and implemented core web backend API endpoints.</li>
+              <li>Automated complex B2B data processing and ETL scripts compliant with enterprise standards, cutting manual processing time by <b>90%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Field Wireman &amp; Communications Specialist</u></dt>
+          <dt>September 1995 – September 1999</dt>
+          <dt><b>United States Marine Corps &mdash; San Diego, CA &amp; Overseas</b></dt>
+          <dd>
+            <ul>
+              <li>Configured and deployed tactical field telecommunications networks under high-pressure military operations, maintaining 100% mission uptime.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education &amp; Certifications</h1>
+        <dl>
+          <dt><u>Associate of Science : Computer Electronics</u></dt>
+          <dt>2010 to 2013</dt>
+          <dt><b>ITT Technical Institute &mdash; San Diego, CA</b></dt>
+          <dd>
+            <ul>
+              <li>Degree in Computer and Electronics Engineering Technology (GPA 3.67)</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>

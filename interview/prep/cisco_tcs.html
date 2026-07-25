@@ -1,0 +1,232 @@
+<p>Here are <strong>10 scenario-based interview questions</strong> covering Python, Django, AWS, microservices, and system design, along with exact structured strategies to answer them using the <strong>STAR framework (Situation, Task, Action, Result)</strong>.</p>
+<hr />
+<h3>1. Database &amp; ORM Bottlenecks</h3>
+<p><strong>Question:</strong> <em>"Our production Django API endpoint takes 4+ seconds to return a list of orders because each order includes user profile details and item details. How do you diagnose and resolve this?"</em></p>
+<ul>
+<li><strong>Diagnose:</strong> Mention using <strong>Django Debug Toolbar</strong> in dev or <strong>Datadog / APM tracing</strong> in production to identify the <strong>N+1 query problem</strong>.</li>
+<li><strong>Fix (Action):</strong> * Apply  for single-valued relationships (SQL JOIN).</li>
+<li>Apply  for many-to-many/reverse relationships.</li>
+<li>
+<p>Use  to defer loading unneeded heavy fields (e.g., raw JSON or text blobs).</p>
+</li>
+<li>
+<p><strong>Result:</strong> Reduced database queries from +1$ (e.g., 501 SQL queries) to 2 queries, dropping latency from 4,000ms down to ~150ms.</p>
+</li>
+</ul>
+<hr />
+<h3>2. AWS Microservices &amp; Container Failures</h3>
+<p><strong>Question:</strong> <em>"An ECS task running on Fargate keeps crashing shortly after starting and enters a  /  loop. How do you troubleshoot this?"</em></p>
+<ul>
+<li><strong>Diagnose:</strong> Check the ECS event stream and inspect the task's <strong>Exit Code</strong>:</li>
+<li><em>Exit Code 137:</em> Out of Memory (OOM) killer killed the container.</li>
+<li>
+<p><em>Exit Code 1 / 127:</em> Application crash (missing runtime dependency, failed DB connection, bad entrypoint script).</p>
+</li>
+<li>
+<p><strong>Action:</strong></p>
+</li>
+<li>Pull execution logs from <strong>AWS CloudWatch Logs</strong>.</li>
+<li>Verify secrets and configuration retrieved from <strong>AWS Secrets Manager</strong> or Systems Manager Parameter Store.</li>
+<li>
+<p>Check container health check definitions and load balancer grace periods.</p>
+</li>
+<li>
+<p><strong>Result:</strong> Identified a failing database migration script on startup; wrapped migrations in an initialization script prior to the main app launch and increased the container memory limit.</p>
+</li>
+</ul>
+<hr />
+<h3>3. Handling API Rate Limits &amp; Downstream Spikes</h3>
+<p><strong>Question:</strong> <em>"Your Django app integrates with an external third-party API that rate-limits you to 100 requests per minute. Under heavy load, incoming user traffic triggers 1,000 requests per minute. How do you prevent breaking the rate limit?"</em></p>
+<ul>
+<li><strong>Action:</strong></li>
+<li><strong>Asynchronous Offloading:</strong> Move third-party requests out of the synchronous Django HTTP request-response cycle into an asynchronous worker queue (<strong>Celery + Redis / RabbitMQ</strong> or <strong>AWS SQS</strong>).</li>
+<li><strong>Rate-Limiting Workers:</strong> Configure Celery’s  or implement token-bucket throttling in Redis.</li>
+<li>
+<p><strong>Response Caching:</strong> Cache external API responses in Redis using time-to-live (TTL) keys so duplicate user requests don't hit the external endpoint.</p>
+</li>
+<li>
+<p><strong>Result:</strong> Smoothly smoothed out spike traffic without losing jobs or triggering 429 Rate Limit errors from the third-party API.</p>
+</li>
+</ul>
+<hr />
+<h3>4. zero-Downtime Database Migrations</h3>
+<p><strong>Question:</strong> <em>"How do you safely remove or rename a column in a high-traffic PostgreSQL database managed by Django without causing downtime or breaking running container instances?"</em></p>
+<ul>
+<li><strong>Action (Multi-Phase Deployment Pattern):</strong> Never rename/delete columns directly in a single release. Use a 3-step roll-out:</li>
+<li><strong>Phase 1 (Add New Column):</strong> Create a migration to add the new column. Write application logic to populate <em>both</em> old and new columns. Deploy code.</li>
+<li><strong>Phase 2 (Backfill Data):</strong> Run a background script using  to copy existing data from the old column to the new column.</li>
+<li>
+<p><strong>Phase 3 (Deprecate &amp; Drop):</strong> Update code to read exclusively from the new column. Once stable, create a final migration to drop the old column.</p>
+</li>
+<li>
+<p><strong>Result:</strong> Zero downtime migration with zero read/write errors during active traffic.</p>
+</li>
+</ul>
+<hr />
+<h3>5. Memory Leaks in Background Python Processes</h3>
+<p><strong>Question:</strong> <em>"A long-running Python process or Celery worker steadily increases memory usage over time until the server crashes. How do you investigate and fix a Python memory leak?"</em></p>
+<ul>
+<li><strong>Diagnose:</strong> Use memory profilers like  or  to trace object allocation in Python.</li>
+<li><strong>Common Root Causes &amp; Fixes:</strong></li>
+<li><em>ORM QuerySet Caching:</em> Django caches all database queries when . Ensure  in production.</li>
+<li><em>Unbounded Data Loading:</em> Iterating over huge QuerySets () loads all model objects into memory at once. Fix by using .</li>
+<li>
+<p><em>Celery Workers:</em> Set worker recycling limits in Celery using  so worker processes restart clean after executing a batch of tasks.</p>
+</li>
+<li>
+<p><strong>Result:</strong> Memory usage stabilized at a steady baseline without memory leaks or OOM restarts.</p>
+</li>
+</ul>
+<hr />
+<h3>6. High Latency Under Peak Traffic (Scaling Architecture)</h3>
+<p><strong>Question:</strong> <em>"During a flash sale or traffic surge, database CPU utilization hits 98% and web requests start timing out. What is your immediate strategy and your long-term architectural fix?"</em></p>
+<ul>
+<li><strong>Short-Term (Emergency):</strong></li>
+<li>Scale up <strong>RDS Read Replicas</strong> to offload GET/Read traffic away from the Primary database.</li>
+<li>
+<p>Introduce or increase <strong>Redis / ElastiCache</strong> caching for heavily read API endpoints using  or low-level .</p>
+</li>
+<li>
+<p><strong>Long-Term (Architecture):</strong></p>
+</li>
+<li>Add <strong>PgBouncer</strong> or enable native database connection pooling to avoid CPU overhead from establishing TCP connections.</li>
+<li>Optimize slow queries by creating targeted database composite indexes.</li>
+<li>
+<p>Auto-scale container instances via AWS ECS Auto Scaling based on ALB request counts or CPU targets.</p>
+</li>
+<li>
+<p><strong>Result:</strong> Reduced DB CPU load to under 45% and restored API latency to sub-200ms levels under peak load.</p>
+</li>
+</ul>
+<hr />
+<h3>7. Securing API Endpoints &amp; Sensitive Cloud Credentials</h3>
+<p><strong>Question:</strong> <em>"How do you ensure secure token authentication, authorization, and secret management in a Django REST application hosted on AWS?"</em></p>
+<ul>
+<li><strong>Authentication/Authorization:</strong> Implement JWT authentication (e.g., ) with short-lived access tokens and refresh tokens. Use DRF  to enforce Role-Based Access Control (RBAC).</li>
+<li><strong>Secret Management:</strong></li>
+<li>Never hardcode API keys or DB passwords in source code or Git repositories.</li>
+<li>Inject secrets at runtime into ECS container tasks directly from <strong>AWS Secrets Manager</strong> or Systems Manager Parameter Store.</li>
+<li>
+<p>Enforce IAM Roles for Tasks () so containers access AWS resources without static AWS access keys.</p>
+</li>
+<li>
+<p><strong>Result:</strong> Passed SOC2 / security compliance audits with end-to-end encrypted secret distribution.</p>
+</li>
+</ul>
+<hr />
+<h3>8. Async vs. Sync Processing in Python</h3>
+<p><strong>Question:</strong> <em>"When would you choose FastAPI / Asyncio over Django, and how do you handle running synchronous DB calls inside an async event loop?"</em></p>
+<ul>
+<li><strong>When to choose FastAPI / Asyncio:</strong> High-concurrency, I/O-bound services like real-time notification servers, WebSockets, or services making dozens of concurrent external HTTP requests.</li>
+<li><strong>When to choose Django:</strong> Data-heavy applications requiring a mature ORM, built-in admin panel, robust authentication frameworks, and structured migrations.</li>
+<li><strong>Mixing Async &amp; Sync safely:</strong> In Python/Django, running blocking synchronous ORM calls inside an  loop blocks the entire event loop. Wrap sync calls using  or use Django’s native async ORM methods ().</li>
+<li><strong>Result:</strong> Maintained event loop responsiveness while safely performing database transactions.</li>
+</ul>
+<hr />
+<h3>9. Broken Deployment Pipeline / CI/CD Failure</h3>
+<p><strong>Question:</strong> <em>"A buggy feature branch was merged into main and deployed to ECS production, breaking user checkouts. How do you handle rollback and pipeline recovery?"</em></p>
+<ul>
+<li><strong>Immediate Containment:</strong> 1. Trigger an immediate rollback on <strong>AWS ECS</strong> to re-point the Application Load Balancer target group to the previous stable Docker image tag / task definition.</li>
+<li>Revert the commit in Git.</li>
+<li><strong>Root Cause Analysis (RCA) &amp; Prevention:</strong></li>
+<li>Add automated CI pipeline checks (GitHub Actions / GitLab CI): enforce unit tests (), integration tests, and static linting (, , ) before permitting PR merges.</li>
+<li>
+<p>Implement <strong>Blue/Green deployments</strong> (via AWS CodeDeploy or ECS deployment configurations) to run automated health check routing before switching 100% of live production traffic.</p>
+</li>
+<li>
+<p><strong>Result:</strong> Restored service within 2 minutes; implemented automated deployment testing to prevent future regressions.</p>
+</li>
+</ul>
+<hr />
+<h3>10. Managing Legacy Systems &amp; Technical Debt</h3>
+<p><strong>Question:</strong> <em>"You inherit a monolithic Python 2 / legacy Django codebase with zero documentation and no tests. How do you approach refactoring and modernizing it?"</em></p>
+<ul>
+<li><strong>Action Plan:</strong></li>
+<li><strong>Establish a Baseline:</strong> Set up static analysis tools (, ) and error tracking () to map active runtime errors and code complexity without altering code logic.</li>
+<li><strong>Add Test Coverage:</strong> Write end-to-end integration tests () around critical core business flows (e.g., payment processing) to create a safety net before touching existing code.</li>
+<li>
+<p><strong>Incremental Strangler Fig Pattern:</strong> Gradually extract sub-domains or upgrade dependencies module by module rather than attempting a high-risk full rewrite.</p>
+</li>
+<li>
+<p><strong>Result:</strong> Modernized code quality, upgraded framework versions safely, and established 80%+ test coverage across critical paths.</p>
+</li>
+</ul>
+<hr />
+<p>Congratulations on securing the interview! Based on the invitation image, this is a technical screen/interview for a <strong>Python + Django + AWS</strong> role organized jointly with Tata Consultancy Services (TCS) and Cisco interviewers (<code>@cisco.com</code> and <code>@tcs.com</code> attendees present).</p>
+<p>Here is a focused, targeted preparation guide combining core technical concepts for <strong>Python, Django, and AWS</strong> with your background as a Senior Software Engineer / Technical Lead.</p>
+<hr />
+<h3>1. The Elevating Intro (30–60 Seconds)</h3>
+<p>When they ask <em>"Tell us about yourself,"</em> anchor on your senior backend/cloud core while highlighting scale:</p>
+<blockquote>
+<p><em>"I'm a Senior Software Engineer with over a decade of experience building scalable backend microservices, REST APIs, and cloud infrastructure. My primary technical stack centers around Python, Django, FastAPI, and AWS. Over my career, I’ve led architecture design, backend modernization, and database optimization, focusing on low latency, high availability, and clean, maintainable code. Recently, I've also been integrating AI-assisted workflows and modern tools into my engineering cycle to accelerate delivery without sacrificing code quality."</em></p>
+</blockquote>
+<hr />
+<h3>2. Core Technical Domain Review</h3>
+<p>Expect technical questions centered on the three primary keywords in the invite: <strong>Python</strong>, <strong>Django</strong>, and <strong>AWS</strong>.</p>
+<h4><strong>A. Python Deep Dive</strong></h4>
+<ul>
+<li><strong>Memory Management &amp; GIL:</strong> Be ready to discuss Python's Global Interpreter Lock (GIL), multi-threading vs. multi-processing, and garbage collection (reference counting + cyclic GC).</li>
+<li><strong>Decorators &amp; Generators:</strong></li>
+<li><em>Decorators:</em> How higher-order functions wrap functionality (e.g., auth checks, logging, caching).</li>
+<li>
+<p><em>Generators (<code>yield</code>):</em> Memory efficiency when processing large datasets or streaming data.</p>
+</li>
+<li>
+<p><strong>Async Python (<code>asyncio</code> / <code>aiohttp</code>):</strong> When to use asynchronous I/O vs. traditional synchronous code for handling concurrent network calls.</p>
+</li>
+<li><strong>Type Hinting &amp; Data Parsing:</strong> Mention Pydantic, dataclasses, and typing for maintaining clean, type-safe Python code bases.</li>
+</ul>
+<h4><strong>B. Django &amp; Web Framework Architecture</strong></h4>
+<ul>
+<li><strong>ORM &amp; Database Performance:</strong></li>
+<li><em>N+1 Query Problem:</em> How to fix inefficient DB calls using <code>select_related()</code> (for foreign keys/one-to-one) and <code>prefetch_related()</code> (for many-to-many/reverse relations).</li>
+<li>
+<p><em>Indexing &amp; Migrations:</em> Best practices for database migrations in production without downtime.</p>
+</li>
+<li>
+<p><strong>Django Request-Response Lifecycle:</strong> Middleware processing $\rightarrow$ URL Routing $\rightarrow$ View Execution $\rightarrow$ ORM/Templates/DRF Serializer $\rightarrow$ Response Middleware.</p>
+</li>
+<li><strong>Django REST Framework (DRF):</strong> Custom serializers, permissions/authentication backends, viewsets vs. generic views, and API throttling.</li>
+<li><strong>Celery &amp; Task Queues:</strong> Asynchronous background processing (e.g., Celery + Redis/RabbitMQ) for heavy computational tasks or email/notification pipelines.</li>
+</ul>
+<h4><strong>C. AWS Infrastructure &amp; Cloud Architecture</strong></h4>
+<ul>
+<li><strong>Compute &amp; Containerization:</strong></li>
+<li><strong>ECS / Fargate:</strong> Deploying Dockerized Django applications, handling tasks, auto-scaling, and health checks.</li>
+<li>
+<p><strong>Lambda / Serverless:</strong> Using AWS Lambda API Gateway for lightweight serverless microservices.</p>
+</li>
+<li>
+<p><strong>Database &amp; Storage:</strong></p>
+</li>
+<li><strong>RDS (PostgreSQL/MySQL):</strong> Read replicas, connection pooling (PgBouncer), automatic backups, and multi-AZ deployment for high availability.</li>
+<li>
+<p><strong>S3 &amp; CloudFront:</strong> Static file hosting, media storage, secure signed URLs, and CDN distribution.</p>
+</li>
+<li>
+<p><strong>Networking &amp; Security:</strong></p>
+</li>
+<li><strong>VPC Architecture:</strong> Public vs. private subnets, NAT Gateways, Security Groups, and IAM roles/policies adhering to the principle of least privilege.</li>
+</ul>
+<hr />
+<h3>3. Handling Questions About Your S-Corp / Recent Timeline (CGJSoftware)</h3>
+<p>Since TCS account managers and clients sometimes ask about gaps or independent business entities, keep your explanation confident, standard, and brief:</p>
+<ul>
+<li><strong>Key Response:</strong> Frame CGJSoftware as your vehicle for <strong>enterprise software consulting, backend contract delivery, and cloud solutions</strong>.</li>
+<li><strong>Key Phrase:</strong> <em>"I operated under CGJSoftware to provide dedicated Python microservices architecture and AWS cloud consulting to client partners. I handled end-to-end delivery—from database design to Docker/AWS deployments. Currently, I'm looking to bring that full-stack backend ownership back into a dedicated, enterprise team environment at Cisco."</em></li>
+</ul>
+<hr />
+<h3>4. Key Questions to Ask the Interviewers</h3>
+<p>At the end of the call, ask 2–3 sharp questions to demonstrate technical ownership:</p>
+<ol>
+<li><em>"How is the Django codebase structured here—is it a monolithic architecture, or are you running distributed microservices on AWS?"</em></li>
+<li><em>"What does your deployment pipeline look like for production updates (e.g., CI/CD practices, ECS blue/green deployments, automated testing)?"</em></li>
+<li><em>"What are the biggest scalability or performance bottlenecks the backend team is currently tackling?"</em></li>
+</ol>
+<hr />
+<h3>💡 Quick Interview Logistics Checklist</h3>
+<ul>
+<li><strong>Platform:</strong> Cisco Webex (make sure Webex is downloaded or updated on your machine 15 minutes prior).</li>
+<li><strong>Time:</strong> Tomorrow, <strong>Thursday, July 23</strong> at <strong>10:30 AM PST</strong> / <strong>1:30 PM EST</strong>.</li>
+<li><strong>Setup:</strong> Test microphone, camera, and environment light ahead of time.</li>
+</ul>
