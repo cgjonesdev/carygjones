@@ -5,6 +5,7 @@ on:
     branches: [main, master]
     paths:
       - "website/**"
+      - "headshot.jpg"
       - ".github/workflows/deploy-website.yml"
   workflow_dispatch:
 
@@ -25,9 +26,21 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Prepare site assets
+        run: |
+          if [ -f headshot.jpg ] && [ ! -f website/headshot.jpg ]; then
+            cp headshot.jpg website/headshot.jpg
+          fi
+          touch website/.nojekyll
+
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: website
+
       - id: deployment
         uses: actions/deploy-pages@v4
