@@ -246,6 +246,37 @@ main {
   font-size: 0.92rem;
 }
 
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.domain-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.domain-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.domain-card p {
+  font-size: 0.92rem;
+}
+
+.domain-context {
+  margin-top: 0.65rem;
+  font-size: 0.82rem !important;
+  color: var(--accent) !important;
+  font-weight: 500;
+}
+
 .timeline {
   display: grid;
   gap: 1.25rem;
@@ -323,6 +354,10 @@ main {
   }
 
   .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .domain-grid {
     grid-template-columns: 1fr;
   }
 
