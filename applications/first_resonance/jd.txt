@@ -1,0 +1,49 @@
+First Resonance builds the ION Factory OS — the operating system powering next-generation manufacturing for companies building rockets, satellites, eVTOLs, clean energy systems, robotics, and autonomous vehicles. We've invested heavily in forward-deployed engineers at the customer edge. Now we're strengthening the hub.
+
+We're hiring a Staff Software Engineer who is an exceptional backend engineer equally comfortable writing production-grade application code and architecting the AWS cloud infrastructure it runs on. This is a role for a systems thinker who wants to split their time between scaling our backend codebase and optimizing our cloud footprint. If you love building elegant APIs and configuring the Kubernetes clusters or terraforming the AWS environments that support them, you'll thrive here.
+
+What you'll do
+
+Write and Architect Backend Code: Build, scale, and maintain high-performance backend services and APIs that power the ION Factory OS.
+
+Bridge Code and Infrastructure: Own the relationship between our application layer and our AWS infrastructure. You'll ensure our cloud architecture perfectly supports our software delivery.
+
+Own Architecture at Scale: Evaluate and evolve our backend and cloud architecture to support massive growth in customers, data volume, and product surface area.
+
+Drive Reliability and Uptime: Establish and improve reliability practices (SLOs/SLIs, incident response, postmortems, capacity planning) at both the application and infrastructure levels.
+
+Performance Leadership: Identify systemic bottlenecks; lead optimization initiatives across application code, databases, caching, async processing, and AWS services.
+
+Build Leverage for the Team: Create scalable primitives (libraries, patterns, CI/CD tooling, paved roads) that enable product teams to ship code faster with less risk.
+
+Mentor and Set the Technical Bar: Coach engineers on backend best practices, operational maturity, and cloud architecture; lead by example through hands-on delivery.
+
+What success looks like (first 90 days)
+
+Ship high-quality backend code to production while gaining a deep understanding of our current AWS infrastructure.
+
+Produce a clear, prioritized backend and infrastructure assessment: current-state risks, near-term hardening plan, and a 6–12 month scaling roadmap.
+
+Lead at least one high-impact initiative that materially improves application uptime, database performance, or developer velocity.
+
+Minimum Qualifications
+
+8+ years of professional software engineering experience, with a proven track record of shipping production-grade backend code and owning infrastructure.
+
+Strong hands-on coding skills in modern backend languages (e.g., Python, Go, Node.js). Note: This is a coding-heavy role, not a pure DevOps or configuration position.
+
+Deep AWS Expertise: Demonstrated experience building, deploying, and managing complex systems on AWS (EC2, EKS/ECS, RDS, VPCs, IAM, etc.) using Infrastructure as Code (e.g., Terraform).
+
+Systems Thinking: Deep understanding of distributed systems, relational databases, caching, message queues, and API design.
+
+Leadership: Track record of leading large technical initiatives across teams or across a complex codebase.
+
+Preferred Qualifications
+
+Prior experience as a Staff Software Engineer, Tech Lead, or senior platform engineer in a high-scale environment.
+
+Depth in one or more of: SRE/reliability engineering, database scalability, multi-tenant architectures, or zero-downtime data migrations.
+
+Experience building internal platforms and developer tooling that abstract infrastructure complexities away from product engineers.
+
+Experience in or affinity for manufacturing, industrial software, or hard-tech customer environments.

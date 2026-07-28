@@ -1,0 +1,13 @@
+{
+  "company": "First Resonance",
+  "client": null,
+  "role": "Staff Software Engineer",
+  "location": "Not specified (hub role)",
+  "match_score": 82,
+  "status": "ready",
+  "created": "2026-07-28",
+  "updated": "2026-07-28",
+  "salary": null,
+  "styling_notes": "Hard-tech manufacturing OS — slate charcoal (#1e293b) with electric cyan (#0891b2), precision engineering aesthetic for ION Factory OS / industrial platform",
+  "notes": "Strong Python/AWS/backend+infra bridge fit at Staff level; gaps: Terraform/IaC not explicit on resume, manufacturing domain, formal SRE/SLO terminology. Emphasize Disney uptime, platform scaling, CI/CD paved roads, mentorship"
+}

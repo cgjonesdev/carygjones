@@ -1,20 +1,67 @@
 Title: Sr. AWS Python Developer (Media & Entertainment Domain)
 
-Location: Onsite in New York, NY or Los Angeles, CA
+Location: Onsite in New York - New York - USA or Los Angeles, CA
+
 Duration: Fulltime Role
+
 MOI: Virtual
+
 Salary: $140k/annum + Benefits
+
 Client: LTIM/Paramount
 
+Job description
+
 Job Title: Software Engineer - Media Platform (Python/AWS)
+
 Work Mode: Onsite
 
 Mandatory Skills: AWS Lambda, Python
 
+Responsibilities:
+
 Develop and maintain highly scalable, high performance and highly available systems.
-Write well tested, efficient, and readable code with reusability in mind.
-Ensure deliverables follow best practices around source control, CI/CD.
-Proficiency with serverless (AWS Lambda, ECS), Step Functions, event-driven architectures.
-PostgreSQL/MSSQL, NoSQL (DynamoDB).
-AI assisted coding tools (Cursor, Claude Code, CoPilot).
-Kubernetes, CDK preferred. LangChain, vector databases, Bedrock preferred.
+
+Write well tested, efficient, and readable code.
+
+The code should also be strongly structured with a view to reusability.
+
+Ensure that all deliverables follow best practices around source control, CICD.
+
+Manage individual project priorities, deadlines, and deliverables.
+
+Ensure that solutions are in line with the other deliverables of the team and produce documentation so that others learn from and contribute to the work. Attend and contribute to meetings; complete tasks as assigned by supervisor.
+
+To be successful in this role, the right software developer will have:
+
+Bachelor's degree in Computer Science or a related discipline or equivalent experience.
+
+3+ years writing production code in Python. Familiarity with C# a plus.
+
+3+ years production experience with AWS. Certifications a big plus
+
+Proficiency in designing and interacting with NoSQL databases (DynamoDB).
+
+Experience with relational databases (MSSQL, PostgreSQL) a plus.
+
+Proficiency building serverless systems with ephemeral compute (e.g. AWS Lambda, ECS) and orchestration (e.g. AWS Step Functions).
+
+Proficiency building event-driven architectures with message queues, topics.
+
+Proficiency identifying applicability of design patterns and implementing them.
+
+Proficiency using AI assisted coding tools and agents such as Cursor, Claude Code, or CoPilot.
+
+Solid understanding of source control (git), unit testing, test driven development, CICD.
+
+Knowledge of defining, packaging, and deploying cloud resources in CDK strongly preferred.
+
+Knowledge of deploying and managing services in Kubernetes is strongly preferred.
+
+Knowledge of building AI apps on platforms such as Bedrock/Vertex AI/Azure AI and familiarity with frameworks and tools such as LangChain, vector databases, PyTorch/TensorFlow is strongly preferred.
+
+Familiarity with the agile process (stand ups, planning, estimating, and demoing)
+
+Excellent written and verbal communication skills.
+
+Experience with media file container formats, media/video engineering a plus.
