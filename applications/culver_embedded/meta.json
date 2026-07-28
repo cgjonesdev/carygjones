@@ -1,0 +1,13 @@
+{
+  "company": "Undisclosed (Culver City contract)",
+  "client": null,
+  "role": "Python Developer — Embedded Hardware",
+  "location": "Culver City, CA / Remote hybrid (long-term contract)",
+  "match_score": 79,
+  "status": "ready",
+  "created": "2026-07-28",
+  "updated": "2026-07-28",
+  "salary": null,
+  "styling_notes": "Embedded/hardware contract — industrial teal (#0d9488) on charcoal, medical device + Python integration emphasis; Hospira Symbiq/Plum A+ lead",
+  "notes": "User-requested generate despite 79% score. Hospira 5yr Symbiq/Plum A+ verification + CAN bus; honest gap: verification/integration background not embedded Python app author; MQTT/Modbus/SPI/I2C not claimed"
+}

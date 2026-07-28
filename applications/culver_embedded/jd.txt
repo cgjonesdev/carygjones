@@ -1,0 +1,20 @@
+Job Description:
+We are seeking a skilled Python Developer with experience in Embedded Hardware to join our team in Culver City, CA, on a long-term contract basis. In this role, you will play a critical part in developing software solutions that interface with embedded systems and hardware components. You will collaborate closely with hardware engineers and firmware developers to integrate Python-based applications with embedded platforms.
+
+Key Responsibilities:
+Design, develop, and maintain Python applications that interact with embedded hardware and systems.
+Implement and optimize communication protocols between Python software and embedded devices.
+Collaborate with hardware engineers and firmware developers to integrate software components with embedded systems.
+Write clean, efficient, and maintainable code to meet project requirements and deadlines.
+Conduct testing and debugging of software components in embedded environments.
+Document software designs, specifications, and test plans.
+Stay updated with emerging technologies and industry trends in embedded systems and Python development.
+
+Required Skills and Qualifications:
+Bachelor's degree in Computer Science, Electrical Engineering, or related technical field (or equivalent practical experience).
+Proven experience as a Python Developer with proficiency in Python programming.
+Experience working with embedded systems and hardware interfaces (UART, SPI, I2C, etc.).
+Familiarity with embedded development tools and environments (e.g., ARM, AVR, Raspberry Pi).
+Knowledge of communication protocols used in embedded systems (e.g., MQTT, Modbus, CAN).
+Strong problem-solving skills and ability to troubleshoot complex issues.
+Excellent communication skills and ability to collaborate effectively in a team environment.

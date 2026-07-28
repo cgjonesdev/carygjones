@@ -1,0 +1,146 @@
+About the job
+At The Flex, we believe renting a home should feel as effortless as booking a ride.
+
+Our mission is ambitious: enable anyone to live anywhere, anytime, without friction.
+
+Powered by Base360.ai, our proprietary automation platform, we are building the operating system for modern renting—connecting property data, orchestrating operations, automating workflows, and enabling seamless stays across continents.
+
+We're looking for a highly ambitious engineer who wants to build systems that create leverage at scale. This isn't a role where you'll spend months debating specifications. You'll build, ship, automate, and solve real-world problems that directly impact thousands of guests and properties.
+
+If you're excited by APIs, automation, AI agents, cloud infrastructure, and building products from the ground up, we want to meet you.
+
+What You'll Build
+
+As a Founding Software Engineer, you'll help architect and scale Base360.ai—the technology platform powering every aspect of The Flex.
+
+You'll build internal products, automation engines, AI-powered workflows, integrations, and operational systems that eliminate manual work and allow the business to scale globally.
+
+Your work will touch everything from guest journeys and property operations to pricing intelligence and AI-driven decision-making.
+
+Your Mission
+
+Build the Core Platform
+
+Design and develop scalable applications, services, and APIs that power bookings, pricing, payments, guest experiences, and operations.
+
+Create Powerful Automations
+
+Build event-driven workflows that automate tasks previously performed by humans.
+
+Develop AI-Powered Systems
+
+Leverage LLMs, AI agents, and machine intelligence to streamline operations, improve decision-making, and enhance customer experiences.
+
+Design API-First Architecture
+
+Create robust APIs that enable seamless communication between internal systems, third-party providers, and future products.
+
+Integrate the Ecosystem
+
+Build and maintain integrations with platforms including Airbnb, Hostaway, Stripe, Twilio, OpenAI, Google, and other strategic partners.
+
+Scale Infrastructure
+
+Deploy and manage cloud-native infrastructure designed for reliability, performance, and global growth.
+
+Solve Complex Operational Problems
+
+Build Solutions For
+
+Real-time reservation synchronization
+Dynamic pricing intelligence
+Smart key management
+Automated guest communication
+Operational forecasting
+Cleaning and maintenance automation
+AI-powered monitoring and alerts
+
+Move Fast
+
+Own projects end-to-end—from idea to deployment—and continuously improve the systems you build.
+
+Tech Stack
+
+We care more about capability than specific technologies, but our current stack includes:
+
+Python
+FastAPI
+React
+TypeScript
+Supabase
+PostgreSQL
+AWS
+Serverless Architecture
+OpenAI APIs
+Twilio
+Stripe
+Docker
+GitHub Actions
+
+You Might Be a Great Fit If You Have
+
+Strong experience building production-grade software systems
+Experience with FastAPI, Python, React, or similar frameworks
+Strong understanding of APIs, distributed systems, and cloud architecture
+Experience designing scalable backend systems
+Ability to work independently with minimal supervision
+Strong problem-solving ability and product mindset
+Curiosity about AI, automation, and operational efficiency
+A bias toward action and shipping
+
+Bonus Points For Experience With
+
+Property technology (PropTech)
+Marketplace businesses
+AI agents and workflow automation
+Event-driven architectures
+Supabase
+AWS serverless infrastructure
+
+What Success Looks Like
+
+Within Your First 12 Months
+
+Core operational processes are automated through systems you've built
+Manual work across the business is significantly reduced
+New integrations are deployed and maintained reliably
+AI-powered workflows become part of everyday operations
+Base360.ai becomes a competitive advantage that enables rapid global scaling
+
+Why Join The Flex
+
+Build Something Meaningful
+
+Your work will directly impact how people live, travel, and experience cities around the world.
+
+Extreme Ownership
+
+You'll have the freedom to make decisions and build systems that matter.
+
+Small Team, Massive Opportunity
+
+Work closely with founders and have a direct influence on product and technical direction.
+
+Learn Faster
+
+You'll solve real-world challenges across software, AI, automation, operations, and scale.
+
+Performance-Based Rewards
+
+Competitive compensation with substantial upside for exceptional performers.
+
+Remote-First
+
+Work from anywhere. We care about outcomes, not hours.
+
+This Role Is Not For You If
+
+You're looking for a slow-paced corporate environment
+You prefer maintaining systems rather than building them
+You need detailed instructions for every task
+You avoid ownership and accountability
+"Good enough" is your standard
+
+We're not looking for someone to fill a position.
+
+We're looking for someone to help build the future operating system of modern renting.

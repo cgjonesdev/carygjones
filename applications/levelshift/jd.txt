@@ -1,0 +1,34 @@
+Hi,
+
+This is Abdul from LevelShift. We have an exciting opportunity for a remote Python/Node JS Developer.
+
+Position: Python/Node JS Developer
+Location: San Ramon, CA / Remote
+Type: Contract
+
+Role Overview:
+
+We are looking for a Python/Node.js Developer with strong technical expertise to build and maintain applications in high-scale environments. The ideal candidate will take full ownership of application development across all phases of the SDLC.
+
+Key Responsibilities:
+
+Design, develop, and maintain scalable applications using Python and/or Node.js.
+Ensure clean, efficient, and well-documented code aligned with best practices.
+Collaborate with cross-functional teams for requirement analysis, design decisions, and system integration.
+Implement unit testing, code reviews, and development standards within the team.
+Own full SDLC responsibilities: design, development, testing, deployment, and ongoing support.
+Optimize performance and troubleshoot issues to ensure high availability and responsiveness.
+
+Required Skills and Qualifications:
+
+3–5+ years hands-on experience in building applications with Python and/or Node.js.
+Proficiency in RESTful APIs, microservices architecture, and CI/CD pipelines.
+Strong understanding of database systems (SQL and/or NoSQL).
+Familiarity with cloud platforms (AWS, Azure, or GCP).
+Ability to design secure and scalable systems for enterprise environments.
+
+Nice-to-Have:
+
+Experience with front-end frameworks (React, Angular) considered a plus.
+Exposure to containerization tools (Docker, Kubernetes).
+Working knowledge of DevOps tools like Jenkins, GitLab CI.
