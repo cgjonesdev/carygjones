@@ -1,0 +1,24 @@
+Subject: Re: Python/Node.js Developer — Remote Contract
+
+Hi Abdul,
+
+Thank you for reaching out about the Python/Node.js Developer contract opportunity with LevelShift. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Python & Node.js — 15+ years building production REST APIs, microservices, and full-stack applications (FastAPI, Django, Flask, Node.js, React)
+• Full SDLC ownership — design through deployment, unit testing, code review, CI/CD, and production support
+• Cloud & data — AWS, GCP, PostgreSQL, MongoDB, Redis, Docker, Kubernetes, GitHub Actions / GitLab CI
+• Enterprise track record — Disney (99.99% uptime), CVS, HIPAA healthcare platforms (500k+ users)
+• Regulated/industrial foundation — 5 years at Hospira verifying embedded software for Symbiq and Plum A+ infusion pumps, working alongside firmware and hardware engineers in FDA-regulated workflows
+
+I'm based in Temple City (Los Angeles area), available for remote work, and open to contract engagements. I'd love to learn more about the end client, contract duration, and rate when you have a moment.
+
+Updated resume attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

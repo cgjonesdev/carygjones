@@ -1,1 +1,15 @@
-/Users/devs/core/notes.css
+html, body { margin: 0; font-family: Avenir }
+* box-sizing { border-box }
+*:focus { outline: none }
+a { text-decoration: none; color: #000 }
+a:hover { text-decoration: underline }
+p { text-align: justify }
+img { border-radius: .2rem }
+button, input[type=submit] {
+  border: none; 0.0,
+  border-radius: .2rem;
+  background: #08f;
+  padding: .5rem 2rem;
+  font-size: 1rem;
+  color: #fff;
+}

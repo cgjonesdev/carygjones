@@ -1,1 +1,152 @@
-resume.css
+body {
+  color: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+a:any-link {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 2vw;
+  margin: 2rem 0 1rem 0;
+  font-weight: 400;
+  padding-bottom: 0.2rem;
+  border-bottom: 3px solid #aaa;
+}
+
+main {
+  margin: 3%;
+}
+
+.contact {
+  position: relative;
+  margin-top: -1.2rem;
+  font-size: 1.1vw;
+}
+
+.contact .address {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullname {
+  width: 100%;
+  text-align: center;
+  font-size: 3.5vw;
+  padding-bottom: 0.2rem;
+  border-bottom: 7px solid #06a;
+}
+
+.title {
+  margin-top: 0.2rem;
+  font-size: 1.5vw;
+  color: #444;
+}
+
+section p,
+section ul,
+section dl {
+  margin: 2vh auto;
+  font-size: 1.2vw;
+}
+
+section p {
+  width: 97%;
+}
+
+section ul {
+  width: 95%;
+}
+
+section dl {
+  width: 97%;
+  padding-bottom: 1vh;
+  border-bottom: 1px solid #aaa;
+}
+
+section#experience dl:last-child,
+section#education dl:last-child {
+  border: none;
+}
+
+section#summary {
+  margin-top: 5rem;
+}
+
+section#summary p {
+  text-align: justify;
+}
+
+section#skills ul {
+  width: 95%;
+  display: grid;
+  gap: 0 2rem;
+  grid-template-columns: repeat(3, 30%);
+  justify-content: end;
+  align-items: center;
+  #border: 1px solid #888;
+}
+
+section#skills li {
+  font-size: 1.2vw;
+  list-style-type: square;
+  #border: 1px solid #234;
+}
+
+section#keywords {
+  height: 0;
+  transform: scale(0);
+}
+
+@media print {
+  .fullname {
+    font-size: 3rem;
+  }
+
+  .title {
+    width: 30%;
+    text-align: center;
+  }
+
+  .contact {
+    font-size: 0.7rem;
+  }
+
+  section h1 {
+    font-size: 1.5rem;
+  }
+
+  section p, section dt, section ul li {
+    font-size: 1rem;
+  }
+
+  section ul {
+    gap: 0 1rem;
+  }
+
+  section#skills li {
+    font-size: 0.8rem;
+  }
+}
