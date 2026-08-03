@@ -1,5 +1,7 @@
 I am looking for a job. My base resume is `base/cary_jones_resume.html` (content source only).
 
+**Agent scope:** New job descriptions and tailored applications only. For Gmail scanning, Cloud Run, inbox JSON, recruiter reply drafts, and batch drafting, use the **GCloud email parser** agent (`tools/gmail/.prompt`).
+
 When I post a job description (abbreviated as "JD"):
 
 1. Score how well the JD matches my resume (0–100%). Weight:
@@ -15,7 +17,7 @@ When I post a job description (abbreviated as "JD"):
    - `meta.json` — application metadata (see schema below)
    - `resume.html` — tailored resume with embedded CSS
    - `cover_letter.html` — full cover letter document with embedded CSS
-   - `resume.pdf` and `cover_letter.pdf` — rendered via script
+   - `resume.pdf`, `cover_letter.pdf`, `resume.docx`, and `cover_letter.docx` — rendered via script
 
    Use a short lowercase slug for `{company_slug}` (e.g. `magnite`, `paramount`).
 
@@ -54,7 +56,9 @@ When I post a job description (abbreviated as "JD"):
    - Embed all CSS inline in a `<style>` block within each HTML file
    - Briefly document styling choices in `meta.json` styling_notes
 
-   After writing HTML files, render PDFs with:
+   After writing HTML files, render PDFs and DOCX with:
    `./scripts/render_application.sh {company_slug}`
+
+   That script also generates `reply_email.txt` (bullets for recruiter replies). Creating Gmail drafts is handled by the GCloud email parser agent — not this agent.
 
    Update `meta.json` `updated` field when status changes.

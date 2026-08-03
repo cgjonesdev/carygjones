@@ -1,0 +1,7 @@
+google-api-python-client>=2.100.0
+google-auth-httplib2>=0.2.0
+google-auth-oauthlib>=1.2.0
+google-cloud-storage>=2.18.0
+google-cloud-secret-manager>=2.20.0
+google-cloud-scheduler>=2.14.0
+google-cloud-resource-manager>=1.12.0

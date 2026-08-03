@@ -31,3 +31,13 @@ if [[ -f "$cover_html" ]]; then
 else
   echo "Note: no cover letter found at $cover_html" >&2
 fi
+
+gmail_python="$root/tools/gmail/.venv/bin/python"
+gmail_reply="$root/tools/gmail/generate_recruiter_reply.py"
+if [[ -f "$gmail_reply" ]]; then
+  if [[ -x "$gmail_python" ]]; then
+    "$gmail_python" "$gmail_reply" "$slug"
+  else
+    python3 "$gmail_reply" "$slug"
+  fi
+fi
