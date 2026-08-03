@@ -2,3 +2,8 @@
 *.~
 __pycache__/
 *.pyc
+tools/gmail/credentials.json
+tools/gmail/token.json
+tools/gmail/.venv/
+tools/gmail/cloud/config.env
+inbox/

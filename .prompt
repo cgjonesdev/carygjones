@@ -1,5 +1,7 @@
 I am looking for a job. My base resume is `base/cary_jones_resume.html` (content source only).
 
+**Agent scope:** New job descriptions and tailored applications only. For Gmail scanning, Cloud Run, inbox JSON, recruiter reply drafts, and batch drafting, use the **GCloud email parser** agent (`tools/gmail/.prompt`).
+
 When I post a job description (abbreviated as "JD"):
 
 1. Score how well the JD matches my resume (0–100%). Weight:
@@ -56,5 +58,7 @@ When I post a job description (abbreviated as "JD"):
 
    After writing HTML files, render PDFs and DOCX with:
    `./scripts/render_application.sh {company_slug}`
+
+   That script also generates `reply_email.txt` (bullets for recruiter replies). Creating Gmail drafts is handled by the GCloud email parser agent — not this agent.
 
    Update `meta.json` `updated` field when status changes.

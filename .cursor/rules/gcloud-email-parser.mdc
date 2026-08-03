@@ -1,0 +1,14 @@
+---
+description: Gmail scan, Cloud Run, inbox JSON, recruiter reply drafts — not new JD tailoring
+globs: tools/gmail/**,inbox/**,inbox/recruiter/**
+alwaysApply: false
+---
+
+# GCloud email parser
+
+Read and follow `tools/gmail/.prompt` for this agent's full scope.
+
+- **In scope:** `tools/gmail/` (scan, sync, draft scripts, Cloud Run deploy), `inbox/recruiter/`, Gmail OAuth, Cloud Scheduler, batch drafts, `source_email` / `gmail_draft_id` in `meta.json`.
+- **Out of scope:** Tailoring new applications from a JD — use repo root `.prompt` (New JDs agent). You may update `meta.json` status/recipient fields and call `render_application.sh` only if PDFs are missing before drafting.
+
+Default draft command: `python draft_all_recruiter_replies.py` (draft only, never `--send` unless user explicitly asks).
