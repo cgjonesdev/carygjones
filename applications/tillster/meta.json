@@ -1,0 +1,20 @@
+{
+  "company": "Tillster",
+  "client": null,
+  "role": "Senior Software Engineer – Back End",
+  "location": "Los Angeles, CA (Hybrid — confirm San Diego base requirement)",
+  "match_score": 72,
+  "status": "ready",
+  "created": "2026-07-31",
+  "updated": "2026-07-31",
+  "salary": "$150k–$185k",
+  "styling_notes": "Restaurant/kiosk platform — Tillster red (#e31837) with charcoal (#1f2937); SDK/architecture + payment integration emphasis; honest Java gap note in meta",
+  "notes": "Sourced from LinkedIn job alert. Role is Java/Spring-heavy (payment-terminal SDK, 40+ POS integrations). Cary's fit is distributed systems, protocol/state-machine thinking (Hospira), and financial transaction pipelines (Disney) — confirm Java appetite and San Diego hybrid requirement before applying.",
+  "source_email": {
+    "message_id": "19fb8fdc0d0a6ae0",
+    "thread_id": "19fb8fdc0d0a6ae0",
+    "subject": "Senior Software Engineer – Back End at Tillster",
+    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+  },
+  "apply_url": "https://www.linkedin.com/jobs/view/4433165048/"
+}

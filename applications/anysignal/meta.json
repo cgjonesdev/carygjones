@@ -1,0 +1,20 @@
+{
+  "company": "AnySignal",
+  "client": null,
+  "role": "Python Software Engineer",
+  "location": "Los Angeles, CA (On-site)",
+  "match_score": 84,
+  "status": "ready",
+  "created": "2026-07-31",
+  "updated": "2026-07-31",
+  "salary": "$120k–$170k + equity",
+  "styling_notes": "Defense/RF startup — deep slate (#0f172a) with signal blue (#2563eb); Python test automation, data aggregation, Docker, device-adjacent Hospira angle",
+  "notes": "Sourced from LinkedIn job alert digest. Strong Python + test automation + Docker fit; Hospira device/network verification is differentiator. ITAR: confirm U.S. person eligibility before applying.",
+  "source_email": {
+    "message_id": "19fb8fdc0d0a6ae0",
+    "thread_id": "19fb8fdc0d0a6ae0",
+    "subject": "Python Software Engineer @ AnySignal (LinkedIn alert)",
+    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+  },
+  "apply_url": "https://www.linkedin.com/jobs/view/4447052126/"
+}

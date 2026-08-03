@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Python Software Engineer</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --rule: #e2e8f0;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+      }
+      main { max-width: 8.5in; margin: 0 auto; padding: 0.5in 0.6in; }
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+      .fullname { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+      .title { margin-top: 0.3rem; font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+      a { color: inherit; text-decoration: none; }
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section p, section ul { margin-bottom: 0.4rem; }
+      section p { text-align: justify; }
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+      section#skills ul { list-style: none; margin-left: 0; }
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 0.4rem;
+      }
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section dl:last-child { border-bottom: none; }
+      dt { margin-bottom: 0.1rem; }
+      dt u { font-size: 0.92rem; font-weight: 600; text-decoration: none; color: var(--text); }
+      dt:not(:has(u)) { font-size: 0.82rem; color: var(--muted); }
+      dt b { color: var(--text); }
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+      b { font-weight: 700; }
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Python Software Engineer | Test Automation, Data Systems &amp; Device Integration</p>
+        <div class="contact">
+          <span>Temple City, CA 91780 (Los Angeles area)</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Python Software Engineer</b> with 15+ years building production libraries, REST APIs, and automated test infrastructure. Experienced designing <b>data aggregation pipelines</b>, extensible internal frameworks, and <b>Docker</b>-containerized services on AWS. Five years at Hospira verifying embedded medical device software — requirements-based testing, hospital network integration, and hardware-adjacent debug workflows in regulated environments. Strong networking fundamentals (U.S. Marine Corps communications specialist) and hands-on work with PostgreSQL, Redis, MongoDB, socket-driven integrations, and CI/CD test automation.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies</h1>
+        <ul>
+          <li><b>Python:</b> Library and framework design, pytest, FastAPI, Django, Flask, Asyncio, Celery, Pydantic, packaging reusable modules for engineering teams</li>
+          <li><b>Test &amp; Automation:</b> Automated test suites, equipment/driver-style integrations, debug tooling, socket and API interfaces, CI/CD gates, regression triage workflows</li>
+          <li><b>Data Systems:</b> PostgreSQL, MySQL, MongoDB, Redis — schema design, aggregation pipelines, query optimization, event-driven ETL at scale</li>
+          <li><b>Infrastructure:</b> Docker, AWS ECS/Fargate, Lambda, CloudWatch, Linux, GitHub Actions, Secrets Manager, networking (TCP/IP, TLS, VPN concepts)</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Key Impact</h1>
+        <ul>
+          <li>Built reusable <b>Python test and deployment frameworks</b> with automated pytest suites and pre-deploy CI/CD validation — reducing production defects and merge conflicts by <b>70%</b>.</li>
+          <li>Engineered event-driven data pipelines on <b>AWS ECS/Fargate</b> aggregating <b>2.5M+ daily transactions</b> at <b>99.95% accuracy</b> across PostgreSQL, Redis, and external APIs.</li>
+          <li>Architected secure Python REST APIs and relational data models for healthcare platforms serving <b>500k+ user profiles</b> with OAuth2 and encryption hardening.</li>
+          <li>Deployed containerized Python microservices achieving API latency under <b>120ms</b> and <b>+45% throughput</b> improvement.</li>
+          <li>Five years verifying <b>embedded device software</b> and hospital network integrations for regulated infusion pump systems — formal verification, protocol testing, and cross-team triage.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Developed extensible <b>Python libraries and microservice frameworks</b> (FastAPI, Django) used across client projects — standardized API patterns, pytest harnesses, and Docker deployment templates.</li>
+              <li>Designed data aggregation and caching layers (PostgreSQL, Redis) for high-read API endpoints; built monitoring and debug tooling with CloudWatch and structured logging.</li>
+              <li>Implemented CI/CD pipelines with automated integration tests, container builds, and staged rollouts on <b>AWS ECS/Fargate</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health &amp; Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Built Python REST APIs and internal tooling for HIPAA-compliant platforms serving <b>500k+ active user profiles</b>.</li>
+              <li>Designed PostgreSQL schemas and data aggregation workflows; established Git branching standards and automated pre-deploy test scripts.</li>
+              <li>Led cross-functional team as Scrum Master; improved release predictability and test coverage across the stack.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Engineered Python backend modules and <b>PostgreSQL data interfaces</b> for financial systems processing <b>$10M+ daily metrics</b> at <b>99.99% uptime</b>.</li>
+              <li>Co-architected automated costing and reconciliation tooling — cut batch runtime from 8 hours to 45 minutes through optimized aggregation logic.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Quality Assurance &amp; Network Integration Engineer</u></dt>
+          <dt>February 2005 – December 2009 | Hospira, Inc., San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Five years in <b>regulated device verification</b> — automated and manual test frameworks, hospital network integration, firmware/hardware coordination, and formal requirements traceability.</li>
+              <li>Debugged protocol-level issues across embedded systems and external interfaces; documented reproducible test procedures for engineering triage.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python API Developer</u></dt>
+          <dt>August 2013 – April 2014 | Fidelity Investments, Irving, TX</dt>
+          <dd>
+            <ul>
+              <li>Built <b>Django REST Framework</b> APIs for datacenter network automation — reduced provisioning from <b>4 hours to 10 minutes</b> with robust contract design and pytest coverage.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education</h1>
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>ITT Technical Institute — GPA 3.67</dt>
+        </dl>
+        <dl>
+          <dt><u>United States Marine Corps</u></dt>
+          <dt>Field Wireman &amp; Communications Specialist — Honorably Discharged</dt>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>

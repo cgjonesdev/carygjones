@@ -1,0 +1,23 @@
+Subject: Re: Senior Backend Engineer @ Honor
+
+Hi Honor team,
+
+Thank you for reaching out about the Senior Backend Engineer opportunity with Honor. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Python production systems: 15+ years building Python backends with Django, FastAPI, and REST APIs — including Django REST Framework services at Fidelity and containerized microservices on AWS ECS/Fargate with sub-120ms latency.
+• APIs, distributed systems, and databases at scale: I have designed relational PostgreSQL schemas, optimized query performance, and built event-driven pipelines processing 2.5M+ daily transactions at 99.95% accuracy across PostgreSQL, Redis, and external services.
+• AWS and service-oriented architecture: Hands-on experience with ECS, Fargate, RDS, Lambda, CloudWatch, and Secrets Manager — operating production services at 99.99% uptime on AWS at Disney.
+• Healthcare domain: At Alan Health & Science I architected secure Python REST APIs for HIPAA-compliant platforms serving 500k+ user profiles. Earlier at Hospira I spent five years in regulated medical device verification — I understand what it means to build software where failure is not an option.
+
+I'm based in Temple City (Los Angeles area), available for Remote (U.S.), and the $160k–$180k range aligns with my expectations. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/
