@@ -3,10 +3,6 @@ name: Deploy portfolio website
 on:
   push:
     branches: [main, master]
-    paths:
-      - "website/**"
-      - "headshot.jpg"
-      - ".github/workflows/deploy-website.yml"
   workflow_dispatch:
 
 permissions:
