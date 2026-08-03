@@ -1,0 +1,17 @@
+{
+  "company": "US Tech Solutions",
+  "client": "NextEra Energy",
+  "role": "AI Software Engineer",
+  "location": "Remote (CST core hours 9 AM–3 PM — 7 AM–1 PM Pacific)",
+  "match_score": 86,
+  "status": "applied",
+  "created": "2026-07-31",
+  "updated": "2026-07-31",
+  "salary": null,
+  "styling_notes": "Clean energy / utilities client — NextEra green (#009639) with deep navy (#0c2340); legacy modernization, cloud/SQL, and product-delivery emphasis over AI branding",
+  "notes": "Recruiter outreach from Shaik Riyaz. Core fit is senior backend/cloud/SQL + legacy systems—not ML-heavy despite title. Confirm W2 vs C2C, hourly rate, and whether 9–3 CST is hard overlap vs flexible async. No direct energy/utilities domain on resume; regulated enterprise (Disney finance, Hospira devices, Alan Health) is closest parallel.",
+  "source_email": {
+    "subject": "AI Software Engineer — NextEra Energy (Remote CST)",
+    "sender": "Shaik Riyaz <Riyaz@ustechsolutionsinc.com>"
+  }
+}

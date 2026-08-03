@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cisco/TCS Interview — Cary Glenn Jones</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #049fd9;
+        --rule: #e2e8f0;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 11pt;
+        line-height: 1.45;
+        color: var(--text);
+        background: #fff;
+      }
+      main {
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 0.45in 0.55in;
+      }
+      header {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+      h1 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .subtitle {
+        margin-top: 0.2rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      h2 {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin: 0.85rem 0 0.35rem;
+        padding-bottom: 0.15rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      ul {
+        margin-left: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+      li {
+        margin-bottom: 0.3rem;
+      }
+      .short {
+        margin: 0.35rem 0 0.5rem;
+        padding: 0.45rem 0.55rem;
+        background: #f8fafc;
+        border-left: 3px solid var(--accent);
+        font-size: 10.5pt;
+      }
+      .short strong {
+        display: block;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 0.25rem;
+      }
+      ol.questions {
+        margin-left: 1.1rem;
+        list-style: decimal;
+      }
+      ol.questions li {
+        margin-bottom: 0.55rem;
+        padding-left: 0.15rem;
+      }
+      b { font-weight: 700; }
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 10.5pt; }
+        h2 { margin-top: 0.7rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Cisco / TCS — Interview Cheat Sheet</h1>
+        <p class="subtitle">Cary Glenn Jones · Python / Django / AWS · Keep open beside resume</p>
+      </header>
+
+      <h2>Intro — bullet points</h2>
+      <ul>
+        <li>Thanks for having me — <b>Cary Glenn Jones</b>, Senior Software Engineer, <b>Python backend / APIs</b></li>
+        <li>Stack: <b>Django, Django REST Framework, FastAPI, AWS</b></li>
+        <li><b>Fidelity:</b> Django REST backend + web API that <b>automated datacenter network device configuration</b>; UI so engineers could use it</li>
+        <li><b>Disney:</b> <b>Financial &amp; reporting apps</b>; <b>accounting costing system</b>; <b>Python → PostgreSQL</b>; ETL across <b>Jira, Airtable</b>, Redis, REST APIs</li>
+        <li><b>Hospira:</b> Wireless security testing with <b>Cisco ACS</b> + FreeRadius for medical devices</li>
+        <li>Excited to bring this <b>Django + AWS</b> experience to <b>Cisco</b> today</li>
+      </ul>
+
+      <div class="short">
+        <strong>Short version (~20 sec)</strong>
+        I'm Cary Glenn Jones — 15+ years on Python backends, <b>Django/DRF and AWS</b>. At Fidelity I built a Django REST API for network device automation; at Disney I worked on financial reporting, PostgreSQL, and ETL with Jira and Airtable. I also used <b>Cisco ACS</b> at Hospira. Excited to be here.
+      </div>
+
+      <h2>Questions to ask them</h2>
+      <ol class="questions">
+        <li>How is the Django codebase structured today — monolithic, or split into microservices on AWS?</li>
+        <li>What does the production deployment pipeline look like (CI/CD, testing gates, ECS rollouts)?</li>
+        <li>What are the biggest scalability or performance bottlenecks the backend team is focused on right now?</li>
+        <li>How is day-to-day collaboration structured between TCS and Cisco engineers on this team?</li>
+        <li>What would success look like for someone in this role in the first 90 days?</li>
+      </ol>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Senior Python Backend Engineer</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #049fd9;
+        --rule: #e2e8f0;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+      }
+      main { max-width: 8.5in; margin: 0 auto; padding: 0.5in 0.6in; }
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+      .fullname { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+      .title { margin-top: 0.3rem; font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+      a { color: inherit; text-decoration: none; }
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section p, section ul { margin-bottom: 0.4rem; }
+      section p { text-align: justify; }
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+      section#skills ul { list-style: none; margin-left: 0; }
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 0.4rem;
+      }
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section dl:last-child { border-bottom: none; }
+      dt { margin-bottom: 0.1rem; }
+      dt u { font-size: 0.92rem; font-weight: 600; text-decoration: none; color: var(--text); }
+      dt:not(:has(u)) { font-size: 0.82rem; color: var(--muted); }
+      dt b { color: var(--text); }
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+      b { font-weight: 700; }
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Senior Python Backend Engineer | Django, AWS &amp; Microservices</p>
+        <div class="contact">
+          <span>Temple City, CA 91780</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Senior Python Backend Engineer</b> with 15+ years building enterprise REST APIs, Django applications, and AWS cloud infrastructure. Deep hands-on experience with <b>Django REST Framework</b>, containerized microservices on <b>ECS/Fargate</b>, PostgreSQL optimization, and production CI/CD pipelines. Proven at enterprise scale — Fidelity (network automation APIs), Disney ($10M+ daily financial backends), and HIPAA-compliant healthcare platforms — with a track record of reducing latency, improving uptime, and modernizing legacy monoliths into resilient distributed services.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies</h1>
+        <ul>
+          <li><b>Python &amp; Frameworks:</b> Django, Django REST Framework, FastAPI, Flask, Asyncio, Celery, pytest, SQLAlchemy, Pydantic</li>
+          <li><b>AWS &amp; DevOps:</b> ECS, Fargate, Lambda, RDS (PostgreSQL), S3, CloudWatch, Secrets Manager, CodeDeploy, Docker, Kubernetes, GitHub Actions, GitLab CI, NGINX</li>
+          <li><b>Database &amp; Caching:</b> PostgreSQL, MySQL, Redis, MongoDB, query optimization, indexing, zero-downtime migrations, connection pooling (PgBouncer)</li>
+          <li><b>Architecture:</b> Microservices, RESTful API design, event-driven pipelines, OAuth2/JWT auth, legacy-to-microservices modernization, Agile/Scrum</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Key Impact</h1>
+        <ul>
+          <li>Built Django REST Framework APIs at Fidelity automating network device provisioning — reduced setup from <b>4 hours to 10 minutes</b> and cut manual errors by <b>95%</b>.</li>
+          <li>Engineered event-driven ETL pipelines on AWS ECS/Fargate handling <b>2.5M+ daily transactions</b> at <b>99.95% accuracy</b> across PostgreSQL, Redis, and external APIs.</li>
+          <li>Architected containerized Python microservices (Django, FastAPI) on AWS, achieving API latency under <b>120ms</b> and <b>+45% throughput</b> improvement.</li>
+          <li>Co-architected Disney financial costing system — cut month-end reconciliation from <b>8 hours to 45 minutes</b>; maintained <b>99.99% uptime</b> on AWS.</li>
+          <li>Expanded automated test coverage from <b>65% to 92%</b> using pytest and CI gates, reducing production regression incidents.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Architected and deployed containerized Python microservices (<b>Django, FastAPI</b>) on <b>AWS ECS/Fargate</b>, reducing API latency to under <b>120ms</b> and increasing throughput <b>45%</b>.</li>
+              <li>Designed PostgreSQL schemas, optimized ORM queries (<code>select_related</code>, <code>prefetch_related</code>), and implemented Redis caching for high-read API endpoints.</li>
+              <li>Built CI/CD pipelines (GitHub Actions, Docker) with automated pytest suites, linting, and blue/green ECS deployment configurations.</li>
+              <li>Managed AWS infrastructure: RDS, S3, CloudWatch monitoring, Secrets Manager for credential injection into container tasks.</li>
+              <li>Led legacy backend modernization for enterprise clients — extracting monolith modules into domain-driven microservices with zero-downtime migration patterns.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>May 2023 – July 2023 | CVS, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Analyzed and decoupled legacy monolithic Python codebases in preparation for domain-driven microservices architecture.</li>
+              <li>Built containerized domain modules with Docker Compose, improving localized integration testing speed by <b>50%</b>.</li>
+              <li>Advised engineering leadership on DDD best practices and inter-service dependency reduction.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Engineered scalable Python backend modules for enterprise financial systems processing <b>$10M+ in daily transaction metrics</b>.</li>
+              <li>Co-architected automated accounting costing system — cut month-end reconciliation from <b>8 hours to 45 minutes</b>.</li>
+              <li>Monitored and optimized <b>AWS</b> cloud infrastructure, achieving <b>99.99% uptime</b> across critical reporting applications.</li>
+              <li>Built high-performance Python database interfaces for <b>PostgreSQL</b>, ensuring <b>100% data integrity</b> during system migration.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Software Developer and System Architect</u></dt>
+          <dt>July 2019 – October 2021 | CGJSoftware, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Containerized Python applications with Docker; deployed to GCP and AWS using CI/CD, improving deployment frequency <b>3x</b>.</li>
+              <li>Designed event-driven architectures using AWS Pub/Sub and Boto3, ensuring <b>zero data loss</b> during peak loads.</li>
+              <li>Optimized complex SQL queries for AWS Redshift, increasing reporting query performance by <b>38%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health &amp; Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Architected secure Python REST APIs for HIPAA-compliant healthcare platforms serving <b>500k+ active user profiles</b>.</li>
+              <li>Configured production Linux environments, SSL/TLS, automated CI/CD pre-deploy scripts, and crontab backups at <b>99.9% availability</b>.</li>
+              <li>Managed cross-functional offshore team as Scrum Master; reduced merge conflict incidents by <b>70%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python API Developer</u></dt>
+          <dt>August 2013 – April 2014 | Fidelity Investments, Irving, TX</dt>
+          <dd>
+            <ul>
+              <li>Built backend API services using <b>Django REST Framework</b> for datacenter network device automation — reduced provisioning from <b>4 hours to 10 minutes</b> and manual errors by <b>95%</b>.</li>
+              <li>Supervised junior developers; mentored on Python best practices, API contract design, and Agile estimation.</li>
+              <li>Architected REST endpoints with custom serializers, permissions, and automated pytest test suites.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Software Developer in Test</u></dt>
+          <dt>October 2015 – May 2016 | Rackspace, Inc., Austin, TX</dt>
+          <dd>
+            <ul>
+              <li>Developed Python REST client executing <b>1,000+ automated test cases per hour</b> against core ticketing APIs.</li>
+              <li>Built dynamic test-generator using Python introspection to evaluate API rulesets and uncover edge-case bugs pre-release.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education</h1>
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>2010 – 2013 | ITT Technical Institute, San Diego, CA — GPA 3.67</dt>
+        </dl>
+        <dl>
+          <dt><u>United States Marine Corps</u></dt>
+          <dt>1995 – 1999 | Field Wireman &amp; Communications Specialist — Honorably Discharged</dt>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>
