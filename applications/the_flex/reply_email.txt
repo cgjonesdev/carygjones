@@ -1,0 +1,23 @@
+Subject: Re: Founding Software Engineer — The Flex
+
+Hi The Flex team,
+
+Thank you for reaching out about the Founding Software Engineer opportunity with The Flex. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Platform & API-first architecture: I have 15+ years designing and shipping production Python backends — FastAPI, Django, Flask — with robust REST APIs, microservices, and event-driven workflows that connect internal systems to third-party providers.
+• Automation that eliminates manual work: I have built event-driven pipelines processing 2.5M+ daily transactions, automated B2B order fulfillment (cutting manual work by 90%), and integrated LLMs and AI workflows that reduced document processing time by 60%. I think in terms of operational leverage, not just features.
+• PropTech & marketplace context: At CT-REI, I built real estate investment platforms and automated property data ingestion — boosting analysis throughput by 400%. At KeyIngredient, I delivered core e-commerce marketplace APIs. I understand property data, operational workflows, and the gap between manual ops and scalable systems.
+• Cloud-native, ship-fast ownership: I deploy on AWS (Lambda, ECS, RDS), use Docker and GitHub Actions, and own projects end to end — from ambiguous requirements through production. I work independently, move quickly, and improve what I ship.
+
+I'm based in Temple City (Los Angeles area), available for Remote-first. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

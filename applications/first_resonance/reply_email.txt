@@ -1,0 +1,23 @@
+Subject: Re: Staff Software Engineer — First Resonance
+
+Hi First Resonance team,
+
+Thank you for reaching out about the Staff Software Engineer opportunity with First Resonance. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Backend code + cloud infrastructure: For 15+ years I have shipped production Python services (FastAPI, Django, Flask) while owning the AWS environments they run on — ECS, Fargate, Lambda, RDS, EC2, S3 — bridging application design and platform architecture so delivery stays fast and reliable.
+• Reliability and performance at scale: At Disney I maintained enterprise backend systems at 99.99% uptime processing $10M+ in daily metrics. I have engineered event-driven pipelines handling 2.5M+ daily transactions, optimized PostgreSQL workloads, and led initiatives that cut batch processing from 8 hours to 45 minutes.
+• Building leverage for teams: I create paved roads — CI/CD pipelines, reusable service patterns, ORM abstractions, and engineering standards — that let product teams ship faster with less risk. I raised automated test coverage from 65% to 92% while accelerating feature delivery by 35–40%.
+• Staff-level leadership: As Principal Consultant and Technical Lead, I produce architecture assessments, prioritize hardening work, mentor engineers, and lead high-impact initiatives across complex codebases — the same profile your first 90 days describe.
+
+I'm based in Temple City (Los Angeles area), available for Not specified (hub role). I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

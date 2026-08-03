@@ -1,0 +1,23 @@
+Subject: Re: Senior Full Stack Developer — Vynyl
+
+Hi Vynyl team,
+
+Thank you for reaching out about the Senior Full Stack Developer opportunity with Vynyl. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Python & AWS serverless: I have extensive production experience building backend services in Python on AWS — including Lambda, ECS/Fargate, S3, RDS, and message-driven processing — designing for scalability, cost efficiency, and operational observability.
+• Event-driven systems: I have architected pipelines processing 2.5M+ daily events with retry semantics, idempotent workflow design, and output validation — the reliability patterns event-sourced and distributed systems demand.
+• Full stack delivery: I have shipped integrated Python, React, and Node.js applications, containerized and deployed with CI/CD automation — comfortable across backend services and the JavaScript layers that connect to them.
+• Regulated environments: At Alan Health, I built HIPAA-compliant APIs serving 500k+ users with audit-sensitive access controls. At Disney, I delivered enterprise financial reporting systems with strict data integrity requirements.
+
+I'm based in Temple City (Los Angeles area), available for remote work. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

@@ -1,13 +1,13 @@
 {
   "company": "Paramount",
-  "client": "LTIM",
+  "client": "Paramount+ (via LTIMindtree)",
   "role": "Sr. AWS Python Developer — Media Platform",
   "location": "Los Angeles, CA or New York, NY (Onsite)",
   "match_score": 85,
-  "status": "ready",
+  "status": "interview",
   "created": "2026-07-24",
-  "updated": "2026-07-27",
-  "salary": "$140k/annum + benefits",
+  "updated": "2026-07-31",
+  "salary": "$140k/annum + benefits (JD); LTM cap $63/hr — confirm actual offer band",
   "styling_notes": "Paramount navy (#003875), media-platform emphasis, Disney experience highlighted",
-  "notes": "Strong Python/AWS + Disney media domain fit; LA onsite works. Salary $140k is $30k below $170K minimum — negotiate or pass. Gaps: DynamoDB, CDK, Step Functions explicit, media file formats, C#"
+  "notes": "Recruiter screen with LTM (Varun Verma) passed 2026-07-31; submitted to Paramount+ client. Awaiting first technical interview schedule. Mock prep: interview/sessions/paramount_mock.md, paramount_coding_drill.py. Strong Python/AWS + Disney media domain fit; LA onsite works. Salary $140k is $15k below $155K target — negotiate if advanced. Gaps: DynamoDB, CDK, Step Functions explicit, media file formats, C#. Staffing: LTIMindtree."
 }
