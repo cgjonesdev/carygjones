@@ -1,0 +1,23 @@
+Subject: Re: Python Software Engineer @ AnySignal (LinkedIn alert)
+
+Hi AnySignal team,
+
+Thank you for reaching out about the Python Software Engineer opportunity with AnySignal. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Python frameworks and libraries: 15+ years developing production Python (FastAPI, Django, Flask) including extensible internal libraries, pytest harnesses, and CI/CD-integrated test automation used across multiple projects.
+• Data aggregation and databases: Designed PostgreSQL schemas and event-driven pipelines processing 2.5M+ daily transactions at 99.95% accuracy; hands-on with Redis, MongoDB, and scalable relational data models.
+• Test automation and device-adjacent integration: At Hospira I spent five years in requirements-based verification, hospital network integration, and debug tooling for infusion pump systems — formal test procedures, protocol-level triage, and cross-disciplinary engineering workflows.
+• Docker, networking, and infrastructure: Containerized Python services on AWS ECS/Fargate with sub-120ms API latency; U.S. Marine Corps communications background plus enterprise network automation experience at Fidelity.
+
+I'm based in Temple City (Los Angeles area), available for Los Angeles, CA (On-site), and the $120k–$170k + equity range aligns with my expectations. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

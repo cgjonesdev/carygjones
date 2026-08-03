@@ -1,0 +1,168 @@
+# GCloud email parser agent
+
+This agent owns **Gmail intake, Cloud Run scanning, inbox JSON, and recruiter reply drafts**. It does **not** tailor new job applications from scratch — that is the **New JDs** agent (repo root `.prompt`).
+
+Account: `cgjonesdev@gmail.com`
+
+---
+
+## Architecture
+
+```
+Cloud Scheduler (weekdays) → Cloud Run Job → Gmail API (readonly) → GCS inbox/recruiter/
+                                                                    ↓
+Local: sync_gcs_inbox.py → inbox/recruiter/*.json
+       draft_all_recruiter_replies.py → Gmail drafts (compose scope)
+```
+
+**Automated today:** weekday Gmail scan → GCS dedupe.
+
+**Not automated yet:** sync to Mac, JD scoring/tailoring (New JDs agent + Cursor Automation), batch draft without human recruiter address.
+
+**Generation stays with New JDs agent.** This agent may queue inbox items or update `meta.json`, but resume/cover letter HTML lives under `applications/` and follows root `.prompt`.
+
+---
+
+## Cloud Run (weekday scan)
+
+Config: `tools/gmail/cloud/config.env` (copy from `config.env.example`).
+
+Default schedule: `*/10 * * * 1-5` in `America/Los_Angeles` (every 10 min, Mon–Fri). Override:
+
+```bash
+SCHEDULE_CRON=*/10 8-18 * * 1-5   # optional: business hours only
+```
+
+Deploy:
+
+```bash
+cd tools/gmail/cloud
+./setup_secrets.sh    # once: OAuth → Secret Manager
+./deploy.sh
+```
+
+Test: `gcloud alpha run jobs execute recruiter-scan --region=$GCP_REGION --wait`
+
+Pull scans locally:
+
+```bash
+cd tools/gmail
+GCS_BUCKET=your-bucket python sync_gcs_inbox.py
+```
+
+---
+
+## Local Gmail tools
+
+```bash
+cd tools/gmail
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+| Script | Purpose |
+|--------|---------|
+| `scan_recruiter_mail.py --save` | Scan Gmail → `inbox/recruiter/*.json` |
+| `sync_gcs_inbox.py` | Pull GCS bucket → local inbox |
+| `generate_recruiter_reply.py {slug}` | Regenerate `applications/{slug}/reply_email.txt` |
+| `draft_recruiter_reply.py {slug}` | One Gmail draft + PDF attachments |
+| `draft_all_recruiter_replies.py` | All pending drafts (no slug needed) |
+
+OAuth: `credentials.json` + `token.json` (gitignored). Draft/send needs `gmail.compose`.
+
+---
+
+## Inbox JSON (`inbox/recruiter/`)
+
+Saved by scanner with fields including:
+
+- `message_id`, `thread_id` — Gmail IDs for threading
+- `subject`, `sender`, `body_text`, `jd_excerpt`
+- `score`, `signals`, `gmail_url`
+
+Link to an application in `applications/{slug}/meta.json`:
+
+```json
+"source_email": {
+  "message_id": "19fb74dfe9cdd7fe",
+  "thread_id": "19fb74dfe9cdd7fe",
+  "subject": "Senior Backend Engineer @ Honor",
+  "sender": "Indeed <donotreply@match.indeed.com>"
+}
+```
+
+Scanner also matches inbox files by `message_id` prefix when drafting.
+
+---
+
+## Gmail threading
+
+Without `message_id`, replies are **new emails** to the recruiter. With `message_id` (from inbox JSON or meta), the draft includes `In-Reply-To` / `References` and nests under the original thread in Gmail.
+
+Pass explicitly: `draft_recruiter_reply.py honor --inbox-json ../../inbox/recruiter/senior-backend-engineer-honor_19fb74df.json`
+
+---
+
+## Batch drafts (all pending)
+
+```bash
+python draft_all_recruiter_replies.py --dry-run --verbose   # preview
+python draft_all_recruiter_replies.py                       # create drafts
+```
+
+Processes every `applications/*/meta.json` where:
+
+- `status` is `ready` (default)
+- `reply_email.txt`, `resume.pdf`, `cover_letter.pdf` exist
+- Human recruiter address (not Indeed/LinkedIn noreply)
+- No existing `gmail_draft_id` (use `--force` to redo)
+
+Skips with reason: `--verbose`. Never auto-send unless user passes `--send`.
+
+After draft: set `gmail_draft_id` and `updated` in meta. After send: `gmail_sent_message_id`, `status: applied`.
+
+Recipient resolution order: `source_email.sender` (if not noreply) → `source_email.reply_to` → `Recruiter: email` in `notes` → `--to` override (single slug only).
+
+Indeed/LinkedIn noreply: skip draft; use `apply_url` from meta or inbox body.
+
+---
+
+## `meta.json` fields (this agent)
+
+Extends the New JDs schema with:
+
+```json
+"gmail_draft_id": "r123...",
+"gmail_sent_message_id": "19fba84287ca3cce",
+"source_email": { "message_id", "thread_id", "subject", "sender" },
+"apply_url": "https://..."
+```
+
+Status updates this agent may set: `applied` (after send), `skipped` (user declines pursuit).
+
+Do not change `match_score`, styling, or resume content here unless fixing draft/recipient metadata.
+
+---
+
+## Full automation roadmap (future)
+
+| Phase | Owner | Action |
+|-------|--------|--------|
+| 1 Intake | Cloud Run | Weekday scan → GCS ✓ |
+| 2 Sync | Local cron / Cursor Automation | `sync_gcs_inbox.py` |
+| 3 Triage | This agent | `inbox/_state/processed.json` by `message_id` |
+| 4 Generate | **New JDs agent** | Score + `applications/{slug}/` from inbox JSON |
+| 5 Draft | This agent | `draft_all_recruiter_replies.py` (draft only) |
+| 6 Approve | Cary | Review in Gmail; send manually |
+
+Use **Cursor Automation** for phase 4 (weekday), not cloud LLM — keeps `.prompt` tailoring quality. Cloud stays readonly scan only.
+
+---
+
+## Boundaries
+
+**This agent:** scan, sync, parse inbox, link `source_email`, draft replies, Cloud deploy/troubleshoot, skip/apply status for email workflow.
+
+**New JDs agent:** paste JD, match score, tailor HTML, `render_application.sh`, interview prep.
+
+When user pastes a recruiter email here: extract JD → either hand off to New JDs agent for tailoring, or if application already exists, draft only.

@@ -1,0 +1,23 @@
+Subject: Re: Senior Software Engineer – Back End at Tillster
+
+Hi Tillster team,
+
+Thank you for reaching out about the Senior Software Engineer – Back End opportunity with Tillster. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Distributed systems and transaction pipelines: At Disney I engineered Python backends processing $10M+ in daily financial metrics at 99.99% uptime, including reconciliation automation that cut batch runtime from 8 hours to 45 minutes.
+• Integration-heavy platform design: I have architected modular microservice platforms with versioned API contracts, external adapter patterns, and CI/CD integration testing — enabling teams to extend functionality without forking core services.
+• Low-level protocol and device integration: Five years at Hospira verifying embedded infusion pump software — state-machine workflows, hospital network integration, formal verification, and wire-level debug alongside firmware and hardware engineers.
+• Production discipline: OAuth2/TLS hardening, Secrets Manager credential management, CloudWatch observability, and on-call production support across AWS-hosted services.
+
+I'm based in Temple City (Los Angeles area), available for Los Angeles, CA (Hybrid — confirm San Diego base requirement), and the $150k–$185k range aligns with my expectations. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

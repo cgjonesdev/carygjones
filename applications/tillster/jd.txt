@@ -1,0 +1,32 @@
+Tillster — Senior Software Engineer – Back End
+
+Source: LinkedIn job alert (July 31, 2026)
+URL: https://www.linkedin.com/jobs/view/4433165048/
+
+Company: Tillster — digital ordering and customer engagement for restaurants (kiosk, mobile, web)
+Location: Los Angeles, CA listed; some postings require hybrid and San Diego base — confirm before applying
+Salary: ~$150,000 – $185,000 DOE (per public listings)
+
+Mission:
+Empower restaurants and consumers to engage and transact anywhere, anytime, from any device.
+
+Role: Senior Software Engineer – Back End (Senior/Architect level)
+
+Focus:
+- Own and evolve payment-terminal platform behind kiosks
+- 40+ integrations: card-present terminals, semi-integrated/cloud processors, cash automation
+- Re-architect into modular, pluggable SDK with stable versioned contract
+- Hands-on wire-level protocol implementation
+
+Requirements (from public JD):
+- 6+ years back-end engineering; strong Java (Maven/Java on Spring) and OOP/distributed systems
+- Low-level device/protocol: serial/USB, binary protocols (TLV, BCD, bitmaps, state machines)
+- Payment-terminal/POS integration (Verifone, Ingenico, Adyen, etc.)
+- Card transaction lifecycle: auth, capture, void, refund, settlement; PCI-DSS, tokenization, TLS/mTLS
+
+Tech keywords: Java, Spring, Maven, payment SDK, POS integrations, distributed systems, PCI-DSS, kiosk platform
+
+Cary fit notes:
+- Strong Python/AWS backend and financial transaction systems (Disney)
+- Regulated device verification and network integration (Hospira)
+- Primary stack mismatch: Java/Spring is core — assess willingness to pivot or pass

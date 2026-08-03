@@ -1,0 +1,23 @@
+Subject: Re: AI Software Engineer — NextEra Energy (Remote CST)
+
+Hi Shaik,
+
+Thank you for reaching out about the AI Software Engineer contract with NextEra Energy. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Cloud-based delivery on AWS and GCP: I have architected and operated containerized Python services on AWS ECS/Fargate at 99.99% uptime (Disney financial reporting) and deployed applications to GCP with a 3× improvement in release frequency.
+• Legacy and modern systems together: At CVS I analyzed and decoupled monolithic codebases for microservices migration; at Dell I refactored legacy Python test frameworks; ongoing consulting work includes maintaining legacy systems while shipping new cloud-native features.
+• Backend, full-stack, and SQL depth: Extensive PostgreSQL schema design and query optimization — including cutting financial batch reconciliation from 8 hours to 45 minutes and building Django REST APIs that reduced network provisioning from 4 hours to 10 minutes.
+• Independent product collaboration: As a Scrum Master and technical lead, I have partnered directly with product and business stakeholders to ship features quickly in regulated, high-stakes environments (healthcare, finance, medical devices).
+
+I'm based in Temple City (Los Angeles area), available for remote work with CST core hours (9 AM–3 PM CST / 7 AM–1 PM Pacific). Happy to discuss rate, W2 vs C2C, and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

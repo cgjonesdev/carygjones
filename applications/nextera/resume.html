@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — AI Software Engineer</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #009639;
+        --accent-dark: #0c2340;
+        --rule: #e2e8f0;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+      }
+      main { max-width: 8.5in; margin: 0 auto; padding: 0.5in 0.6in; }
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+      .fullname { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; color: var(--accent-dark); }
+      .title { margin-top: 0.3rem; font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+      a { color: inherit; text-decoration: none; }
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section p, section ul { margin-bottom: 0.4rem; }
+      section p { text-align: justify; }
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+      section#skills ul { list-style: none; margin-left: 0; }
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 0.4rem;
+      }
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section dl:last-child { border-bottom: none; }
+      dt { margin-bottom: 0.1rem; }
+      dt u { font-size: 0.92rem; font-weight: 600; text-decoration: none; color: var(--text); }
+      dt:not(:has(u)) { font-size: 0.82rem; color: var(--muted); }
+      dt b { color: var(--text); }
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+      b { font-weight: 700; }
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Senior Software Engineer | Cloud, Legacy Modernization &amp; Backend Systems</p>
+        <div class="contact">
+          <span>Temple City, CA 91780 (Remote — Pacific, available CST core hours)</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Senior Software Engineer</b> with 15+ years delivering production cloud applications, backend APIs, and SQL-driven data systems on <b>AWS and GCP</b>. Proven track record modernizing <b>legacy monoliths</b> into maintainable microservices while shipping features independently alongside product and cross-functional teams. Deep <b>PostgreSQL</b> and relational modeling experience at enterprise scale — financial reporting, healthcare platforms, and high-volume transaction pipelines. Hands-on with Python (FastAPI, Django), Docker, CI/CD, and pragmatic AI/LLM integrations where they accelerate delivery. <b>Scrum Master</b> and technical lead comfortable in complex, changing environments.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies</h1>
+        <ul>
+          <li><b>Backend &amp; Full-Stack:</b> Python (FastAPI, Django, Flask), REST APIs, async services, React integration, service-oriented architecture, pytest, feature delivery with product teams</li>
+          <li><b>Cloud (AWS / GCP):</b> ECS, Fargate, Lambda, RDS, S3, CloudWatch, Secrets Manager, GCP Compute, Docker, Kubernetes concepts, CI/CD (GitHub Actions, GitLab CI)</li>
+          <li><b>SQL &amp; Data:</b> PostgreSQL, MySQL, Redis, MongoDB — schema design, query optimization, indexing, Redshift reporting, ETL pipelines processing 2.5M+ daily transactions</li>
+          <li><b>Legacy &amp; Modernization:</b> Monolith decoupling, domain-driven design, legacy test framework refactors, cross-system integration, regulated and high-availability production support</li>
+          <li><b>AI (Bonus):</b> LLM API integration, RAG pipelines, LangChain, AI-assisted development tooling (Cursor, Copilot) — applied to accelerate engineering, not as primary deliverable</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Key Impact</h1>
+        <ul>
+          <li>Engineered Python backends and <b>PostgreSQL interfaces</b> for enterprise financial systems processing <b>$10M+ daily metrics</b> at <b>99.99% uptime</b> on AWS.</li>
+          <li>Co-architected automated reconciliation tooling — cut batch runtime from <b>8 hours to 45 minutes</b> through optimized SQL aggregation and pipeline redesign.</li>
+          <li>Decoupled <b>legacy monolithic codebases</b> at CVS for domain-driven microservices migration; built Docker-based integration test harnesses improving local test speed by <b>50%</b>.</li>
+          <li>Deployed containerized Python microservices on <b>AWS ECS/Fargate and GCP</b>, achieving API latency under <b>120ms</b> and <b>+45% throughput</b> improvement.</li>
+          <li>Led cross-functional teams as <b>Scrum Master</b>, accelerating MVP timelines by <b>3 weeks</b> and reducing merge conflicts by <b>70%</b> through CI/CD and branching standards.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Deliver cloud-native Python microservices (FastAPI, Django) on <b>AWS ECS/Fargate</b> for enterprise clients — independent feature ownership from design through production support.</li>
+              <li>Maintain and extend <b>legacy systems</b> alongside greenfield services; integrate LLM tooling into data pipelines where it reduces manual processing by <b>60%</b>.</li>
+              <li>Design relational schemas and optimize PostgreSQL/Redis data layers; implement CI/CD with automated integration tests and staged rollouts.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>May 2023 – July 2023 | CVS, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Analyzed and decoupled <b>legacy monolithic codebases</b> for domain-driven microservices architecture; advised leadership on DDD and service boundary design.</li>
+              <li>Built containerized domain modules with Docker-Compose for faster integration testing across changing system dependencies.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Engineered scalable Python backend modules and <b>PostgreSQL data interfaces</b> for core financial reporting systems at <b>99.99% uptime</b>.</li>
+              <li>Partnered with accounting and product stakeholders to ship automated costing features; optimized cloud infrastructure on AWS for critical reporting applications.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Software Developer and System Architect</u></dt>
+          <dt>July 2019 – October 2021 | CGJSoftware, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Containerized Python, React, and Node.js applications; deployed to <b>GCP</b> via gcloud CLI, improving deployment frequency by <b>3x</b>.</li>
+              <li>Optimized complex <b>SQL queries</b> for AWS Redshift stress tests, increasing reporting performance by <b>38%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health &amp; Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Architected secure Python REST APIs and PostgreSQL backends for HIPAA-compliant platforms serving <b>500k+ user profiles</b>.</li>
+              <li>Led offshore engineering team as <b>Scrum Master</b>; established CI/CD pre-deploy scripts and Git standards for predictable releases.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python API Developer</u></dt>
+          <dt>August 2013 – April 2014 | Fidelity Investments, Irving, TX</dt>
+          <dd>
+            <ul>
+              <li>Built <b>Django REST Framework</b> APIs automating datacenter network provisioning — reduced setup from <b>4 hours to 10 minutes</b> with robust SQL-backed contract design.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Programmer</u></dt>
+          <dt>May 2016 – July 2016 | Dell, Inc., Austin, TX</dt>
+          <dd>
+            <ul>
+              <li>Refactored <b>legacy automated test framework</b> software in Python — eliminated circular dependencies and reduced crash rates during long-running test executions by <b>80%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education</h1>
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>ITT Technical Institute — GPA 3.67</dt>
+        </dl>
+        <dl>
+          <dt><u>United States Marine Corps</u></dt>
+          <dt>Field Wireman &amp; Communications Specialist — Honorably Discharged</dt>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>
