@@ -1,0 +1,29 @@
+Honor Technology — Senior Backend Engineer
+
+Source: Indeed job match email (July 31, 2026); Greenhouse job ID 8382000002
+URL: https://job-boards.greenhouse.io/honor/jobs/8382000002
+Note: Greenhouse board showed no active openings at time of application prep; apply via Indeed link if Greenhouse is closed.
+
+Company: Honor (Honor Technology) — aging care innovation; portfolio includes Home Instead
+Location: Remote (U.S.)
+Salary: $160,000 – $180,000 USD
+
+Mission:
+Change the way society cares for older adults through technology, tools, and services that empower older adults to live life on their own terms.
+
+Role: Senior Backend Engineer
+
+Requirements:
+- Strong backend engineering experience building and operating production systems
+- Proficiency in Python (or transferable backend experience with willingness to learn Python)
+- Experience with API design, distributed systems, and backend performance considerations
+- Familiarity with cloud platforms (AWS preferred) and service-oriented architectures
+- Experience designing relational data models and working with databases at scale
+
+Responsibilities (Senior Backend Engineer at Honor):
+- Build and operate scalable backend production systems
+- Design APIs and distributed services
+- Work with relational data models and databases at scale
+- Collaborate in a remote-first engineering organization
+
+Tech keywords: Python, AWS, REST APIs, distributed systems, relational databases, microservices/SOA

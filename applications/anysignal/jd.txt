@@ -1,0 +1,34 @@
+AnySignal — Python Software Engineer
+
+Source: LinkedIn job alert (July 31, 2026)
+URL: https://www.linkedin.com/jobs/view/4447052126/
+Also listed: Software Engineer (Python) — job 4447082802
+
+Company: AnySignal — RF products and services for space and defense missions
+Location: Los Angeles, CA (On-site)
+Salary: $120,000 – $170,000/year + equity
+
+Mission:
+Usher in the next generation of RF products and services with a flexible platform for demanding space and defense missions.
+
+Role: Python Software Engineer
+
+Responsibilities:
+- Own data aggregation, test, and automation framework for hardware, software, and DSP systems
+- Develop and maintain a Python software framework for engineers to write automated tests
+- Design and maintain systems for data aggregation and analysis
+- Build UIs that interface with hardware and software systems
+- Enable rapid, repeatable testing of space and ground segment components
+
+Requirements:
+- Expertise developing Python libraries
+- Strong understanding of networking concepts
+- Extensible, maintainable software systems supporting multiple engineering projects
+- Architecting scalable SQL and/or NoSQL databases
+- Test automation: equipment drivers, debug tools, socket interfaces
+- Docker
+- Nice to have: RF/DSP concepts, GNU Radio
+
+Eligibility: ITAR/export controls — U.S. person status typically required
+
+Tech keywords: Python, test automation, data aggregation, Docker, SQL, NoSQL, networking, socket interfaces, hardware/software integration
