@@ -1,0 +1,23 @@
+Subject: Re: Python Developer — Embedded Hardware — Undisclosed (Culver City contract)
+
+Hi Undisclosed team,
+
+Thank you for reaching out about the Python Developer — Embedded Hardware opportunity with Undisclosed (Culver City contract). I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Medical device embedded experience: At Hospira I spent five years verifying software for Symbiq and Plum A+ infusion pumps — testing embedded device behavior, debugging firmware upgrades, documenting test plans, and tracking defects in a regulated FDA environment.
+• Hardware-software integration: I collaborated closely with firmware and hardware engineers, supported embedded systems over wired and wireless hospital networks, and built recovery tooling to restore device software after failed firmware updates.
+• Embedded communication protocols: I worked with CAN bus and embedded communication architectures, and developed host-to-device Telnet automation for verification and field-support scenarios involving hospital infusion hardware.
+• Python at scale: Since Hospira I have delivered production Python systems — REST APIs, microservices, automated test frameworks, and AWS pipelines — with the same rigor around clean code, testing, documentation, and troubleshooting that embedded environments demand.
+
+I'm based in Temple City (Los Angeles area), available for Culver City, CA / Remote hybrid (long-term contract). I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

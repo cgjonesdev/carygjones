@@ -1,0 +1,23 @@
+Subject: Re: Senior Software Engineer — Whatnot
+
+Hi Whatnot team,
+
+Thank you for reaching out about the Senior Software Engineer opportunity with Whatnot. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Scalable Python backend systems: I have 15+ years designing and operating production distributed services in Python — microservices, event-driven architectures, and high-concurrency APIs — with a track record of balancing speed, reliability, and long-term maintainability.
+• Marketplace & product impact: At KeyIngredient, I built core e-commerce backend APIs for a consumer marketplace and led Scrum delivery that drove measurable business outcomes. I prioritize customer and business impact and can articulate why the work matters — not just how it's built.
+• Ownership at scale: At Disney and across consulting engagements, I have owned complex systems processing millions of daily events and $10M+ in daily transaction metrics, with 99.99% uptime and rigorous operational discipline.
+• Technical leadership: I lead through code reviews, design discussions, mentorship, and cross-functional partnership with Product and engineering teams — raising the bar while helping teams move quickly.
+
+I'm based in Temple City (Los Angeles area), available for Los Angeles hub (Remote co-located). I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

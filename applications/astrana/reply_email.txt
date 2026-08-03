@@ -1,0 +1,23 @@
+Subject: Re: Senior Software Engineer — Full-Stack & Python Technical Lead — Astrana
+
+Hi Astrana team,
+
+Thank you for reaching out about the Senior Software Engineer — Full-Stack & Python Technical Lead opportunity with Astrana. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Backend & API Architecture at Scale: Architecting high-throughput Python REST microservices (FastAPI, Django, Flask) and event-driven ETL data pipelines handling millions of daily transactions.
+• SQL & Database Mastery: Designing relational database schemas, optimizing complex queries, and building mission-critical database abstractions in PostgreSQL and MySQL.
+• Full-Stack & Front-End Integration: Connecting robust Python backend systems with React.js and JavaScript user interfaces to create responsive web applications.
+• Technical Leadership & Mentorship: Serving as a Scrum Master and Lead Developer where I have established reusable project template repositories, coached junior engineers, and set long-term technical vision.
+
+I'm based in Temple City (Los Angeles area), available for remote work. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/
