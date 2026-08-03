@@ -1,0 +1,13 @@
+{
+  "company": "Cisco",
+  "client": "Tata Consultancy Services (TCS)",
+  "role": "Senior Python Backend Engineer (Django / AWS)",
+  "location": "Remote / hybrid (confirm with recruiter)",
+  "match_score": 91,
+  "status": "interview",
+  "created": "2026-07-29",
+  "updated": "2026-07-29",
+  "salary": null,
+  "styling_notes": "Cisco enterprise blue (#049fd9) on slate — networking/cloud brand cues; Django+AWS stack lead; Fidelity DRF and Disney AWS prominence",
+  "notes": "Technical screen scheduled Thu/Fri Jul 2026 via Webex. JD reconstructed from interview invite; update jd.txt if full posting received. Strong match: Fidelity Django REST, Disney AWS, CGJSoftware ECS/Fargate. Hospira Cisco ACS anecdote for rapport."
+}

@@ -1,0 +1,7 @@
+Position: AI Software Engineer
+Location: Remote (Minnesota – CST) 9-3 PM CST
+Duration: 12+ months
+Client: NextEra Energy
+Recruiter: Shaik Riyaz, US Tech Solutions (Riyaz@ustechsolutionsinc.com, 551-230-1439)
+
+Our client is looking for a very experienced software engineer (12+ years) who can build and deliver cloud-based applications, work with both modern systems and old legacy systems, write strong backend/full-stack code with good SQL skills, and work independently with product teams to ship features quickly. AI/ML knowledge is only a bonus—the main focus is strong coding, cloud experience (AWS/GCP), and the ability to handle complex, changing systems and deliver practical software solutions.

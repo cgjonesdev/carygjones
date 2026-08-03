@@ -1,0 +1,26 @@
+Cisco (via Tata Consultancy Services) — Senior Python Backend Engineer
+
+Source: Technical interview invitation (Webex). Stack confirmed in invite: Python, Django, AWS.
+Staffing partner: TCS (@tcs.com). Client interviewers: Cisco (@cisco.com).
+
+Role focus (inferred from interview screen):
+- Build and maintain Python backend services using Django and Django REST Framework
+- Deploy and operate services on AWS (ECS/Fargate, RDS, Lambda, S3, VPC)
+- Design RESTful APIs, optimize PostgreSQL queries, and manage database migrations in production
+- Work with containerized microservices, CI/CD pipelines, and cloud security best practices
+- Collaborate in an enterprise team environment (TCS-staffed Cisco contract engagement)
+
+Required skills:
+- Python (3.x), Django, Django REST Framework
+- AWS (ECS, RDS, Lambda, S3, CloudWatch, Secrets Manager)
+- PostgreSQL, Redis, Docker
+- REST API design, unit/integration testing (pytest)
+- Agile/Scrum, Git, CI/CD
+
+Preferred:
+- Celery task queues, FastAPI experience
+- Legacy modernization / monolith-to-microservices migration
+- Enterprise-scale backend systems
+
+Work mode: Remote / hybrid (confirm with recruiter)
+Interview format: Technical screen via Cisco Webex with TCS + Cisco attendees
