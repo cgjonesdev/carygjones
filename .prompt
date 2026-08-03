@@ -15,7 +15,7 @@ When I post a job description (abbreviated as "JD"):
    - `meta.json` — application metadata (see schema below)
    - `resume.html` — tailored resume with embedded CSS
    - `cover_letter.html` — full cover letter document with embedded CSS
-   - `resume.pdf` and `cover_letter.pdf` — rendered via script
+   - `resume.pdf`, `cover_letter.pdf`, `resume.docx`, and `cover_letter.docx` — rendered via script
 
    Use a short lowercase slug for `{company_slug}` (e.g. `magnite`, `paramount`).
 
@@ -54,7 +54,7 @@ When I post a job description (abbreviated as "JD"):
    - Embed all CSS inline in a `<style>` block within each HTML file
    - Briefly document styling choices in `meta.json` styling_notes
 
-   After writing HTML files, render PDFs with:
+   After writing HTML files, render PDFs and DOCX with:
    `./scripts/render_application.sh {company_slug}`
 
    Update `meta.json` `updated` field when status changes.
