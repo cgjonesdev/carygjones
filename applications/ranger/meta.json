@@ -1,0 +1,23 @@
+{
+  "company": "Ranger Technical Resources",
+  "client": "Healthcare AI partner (undisclosed — confirm client name before sharing resume externally)",
+  "role": "Senior Full Stack Engineer (Back End Lean)",
+  "location": "Orange County, CA (Remote)",
+  "match_score": 83,
+  "status": "applied",
+  "created": "2026-08-04",
+  "updated": "2026-08-04",
+  "salary": null,
+  "styling_notes": "Healthcare AI / voice engagement — clinical teal (#0d9488) with deep navy; AWS event-driven distributed systems, HIPAA-adjacent production rigor",
+  "notes": "Sourced from LinkedIn job alert (Ontario digest). Applied via LinkedIn Easy Apply on 2026-08-04 (applications/ranger/resume.pdf uploaded manually). Screening Qs: Node.js ~4yr, distributed systems ~12yr, AWS event-driven ~8yr, hybrid yes. Strong fit: healthcare (Alan Health HIPAA, Hospira regulated), AWS Lambda/SQS/SNS patterns, distributed/event-driven APIs. Gap: primary stack is Node.js/TypeScript/NestJS — Cary's strength is Python backend with transferable AWS architecture.",
+  "apply_url": "https://www.linkedin.com/jobs/view/4448338023/",
+  "easy_apply": true,
+  "apply_method": "linkedin_easy_apply",
+  "linkedin_job_id": "4448338023",
+  "source_email": {
+    "message_id": "19fcd97375530f35",
+    "thread_id": "19fcd97375530f35",
+    "subject": "Senior Software Engineer at WME | William Morris Endeavor",
+    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+  }
+}

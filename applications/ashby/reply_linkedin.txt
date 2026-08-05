@@ -1,0 +1,14 @@
+Hi — I'm applying for the Staff Platform Engineer - Americas role at Ashby.
+
+Why I'm a strong fit:
+• 15+ years platform/SRE-adjacent work on AWS (ECS, Lambda, RDS), PostgreSQL, Redis, Docker, CI/CD
+• Built event-driven pipelines at 2.5M+ daily transactions / 99.95% accuracy — scaling & data path experience
+• 99.99% uptime ownership at Disney; HIPAA-compliant platform APIs at Alan Health
+• End-to-end project owner; async written communicator; AI-augmented dev (Cursor/Copilot) with strong review gates
+• Based in CA, remote across Americas; comp range aligns
+
+Happy to discuss how I'd help pave the road for Ashby's next growth phase.
+
+— Cary Jones
+(626) 272-2567 | cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/

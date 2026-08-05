@@ -1,0 +1,23 @@
+{
+  "company": "Ashby",
+  "client": null,
+  "role": "Staff Platform Engineer - Americas",
+  "location": "Los Angeles, CA (Remote)",
+  "match_score": 84,
+  "status": "applied",
+  "created": "2026-08-04",
+  "updated": "2026-08-04",
+  "salary": "$232k–$323k",
+  "styling_notes": "Recruiting SaaS platform — deep violet (#6d28d9) with warm slate; paved-road platform/SRE emphasis, AWS Postgres event-driven, async engineering culture",
+  "notes": "Sourced from LinkedIn job alert (Flip digest). Applied via Ashby careers on 2026-08-04 (applications/ashby/resume.pdf). Strong fit: AWS platform ownership, PostgreSQL/Redis, event-driven pipelines, CI/CD, on-call, SLO-minded ops. Gaps: primary stack is TypeScript/Node (JD says prior experience not required); staff-level title — Cary is senior with 15+ years platform depth.",
+  "apply_url": "https://www.ashbyhq.com/careers?ashby_jid=0f5dbf59-687b-4d88-88a7-73ee0a66b48d&utm_source=PRgMeEgv1Z",
+  "easy_apply": false,
+  "apply_method": "ashby_external",
+  "linkedin_job_id": "4448239588",
+  "source_email": {
+    "message_id": "19fce0513ee2da9f",
+    "thread_id": "19fce0513ee2da9f",
+    "subject": "Senior/Staff Software Engineer at Flip",
+    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+  }
+}

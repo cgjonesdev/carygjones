@@ -1,0 +1,25 @@
+LinkedIn message draft — AWAITING YOUR APPROVAL before send_message
+
+To: [Hiring manager / recruiter — paste LinkedIn profile URL when visible on job posting]
+Re: Senior Software Engineer II at Virta Health
+
+Hi [Name],
+
+I submitted my application for the Senior Software Engineer II role on Virta's data engagement platform and wanted to introduce myself. Virta's work on eligibility and member marketing data — turning partner records into trusted outreach — aligns closely with my background in event-driven healthcare backends.
+
+Quick fit summary:
+• Event-driven pipelines processing 2.5M+ daily transactions at 99.95% accuracy
+• HIPAA-compliant Python APIs at Alan Health — 500k+ profiles, audit-friendly patterns
+• Partner-facing REST integrations with automated validation and observability
+• AI-augmented development (Cursor/Copilot) with deterministic controls for correctness-critical paths
+• 15+ years senior backend experience, remote in California
+
+Would welcome a conversation about the team and platform roadmap.
+
+Best,
+Cary Jones
+https://www.linkedin.com/in/cary-g-jones/
+
+---
+APPLY: External (Ashby) — upload applications/virta/resume.pdf + cover_letter.pdf
+URL: https://jobs.ashbyhq.com/virtahealth/0bb4af8f-61ba-4a16-b1df-830e47e01f51

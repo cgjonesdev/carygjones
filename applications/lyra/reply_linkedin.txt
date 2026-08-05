@@ -1,0 +1,24 @@
+LinkedIn message draft — AWAITING YOUR APPROVAL before send_message
+
+To: [Hiring manager / recruiter — paste LinkedIn profile URL when visible on job posting]
+Re: Sr. Software Engineer at Lyra Health
+
+Hi [Name],
+
+I just applied for the Sr. Software Engineer role at Lyra Health and wanted to reach out directly. Lyra's mission in evidence-based mental health care resonates with me — I've spent years building Python REST APIs in healthcare where security and reliability directly affect people's lives.
+
+Quick fit summary:
+• 15+ years Python backend (Django, FastAPI, DRF) with scalable REST APIs
+• HIPAA-compliant healthcare platform at Alan Health — 500k+ user profiles
+• Multi-tenant AWS deployments (ECS/Fargate) at sub-120ms latency
+• Based in Temple City, CA — fully remote within the U.S.
+
+Happy to share more context or jump on a brief call. Resume attached to my application.
+
+Best,
+Cary Jones
+https://www.linkedin.com/in/cary-g-jones/
+
+---
+APPLY: LinkedIn Easy Apply — upload applications/lyra/resume.pdf
+URL: https://www.linkedin.com/jobs/view/4448540849/

@@ -1,0 +1,36 @@
+Virta Health — Senior Software Engineer II
+
+Source: LinkedIn search (August 4, 2026)
+URL: https://www.linkedin.com/jobs/view/4447277444/
+Apply: https://jobs.ashbyhq.com/virtahealth/0bb4af8f-61ba-4a16-b1df-830e47e01f51
+Easy Apply: No (Ashby external)
+
+Company: Virta Health — reverse metabolic disease through technology, nutrition, and virtual care
+Location: United States (Remote-first)
+Salary: $176,500 – $228,000
+
+About The Role
+
+You'll help build and evolve Virta's data engagement platform — the system that turns partner and internally derived data into eligibility decisions and campaign-ready member audiences. You'll anchor engineering behind Member Marketing and Coverage Eligibility data.
+
+Responsibilities
+- Design data contracts and processing semantics for identity, eligibility, audience attributes, deduplication, and field persistence
+- Build end-to-end observability and reconciliation across the data lifecycle
+- Lead technical discovery across Member Marketing and Coverage Eligibility
+- Design for correctness and auditability in regulated workflows (provenance, consent, suppression, rollback, replay)
+- Modernize file-based processes toward well-contracted, event-driven integrations
+- Apply AI-augmented tooling where it improves velocity without compromising correctness
+
+Must-Haves
+- Strong backend engineering with APIs, event-driven architectures, or data integrations
+- Data-intensive systems: schemas, identity resolution, idempotency, lineage, reconciliation
+- B2B or partner-facing data systems (file-based, real-time, partner APIs)
+- 10+ years software engineering at senior level
+- Sound judgment about AI-assisted tooling vs deterministic controls
+
+Nice-to-Haves
+- Healthcare data: eligibility, claims, EHR, member marketing
+- GCP, BigQuery, dbt, Pub/Sub, GKE
+- Golang (primary), Python (data tooling)
+
+Tech stack: GCP (GKE, Pub/Sub, BigQuery, CloudSQL), Golang, Python, GitHub Actions, SQL/dbt

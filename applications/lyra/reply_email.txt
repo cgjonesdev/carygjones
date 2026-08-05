@@ -1,0 +1,23 @@
+Subject: Re: Sr. Software Engineer — Lyra Health
+
+Hi Lyra Health team,
+
+Thank you for reaching out about the Sr. Software Engineer opportunity with Lyra Health. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Python REST APIs at scale: 15+ years developing production Python backends with Django, FastAPI, and Django REST Framework — including APIs at Fidelity that cut network provisioning from 4 hours to 10 minutes, and containerized services on AWS ECS/Fargate with sub-120ms latency.
+• Multi-tenant web applications: At Alan Health & Science I architected HIPAA-compliant Python REST APIs serving 500k+ user profiles, with OAuth2, relational schema design, and 99.9% production availability.
+• Security and best practices: Experience in regulated healthcare and medical device environments (Hospira) where security standards and formal quality processes are non-negotiable — I bring that discipline to every phase of development.
+• Cross-functional collaboration: Proven partner to product and data teams as a technical lead and Scrum Master; self-starter who drives API design from requirements through deployment and monitoring.
+
+I'm based in Temple City (Los Angeles area), available for United States (Remote), and the $143k–$197k range aligns with my expectations. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

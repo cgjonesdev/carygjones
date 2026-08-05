@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Senior Backend Engineer (Python)</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #b45309;
+        --accent-soft: #f59e0b;
+        --rule: #e2e8f0;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+      }
+      main { max-width: 8.5in; margin: 0 auto; padding: 0.5in 0.6in; }
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+      .fullname { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+      .title { margin-top: 0.3rem; font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+      a { color: inherit; text-decoration: none; }
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section p, section ul { margin-bottom: 0.4rem; }
+      section p { text-align: justify; }
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+      section#skills ul { list-style: none; margin-left: 0; }
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 0.4rem;
+      }
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section dl:last-child { border-bottom: none; }
+      dt { margin-bottom: 0.1rem; }
+      dt u { font-size: 0.92rem; font-weight: 600; text-decoration: none; color: var(--text); }
+      dt:not(:has(u)) { font-size: 0.82rem; color: var(--muted); }
+      dt b { color: var(--text); }
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+      b { font-weight: 700; }
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Senior Backend Engineer | Python, AWS &amp; Health Data Platforms</p>
+        <div class="contact">
+          <span>Temple City, CA 91780 (Remote, US-Pacific)</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Senior Backend Engineer</b> with 15+ years building scalable, well-tested <b>Python</b> services on <b>AWS</b> — from design through production monitoring. Deep experience in health-adjacent domains: <b>HIPAA-compliant platforms</b>, regulated medical device verification, and privacy-conscious data handling. Pragmatic owner who reduces ambiguous problems into clear solutions, automates repetitive work, and balances delivery speed with long-term maintainability. Comfortable collaborating asynchronously across time zones.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies</h1>
+        <ul>
+          <li><b>Python Backend:</b> FastAPI, Django, Flask, asyncio, REST APIs, microservices, pytest, maintainable/testable code, design patterns, CS fundamentals</li>
+          <li><b>Cloud &amp; Scale:</b> AWS (ECS, Fargate, Lambda, RDS, S3), Docker, GitHub Actions CI/CD, highly available web services, query optimization, PostgreSQL, Redis</li>
+          <li><b>Health &amp; Privacy:</b> HIPAA-compliant systems, regulated environments (Hospira), security/privacy standards, audit support, OAuth2, encryption</li>
+          <li><b>Data Pipelines:</b> Event-driven ETL, explicit schemas, idempotent processing, reconciliation, observability, 2.5M+ daily transaction throughput</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Key Impact</h1>
+        <ul>
+          <li>Engineered <b>Python event-driven pipelines</b> on AWS handling <b>2.5M+ daily transactions</b> at <b>99.95% accuracy</b> with monitoring, documentation, and automated test coverage.</li>
+          <li>Architected <b>HIPAA-compliant Python REST APIs</b> (FastAPI/Django) serving <b>500k+ active user profiles</b> — readiness-style member data workflows with privacy guardrails.</li>
+          <li>Maintained <b>99.99% uptime</b> on AWS-hosted production backends; owned solutions from design through on-call incident response.</li>
+          <li>Expanded automated test coverage from <b>65% to 92%</b> using AI-augmented development while preserving code review standards.</li>
+          <li>Five years in <b>regulated healthcare</b> at Hospira — formal verification, audit trails, and security-conscious integration for medical device software.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Own <b>Python backend solutions</b> end-to-end — FastAPI/Django services on AWS ECS/Fargate with testing, CloudWatch monitoring, and CI/CD documentation.</li>
+              <li>Drive architectural improvements for scalability and new product capabilities; reduce ambiguous client requirements into actionable technical plans.</li>
+              <li>Collaborate asynchronously with distributed stakeholders across healthcare and e-commerce domains.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health &amp; Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Architected secure <b>Python REST APIs</b> for <b>HIPAA-compliant</b> health platforms serving <b>500k+ profiles</b>; ensured privacy and regulatory standards in production.</li>
+              <li>Designed scalable PostgreSQL schemas; implemented OAuth2, audit-friendly access, and <b>99.9% availability</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Built production Python modules and PostgreSQL interfaces on AWS; ensured <b>100% data integrity</b> during large-scale migrations.</li>
+              <li>Owned on-call for distributed backend services at <b>99.99% uptime</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Software Developer and System Architect</u></dt>
+          <dt>July 2019 – October 2021 | CGJSoftware, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Deployed containerized Python apps to AWS/GCP; optimized SQL queries (+38% performance) and built async messaging architectures with zero data loss at peak load.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Quality Assurance &amp; Network Integration Engineer</u></dt>
+          <dt>February 2005 – December 2009 | Hospira, Inc., San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Regulated healthcare environment — requirements-based verification, audit documentation, hospital network integration, and security testing for infusion pump software.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education</h1>
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>ITT Technical Institute — GPA 3.67</dt>
+        </dl>
+        <dl>
+          <dt><u>United States Marine Corps</u></dt>
+          <dt>Field Wireman &amp; Communications Specialist — Honorably Discharged</dt>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>

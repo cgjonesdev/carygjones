@@ -1,0 +1,53 @@
+Source: https://www.linkedin.com/jobs/view/4448239588/
+Company: Ashby
+Role: Staff Platform Engineer - Americas
+Location: Los Angeles, CA (Remote)
+Salary: $232,000–$323,000/year
+Posted: ~1 day ago | 59 applicants | External apply (Ashby careers)
+
+---
+
+We're looking for a curious, rigorous, problem-hungry platform engineer (who codes!) to carry the ball as we bring Ashby to the big leagues. Ashby builds software that lets talent teams build an efficient, delightful, respectful hiring process. Similarly, you're an engineer who wants to build a "paved road" that excellent engineering teams can safely take to the moon and back.
+
+We have notable customers like Notion, Linear, Shopify, and Snowflake. Our growth and retention metrics are best-in-class among our peers: we have tens of millions in ARR, growing >100% year over year, over 2500 customers, very low churn, and many years of runway.
+
+We've listed this role twice: as a Platform Engineer and Site Reliability Engineer – our team does both, and we are open to candidates who lean towards one or the other.
+
+About The Role And How We Work
+
+Our infrastructure is in a good place for now. Nothing is static. Ashby continues to grow rapidly, putting strain on our existing infrastructure. We're always looking to give our customers more powerful hiring software, and building new product features often requires new pieces of infrastructure.
+
+Having herded plenty of snowflakeservers in the past, I've learned there's a better way. I (and Ashby) place a lot of value on code-as-infrastructure. As a Platform Engineer at Ashby, you'll get to dive into scaling problems, add new capabilities to our platform, and think about how our entire team interacts with infrastructure. All our own engineers own their projects end-to-end and ship with minimal oversight.
+
+Example work:
+- Optimize our homegrown ultra-dynamic recruiting DSL-to-SQL compiler, and create tools to help developers do so
+- Create automated guardrails for the security and privacy of our customer data
+- Help our developers ship features fast through canary deploys, gradual rollouts and feature flags
+- Work with the business and the engineering team to define SLOs and implement the corresponding SLIs
+- Ensure all communication with external services supports retries and circuit-breakers
+- Implement the infrastructure to support an event-driven architecture and data warehouse
+
+You Should Apply If:
+- You never stop hunting mismatches; you use monitoring and data to debug thorny production issues
+- You don't take shortcuts — you speak up for edge cases and doomsday design
+- You've built infrastructure at a slightly later stage — millions of data points, automated provisioning/monitoring/release
+- You're a Swiss army knife: infrastructure updates, security, database optimization, Kubernetes debugging, TypeScript traces
+
+You should NOT apply if:
+- You expect a lead/manager to make final technical calls (you ship what you build)
+- You hate SQL
+- You don't want to code (SREs are strong software engineers at platform level)
+- Primary mode is live meetings (async/written culture)
+- You've never delivered a project on your own without someone prodding you
+
+Technology Stack (no prior experience required in all):
+TypeScript (frontend & backend), Node.js, React, Apollo GraphQL, Postgres, Redis.
+Datadog and Sentry on 100% cloud-based (AWS) infra. Follow-the-sun on-call.
+
+Interview: recruiter screen, intro with co-founder, pair programming in codebase, technical design/debugging/incident interviews. No leetcode.
+
+Benefits: competitive salary/equity, 10-year exercise window, unlimited PTO, 12+ weeks parental leave, top-tier US health insurance.
+
+Compensation Range: $232K - $323K
+
+Apply: https://www.ashbyhq.com/careers?ashby_jid=0f5dbf59-687b-4d88-88a7-73ee0a66b48d&utm_source=PRgMeEgv1Z
