@@ -1,0 +1,43 @@
+# All protocols orchestrator
+
+Runs the three job-search agent protocols **in sequence** when Cary says **run protocols**.
+
+**Trigger phrases:** `run protocols`, `run all protocols`, `all protocols`
+
+Individual protocols still run alone via their own triggers (`run response protocol`, `run Google protocol`, `run LinkedIn protocol`).
+
+---
+
+## Run protocols (checklist)
+
+When the user says **run protocols**, execute **all three** protocols below **in this order**. Complete each protocol's full checklist before starting the next. If one phase fails, report it and continue where possible.
+
+### 1 — Response protocol
+
+Read and follow **`tools/response/.prompt`** end-to-end (all phases). Produce that protocol's summary report.
+
+Focus: recruiter **replies** to submitted apps (`applied` / `interview`); Gmail + LinkedIn InMail follow-up drafts. **Never auto-send.**
+
+### 2 — Google protocol
+
+Read and follow **`tools/gmail/.prompt`** end-to-end (all phases). Produce that protocol's summary report.
+
+Focus: Cloud Run scan, GCS sync, Gmail inbox JSON, new recruiter mail triage, reply drafts for intake threads. **Never auto-send** (`--send`).
+
+### 3 — LinkedIn protocol
+
+Read and follow **`tools/linkedin/.prompt`** end-to-end (all phases). Produce that protocol's summary report.
+
+Focus: LinkedIn alerts + search, JD fetch/score, tailoring ≥80%, Easy Apply / external apply / InMail drafts. **Never auto-submit or auto-send.**
+
+---
+
+## Combined summary
+
+After all three complete, produce one **combined summary** with sections:
+
+1. **Response** — threads found, drafts prepared, status updates
+2. **Google** — inbox sync, new mail, drafts, triage
+3. **LinkedIn** — search/alert hits, scores, new applications, apply/InMail actions pending approval
+
+Call out anything needing Cary's manual action (file uploads, Easy Apply, send approval, login checkpoints).

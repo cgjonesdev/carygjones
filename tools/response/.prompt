@@ -4,6 +4,8 @@ This agent owns **checking for recruiter responses** to submitted applications a
 
 **Trigger phrases:** `run response protocol`, `response protocol`, `check for responses`, `recruiter responses`
 
+Also runs as **step 1** of **run protocols** (`tools/protocols/.prompt`).
+
 Account: `cgjonesdev@gmail.com` · LinkedIn: https://www.linkedin.com/in/cary-g-jones/
 
 ---

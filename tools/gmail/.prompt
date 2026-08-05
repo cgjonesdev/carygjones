@@ -4,6 +4,8 @@ This agent owns **Gmail intake, Cloud Run scanning, inbox JSON, and recruiter re
 
 **Trigger phrases:** `run Google protocol`, `Google protocol`, `run google`, `GCloud protocol`
 
+Also runs as **step 2** of **run protocols** (`tools/protocols/.prompt`).
+
 Account: `cgjonesdev@gmail.com`
 
 ---

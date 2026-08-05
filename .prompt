@@ -1,6 +1,15 @@
 I am looking for a job. My base resume is `base/cary_jones_resume.html` (content source only).
 
-**Agent scope:** New job descriptions and tailored applications only. For Gmail scanning, Cloud Run, inbox JSON, recruiter reply drafts, and the full **run Google protocol** workflow, use the **GCloud email parser** agent (`tools/gmail/.prompt`). For LinkedIn search, Easy Apply, InMail, and the full **run LinkedIn protocol** workflow, use the **LinkedIn protocol** agent (`tools/linkedin/.prompt`). For checking recruiter **responses** to submitted applications and preparing follow-up replies (email + LinkedIn), use the **Response protocol** agent (`tools/response/.prompt`).
+**Agent scope:** New job descriptions and tailored applications only.
+
+| Trigger | Agent | Prompt |
+|---------|-------|--------|
+| **run protocols** | All three in order | `tools/protocols/.prompt` |
+| **run response protocol** | Response | `tools/response/.prompt` |
+| **run Google protocol** | GCloud email parser | `tools/gmail/.prompt` |
+| **run LinkedIn protocol** | LinkedIn | `tools/linkedin/.prompt` |
+
+**run protocols** order: (1) response → (2) Google → (3) LinkedIn. Each protocol can also run alone via its own trigger.
 
 When I post a job description (abbreviated as "JD"):
 

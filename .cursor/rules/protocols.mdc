@@ -1,0 +1,19 @@
+---
+description: Run all job-search protocols in sequence — response, Google, LinkedIn
+globs: tools/protocols/**,tools/response/**,tools/gmail/**,tools/linkedin/**,applications/*/meta.json,inbox/**
+alwaysApply: false
+---
+
+# All protocols
+
+Read and follow `tools/protocols/.prompt` when the user says **run protocols**, **run all protocols**, or **all protocols**.
+
+Execute in order:
+
+1. **Response** — `tools/response/.prompt` (replies to submitted apps)
+2. **Google** — `tools/gmail/.prompt` (Gmail intake, Cloud Run, drafts)
+3. **LinkedIn** — `tools/linkedin/.prompt` (search, alerts, apply, InMail)
+
+Complete each protocol's full checklist before starting the next. End with a combined summary report.
+
+**Never** auto-send Gmail, auto-submit Easy Apply, or auto-send LinkedIn messages without explicit user approval.

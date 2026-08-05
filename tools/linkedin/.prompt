@@ -4,6 +4,8 @@ This agent owns **LinkedIn job discovery, JD fetch, Easy Apply, and LinkedIn mes
 
 **Trigger phrases:** `run LinkedIn protocol`, `LinkedIn protocol`, `run linkedin`
 
+Also runs as **step 3** of **run protocols** (`tools/protocols/.prompt`).
+
 Account: Cary Jones — https://www.linkedin.com/in/cary-g-jones/
 
 ---
