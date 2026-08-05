@@ -238,6 +238,7 @@ MCP (Phase 1–4): `search_jobs`, `fetch_job`, `send_message`, `get_workflow_res
 | **LinkedIn protocol** (this) | MCP search/fetch, Easy Apply browser flow, LinkedIn DMs, triage report, LinkedIn meta fields |
 | **New JDs** (root `.prompt`) | Match scoring rules, tailored HTML, styling, interview prep |
 | **GCloud email parser** (`tools/gmail/.prompt`) | Gmail scan/sync, email drafts with PDF attachments, `gmail_draft_id` |
+| **Response protocol** (`tools/response/.prompt`) | Follow-ups after apply — Gmail + LinkedIn inbound, interview/rejection triage |
 
 When user pastes a LinkedIn job URL: `fetch_job` → score → hand off to tailoring if ≥80%.
 

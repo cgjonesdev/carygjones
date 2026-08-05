@@ -1,0 +1,16 @@
+---
+description: Check Gmail and LinkedIn for recruiter responses to submitted apps — run response protocol
+globs: applications/*/meta.json,inbox/**,tools/response/**,tools/gmail/**,tools/linkedin/**
+alwaysApply: false
+---
+
+# Response protocol
+
+Read and follow `tools/response/.prompt` when the user says **run response protocol**, **response protocol**, **check for responses**, or asks to reply to recruiter follow-ups on submitted applications.
+
+- **In scope:** `applications/` with `status: applied|interview`; Gmail thread matching + drafts; LinkedIn MCP `get_inbox`, `get_conversation`, `send_message`; `reply_email.txt` / `reply_linkedin.txt` follow-ups; status → `interview` / `rejected`.
+- **Out of scope:** New job discovery — use `tools/gmail/.prompt` (Google protocol) or `tools/linkedin/.prompt` (LinkedIn protocol). Initial application tailoring — root `.prompt`.
+
+**Never** auto-send Gmail or LinkedIn replies without explicit user approval. Flag SSN/DOB/sensitive requests for manual handling.
+
+Default trigger: full 5-phase checklist in `tools/response/.prompt` ending with a summary report.

@@ -2,7 +2,87 @@
 
 This agent owns **Gmail intake, Cloud Run scanning, inbox JSON, and recruiter reply drafts**. It does **not** tailor new job applications from scratch — that is the **New JDs** agent (repo root `.prompt`).
 
+**Trigger phrases:** `run Google protocol`, `Google protocol`, `run google`, `GCloud protocol`
+
 Account: `cgjonesdev@gmail.com`
+
+---
+
+## Run Google protocol (checklist)
+
+When the user says **run Google protocol**, execute all phases below and produce a summary report. Skip nothing unless a phase fails (report the failure and continue where possible).
+
+### Phase 1 — GCloud intake
+
+1. **Cloud Run scan** (if GCP is configured):
+   ```bash
+   cd tools/gmail/cloud
+   # requires config.env (copy from config.env.example)
+   source config.env
+   gcloud config set project "$GCP_PROJECT"
+   gcloud alpha run jobs execute "$JOB_NAME" --region="$GCP_REGION" --wait
+   ```
+   If `config.env` is missing or `gcloud` fails, note it and continue — weekday Scheduler may have already scanned.
+
+2. **Sync GCS → local inbox:**
+   ```bash
+   cd tools/gmail
+   source .venv/bin/activate 2>/dev/null || true
+   pip install -r requirements.txt -q 2>/dev/null || true
+   export GCS_BUCKET="${GCS_BUCKET:-$(grep ^GCS_BUCKET= cloud/config.env 2>/dev/null | cut -d= -f2)}"
+   python sync_gcs_inbox.py
+   ```
+   If `GCS_BUCKET` is unset, skip sync and report; local scan (phase 2) still runs.
+
+3. Optional: read cloud run summary:
+   ```bash
+   gcloud storage cat "gs://${GCS_BUCKET}/inbox/recruiter/_state/latest_run.json"
+   ```
+
+### Phase 2 — Local Gmail scan
+
+4. Always run local scan (supplements cloud; uses OAuth `token.json`):
+   ```bash
+   cd tools/gmail
+   python scan_recruiter_mail.py --save
+   ```
+
+### Phase 3 — Triage & generate
+
+5. Collect inbox items from `inbox/recruiter/*.json` (exclude `_state/`).
+6. Deduplicate against `applications/*/meta.json` → `source_email.message_id`.
+7. For each **new** message with JD content:
+   - **Score** using root `.prompt` weights (50/20/15/15).
+   - **≥80%:** create `applications/{slug}/` per root `.prompt`, link `source_email`, render:
+     ```bash
+     ./scripts/render_application.sh {slug}
+     ```
+   - **<80%:** triage skip + gaps (do not generate unless user asks).
+8. For existing `status: ready` applications missing PDFs, run `render_application.sh`.
+
+### Phase 4 — Gmail drafts
+
+9. Preview pending drafts:
+   ```bash
+   cd tools/gmail
+   python draft_all_recruiter_replies.py --dry-run --verbose
+   ```
+10. Create drafts (never auto-send):
+    ```bash
+    python draft_all_recruiter_replies.py --verbose
+    ```
+    Use `--force` only if user asks to redo existing `gmail_draft_id`.
+11. Update `meta.json`: `gmail_draft_id`, `updated`. Set `status: applied` only after user confirms send/submit.
+
+### Phase 5 — Report
+
+12. Summary for user:
+    - Cloud job result (if run) + GCS sync count
+    - Local scan: new vs existing inbox files
+    - Generated applications (slug, score)
+    - Drafts created vs skipped (with reasons if `--verbose`)
+    - Pending: apply URLs, drafts awaiting review in Gmail
+    - Skipped inbox items with scores
 
 ---
 
@@ -159,10 +239,50 @@ Use **Cursor Automation** for phase 4 (weekday), not cloud LLM — keeps `.promp
 
 ---
 
+## Safety & approval gates
+
+| Action | Rule |
+|--------|------|
+| `draft_all_recruiter_replies.py --send` | Only if user explicitly asks to send |
+| Generate &lt;80% match | Report only; do not generate unless user asks |
+| Git commit | Never unless user asks |
+
+---
+
+## Example protocol summary (output format)
+
+```
+Google protocol — 2026-08-04
+
+Cloud: recruiter-scan executed — 3 new in GCS; synced 12 files locally
+Local scan: 2 new inbox JSON saved
+
+GENERATED
+  honor (87%) — applications/honor/ — draft created (gmail_draft_id: r…)
+
+DRAFTS
+  Created: honor, nextera
+  Skipped: tillster — Indeed noreply (use apply_url)
+
+SKIPPED (inbox)
+  java-backend-acme (72%) — Java/Spring primary stack gap
+
+PENDING YOU
+  Review Gmail drafts; send manually when ready
+  nextera — apply via Greenhouse URL in meta.json
+```
+
+---
+
 ## Boundaries
 
-**This agent:** scan, sync, parse inbox, link `source_email`, draft replies, Cloud deploy/troubleshoot, skip/apply status for email workflow.
+| Agent | Owns |
+|-------|------|
+| **Google protocol** (this) | Scan, sync, parse inbox, link `source_email`, initial drafts, Cloud deploy |
+| **New JDs** (root `.prompt`) | Match score, tailor HTML, styling, interview prep |
+| **LinkedIn protocol** (`tools/linkedin/.prompt`) | MCP search/fetch, Easy Apply, initial InMail |
+| **Response protocol** (`tools/response/.prompt`) | Follow-ups after apply — Gmail + LinkedIn inbound |
 
-**New JDs agent:** paste JD, match score, tailor HTML, `render_application.sh`, interview prep.
+When user pastes a recruiter email here: extract JD → hand off to New JDs for tailoring, or draft only if application exists.
 
-When user pastes a recruiter email here: extract JD → either hand off to New JDs agent for tailoring, or if application already exists, draft only.
+When user asks to check responses after applying: use **Response protocol** (`tools/response/.prompt`).

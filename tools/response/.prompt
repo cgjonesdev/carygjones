@@ -1,0 +1,181 @@
+# Response protocol agent
+
+This agent owns **checking for recruiter responses** to submitted applications and **preparing reply drafts** (email + LinkedIn InMail). It does **not** run job discovery or initial applications — use **Google protocol** (`tools/gmail/.prompt`) or **LinkedIn protocol** (`tools/linkedin/.prompt`) for intake.
+
+**Trigger phrases:** `run response protocol`, `response protocol`, `check for responses`, `recruiter responses`
+
+Account: `cgjonesdev@gmail.com` · LinkedIn: https://www.linkedin.com/in/cary-g-jones/
+
+---
+
+## Run response protocol (checklist)
+
+When the user says **run response protocol**, execute all phases below and produce a summary report. Never auto-send email or LinkedIn messages without explicit user approval.
+
+### Phase 1 — Submitted applications
+
+1. Load pipeline from `applications/*/meta.json` where `status` is:
+   - `applied` (primary)
+   - `interview` (active threads)
+2. Build a watch list per slug: `company`, `role`, `source_email`, `gmail_sent_message_id`, `linkedin_thread_id`, `apply_url`, `notes`.
+3. Skip `ready`, `skipped`, `rejected`, `offer` unless user asks to include them.
+
+### Phase 2 — Gmail responses
+
+4. **Sync inbox** (same as Google protocol intake):
+   ```bash
+   cd tools/gmail/cloud && source config.env 2>/dev/null && \
+     gcloud alpha run jobs execute "$JOB_NAME" --region="$GCP_REGION" --wait 2>/dev/null || true
+   cd tools/gmail && python sync_gcs_inbox.py 2>/dev/null || true
+   python scan_recruiter_mail.py --save
+   ```
+
+5. **Scan for replies** — Gmail query (adjust window as needed):
+   ```
+   newer_than:14d (
+     in:inbox OR in:updates
+   ) (
+     subject:(re: OR interview OR schedule OR "next step" OR "phone screen" OR "follow up" OR "following up") OR
+     from:(recruit OR talent OR hiring OR careers OR greenhouse OR lever OR ashby OR linkedin OR inmail)
+   )
+   ```
+   Run via scanner or Gmail API; save new JSON to `inbox/recruiter/`.
+
+6. **Match to applications:**
+   - **Thread match:** `thread_id` equals `meta.source_email.thread_id` or inbound JSON `thread_id`
+   - **Sent match:** inbound is a reply to `gmail_sent_message_id`
+   - **Subject/company match:** company name or role in subject/body vs `meta.company` / `meta.role`
+   - **LinkedIn email bridge:** sender `inmail-hit-reply@linkedin.com` or `messages-noreply@linkedin.com` → extract person/company from body, match slug
+
+7. For each match, read full thread/body. Classify:
+   | Type | Action |
+   |------|--------|
+   | Interview invite / scheduling | Draft confirm + availability; set `status: interview` |
+   | Rejection | Brief thank-you; set `status: rejected` |
+   | Info request (comp, location, clearance) | Draft factual answer from resume/meta |
+   | Info request (SSN, DOB, sensitive) | **Flag for Cary** — do not auto-include |
+   | Still interested / follow-up | Positive confirmation draft |
+   | Generic / unclear | Summarize + ask Cary how to respond |
+
+### Phase 3 — LinkedIn InMail (MCP)
+
+8. **Linked API MCP** (`user-linkedapi`):
+   - If inbox not monitored: `sync_inbox` once (poll `get_workflow_result`)
+   - `get_inbox` — recent messages, newest first
+   - For known threads: `get_conversation` with `linkedin_thread_id` from meta when set
+
+9. **Match to applications** by recruiter name, company, role keywords, or job URL in message body.
+
+10. Classify same as Phase 2. Draft to `applications/{slug}/reply_linkedin.txt` (or `inbox/recruiter/{file}.reply.txt` if no slug yet).
+
+### Phase 4 — Prepare replies
+
+11. For each response needing a reply:
+    - **Email:** write `applications/{slug}/reply_email.txt` with `Subject: Re: …` and a short, direct body (not the initial application pitch — answer what they asked).
+    - **LinkedIn:** write `applications/{slug}/reply_linkedin.txt` with message text only.
+    - Log inbound summary in `meta.json` `notes` (date, type, one-line summary).
+
+12. **Create Gmail drafts** (do not send):
+    ```bash
+    cd tools/gmail
+    python draft_recruiter_reply.py {slug} --regenerate
+    # or batch:
+    python draft_all_recruiter_replies.py --status applied --status interview --verbose
+    ```
+    Extend `--status` to include `applied` and `interview` when drafting follow-ups.
+
+13. **LinkedIn drafts:** present `reply_linkedin.txt` to user for approval. Send only via MCP `send_message` with `threadId` after explicit **yes** / **send it**.
+
+14. **Never** use `--send` on Gmail unless user explicitly asks.
+
+### Phase 5 — Report
+
+15. Summary for user:
+
+```
+Response protocol — YYYY-MM-DD
+
+WATCHING: N applied (+ M interview)
+
+NEW RESPONSES
+  {slug} ({company}) — {type} — via {email|linkedin}
+    Inbound: one-line summary
+    Draft: applications/{slug}/reply_email.txt (Gmail draft created) | reply_linkedin.txt (awaiting approval)
+
+NO NEW MAIL
+  {slug} — applied {date}, last checked OK
+
+STATUS UPDATES
+  {slug} → interview | rejected
+
+PENDING YOU
+  Review Gmail drafts; approve/send LinkedIn replies
+  {slug} — sensitive info requested (SSN/DOB) — reply manually
+```
+
+16. Update `meta.json`: `status`, `updated`, `notes` — never invent interview dates or commitments Cary did not approve.
+
+---
+
+## Architecture
+
+```
+applications/*/meta.json (applied|interview)
+         │
+    ┌────┴────┐
+    ▼         ▼
+ Gmail      LinkedIn MCP
+ threads    get_inbox / get_conversation
+    │         │
+    └────┬────┘
+         ▼
+   Classify response
+         │
+    ┌────┴────────────────┐
+    ▼                       ▼
+reply_email.txt      reply_linkedin.txt
+    │                       │
+draft_recruiter_reply   send_message (approval)
+```
+
+---
+
+## `meta.json` fields (this agent)
+
+Reads/writes in addition to New JDs schema:
+
+```json
+{
+  "status": "applied | interview | rejected",
+  "gmail_sent_message_id": "...",
+  "gmail_draft_id": "...",
+  "linkedin_thread_id": "...",
+  "source_email": { "message_id", "thread_id", "subject", "sender" }
+}
+```
+
+May set `status: interview` on confirmed interview invite; `status: rejected` on clear rejection.
+
+---
+
+## Safety & approval gates
+
+| Action | Rule |
+|--------|------|
+| Gmail `--send` | Only if user explicitly asks |
+| LinkedIn `send_message` | User must approve text |
+| SSN / DOB / clearance details | Flag only — Cary replies manually |
+| Status → `offer` | User confirms only |
+
+---
+
+## Boundaries
+
+| Agent | Owns |
+|-------|------|
+| **Response protocol** (this) | Inbound triage after apply, follow-up drafts, status → interview/rejected |
+| **Google protocol** | Gmail scan/sync, initial recruiter drafts for new leads |
+| **LinkedIn protocol** | Job search, Easy Apply, initial InMail outreach |
+| **New JDs** (root `.prompt`) | Tailoring, scoring, interview prep content |
+
+When user pastes a recruiter reply: classify → match slug → draft follow-up → present for approval.

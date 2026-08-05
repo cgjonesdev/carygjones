@@ -1,14 +1,16 @@
 ---
-description: Gmail scan, Cloud Run, inbox JSON, recruiter reply drafts — not new JD tailoring
+description: Gmail scan, Cloud Run, inbox JSON, recruiter reply drafts — run Google protocol
 globs: tools/gmail/**,inbox/**,inbox/recruiter/**
 alwaysApply: false
 ---
 
 # GCloud email parser
 
-Read and follow `tools/gmail/.prompt` for this agent's full scope.
+Read and follow `tools/gmail/.prompt` when the user says **run Google protocol**, **Google protocol**, **run google**, **GCloud protocol**, or asks for Gmail scan / Cloud Run / recruiter drafts.
 
 - **In scope:** `tools/gmail/` (scan, sync, draft scripts, Cloud Run deploy), `inbox/recruiter/`, Gmail OAuth, Cloud Scheduler, batch drafts, `source_email` / `gmail_draft_id` in `meta.json`.
-- **Out of scope:** Tailoring new applications from a JD — use repo root `.prompt` (New JDs agent). You may update `meta.json` status/recipient fields and call `render_application.sh` only if PDFs are missing before drafting.
+- **Out of scope:** Tailoring rules and HTML content — use repo root `.prompt` (New JDs agent). LinkedIn search/Easy Apply — use `tools/linkedin/.prompt`.
 
-Default draft command: `python draft_all_recruiter_replies.py` (draft only, never `--send` unless user explicitly asks).
+**Never** auto-send Gmail (`--send`) without explicit user approval.
+
+Default trigger: full 5-phase checklist in `tools/gmail/.prompt` ending with a summary report.
