@@ -1,0 +1,23 @@
+Subject: Re: Senior Backend Engineer (Python) — Oura
+
+Hi Oura team,
+
+Thank you for reaching out about the Senior Backend Engineer (Python) opportunity with Oura. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Python backend at scale: 15+ years architecting and operating production Python services (FastAPI, Django) on AWS — highly available, well-tested, and maintainable.
+• Own design to production: I deliver solutions end-to-end including monitoring, documentation, and on-call — pipelines processing 2.5M+ daily transactions at 99.95% accuracy and enterprise backends at 99.99% uptime.
+• Health, privacy & regulation: Built HIPAA-compliant APIs serving 500k+ profiles; five years in regulated medical device verification at Hospira — I understand auditability and privacy standards.
+• Pragmatic architecture: I reduce ambiguous problems into clear solutions, automate busywork, and balance short-term delivery with long-term tech debt consciously.
+
+I'm based in Temple City (Los Angeles area), available for United States (Remote — US-Pacific preferred), and the $162k–$203k (Region 1 CA estimate) range aligns with my expectations. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

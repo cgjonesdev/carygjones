@@ -1,0 +1,44 @@
+Source: https://www.linkedin.com/jobs/view/4320074598/
+Company: Oura
+Role: Senior Backend Engineer (Python)
+Location: United States (Remote — US-Pacific preferred; offices in SF, San Diego, LA)
+Salary: Region 1 $162,000–$203,000 | Region 2 $150,000–$187,000 | Region 3 $139,000–$174,000
+Posted: ~12h ago | External apply (Greenhouse)
+
+---
+
+Our mission at Oura is to empower every person to own their inner potential. Our award-winning products help our global community gain a deeper knowledge of their readiness, activity, and sleep quality by using their Oura Ring and its connected app.
+
+This is a remote US role with a preference for candidates based in the US-Pacific timezone. We have offices in San Francisco and San Diego for those who prefer hybrid or office settings. We also have employee hubs in New York City, Boston, Los Angeles, Seattle, and more.
+
+We are seeking a highly motivated Senior Backend Engineer to join one of our growing teams. There are several roles available covering different feature areas, from enabling new hardware capabilities and interaction modes to building multimodal data labeling and model training pipelines to drive personalized guidance.
+
+What You Will Do:
+- Own high quality solutions from design to production, including testing, monitoring, and documentation
+- Proactively tackle ambiguous problems, reducing complexity into clear, actionable solutions
+- Ensure all solutions meet the latest security, privacy, and regulatory standards
+- Drive architectural improvements to scale the platform, evolve infrastructure, and support new product capabilities
+- Collaborate effectively in a globally distributed, diverse, and cross-functional team
+
+Requirements:
+- Minimum 5+ years of practical backend development work experience with Python
+- Architected, built, and deployed scalable, performant, highly available web services in production on AWS or similar
+- Write highly maintainable, extensible, well-tested, easy-to-understand code
+- Affinity for automating busywork and fixing problems at the root
+- Pragmatic entrepreneurial attitude; understand tradeoffs between short-term goals and long-term tech debt
+- Solid computer science fundamentals and design patterns
+
+Nice To Haves:
+- Python web server frameworks such as FastAPI
+- Experience working within a regulated environment
+- PCI DSS, data labeling/curation for multimodal datasets, E2E ML training pipelines
+- Experience supporting security and regulatory audits
+- Deploying infrastructure to different environments
+- Efficient, scalable database schemas and query optimization
+- Working asynchronously across time zones
+
+Benefits: competitive salary/equity, health/dental/vision, Oura Ring, 20 PTO + 13 holidays + 8 wellness days, parental leave.
+
+Not considering candidates in: AK, DE, IA, MS, MO, NE, SD, VT, WV, WI
+
+Apply: https://job-boards.greenhouse.io/oura/jobs/4053067009?gh_src=lbbc4gkk9us

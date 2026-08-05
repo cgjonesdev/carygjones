@@ -1,0 +1,13 @@
+Hi — I'm interested in the Senior Full Stack Engineer (Back End Lean) role via Ranger (LinkedIn job 4448338023).
+
+Quick fit summary:
+• 15+ years backend/cloud — AWS (ECS, Lambda, messaging), event-driven APIs, distributed systems
+• Healthcare: HIPAA-compliant APIs (500k+ profiles), 5 years regulated med-device at Hospira
+• Production owner: 99.99% uptime, 2.5M+ daily transaction pipelines, architecture & on-call
+• Remote in Southern CA
+
+Before I proceed — could you share the end client name, comp range, and whether this is direct hire or contract?
+
+— Cary Jones
+(626) 272-2567 | cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/

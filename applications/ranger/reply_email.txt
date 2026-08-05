@@ -1,0 +1,23 @@
+Subject: Re: Senior Software Engineer at WME | William Morris Endeavor
+
+Hi Ranger Technical Resources team,
+
+Thank you for reaching out about the Senior Full Stack Engineer (Back End Lean) opportunity with Ranger Technical Resources. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Healthcare platforms: Architected HIPAA-compliant Python REST APIs serving 500k+ user profiles at Alan Health; five years in regulated medical device verification at Hospira.
+• AWS cloud-native & event-driven: Built pipelines on ECS/Fargate and Lambda-style async processing handling 2.5M+ daily transactions; experience with Pub/Sub messaging, observability, and production troubleshooting.
+• System design & APIs: 15+ years owning backend services end-to-end — architecture reviews, integration layers, scalability tradeoffs, and mentoring engineers on production rigor.
+• Distributed systems: Maintained 99.99% uptime on enterprise AWS backends; debugged cross-service incidents with durable root-cause fixes.
+
+I'm based in Temple City (Los Angeles area), available for Orange County, CA (Remote). I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

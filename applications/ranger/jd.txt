@@ -1,0 +1,44 @@
+Source: https://www.linkedin.com/jobs/view/4448338023/
+Company: Ranger Technical Resources (staffing)
+Client: Healthcare AI partner (undisclosed)
+Role: Senior Full Stack Engineer (Back End Lean)
+Location: Orange County, CA (Remote)
+Posted: ~1 day ago | 100 applicants | LinkedIn Easy Apply
+
+---
+
+Position Summary:
+
+Our partner is building AI-enabled healthcare experiences that help patients access care more efficiently while supporting critical patient engagement initiatives, including Voice AI platforms and modern communication experiences. As these systems continue to evolve, they are adding a Senior Full Stack Engineer with deep backend engineering, cloud architecture, and distributed systems experience.
+
+This is not an AI-first engineering role. The team is looking for a strong software engineer who understands how complex systems behave in production, can design scalable and reliable architectures, and can build software that remains maintainable long after deployment. AI is simply one of the business problems being solved.
+
+The environment includes cloud-native services, APIs, event-driven architectures, distributed systems, and AI-powered integrations. The strongest candidates enjoy discussing system design, architectural tradeoffs, reliability, scalability, and production challenges just as much as they enjoy building new capabilities.
+
+Experience and Education:
+- BS in Computer Science, Information Technology, Arts or equivalent experience/field
+- Background building backend-focused applications using Node.js and TypeScript
+- History working with distributed systems and cloud-native architectures
+- Exposure to event-driven systems, messaging platforms, or microservices environments
+- Experience developing and supporting production-scale APIs and backend services
+- Background working within AWS-based application ecosystems
+
+Skills and Strengths:
+Node.js, Distributed Systems, System Design, Backend Architecture, TypeScript, API Development, AWS, Scalability, Troubleshooting, Event-Driven Architecture, Microservices, Software Engineering Fundamentals, Cloud-Native Architecture, SQS, SNS, DynamoDB, AWS Lambda, AI Integrations, NestJS, OpenSearch
+
+Primary Job Responsibilities:
+- Design and develop scalable backend services that support AI-enabled healthcare applications
+- Build and maintain APIs, integrations, and service-to-service communication layers
+- Contribute to architecture decisions that improve scalability, reliability, and maintainability
+- Develop cloud-native solutions within AWS environments
+- Support Voice AI initiatives and related patient engagement platforms
+- Design and implement event-driven workflows and asynchronous processing patterns
+- Troubleshoot production issues across distributed systems and cloud services
+- Evaluate technical tradeoffs and recommend practical engineering solutions
+- Participate in system design discussions and architecture reviews
+- Build integrations between internal applications, cloud services, and AI-powered platforms
+- Improve observability, reliability, and operational performance across existing systems
+- Collaborate with engineering, product, and business stakeholders to deliver technical solutions
+- Mentor engineers through best practices, architectural thinking, and engineering rigor
+
+Apply: https://www.linkedin.com/jobs/view/4448338023/apply/ (Easy Apply)

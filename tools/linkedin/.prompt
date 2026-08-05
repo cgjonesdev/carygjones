@@ -154,8 +154,14 @@ Linked API cannot submit Easy Apply. Use `cursor-ide-browser`:
 1. `browser_navigate` → job URL
 2. `browser_lock` → interact → `browser_unlock` when done
 3. User must be signed into LinkedIn (password/2FA is manual)
-4. Upload PDF from `applications/{slug}/resume.pdf`
-5. Confirm with user before final Submit
+4. **Always upload the tailored resume for this application** — do NOT reuse a previously selected LinkedIn saved resume named `resume.pdf` from another application:
+   - On the Resume step, click **Upload resume** (not just pick from saved list)
+   - Use `applications/{slug}/resume.pdf` for that specific `{slug}`
+   - Verify filename/date in the modal matches today's render before continuing
+5. **Screening questions (numeric fields):** use `browser_click` on the field, then `browser_type` with the exact digits (e.g. `4`, `12`, `8`). Do NOT use `browser_fill` on LinkedIn Easy Apply number inputs — it can fail silently and submit `undefined`.
+6. Confirm with user before final Submit unless they explicitly say **submit it**
+
+**Default:** If browser login/upload/typing is unreliable, tell Cary to Easy Apply manually with `applications/{slug}/resume.pdf` rather than half-submitting a broken application.
 
 After user confirms applied: set `meta.json` `status: applied`, note in `notes`.
 

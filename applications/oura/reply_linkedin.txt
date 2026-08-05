@@ -1,0 +1,13 @@
+Hi — I'm applying for the Senior Backend Engineer (Python) role at Oura.
+
+Why I'm a strong fit:
+• 15+ years Python backend on AWS — FastAPI/Django, scalable production services, pytest, design to on-call
+• Health domain: HIPAA APIs (500k+ profiles), 5 years regulated med-device at Hospira
+• Data pipelines at 2.5M+ daily transactions / 99.95% accuracy; 99.99% uptime ownership
+• US-Pacific based (Temple City, CA), async remote collaborator
+
+Resume and cover letter attached. Happy to discuss which squad/feature area is the best match.
+
+— Cary Jones
+(626) 272-2567 | cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
