@@ -1,0 +1,16 @@
+---
+description: LinkedIn MCP job search, Easy Apply, InMail — run LinkedIn protocol
+globs: tools/linkedin/**,applications/*/meta.json
+alwaysApply: false
+---
+
+# LinkedIn protocol
+
+Read and follow `tools/linkedin/.prompt` when the user says **run LinkedIn protocol**, **LinkedIn protocol**, or asks for LinkedIn job search / Easy Apply / InMail outreach.
+
+- **In scope:** Linked API MCP (`user-linkedapi`) — `search_jobs`, `fetch_job`, `send_message`, `get_workflow_result`; browser MCP for Easy Apply; Gmail scan for LinkedIn alerts; `meta.json` LinkedIn fields; `reply_linkedin.txt`; status → `applied`.
+- **Out of scope:** Tailoring rules and HTML content — use repo root `.prompt` (New JDs agent). Email drafts with attachments — use `tools/gmail/.prompt`.
+
+**Never** auto-submit Easy Apply or auto-send LinkedIn messages without explicit user approval.
+
+Default trigger: full 5-phase checklist in `tools/linkedin/.prompt` ending with a summary report.

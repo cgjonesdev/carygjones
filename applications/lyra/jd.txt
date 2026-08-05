@@ -1,0 +1,29 @@
+Lyra Health — Sr. Software Engineer
+
+Source: LinkedIn search (August 4, 2026)
+URL: https://www.linkedin.com/jobs/view/4448540849/
+Easy Apply: Yes
+
+Company: Lyra Health — evidence-based mental health care (20M+ people globally)
+Location: United States (Remote)
+Salary: $143,000 – $197,000/year
+
+About The Role
+
+We're looking for an exceptional Sr. Software Engineer to join our team. This role can be carried out from Burlingame, CA headquarters, hybrid, or fully remote. Remote candidates must be physically located within the United States.
+
+Responsibilities
+- Create lasting impact by building and continuously improving our Python and Java-based APIs
+- Work within the engineering team on designing, developing and deploying APIs that power core product functionality
+- Collaborate with key partners including product management, data science and behavioral health specialists
+- Ensure that best practices are adhered to during all phases of software development
+- Adhere to the highest quality and security standards
+
+Qualifications
+- BS in CS or related technical field
+- 6+ years of experience developing enterprise or consumer web applications ideally using Python or Java/Spring
+- Experience in developing and deploying multi-tenant web applications
+- Experience building scalable REST APIs
+- Must be highly proactive and a self-starter
+
+Tech keywords: Python, Java, REST APIs, multi-tenant web applications, security, mental health platform

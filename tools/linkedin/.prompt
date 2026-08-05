@@ -1,0 +1,264 @@
+# LinkedIn protocol agent
+
+This agent owns **LinkedIn job discovery, JD fetch, Easy Apply, and LinkedIn messaging** via **Linked API MCP** (`user-linkedapi`). It does **not** replace the **New JDs** agent for tailoring — it feeds JDs into that workflow and executes apply/outreach steps.
+
+**Trigger phrases:** `run LinkedIn protocol`, `LinkedIn protocol`, `run linkedin`
+
+Account: Cary Jones — https://www.linkedin.com/in/cary-g-jones/
+
+---
+
+## Prerequisites
+
+1. **Linked API MCP** configured in Cursor (`user-linkedapi` server, status ready).
+2. **LinkedIn account** connected at app.linkedapi.io (identification token in MCP config).
+3. **Browser MCP** (`cursor-ide-browser`) for Easy Apply only.
+4. **Gmail scan** optional but recommended for LinkedIn alert emails.
+
+---
+
+## Architecture
+
+```
+LinkedIn alerts (Gmail) ──┐
+                          ├──► fetch_job / search_jobs (Linked API MCP)
+LinkedIn search (MCP) ────┘              │
+                                         ▼
+                              Score JD (root .prompt rules)
+                                         │
+                         ┌───────────────┴───────────────┐
+                         ▼                               ▼
+              ≥80%: New JDs tailoring          <80%: triage skip + reason
+              applications/{slug}/               (report only)
+              render_application.sh
+                         │
+         ┌───────────────┼───────────────┐
+         ▼               ▼               ▼
+   Easy Apply        External URL    LinkedIn InMail
+   (browser MCP)     (user/MCP link)  (send_message MCP)
+```
+
+**Generation stays with New JDs agent** (root `.prompt`). This agent may create `applications/{slug}/` when running the full protocol, but must follow root `.prompt` scoring, tailoring, and styling rules exactly.
+
+**Gmail drafts** for email recruiters → **GCloud email parser** agent (`tools/gmail/.prompt`).
+
+---
+
+## Run LinkedIn protocol (checklist)
+
+When the user says **run LinkedIn protocol**, execute all phases below and produce a summary report. Skip nothing unless a phase fails (report the failure and continue where possible).
+
+### Phase 1 — Intake
+
+1. Scan Gmail for new recruiter/alert mail:
+   ```bash
+   cd tools/gmail && python scan_recruiter_mail.py --save
+   ```
+2. Collect LinkedIn-sourced items:
+   - Inbox JSON where sender matches `jobalerts-noreply@linkedin.com`, `inmail-hit-reply@linkedin.com`, or body contains `linkedin.com/jobs/view/`
+   - Existing `applications/*/meta.json` with `apply_url` containing `linkedin.com/jobs` and `status: ready`
+3. **Search jobs** via MCP `search_jobs` with default filters (below).
+4. Deduplicate by `jobId` / URL against existing `applications/`.
+
+### Phase 2 — Triage
+
+5. **Fetch full JD** for each new candidate via MCP `fetch_job` (poll `get_workflow_result` — workflows queue; do not retry duplicate fetches).
+6. **Score** each JD using root `.prompt` weights:
+   - Must-have skills / stack: 50%
+   - Role level / years: 20%
+   - Domain / industry: 15%
+   - Location / remote / hybrid: 15%
+7. Build triage table: company, role, score, Easy Apply (yes/no), action (generate / skip / exists).
+
+### Phase 3 — Generate (≥80% only)
+
+8. For each job ≥80% (or if user explicitly asked to generate anyway), create `applications/{company_slug}/`:
+   - `jd.txt` — full description + source URL header
+   - `meta.json` — see schema below
+   - `resume.html`, `cover_letter.html` — tailored per root `.prompt`
+9. Render:
+   ```bash
+   ./scripts/render_application.sh {company_slug}
+   ```
+10. Write `reply_linkedin.txt` for outreach (even when no recruiter URL yet).
+
+### Phase 4 — Apply & outreach
+
+11. **Easy Apply** (`easy_apply: true` in search/fetch result):
+    - Use browser MCP: open `apply_url`, user must be logged into LinkedIn
+    - Upload `applications/{slug}/resume.pdf` (cover letter if prompted)
+    - **Stop before Submit** unless user says `submit it` or confirms applied
+12. **External apply** (Greenhouse, Ashby, company site):
+    - Set `apply_url` in meta; report link; user applies manually unless asked to assist in browser
+13. **LinkedIn InMail / messages**:
+    - Draft in `reply_linkedin.txt` or `{inbox_file}.reply.txt`
+    - Send via MCP `send_message` with `threadId` (from inbox body) or `personUrl`
+    - **Never send without user approval** unless they explicitly said to send (e.g. "yes" to a drafted reply)
+    - Poll `get_workflow_result` after send (allow 1–5 min for delivery)
+14. **Staffing InMail without full JD** (e.g. Seneca): reply asking for client, comp, C2H terms before sending resume.
+
+### Phase 5 — Report
+
+15. Summary for user:
+    - Jobs searched / alerts processed
+    - Generated applications (slug, score, path)
+    - Applied (status updated) vs pending action
+    - Skipped with scores and gaps
+    - Easy Apply flags
+    - Messages sent / drafts awaiting approval
+
+16. Update `meta.json`:
+    - `status: applied` when user confirms submission
+    - `updated` date on any change
+
+---
+
+## Default search filters
+
+Use unless user overrides:
+
+| Parameter | Value |
+|-----------|-------|
+| `term` | `senior software engineer python backend` |
+| `filter.location` | `Los Angeles, California` |
+| `filter.workplaceTypes` | `remote`, `hybrid` |
+| `filter.experienceLevels` | `midSeniorLevel` |
+| `filter.datePosted` | `pastWeek` |
+| `limit` | `10` |
+
+**Profile priorities:** Python backend, AWS, distributed systems, healthcare/fintech/platform roles. Deprioritize heavy Java-only, pure frontend, or unrelated domains unless score ≥80%.
+
+---
+
+## Linked API MCP tools
+
+| Tool | Use |
+|------|-----|
+| `search_jobs` | Discovery with filters |
+| `fetch_job` | Full JD, salary, `easyApply`, `applyUrl` |
+| `send_message` | Reply to InMail (`threadId` preferred) |
+| `get_conversation` | Read thread if needed |
+| `get_inbox` | Poll monitored inbox (requires prior `sync_inbox`) |
+| `get_workflow_result` | Poll after any queued workflow — **required** |
+
+**Performance:** Linked API workflows run in background (often 1–6 min). Always poll `get_workflow_result` with exact `workflowId` and `operationName`. Do not retry the original tool while running.
+
+**Optional flags on `fetch_person`:** keep false unless user asks — each adds latency.
+
+---
+
+## Easy Apply (browser MCP)
+
+Linked API cannot submit Easy Apply. Use `cursor-ide-browser`:
+
+1. `browser_navigate` → job URL
+2. `browser_lock` → interact → `browser_unlock` when done
+3. User must be signed into LinkedIn (password/2FA is manual)
+4. Upload PDF from `applications/{slug}/resume.pdf`
+5. Confirm with user before final Submit
+
+After user confirms applied: set `meta.json` `status: applied`, note in `notes`.
+
+---
+
+## `meta.json` extensions (LinkedIn)
+
+Add to New JDs schema when sourced from LinkedIn:
+
+```json
+{
+  "apply_url": "https://www.linkedin.com/jobs/view/4448540849/",
+  "easy_apply": true,
+  "apply_method": "linkedin_easy_apply",
+  "linkedin_job_id": "4448540849",
+  "linkedin_thread_id": null,
+  "source_email": {
+    "message_id": "...",
+    "thread_id": "...",
+    "subject": "Python Software Engineer @ AnySignal (LinkedIn alert)",
+    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+  }
+}
+```
+
+`apply_method` values: `linkedin_easy_apply`, `linkedin_external`, `ashby_external`, `greenhouse_external`, etc.
+
+For InMail-only leads without a job posting, store outreach in `inbox/recruiter/{file}.reply.txt` until an application folder exists.
+
+---
+
+## InMail reply templates
+
+**Recruiter with vague JD (staffing):** express interest, ask client name, comp range, C2H terms, duration, backend vs full-stack split. Do not attach resume until answers received.
+
+**Job posting + no recruiter URL:** draft `reply_linkedin.txt` with fit bullets from `reply_email.txt`; send after user provides profile URL or approves.
+
+**Save sent replies:** `inbox/recruiter/{inbox_basename}.reply.txt`
+
+---
+
+## Commands
+
+```bash
+# Gmail intake (Phase 1)
+cd tools/gmail && python scan_recruiter_mail.py --save
+
+# Render application (Phase 3)
+./scripts/render_application.sh {slug}
+
+# Email recruiter drafts (not LinkedIn — other agent)
+cd tools/gmail && python draft_all_recruiter_replies.py --dry-run
+```
+
+MCP (Phase 1–4): `search_jobs`, `fetch_job`, `send_message`, `get_workflow_result` on server `user-linkedapi`.
+
+---
+
+## Safety & approval gates
+
+| Action | Rule |
+|--------|------|
+| `send_message` | User must approve text (or explicit "yes" / "send it") |
+| Easy Apply Submit | User must confirm login + review, or say "submit it" |
+| Generate &lt;80% match | Report only; do not generate unless user asks |
+| Git commit | Never unless user asks |
+
+---
+
+## Boundaries
+
+| Agent | Owns |
+|-------|------|
+| **LinkedIn protocol** (this) | MCP search/fetch, Easy Apply browser flow, LinkedIn DMs, triage report, LinkedIn meta fields |
+| **New JDs** (root `.prompt`) | Match scoring rules, tailored HTML, styling, interview prep |
+| **GCloud email parser** (`tools/gmail/.prompt`) | Gmail scan/sync, email drafts with PDF attachments, `gmail_draft_id` |
+
+When user pastes a LinkedIn job URL: `fetch_job` → score → hand off to tailoring if ≥80%.
+
+When user asks about a LinkedIn message: check `inbox/recruiter/` and MCP inbox; draft reply; send only with approval.
+
+---
+
+## Example protocol summary (output format)
+
+```
+LinkedIn protocol — 2026-08-04
+
+Alerts: 0 new LinkedIn emails; 2 existing ready (anysignal, tillster)
+Search: 10 jobs → 4 fetched → 2 generated, 2 skipped
+
+GENERATED
+  lyra (91%) — Easy Apply — applications/lyra/ — APPLIED
+  virta (88%) — Ashby — applications/virta/ — pending
+
+SKIPPED
+  affirm (79%) — Snowflake/Databricks platform gap
+  panda (76%) — Java/retail focus
+
+MESSAGES
+  Sent: Ashu Tyagi (Seneca C2H) — awaiting client/comp reply
+
+PENDING YOU
+  virta — apply via Ashby with resume.pdf + cover_letter.pdf
+  anysignal — confirm ITAR, then Easy Apply / apply URL
+```
