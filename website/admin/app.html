@@ -145,6 +145,54 @@
           };
         }
 
+        async function parseApiError(resp) {
+          const text = await resp.text();
+          try {
+            const data = JSON.parse(text);
+            const detail = data.detail;
+            if (typeof detail === "string") return detail;
+            if (Array.isArray(detail)) return detail.map((d) => d.msg || JSON.stringify(d)).join("; ");
+            return data.error || resp.statusText;
+          } catch {
+            return text.trim() || resp.statusText || `HTTP ${resp.status}`;
+          }
+        }
+
+        async function applicationFileExists(filename) {
+          if (!apiBase || !apiKey) return null;
+          const resp = await AdminAuth.fetchWithAuth(
+            `${apiBase}/api/applications/${encodeURIComponent(slug)}/${filename}`,
+            { method: "HEAD" }
+          );
+          return resp.ok;
+        }
+
+        async function updateDraftInfo(settings) {
+          const info = document.getElementById("draft-info");
+          if (settings?.gmail_draft_id) {
+            info.textContent = `Existing Gmail draft id: ${settings.gmail_draft_id}. Check Gmail → Drafts. Use “Force new draft” to replace.`;
+            return;
+          }
+          const email = (
+            settings?.recruiter_email ||
+            document.getElementById("recruiter-email").value ||
+            ""
+          ).trim();
+          const parts = [];
+          parts.push(email ? "Recruiter email set" : "Recruiter email required");
+          if (apiBase && apiKey) {
+            const [resumeOk, coverOk] = await Promise.all([
+              applicationFileExists("resume.pdf"),
+              applicationFileExists("cover_letter.pdf"),
+            ]);
+            parts.push(resumeOk ? "resume.pdf ready" : "resume.pdf missing in cloud");
+            parts.push(coverOk ? "cover_letter.pdf ready" : "cover_letter.pdf missing in cloud");
+          } else {
+            parts.push("Sign in on the dashboard to create drafts");
+          }
+          info.textContent = parts.join(" · ");
+        }
+
         function fillSettingsForm(settings) {
           if (!settings) return;
           document.getElementById("recruiter-email").value = settings.recruiter_email || "";
@@ -154,12 +202,7 @@
           document.getElementById("email-subject").value = settings.email_subject || "";
           document.getElementById("app-status").value = settings.status || "ready";
           document.getElementById("app-notes").value = settings.notes || "";
-          const info = document.getElementById("draft-info");
-          if (settings.gmail_draft_id) {
-            info.textContent = `Existing Gmail draft id: ${settings.gmail_draft_id}. Check Gmail → Drafts. Use “Force new draft” to replace.`;
-          } else {
-            info.textContent = "Draft needs recruiter email plus resume.pdf and cover_letter.pdf in the application folder.";
-          }
+          updateDraftInfo(settings);
         }
 
         async function saveSettings() {
@@ -178,8 +221,8 @@
                 body: JSON.stringify(readSettingsForm()),
               }
             );
+            if (!resp.ok) throw new Error(await parseApiError(resp));
             const data = await resp.json();
-            if (!resp.ok) throw new Error(data.detail || resp.statusText);
             fillSettingsForm(data.settings);
             setStatus(statusEl, "Settings saved.", "ok");
             return true;
@@ -210,8 +253,8 @@
                 }),
               }
             );
+            if (!resp.ok) throw new Error(await parseApiError(resp));
             const data = await resp.json();
-            if (!resp.ok) throw new Error(data.detail || resp.statusText);
             setStatus(
               statusEl,
               `Draft created for ${data.to_addr} — subject: ${data.subject}. Open Gmail → Drafts.`,
