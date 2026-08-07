@@ -238,6 +238,25 @@
         );
       }
 
+      if (phase.applied_sync && Array.isArray(phase.applied_sync.meta_updated) && phase.applied_sync.meta_updated.length) {
+        parts.push(`<p class="hint" style="margin-top:0.5rem">Marked applied from LinkedIn</p>`);
+        parts.push(
+          renderOutputTable(
+            phase.applied_sync.meta_updated.map((row) => ({
+              slug: row.slug,
+              company: row.company || "—",
+              score: "—",
+              reason: `job ${row.job_id || "—"} → applied`,
+            })),
+            (r) => (r.slug ? AdminAuth.buildApplicationLinks({ slug: r.slug }, r.slug) : [])
+          )
+        );
+      } else if (phase.applied_sync?.applied_list_error) {
+        parts.push(
+          `<p class="hint" style="margin-top:0.5rem">Applied-list sync: ${escapeHtml(phase.applied_sync.applied_list_error)}</p>`
+        );
+      }
+
       if (phase.exit_code !== undefined && phase.exit_code !== 0) {
         parts.push(`<p class="status-bar err">Gmail scan exit code ${phase.exit_code}</p>`);
       }
