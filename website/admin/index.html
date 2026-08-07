@@ -20,34 +20,6 @@
     </header>
 
     <main>
-      <section class="panel" id="api-settings-panel">
-        <h2>Connection</h2>
-        <p class="hint" id="api-settings-hint">
-          Cloud Run API URL is injected at deploy from GitHub repo variable
-          <code>ADMIN_API_BASE_URL</code>.
-        </p>
-        <div class="settings-grid">
-          <div id="api-base-wrap">
-            <label for="api-base">API base URL (local dev override)</label>
-            <input id="api-base" type="text" placeholder="https://job-search-admin-….run.app">
-          </div>
-          <div id="api-key-wrap">
-            <label for="api-key">Admin API key (optional, stored in this browser only)</label>
-            <input id="api-key" type="password" placeholder="X-Admin-Key if Cloud Run requires it">
-          </div>
-          <button id="save-settings" class="btn btn-primary" type="button">Save key</button>
-        </div>
-        <div id="local-sync-wrap" class="local-sync-wrap" hidden>
-          <p class="hint" style="margin-top:0.75rem;margin-bottom:0.5rem">
-            Local dev: pull <code>applications/</code> and inbox from GCS into this repo.
-          </p>
-          <div class="btn-row">
-            <button id="btn-pull-gcs" class="btn btn-primary" type="button">Pull from GCS</button>
-          </div>
-          <div id="local-sync-status" class="status-bar"></div>
-        </div>
-      </section>
-
       <section class="panel" id="actionable-panel">
         <h2>Actionable</h2>
         <p class="hint">What to do next — apply, email drafts, interviews, and protocol fixes.</p>
@@ -116,6 +88,34 @@
           <button id="btn-jd-submit" class="btn btn-primary" type="button">Score &amp; generate</button>
         </div>
         <div id="jd-status" class="status-bar"></div>
+      </section>
+
+      <section class="panel" id="api-settings-panel">
+        <h2>Connection</h2>
+        <p class="hint" id="api-settings-hint">
+          Cloud Run API URL is injected at deploy from GitHub repo variable
+          <code>ADMIN_API_BASE_URL</code>.
+        </p>
+        <div class="settings-grid">
+          <div id="api-base-wrap">
+            <label for="api-base">API base URL (local dev override)</label>
+            <input id="api-base" type="text" placeholder="https://job-search-admin-….run.app">
+          </div>
+          <div id="api-key-wrap">
+            <label for="api-key">Admin API key (optional, stored in this browser only)</label>
+            <input id="api-key" type="password" placeholder="X-Admin-Key if Cloud Run requires it">
+          </div>
+          <button id="save-settings" class="btn btn-primary" type="button">Save key</button>
+        </div>
+        <div id="local-sync-wrap" class="local-sync-wrap" hidden>
+          <p class="hint" style="margin-top:0.75rem;margin-bottom:0.5rem">
+            Local dev: pull <code>applications/</code> and inbox from GCS into this repo.
+          </p>
+          <div class="btn-row">
+            <button id="btn-pull-gcs" class="btn btn-primary" type="button">Pull from GCS</button>
+          </div>
+          <div id="local-sync-status" class="status-bar"></div>
+        </div>
       </section>
     </main>
 
