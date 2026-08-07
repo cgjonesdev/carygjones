@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 import shutil
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -65,7 +66,28 @@ def copy_app_assets(slug: str, app_dir: Path, dest_apps: Path) -> None:
             shutil.copy2(src, dest / name)
 
 
-    return 0
+def sync_applications_from_gcs(root: Path) -> None:
+    sync_script = root / "tools" / "gmail" / "sync_gcs_inbox.py"
+    if not sync_script.is_file():
+        raise FileNotFoundError(f"missing {sync_script}")
+    subprocess.run(
+        [sys.executable, str(sync_script), "--applications"],
+        cwd=str(root),
+        check=True,
+    )
+
+
+def export_protocol_run_from_gcs(admin_data: Path) -> None:
+    cloud_run = _cloud_run_path()
+    if str(cloud_run) not in sys.path:
+        sys.path.insert(0, str(cloud_run))
+    import gcs_apps
+
+    raw = gcs_apps.download_text(f"{gcs_apps.STATE_PREFIX}/latest_protocol_run.json")
+    if not raw:
+        return
+    (admin_data / "latest_protocol_run.json").write_text(raw, encoding="utf-8")
+    print(f"Wrote {admin_data / 'latest_protocol_run.json'} from GCS")
 
 
 def write_admin_config(
@@ -110,6 +132,13 @@ def main() -> int:
     args = parser.parse_args()
 
     root = repo_root()
+    if os.environ.get("SYNC_GCS_BEFORE_BUILD", "0") == "1":
+        try:
+            sync_applications_from_gcs(root)
+            print("Synced applications/ from GCS")
+        except Exception as exc:
+            print(f"GCS sync skipped: {exc}", file=sys.stderr)
+
     apps_dir = root / "applications"
     admin_data = root / "website" / "admin" / "data"
     admin_apps = root / "website" / "admin" / "apps"
@@ -162,6 +191,11 @@ def main() -> int:
     out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {out} ({len(rows)} applications)")
     print(f"Copied HTML assets to {admin_apps}/")
+
+    try:
+        export_protocol_run_from_gcs(admin_data)
+    except Exception as exc:
+        print(f"Protocol run export skipped: {exc}", file=sys.stderr)
 
     cfg_path = write_admin_config(
         api_base=args.api_base,
