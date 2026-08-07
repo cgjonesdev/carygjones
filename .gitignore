@@ -5,5 +5,10 @@ __pycache__/
 tools/gmail/credentials.json
 tools/gmail/token.json
 tools/gmail/.venv/
+scripts/.venv/
 tools/gmail/cloud/config.env
 inbox/
+website/admin/apps/
+website/admin/data/
+tools/cloud_run/cloud/config.env
+tools/cloud_run/cloud/config.env~

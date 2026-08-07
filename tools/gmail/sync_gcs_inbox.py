@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pull recruiter inbox JSON from GCS into the local repo."""
+"""Pull recruiter inbox JSON and/or applications from GCS into the local repo."""
 
 from __future__ import annotations
 
@@ -20,8 +20,41 @@ except ImportError as exc:
     raise
 
 
+def repo_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
 def repo_inbox_dir() -> Path:
-    return Path(__file__).resolve().parents[2] / "inbox" / "recruiter"
+    return repo_root() / "inbox" / "recruiter"
+
+
+def repo_applications_dir() -> Path:
+    return repo_root() / "applications"
+
+
+def download_applications_prefix(dest: Path) -> int:
+    """Download gs://{bucket}/applications/ into local applications/."""
+    from google.cloud import storage
+
+    prefix = "applications/"
+    client = storage.Client()
+    bucket = client.bucket(bucket_name())
+    dest.mkdir(parents=True, exist_ok=True)
+    count = 0
+    for blob in client.list_blobs(bucket, prefix=prefix):
+        name = blob.name
+        if name.endswith("/"):
+            continue
+        rel = name[len(prefix) :]
+        if not rel:
+            continue
+        target = dest / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if target.exists() and target.stat().st_size == blob.size:
+            continue
+        blob.download_to_filename(str(target))
+        count += 1
+    return count
 
 
 def main() -> int:
@@ -30,17 +63,48 @@ def main() -> int:
         "--dest",
         type=Path,
         default=repo_inbox_dir(),
-        help="Local directory (default: inbox/recruiter/)",
+        help="Local inbox directory (default: inbox/recruiter/)",
+    )
+    parser.add_argument(
+        "--applications",
+        action="store_true",
+        help="Also pull gs://{bucket}/applications/ → applications/",
+    )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Pull inbox and applications (same as --applications with default inbox dest)",
+    )
+    parser.add_argument(
+        "--apps-dest",
+        type=Path,
+        default=repo_applications_dir(),
+        help="Local applications directory (default: applications/)",
     )
     args = parser.parse_args()
 
     try:
-        count = download_prefix(args.dest)
+        inbox_count = download_prefix(args.dest)
     except Exception as exc:
         print(exc, file=sys.stderr)
         return 1
 
-    print(f"Downloaded/updated {count} file(s) from gs://{bucket_name()}/inbox/recruiter/ → {args.dest}")
+    print(
+        f"Downloaded/updated {inbox_count} file(s) from "
+        f"gs://{bucket_name()}/inbox/recruiter/ → {args.dest}"
+    )
+
+    if args.applications or args.all:
+        try:
+            apps_count = download_applications_prefix(args.apps_dest)
+        except Exception as exc:
+            print(exc, file=sys.stderr)
+            return 1
+        print(
+            f"Downloaded/updated {apps_count} file(s) from "
+            f"gs://{bucket_name()}/applications/ → {args.apps_dest}"
+        )
+
     return 0
 
 
