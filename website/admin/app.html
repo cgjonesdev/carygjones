@@ -61,15 +61,45 @@
           });
         }
 
-        function loadDoc(key) {
+        function escapeHtml(s) {
+          return String(s ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+
+        async function loadDoc(key) {
           const spec = files[key] || files.resume;
           setActiveTab(key);
           const frame = document.getElementById("doc-frame");
-          if (apiBase) {
-            frame.src = `${apiBase}/api/applications/${encodeURIComponent(slug)}/${spec.file}`;
-          } else {
-            frame.src = `apps/${encodeURIComponent(slug)}/${spec.file}`;
+          frame.removeAttribute("src");
+          frame.srcdoc = "<p style='font-family:sans-serif;padding:1rem;color:#666'>Loading…</p>";
+
+          if (apiBase && apiKey) {
+            const url = `${apiBase}/api/applications/${encodeURIComponent(slug)}/${spec.file}`;
+            try {
+              const resp = await AdminAuth.fetchWithAuth(url);
+              if (!resp.ok) {
+                const detail = resp.status === 401 ? "Invalid or missing admin key — sign in again from the dashboard." : `HTTP ${resp.status}`;
+                frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">${escapeHtml(detail)}</p>`;
+                return;
+              }
+              const text = await resp.text();
+              if (spec.file.endsWith(".html")) {
+                frame.srcdoc = text;
+              } else {
+                frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(text)}</pre>`;
+              }
+              return;
+            } catch (err) {
+              frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">${escapeHtml(err.message)}</p>`;
+              return;
+            }
           }
+
+          frame.srcdoc = "";
+          frame.src = `apps/${encodeURIComponent(slug)}/${spec.file}`;
         }
 
         Object.entries(files).forEach(([key, v]) => {
@@ -82,11 +112,13 @@
 
         async function loadMeta() {
           let meta = null;
-          if (apiBase) {
-            const headers = apiKey ? { "X-Admin-Key": apiKey } : {};
-            const resp = await fetch(`${apiBase}/api/applications/${encodeURIComponent(slug)}`, { headers });
+          if (apiBase && apiKey) {
+            const resp = await AdminAuth.fetchWithAuth(
+              `${apiBase}/api/applications/${encodeURIComponent(slug)}`
+            );
             if (resp.ok) meta = await resp.json();
-          } else {
+          }
+          if (!meta) {
             const resp = await fetch("data/applications.json");
             if (resp.ok) {
               const data = await resp.json();
