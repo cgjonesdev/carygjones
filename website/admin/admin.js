@@ -111,10 +111,11 @@
   }
 
   function linkHtml(links) {
-    if (!links || !links.length) return "—";
-    return links
-      .map((l) => `<a href="${escapeAttr(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`)
-      .join("");
+    return AdminAuth.linksHtml(links);
+  }
+
+  function appLinks(row) {
+    return AdminAuth.buildApplicationLinks(row, row.slug);
   }
 
   function escapeHtml(s) {
@@ -148,20 +149,14 @@
           <td>${r.match_score ?? "—"}</td>
           <td>${badge(r.status)}</td>
           <td>${escapeHtml(r.updated || "—")}</td>
-          <td class="links-cell">${linkHtml(r.links)}</td>
+          <td class="links-cell">${linkHtml(appLinks(r))}</td>
         </tr>`
       )
       .join("");
   }
 
   function phaseLinks(row) {
-    const links = [];
-    if (row.apply_url) links.push({ label: "Apply", url: row.apply_url });
-    if (row.gmail_url) links.push({ label: "Gmail", url: row.gmail_url });
-    if (row.slug) {
-      links.push({ label: "Resume", url: `app.html?slug=${row.slug}&doc=resume` });
-    }
-    return links;
+    return AdminAuth.buildApplicationLinks(row, row.slug);
   }
 
   function renderProtocolOutputs(container, run) {
@@ -220,7 +215,20 @@
       if (phase.jobs && phase.jobs.length) {
         parts.push(`<p class="hint">${phase.jobs_found || phase.jobs.length} LinkedIn jobs</p>`);
         parts.push(
-          `<pre style="overflow:auto;font-size:0.8rem;background:var(--surface-2);padding:0.75rem;border-radius:0.5rem;">${escapeHtml(JSON.stringify(phase.jobs, null, 2))}</pre>`
+          renderOutputTable(
+            phase.jobs.map((j) => ({
+              slug: j.jobId || "—",
+              company: j.company || j.companyName || "—",
+              score: "—",
+              reason: [j.title, j.location].filter(Boolean).join(" · "),
+              apply_url: j.apply_url || j.jobUrl,
+            })),
+            (r) => {
+              const links = [];
+              if (r.apply_url) links.push({ label: "LinkedIn job", url: r.apply_url });
+              return links;
+            }
+          )
         );
       }
 
