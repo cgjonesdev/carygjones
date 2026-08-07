@@ -19,6 +19,63 @@
     </header>
 
     <main>
+      <section class="panel" id="settings-panel">
+        <h2>Recruiter &amp; Gmail</h2>
+        <p class="hint">
+          Set who to reply to and which Gmail thread to use. Saved to the cloud application — no JSON editing.
+          For roles with no apply link, fill recruiter email and create a Gmail draft here.
+        </p>
+        <div class="grid-2">
+          <div>
+            <label for="recruiter-email">Recruiter email</label>
+            <input id="recruiter-email" type="text" placeholder="recruiter@company.com">
+          </div>
+          <div>
+            <label for="recruiter-name">Recruiter name (optional)</label>
+            <input id="recruiter-name" type="text" placeholder="Rishabh">
+          </div>
+          <div>
+            <label for="apply-url">Apply URL (optional)</label>
+            <input id="apply-url" type="text" placeholder="https://jobs.…">
+          </div>
+          <div>
+            <label for="app-status">Status</label>
+            <select id="app-status">
+              <option value="ready">ready</option>
+              <option value="applied">applied</option>
+              <option value="interview">interview</option>
+              <option value="rejected">rejected</option>
+              <option value="offer">offer</option>
+              <option value="skipped">skipped</option>
+            </select>
+          </div>
+          <div>
+            <label for="gmail-message-id">Gmail message ID or link</label>
+            <input id="gmail-message-id" type="text" placeholder="Paste Gmail URL or message id for threading">
+          </div>
+          <div>
+            <label for="email-subject">Original email subject (optional)</label>
+            <input id="email-subject" type="text" placeholder="Re: Sr Python Developer…">
+          </div>
+        </div>
+        <label for="app-notes" style="margin-top:0.75rem">Notes (optional)</label>
+        <textarea id="app-notes" style="min-height:80px" placeholder="Internal notes…"></textarea>
+        <div class="btn-row">
+          <button id="btn-save-settings" class="btn btn-primary" type="button">Save settings</button>
+          <button id="btn-draft" class="btn" type="button">Create Gmail draft</button>
+          <label style="display:flex;align-items:center;gap:0.35rem;margin:0">
+            <input id="draft-regenerate" type="checkbox">
+            Regenerate reply text
+          </label>
+          <label style="display:flex;align-items:center;gap:0.35rem;margin:0">
+            <input id="draft-force" type="checkbox">
+            Force new draft
+          </label>
+        </div>
+        <div id="settings-status" class="status-bar"></div>
+        <p class="hint" id="draft-info" style="margin-top:0.75rem"></p>
+      </section>
+
       <section class="panel">
         <div id="meta-links" class="links-cell" style="margin-bottom:0.75rem"></div>
         <div class="doc-tabs">
@@ -61,6 +118,144 @@
           });
         }
 
+        function setStatus(el, message, kind) {
+          el.textContent = message || "";
+          el.className = "status-bar" + (kind ? ` ${kind}` : "");
+        }
+
+        function readSettingsForm() {
+          return {
+            recruiter_email: document.getElementById("recruiter-email").value.trim(),
+            recruiter_name: document.getElementById("recruiter-name").value.trim(),
+            apply_url: document.getElementById("apply-url").value.trim(),
+            gmail_message_id: document.getElementById("gmail-message-id").value.trim(),
+            email_subject: document.getElementById("email-subject").value.trim(),
+            status: document.getElementById("app-status").value,
+            notes: document.getElementById("app-notes").value.trim(),
+          };
+        }
+
+        function fillSettingsForm(settings) {
+          if (!settings) return;
+          document.getElementById("recruiter-email").value = settings.recruiter_email || "";
+          document.getElementById("recruiter-name").value = settings.recruiter_name || "";
+          document.getElementById("apply-url").value = settings.apply_url || "";
+          document.getElementById("gmail-message-id").value = settings.gmail_message_id || "";
+          document.getElementById("email-subject").value = settings.email_subject || "";
+          document.getElementById("app-status").value = settings.status || "ready";
+          document.getElementById("app-notes").value = settings.notes || "";
+          const info = document.getElementById("draft-info");
+          if (settings.gmail_draft_id) {
+            info.textContent = `Existing Gmail draft id: ${settings.gmail_draft_id}. Check Gmail → Drafts. Use “Force new draft” to replace.`;
+          } else {
+            info.textContent = "Draft needs recruiter email plus resume.pdf and cover_letter.pdf in the application folder.";
+          }
+        }
+
+        async function saveSettings() {
+          const statusEl = document.getElementById("settings-status");
+          if (!apiBase || !apiKey) {
+            setStatus(statusEl, "Saving requires the Cloud Run API (sign in on the dashboard).", "err");
+            return false;
+          }
+          setStatus(statusEl, "Saving…", "running");
+          try {
+            const resp = await AdminAuth.fetchWithAuth(
+              `${apiBase}/api/applications/${encodeURIComponent(slug)}`,
+              {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(readSettingsForm()),
+              }
+            );
+            const data = await resp.json();
+            if (!resp.ok) throw new Error(data.detail || resp.statusText);
+            fillSettingsForm(data.settings);
+            setStatus(statusEl, "Settings saved.", "ok");
+            return true;
+          } catch (err) {
+            setStatus(statusEl, err.message, "err");
+            return false;
+          }
+        }
+
+        async function createDraft() {
+          const statusEl = document.getElementById("settings-status");
+          if (!apiBase || !apiKey) {
+            setStatus(statusEl, "Draft creation requires the Cloud Run API.", "err");
+            return;
+          }
+          if (!(await saveSettings())) return;
+          setStatus(statusEl, "Creating Gmail draft…", "running");
+          try {
+            const resp = await AdminAuth.fetchWithAuth(
+              `${apiBase}/api/applications/${encodeURIComponent(slug)}/gmail-draft`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  regenerate: document.getElementById("draft-regenerate").checked,
+                  force: document.getElementById("draft-force").checked,
+                  dry_run: false,
+                }),
+              }
+            );
+            const data = await resp.json();
+            if (!resp.ok) throw new Error(data.detail || resp.statusText);
+            setStatus(
+              statusEl,
+              `Draft created for ${data.to_addr} — subject: ${data.subject}. Open Gmail → Drafts.`,
+              "ok"
+            );
+            const metaResp = await AdminAuth.fetchWithAuth(
+              `${apiBase}/api/applications/${encodeURIComponent(slug)}`
+            );
+            if (metaResp.ok) {
+              const meta = await metaResp.json();
+              fillSettingsForm(meta.settings);
+              if (meta.links && meta.links.length) {
+                document.getElementById("meta-links").innerHTML = AdminAuth.linksHtml(
+                  AdminAuth.buildApplicationLinks(meta, slug)
+                );
+              }
+            }
+          } catch (err) {
+            setStatus(statusEl, err.message, "err");
+          }
+        }
+
+        function cleanJdText(raw) {
+          let text = String(raw ?? "");
+          text = text.replace(/\u00a0/g, " ").replace(/\xa0/g, " ");
+          text = text.replace(/(?<=[A-Za-z])a0(?=[A-Za-z])/g, " ");
+          text = text.replace(/a0/g, " ");
+          const lines = text.split(/\r?\n/);
+          const cssLine =
+            /^\s*(@import\b|@media\b|@keyframes\b|[\w.#][\w\s\-.,#'"():/]*\{[^}]*\})/i;
+          const jdStart =
+            /^(hello\b|hi\b|dear\b|subject:|position:|job description|about the role|responsibilities|requirements|qualifications|location:|duration:|source:)/i;
+          const kept = [];
+          let started = false;
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) {
+              if (started && kept.length && kept[kept.length - 1] !== "") kept.push("");
+              continue;
+            }
+            if (trimmed.toLowerCase().startsWith("your email title")) continue;
+            if (!started) {
+              if (cssLine.test(trimmed)) continue;
+              if (jdStart.test(trimmed) || trimmed.length <= 120) started = true;
+              else if (trimmed.includes("{") && trimmed.includes(";")) continue;
+              else started = true;
+            }
+            if (cssLine.test(trimmed)) continue;
+            if (/^to unsubscribe from future emails/i.test(trimmed)) break;
+            kept.push(trimmed);
+          }
+          return kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+        }
+
         function escapeHtml(s) {
           return String(s ?? "")
             .replace(/&/g, "&amp;")
@@ -89,7 +284,8 @@
               if (spec.file.endsWith(".html")) {
                 frame.srcdoc = text;
               } else {
-                frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(text)}</pre>`;
+                const cleaned = spec.file.endsWith(".txt") ? cleanJdText(text) : text;
+                frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(cleaned)}</pre>`;
               }
               return;
             } catch (err) {
@@ -99,6 +295,18 @@
           }
 
           frame.srcdoc = "";
+          if (spec.file.endsWith(".txt")) {
+            try {
+              const resp = await fetch(`apps/${encodeURIComponent(slug)}/${spec.file}`);
+              if (resp.ok) {
+                const text = cleanJdText(await resp.text());
+                frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(text)}</pre>`;
+                return;
+              }
+            } catch (_) {
+              /* fall through to iframe src */
+            }
+          }
           frame.src = `apps/${encodeURIComponent(slug)}/${spec.file}`;
         }
 
@@ -136,13 +344,13 @@
               .filter(Boolean)
               .join(" · ");
           const linksEl = document.getElementById("meta-links");
-          if (meta.links && meta.links.length) {
-            linksEl.innerHTML = meta.links
-              .map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`)
-              .join("");
-          }
+          linksEl.innerHTML = AdminAuth.linksHtml(AdminAuth.buildApplicationLinks(meta, slug));
+          fillSettingsForm(meta.settings);
           loadDoc(doc in files ? doc : "resume");
         }
+
+        document.getElementById("btn-save-settings").addEventListener("click", saveSettings);
+        document.getElementById("btn-draft").addEventListener("click", createDraft);
 
         async function boot(loginKey) {
           apiKey = loginKey || AdminAuth.getApiKey();
