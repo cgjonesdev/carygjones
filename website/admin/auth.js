@@ -102,6 +102,13 @@
     return config;
   }
 
+  async function fetchWithAuth(url, options = {}) {
+    const key = getApiKey();
+    const headers = { ...(options.headers || {}) };
+    if (key) headers["X-Admin-Key"] = key;
+    return fetch(url, { ...options, headers });
+  }
+
   window.AdminAuth = {
     requireAuth,
     getApiKey,
@@ -109,5 +116,6 @@
     isAuthed,
     loadAdminConfig,
     authRequired,
+    fetchWithAuth,
   };
 })();
