@@ -40,6 +40,51 @@
     return Boolean(config && config.passwordHash);
   }
 
+  function isLocalAdminHost() {
+    const host = location.hostname;
+    return host === "localhost" || host === "127.0.0.1";
+  }
+
+  function localSyncBase() {
+    const port = Number(new URLSearchParams(location.search).get("syncPort") || "8765");
+    return `http://127.0.0.1:${port}`;
+  }
+
+  function isLocalSyncApi(base) {
+    const value = String(base || "");
+    return /^https?:\/\/(?:127\.0\.0\.1|localhost):\d+/.test(value);
+  }
+
+  function loadDashboardSettings() {
+    try {
+      return JSON.parse(localStorage.getItem("jobSearchAdmin") || "{}");
+    } catch (_) {
+      return {};
+    }
+  }
+
+  function resolveApiBase(config) {
+    if (config?.apiBase) {
+      return String(config.apiBase).replace(/\/$/, "");
+    }
+    const saved = loadDashboardSettings();
+    if (saved.apiBase) {
+      return String(saved.apiBase).replace(/\/$/, "");
+    }
+    if (isLocalAdminHost()) {
+      return localSyncBase();
+    }
+    return "";
+  }
+
+  function resolveApiKey(configApiBase) {
+    const fromSession = getApiKey();
+    if (fromSession) return fromSession;
+    const saved = loadDashboardSettings();
+    if (!configApiBase && saved.apiKey) return saved.apiKey;
+    return "";
+  }
+
   function showLoginScreen(config, onSuccess) {
     document.body.classList.add("login-mode");
     let overlay = document.getElementById("login-overlay");
@@ -192,6 +237,11 @@
     isAuthed,
     loadAdminConfig,
     authRequired,
+    isLocalAdminHost,
+    localSyncBase,
+    isLocalSyncApi,
+    resolveApiBase,
+    resolveApiKey,
     fetchWithAuth,
     normalizeAdminLink,
     buildApplicationLinks,
