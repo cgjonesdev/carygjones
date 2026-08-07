@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Job Search Admin</title>
+    <link rel="stylesheet" href="admin.css">
+  </head>
+  <body>
+    <header class="admin-header">
+      <nav class="admin-nav">
+        <div>
+          <h1>Job Search Admin</h1>
+          <p class="sub">Protocols · applications · manual JD</p>
+        </div>
+        <a href="../index.html">← Portfolio</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="panel" id="api-settings-panel">
+        <h2>Connection</h2>
+        <p class="hint" id="api-settings-hint">
+          Cloud Run API URL is injected at deploy from GitHub repo variable
+          <code>ADMIN_API_BASE_URL</code>.
+        </p>
+        <div class="settings-grid">
+          <div id="api-base-wrap">
+            <label for="api-base">API base URL (local dev override)</label>
+            <input id="api-base" type="text" placeholder="https://job-search-admin-….run.app">
+          </div>
+          <div>
+            <label for="api-key">Admin API key (optional, stored in this browser only)</label>
+            <input id="api-key" type="password" placeholder="X-Admin-Key if Cloud Run requires it">
+          </div>
+          <button id="save-settings" class="btn btn-primary" type="button">Save key</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Manual JD entry</h2>
+        <p class="hint">Paste a job description. Scores against your resume and generates a full application folder when ≥80% match.</p>
+        <label for="jd-text">Job description</label>
+        <textarea id="jd-text" placeholder="Paste full JD text here…"></textarea>
+        <div class="grid-2" style="margin-top:0.75rem">
+          <div>
+            <label for="jd-apply-url">Apply URL (optional)</label>
+            <input id="jd-apply-url" type="text" placeholder="https://jobs.ashbyhq.com/…">
+          </div>
+          <div style="display:flex;align-items:center;padding-top:1.5rem">
+            <label style="display:flex;align-items:center;gap:0.5rem;margin:0">
+              <input id="jd-force" type="checkbox">
+              Force generate (ignore threshold / existing slug)
+            </label>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button id="btn-jd-submit" class="btn btn-primary" type="button">Score &amp; generate</button>
+        </div>
+        <div id="jd-status" class="status-bar"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Run protocols</h2>
+        <p class="hint">Cloud Run phases: Gmail scan, triage + OpenAI generate, LinkedIn search. Run individually or all together.</p>
+        <div class="btn-row">
+          <button id="btn-gmail" class="btn run-btn" type="button">1 · Gmail scan</button>
+          <button id="btn-generate" class="btn run-btn" type="button">2 · Triage + generate</button>
+          <button id="btn-linkedin" class="btn run-btn" type="button">3 · LinkedIn search</button>
+          <button id="btn-all-par" class="btn btn-primary run-btn" type="button">All · parallel</button>
+          <button id="btn-all-seq" class="btn run-btn" type="button">All · sequential</button>
+          <button id="btn-refresh" class="btn" type="button">Refresh tables</button>
+        </div>
+        <div id="run-status" class="status-bar"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Latest protocol output</h2>
+        <div id="protocol-output"><p class="empty">Loading…</p></div>
+      </section>
+
+      <section class="panel">
+        <h2>Applications</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Slug</th>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Updated</th>
+                <th>Links</th>
+              </tr>
+            </thead>
+            <tbody id="apps-table-body">
+              <tr><td colspan="7" class="empty">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

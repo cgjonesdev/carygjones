@@ -1,0 +1,6 @@
+{
+  "apiBase": "",
+  "pagesBase": ".",
+  "repoBase": "https://github.com/cgjonesdev/carygjones/tree/main/applications",
+  "_comment": "apiBase is injected at deploy from GitHub repo variable ADMIN_API_BASE_URL"
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Application · Admin</title>
+    <link rel="stylesheet" href="admin.css">
+  </head>
+  <body>
+    <header class="admin-header">
+      <nav class="admin-nav">
+        <div>
+          <h1 id="app-title">Application</h1>
+          <p class="sub" id="app-subtitle"></p>
+        </div>
+        <a href="index.html">← Admin dashboard</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="panel">
+        <div id="meta-links" class="links-cell" style="margin-bottom:0.75rem"></div>
+        <div class="doc-tabs">
+          <a id="tab-resume" href="#">Resume</a>
+          <a id="tab-cover" href="#">Cover letter</a>
+          <a id="tab-jd" href="#">JD</a>
+        </div>
+        <iframe id="doc-frame" class="doc-frame" title="Application document"></iframe>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const params = new URLSearchParams(location.search);
+        const slug = params.get("slug");
+        const doc = params.get("doc") || "resume";
+        if (!slug) {
+          document.getElementById("app-title").textContent = "Missing slug";
+          return;
+        }
+
+        const LS_KEY = "jobSearchAdmin";
+        let apiBase = "";
+        let apiKey = "";
+        try {
+          const saved = JSON.parse(localStorage.getItem(LS_KEY) || "{}");
+          apiKey = saved.apiKey || "";
+        } catch (_) {}
+
+        async function loadApiConfig() {
+          try {
+            const resp = await fetch("config.json");
+            if (resp.ok) {
+              const cfg = await resp.json();
+              if (cfg.apiBase) apiBase = String(cfg.apiBase).replace(/\/$/, "");
+            }
+          } catch (_) {}
+          if (!apiBase) {
+            try {
+              const saved = JSON.parse(localStorage.getItem(LS_KEY) || "{}");
+              apiBase = (saved.apiBase || "").replace(/\/$/, "");
+            } catch (_) {}
+          }
+        }
+
+        const files = {
+          resume: { file: "resume.html", tab: "tab-resume" },
+          cover: { file: "cover_letter.html", tab: "tab-cover" },
+          jd: { file: "jd.txt", tab: "tab-jd" },
+        };
+
+        function setActiveTab(key) {
+          Object.entries(files).forEach(([k, v]) => {
+            document.getElementById(v.tab).classList.toggle("active", k === key);
+          });
+        }
+
+        function loadDoc(key) {
+          const spec = files[key] || files.resume;
+          setActiveTab(key);
+          const frame = document.getElementById("doc-frame");
+          if (apiBase) {
+            frame.src = `${apiBase}/api/applications/${encodeURIComponent(slug)}/${spec.file}`;
+          } else {
+            frame.src = `apps/${encodeURIComponent(slug)}/${spec.file}`;
+          }
+        }
+
+        Object.entries(files).forEach(([key, v]) => {
+          document.getElementById(v.tab).addEventListener("click", (e) => {
+            e.preventDefault();
+            history.replaceState(null, "", `?slug=${encodeURIComponent(slug)}&doc=${key}`);
+            loadDoc(key);
+          });
+        });
+
+        async function loadMeta() {
+          let meta = null;
+          if (apiBase) {
+            const headers = apiKey ? { "X-Admin-Key": apiKey } : {};
+            const resp = await fetch(`${apiBase}/api/applications/${encodeURIComponent(slug)}`, { headers });
+            if (resp.ok) meta = await resp.json();
+          } else {
+            const resp = await fetch("data/applications.json");
+            if (resp.ok) {
+              const data = await resp.json();
+              meta = (data.applications || []).find((a) => a.slug === slug);
+            }
+          }
+          if (!meta) {
+            document.getElementById("app-subtitle").textContent = slug;
+            loadDoc(doc in files ? doc : "resume");
+            return;
+          }
+          document.getElementById("app-title").textContent = meta.company || slug;
+          document.getElementById("app-subtitle").textContent =
+            [meta.role, meta.location, meta.match_score ? `score ${meta.match_score}` : ""]
+              .filter(Boolean)
+              .join(" · ");
+          const linksEl = document.getElementById("meta-links");
+          if (meta.links && meta.links.length) {
+            linksEl.innerHTML = meta.links
+              .map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`)
+              .join("");
+          }
+          loadDoc(doc in files ? doc : "resume");
+        }
+
+        loadApiConfig().then(loadMeta);
+      })();
+    </script>
+  </body>
+</html>
