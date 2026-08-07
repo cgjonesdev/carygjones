@@ -316,3 +316,42 @@ body.login-mode main {
 .login-card input[type="password"] {
   margin-bottom: 0.75rem;
 }
+
+.protocol-collapsible {
+  margin-top: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface-2);
+}
+
+.protocol-collapsible summary {
+  cursor: pointer;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  list-style: none;
+}
+
+.protocol-collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+.protocol-collapsible summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.protocol-collapsible[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.protocol-collapsible[open] summary {
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.protocol-collapsible .table-wrap {
+  margin-top: 0;
+}
