@@ -159,6 +159,32 @@
       .join("");
   }
 
+  async function downloadApplicationFile(apiBase, slug, filename) {
+    const base = String(apiBase || "").replace(/\/$/, "");
+    if (!base) throw new Error("Cloud Run API is required to download files.");
+    const url = `${base}/api/applications/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`;
+    const resp = await fetchWithAuth(url);
+    if (!resp.ok) {
+      let detail = resp.statusText;
+      try {
+        const data = await resp.json();
+        detail = data.detail || detail;
+      } catch (_) {
+        /* ignore */
+      }
+      throw new Error(detail || `Download failed (${resp.status})`);
+    }
+    const blob = await resp.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = objectUrl;
+    anchor.download = filename;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(objectUrl);
+  }
+
   window.AdminAuth = {
     requireAuth,
     getApiKey,
@@ -170,5 +196,6 @@
     normalizeAdminLink,
     buildApplicationLinks,
     linksHtml,
+    downloadApplicationFile,
   };
 })();
