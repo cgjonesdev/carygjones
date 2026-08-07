@@ -10,6 +10,8 @@ import os
 import shutil
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -88,6 +90,67 @@ def export_protocol_run_from_gcs(admin_data: Path) -> None:
         return
     (admin_data / "latest_protocol_run.json").write_text(raw, encoding="utf-8")
     print(f"Wrote {admin_data / 'latest_protocol_run.json'} from GCS")
+
+
+def _admin_api_get(api_base: str, admin_key: str, path: str) -> dict | None:
+    url = f"{api_base.rstrip('/')}{path}"
+    req = urllib.request.Request(url, headers={"X-Admin-Key": admin_key})
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        print(
+            f"Admin API GET {path} failed ({exc.code}): {body[:300]}",
+            file=sys.stderr,
+        )
+        if exc.code == 401:
+            print(
+                "Hint: Cloud Run secret admin-api-key must match GitHub secret ADMIN_PASSWORD "
+                "(same value you use to sign in on Pages).",
+                file=sys.stderr,
+            )
+        return None
+    except Exception as exc:
+        print(f"Admin API GET {path} failed: {exc}", file=sys.stderr)
+        return None
+
+
+def export_from_admin_api(
+    admin_data: Path,
+    *,
+    api_base: str,
+    admin_password: str,
+) -> tuple[int, int]:
+    """Overwrite static snapshot from live Cloud Run (GCS-backed) data."""
+    apps_payload = _admin_api_get(api_base, admin_password, "/api/applications")
+    if not apps_payload:
+        return 0, 0
+
+    apps = apps_payload.get("applications") or []
+    out = admin_data / "applications.json"
+    out.write_text(
+        json.dumps(
+            {
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "source": "cloud_run_api",
+                "applications": apps,
+                "count": len(apps),
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    print(f"Wrote {out} from Cloud Run API ({len(apps)} applications)")
+
+    protocol = _admin_api_get(api_base, admin_password, "/api/protocols/latest")
+    if protocol and not protocol.get("empty"):
+        proto_out = admin_data / "latest_protocol_run.json"
+        proto_out.write_text(json.dumps(protocol, indent=2) + "\n", encoding="utf-8")
+        print(f"Wrote {proto_out} from Cloud Run API")
+
+    return len(apps), 0
 
 
 def write_admin_config(
@@ -189,13 +252,26 @@ def main() -> int:
     }
     out = admin_data / "applications.json"
     out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {out} ({len(rows)} applications)")
+    print(f"Wrote {out} ({len(rows)} applications from repo)")
     print(f"Copied HTML assets to {admin_apps}/")
 
-    try:
-        export_protocol_run_from_gcs(admin_data)
-    except Exception as exc:
-        print(f"Protocol run export skipped: {exc}", file=sys.stderr)
+    if args.api_base and args.admin_password:
+        api_count, _ = export_from_admin_api(
+            admin_data,
+            api_base=args.api_base,
+            admin_password=args.admin_password,
+        )
+        if api_count == 0:
+            print(
+                "WARNING: Cloud Run export failed — Pages will only show repo applications "
+                "until admin-api-key matches ADMIN_PASSWORD.",
+                file=sys.stderr,
+            )
+    else:
+        try:
+            export_protocol_run_from_gcs(admin_data)
+        except Exception as exc:
+            print(f"Protocol run export skipped: {exc}", file=sys.stderr)
 
     cfg_path = write_admin_config(
         api_base=args.api_base,
