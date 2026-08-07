@@ -291,6 +291,12 @@ tr:hover td {
   background: var(--surface-2);
 }
 
+.local-sync-wrap {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
 .panel-compact .settings-grid {
   grid-template-columns: 1fr auto;
 }

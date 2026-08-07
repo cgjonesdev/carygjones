@@ -37,6 +37,15 @@
           </div>
           <button id="save-settings" class="btn btn-primary" type="button">Save key</button>
         </div>
+        <div id="local-sync-wrap" class="local-sync-wrap" hidden>
+          <p class="hint" style="margin-top:0.75rem;margin-bottom:0.5rem">
+            Local dev: pull <code>applications/</code> and inbox from GCS into this repo.
+          </p>
+          <div class="btn-row">
+            <button id="btn-pull-gcs" class="btn btn-primary" type="button">Pull from GCS</button>
+          </div>
+          <div id="local-sync-status" class="status-bar"></div>
+        </div>
       </section>
 
       <section class="panel" id="actionable-panel">

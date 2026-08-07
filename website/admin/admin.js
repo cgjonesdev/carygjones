@@ -51,6 +51,50 @@
     }
   }
 
+  function isLocalAdminHost() {
+    const host = location.hostname;
+    return host === "localhost" || host === "127.0.0.1";
+  }
+
+  function localSyncBase() {
+    const port = Number(new URLSearchParams(location.search).get("syncPort") || "8765");
+    return `http://127.0.0.1:${port}`;
+  }
+
+  function configureLocalSyncPanel() {
+    const wrap = document.getElementById("local-sync-wrap");
+    if (!wrap) return;
+    wrap.hidden = !isLocalAdminHost();
+  }
+
+  async function pullFromGcsLocal() {
+    const statusEl = document.getElementById("local-sync-status");
+    if (!isLocalAdminHost()) {
+      setStatus(statusEl, "Local GCS pull only works on localhost.", "err");
+      return;
+    }
+    setStatus(statusEl, "Pulling from GCS…", "running");
+    try {
+      const resp = await fetch(`${localSyncBase()}/api/sync`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ inbox: true, applications: true, rebuild_admin_data: true }),
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) throw new Error(data.error || data.detail || resp.statusText);
+      setStatus(statusEl, (data.sync_stdout || "Sync complete.") + " Reloading…", "ok");
+      await loadApplications();
+      await loadProtocolRun();
+      renderActionable();
+    } catch (err) {
+      const hint =
+        err.message === "Failed to fetch"
+          ? "Start ./scripts/serve_admin_local.sh (or run local_sync_server.py in another terminal)."
+          : err.message;
+      setStatus(statusEl, hint, "err");
+    }
+  }
+
   function configureSettingsPanel() {
     const panel = document.getElementById("api-settings-panel");
     const apiBaseField = document.getElementById("api-base-wrap");
@@ -575,6 +619,7 @@
     const jdStatus = document.getElementById("jd-status");
 
     configureSettingsPanel();
+    configureLocalSyncPanel();
 
     document.getElementById("save-settings").addEventListener("click", () => {
       if (!state.configApiBase) {
@@ -608,6 +653,8 @@
     );
 
     document.getElementById("btn-jd-submit").addEventListener("click", () => submitManualJd(jdStatus));
+    const pullGcs = document.getElementById("btn-pull-gcs");
+    if (pullGcs) pullGcs.addEventListener("click", () => pullFromGcsLocal());
     document.getElementById("btn-refresh").addEventListener("click", () => {
       loadApplications();
       loadProtocolRun();
