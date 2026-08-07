@@ -524,38 +524,103 @@
         .join("")}</tbody></table></div>`;
   }
 
+  function mergeApplicationsBySlug(primary, secondary) {
+    const bySlug = new Map();
+    for (const app of secondary || []) {
+      if (app?.slug) bySlug.set(app.slug, app);
+    }
+    for (const app of primary || []) {
+      if (app?.slug) bySlug.set(app.slug, app);
+    }
+    return Array.from(bySlug.values());
+  }
+
+  async function loadStaticApplications() {
+    const resp = await fetch("data/applications.json");
+    if (!resp.ok) return [];
+    const data = await resp.json();
+    return data.applications || [];
+  }
+
+  async function loadStaticProtocolRun() {
+    const resp = await fetch("data/latest_protocol_run.json");
+    if (!resp.ok) return null;
+    return resp.json();
+  }
+
+  function showDataSourceWarning(message) {
+    const runStatus = document.getElementById("run-status");
+    if (runStatus && message) {
+      setStatus(runStatus, message, "warn");
+    }
+  }
+
   async function loadApplications() {
     const tbody = document.getElementById("apps-table-body");
+    let staticApps = [];
+    try {
+      staticApps = await loadStaticApplications();
+    } catch (_) {
+      /* static bundle optional when API-only */
+    }
+
     try {
       if (state.apiBase) {
-        const data = await apiFetch("/api/applications");
-        state.applications = data.applications || [];
+        try {
+          const data = await apiFetch("/api/applications");
+          state.applications = mergeApplicationsBySlug(data.applications || [], staticApps);
+        } catch (err) {
+          if (staticApps.length) {
+            state.applications = staticApps;
+            showDataSourceWarning(
+              `Using deploy snapshot (${staticApps.length} apps). Live API: ${err.message}`
+            );
+          } else {
+            throw err;
+          }
+        }
+      } else if (staticApps.length) {
+        state.applications = staticApps;
       } else {
-        const resp = await fetch("data/applications.json");
-        if (!resp.ok) throw new Error("Missing data/applications.json — run scripts/build_admin_data.py");
-        const data = await resp.json();
-        state.applications = data.applications || [];
+        throw new Error("Missing data/applications.json — run scripts/build_admin_data.py");
       }
       renderApplicationsTable(tbody, state.applications);
       renderActionable();
     } catch (err) {
       tbody.innerHTML = `<tr><td colspan="7" class="empty">${escapeHtml(err.message)}</td></tr>`;
+      renderActionable();
     }
   }
 
   async function loadProtocolRun() {
     const container = document.getElementById("protocol-output");
+    let staticRun = null;
+    try {
+      staticRun = await loadStaticProtocolRun();
+    } catch (_) {
+      /* ignore */
+    }
+
     try {
       if (state.apiBase) {
-        state.protocolRun = await apiFetch("/api/protocols/latest");
+        try {
+          state.protocolRun = await apiFetch("/api/protocols/latest");
+        } catch (err) {
+          if (staticRun) {
+            state.protocolRun = staticRun;
+            showDataSourceWarning(`Using cached protocol output. Live API: ${err.message}`);
+          } else {
+            throw err;
+          }
+        }
       } else {
-        const resp = await fetch("data/latest_protocol_run.json");
-        if (resp.ok) state.protocolRun = await resp.json();
+        state.protocolRun = staticRun;
       }
       renderProtocolOutputs(container, state.protocolRun);
       renderActionable();
     } catch (err) {
       container.innerHTML = `<p class="empty">${escapeHtml(err.message)}</p>`;
+      renderActionable();
     }
   }
 
