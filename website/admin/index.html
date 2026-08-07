@@ -12,7 +12,7 @@
       <nav class="admin-nav">
         <div>
           <h1>Job Search Admin</h1>
-          <p class="sub">Protocols · applications · manual JD</p>
+          <p class="sub">Protocols · applications · next actions</p>
         </div>
         <a href="../index.html">← Portfolio</a>
         <button id="btn-sign-out" class="btn" type="button" hidden>Sign out</button>
@@ -39,30 +39,13 @@
         </div>
       </section>
 
-      <section class="panel">
-        <h2>Manual JD entry</h2>
-        <p class="hint">Paste a job description. Scores against your resume and generates a full application folder when ≥80% match.</p>
-        <label for="jd-text">Job description</label>
-        <textarea id="jd-text" placeholder="Paste full JD text here…"></textarea>
-        <div class="grid-2" style="margin-top:0.75rem">
-          <div>
-            <label for="jd-apply-url">Apply URL (optional)</label>
-            <input id="jd-apply-url" type="text" placeholder="https://jobs.ashbyhq.com/…">
-          </div>
-          <div style="display:flex;align-items:center;padding-top:1.5rem">
-            <label style="display:flex;align-items:center;gap:0.5rem;margin:0">
-              <input id="jd-force" type="checkbox">
-              Force generate (ignore threshold / existing slug)
-            </label>
-          </div>
-        </div>
-        <div class="btn-row">
-          <button id="btn-jd-submit" class="btn btn-primary" type="button">Score &amp; generate</button>
-        </div>
-        <div id="jd-status" class="status-bar"></div>
+      <section class="panel" id="actionable-panel">
+        <h2>Actionable</h2>
+        <p class="hint">What to do next — apply, email drafts, interviews, and protocol fixes.</p>
+        <div id="actionable-list"><p class="empty">Loading…</p></div>
       </section>
 
-      <section class="panel">
+      <section class="panel" id="run-protocols">
         <h2>Run protocols</h2>
         <p class="hint">Cloud Run phases: Gmail scan, triage + OpenAI generate, LinkedIn search. Run individually or all together.</p>
         <div class="btn-row">
@@ -101,6 +84,29 @@
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section class="panel" id="manual-jd-panel">
+        <h2>Manual JD entry</h2>
+        <p class="hint">Paste a job description. Scores against your resume and generates a full application folder when ≥80% match.</p>
+        <label for="jd-text">Job description</label>
+        <textarea id="jd-text" placeholder="Paste full JD text here…"></textarea>
+        <div class="grid-2" style="margin-top:0.75rem">
+          <div>
+            <label for="jd-apply-url">Apply URL (optional)</label>
+            <input id="jd-apply-url" type="text" placeholder="https://jobs.ashbyhq.com/…">
+          </div>
+          <div style="display:flex;align-items:center;padding-top:1.5rem">
+            <label style="display:flex;align-items:center;gap:0.5rem;margin:0">
+              <input id="jd-force" type="checkbox">
+              Force generate (ignore threshold / existing slug)
+            </label>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button id="btn-jd-submit" class="btn btn-primary" type="button">Score &amp; generate</button>
+        </div>
+        <div id="jd-status" class="status-bar"></div>
       </section>
     </main>
 
