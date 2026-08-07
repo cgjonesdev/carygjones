@@ -17,6 +17,19 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
 
+def _cloud_run_path() -> Path:
+    return repo_root() / "tools" / "cloud_run"
+
+
+def display_match_score(meta: dict) -> int | None:
+    cloud_run = _cloud_run_path()
+    if str(cloud_run) not in sys.path:
+        sys.path.insert(0, str(cloud_run))
+    from location_score import display_match_score as _display
+
+    return _display(meta)
+
+
 def gmail_url(meta: dict) -> str | None:
     se = meta.get("source_email") or {}
     if isinstance(se, dict):
@@ -120,17 +133,26 @@ def main() -> int:
                 "company": meta.get("company"),
                 "role": meta.get("role"),
                 "location": meta.get("location"),
-                "match_score": meta.get("match_score"),
+                "match_score": display_match_score(meta),
                 "status": meta.get("status"),
                 "updated": meta.get("updated"),
                 "apply_url": meta.get("apply_url"),
+                "apply_method": meta.get("apply_method"),
+                "gmail_draft_id": meta.get("gmail_draft_id"),
                 "interview_url": meta.get("interview_url"),
                 "gmail_url": gmail_url(meta),
                 "links": build_links(slug, meta, pages_base=args.pages_base),
             }
         )
 
-    rows.sort(key=lambda r: (r.get("updated") or "", r.get("slug") or ""), reverse=True)
+    rows.sort(
+        key=lambda r: (
+            r.get("match_score") if r.get("match_score") is not None else -1,
+            r.get("updated") or "",
+            r.get("slug") or "",
+        ),
+        reverse=True,
+    )
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "applications": rows,
