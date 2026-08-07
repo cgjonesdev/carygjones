@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -59,6 +60,7 @@ def write_admin_config(
     api_base: str = "",
     pages_base: str = ".",
     repo_base: str = "https://github.com/cgjonesdev/carygjones/tree/main/applications",
+    admin_password: str = "",
 ) -> Path:
     admin_dir = repo_root() / "website" / "admin"
     admin_dir.mkdir(parents=True, exist_ok=True)
@@ -68,6 +70,8 @@ def write_admin_config(
         "repoBase": repo_base,
         "built_at": datetime.now(timezone.utc).isoformat(),
     }
+    if admin_password:
+        payload["passwordHash"] = hashlib.sha256(admin_password.encode("utf-8")).hexdigest()
     out = admin_dir / "config.json"
     out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     return out
@@ -84,6 +88,11 @@ def main() -> int:
         "--api-base",
         default=os.environ.get("ADMIN_API_BASE_URL", "").strip(),
         help="Cloud Run admin API URL (or set ADMIN_API_BASE_URL env var)",
+    )
+    parser.add_argument(
+        "--admin-password",
+        default=os.environ.get("ADMIN_PASSWORD", "").strip(),
+        help="Admin page password (or set ADMIN_PASSWORD env var; stored as SHA-256 hash only)",
     )
     args = parser.parse_args()
 
@@ -132,11 +141,19 @@ def main() -> int:
     print(f"Wrote {out} ({len(rows)} applications)")
     print(f"Copied HTML assets to {admin_apps}/")
 
-    cfg_path = write_admin_config(api_base=args.api_base, pages_base=args.pages_base)
+    cfg_path = write_admin_config(
+        api_base=args.api_base,
+        pages_base=args.pages_base,
+        admin_password=args.admin_password,
+    )
     if args.api_base:
         print(f"Wrote {cfg_path} (apiBase={args.api_base})")
     else:
         print(f"Wrote {cfg_path} (apiBase empty — set GitHub repo variable ADMIN_API_BASE_URL for Pages deploy)")
+    if args.admin_password:
+        print("Wrote passwordHash to config.json (from ADMIN_PASSWORD)")
+    else:
+        print("No ADMIN_PASSWORD — admin page will not require login until secret is set")
 
     return 0
 

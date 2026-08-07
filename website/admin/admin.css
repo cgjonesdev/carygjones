@@ -293,3 +293,25 @@ tr:hover td {
 .panel-compact .settings-grid {
   grid-template-columns: 1fr auto;
 }
+
+body.login-mode main {
+  display: none;
+}
+
+#login-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(11, 17, 32, 0.92);
+  z-index: 100;
+  padding: 1.5rem;
+}
+
+.login-card {
+  width: min(100%, 420px);
+}
+
+.login-card input[type="password"] {
+  margin-bottom: 0.75rem;
+}

@@ -1,6 +1,7 @@
 {
-  "apiBase": "",
+  "apiBase": "https://job-search-admin-416806702268.us-west1.run.app",
   "pagesBase": ".",
   "repoBase": "https://github.com/cgjonesdev/carygjones/tree/main/applications",
-  "built_at": ""
+  "built_at": "2026-08-07T02:11:32.244029+00:00",
+  "passwordHash": "48f6b17964b49f241c9967d8523e49a48011466adbb1ce2db670e13129110963"
 }

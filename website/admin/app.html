@@ -30,6 +30,7 @@
       </section>
     </main>
 
+    <script src="auth.js"></script>
     <script>
       (function () {
         const params = new URLSearchParams(location.search);
@@ -40,28 +41,12 @@
           return;
         }
 
-        const LS_KEY = "jobSearchAdmin";
         let apiBase = "";
         let apiKey = "";
-        try {
-          const saved = JSON.parse(localStorage.getItem(LS_KEY) || "{}");
-          apiKey = saved.apiKey || "";
-        } catch (_) {}
 
         async function loadApiConfig() {
-          try {
-            const resp = await fetch("config.json");
-            if (resp.ok) {
-              const cfg = await resp.json();
-              if (cfg.apiBase) apiBase = String(cfg.apiBase).replace(/\/$/, "");
-            }
-          } catch (_) {}
-          if (!apiBase) {
-            try {
-              const saved = JSON.parse(localStorage.getItem(LS_KEY) || "{}");
-              apiBase = (saved.apiBase || "").replace(/\/$/, "");
-            } catch (_) {}
-          }
+          const cfg = await AdminAuth.loadAdminConfig();
+          if (cfg.apiBase) apiBase = String(cfg.apiBase).replace(/\/$/, "");
         }
 
         const files = {
@@ -127,7 +112,13 @@
           loadDoc(doc in files ? doc : "resume");
         }
 
-        loadApiConfig().then(loadMeta);
+        async function boot(loginKey) {
+          apiKey = loginKey || AdminAuth.getApiKey();
+          await loadApiConfig();
+          await loadMeta();
+        }
+
+        AdminAuth.requireAuth((loginKey) => boot(loginKey));
       })();
     </script>
   </body>

@@ -2,5 +2,5 @@
   "apiBase": "",
   "pagesBase": ".",
   "repoBase": "https://github.com/cgjonesdev/carygjones/tree/main/applications",
-  "_comment": "apiBase is injected at deploy from GitHub repo variable ADMIN_API_BASE_URL"
+  "_comment": "apiBase from ADMIN_API_BASE_URL; passwordHash from GitHub secret ADMIN_PASSWORD at deploy"
 }
