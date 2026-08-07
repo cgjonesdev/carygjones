@@ -111,9 +111,23 @@
         let apiBase = "";
         let apiKey = "";
 
-        async function loadApiConfig() {
-          const cfg = await AdminAuth.loadAdminConfig();
-          if (cfg.apiBase) apiBase = String(cfg.apiBase).replace(/\/$/, "");
+        function settingsFromMeta(meta) {
+          if (meta?.settings) return meta.settings;
+          return {
+            recruiter_email: meta?.recruiter_email || "",
+            recruiter_name: meta?.recruiter_name || "",
+            apply_url: meta?.apply_url || "",
+            gmail_message_id: meta?.gmail_message_id || "",
+            email_subject: meta?.email_subject || "",
+            status: meta?.status || "ready",
+            notes: meta?.notes || "",
+            gmail_draft_id: meta?.gmail_draft_id || "",
+          };
+        }
+
+        function canUseApi() {
+          if (!apiBase) return false;
+          return AdminAuth.isLocalSyncApi(apiBase) || Boolean(apiKey);
         }
 
         const files = {
@@ -159,7 +173,7 @@
         }
 
         async function applicationFileExists(filename) {
-          if (!apiBase || !apiKey) return null;
+          if (!canUseApi()) return null;
           const resp = await AdminAuth.fetchWithAuth(
             `${apiBase}/api/applications/${encodeURIComponent(slug)}/${filename}`,
             { method: "HEAD" }
@@ -180,13 +194,15 @@
           ).trim();
           const parts = [];
           parts.push(email ? "Recruiter email set" : "Recruiter email required");
-          if (apiBase && apiKey) {
+          if (canUseApi() && !AdminAuth.isLocalSyncApi(apiBase)) {
             const [resumeOk, coverOk] = await Promise.all([
               applicationFileExists("resume.pdf"),
               applicationFileExists("cover_letter.pdf"),
             ]);
             parts.push(resumeOk ? "resume.pdf ready" : "resume.pdf missing in cloud");
             parts.push(coverOk ? "cover_letter.pdf ready" : "cover_letter.pdf missing in cloud");
+          } else if (AdminAuth.isLocalSyncApi(apiBase)) {
+            parts.push("Gmail drafts need Cloud Run — set API URL in Connection");
           } else {
             parts.push("Sign in on the dashboard to create drafts");
           }
@@ -207,8 +223,14 @@
 
         async function saveSettings() {
           const statusEl = document.getElementById("settings-status");
-          if (!apiBase || !apiKey) {
-            setStatus(statusEl, "Saving requires the Cloud Run API (sign in on the dashboard).", "err");
+          if (!canUseApi()) {
+            setStatus(
+              statusEl,
+              AdminAuth.isLocalAdminHost()
+                ? "Start ./scripts/serve_admin_local.sh (local sync server) or set Cloud Run API in Connection."
+                : "Saving requires the Cloud Run API (sign in on the dashboard).",
+              "err"
+            );
             return false;
           }
           setStatus(statusEl, "Saving…", "running");
@@ -223,8 +245,9 @@
             );
             if (!resp.ok) throw new Error(await parseApiError(resp));
             const data = await resp.json();
-            fillSettingsForm(data.settings);
-            setStatus(statusEl, "Settings saved.", "ok");
+            fillSettingsForm(data.settings || settingsFromMeta(data));
+            const savedVia = AdminAuth.isLocalSyncApi(apiBase) ? "Saved locally." : "Settings saved.";
+            setStatus(statusEl, savedVia, "ok");
             return true;
           } catch (err) {
             setStatus(statusEl, err.message, "err");
@@ -234,8 +257,12 @@
 
         async function createDraft() {
           const statusEl = document.getElementById("settings-status");
-          if (!apiBase || !apiKey) {
-            setStatus(statusEl, "Draft creation requires the Cloud Run API.", "err");
+          if (!canUseApi() || AdminAuth.isLocalSyncApi(apiBase)) {
+            setStatus(
+              statusEl,
+              "Draft creation requires Cloud Run. Set the API URL in Connection on the dashboard.",
+              "err"
+            );
             return;
           }
           if (!(await saveSettings())) return;
@@ -324,7 +351,7 @@
           frame.removeAttribute("src");
           frame.srcdoc = "<p style='font-family:sans-serif;padding:1rem;color:#666'>Loading…</p>";
 
-          if (apiBase && apiKey) {
+          if (canUseApi() && !AdminAuth.isLocalSyncApi(apiBase)) {
             const url = `${apiBase}/api/applications/${encodeURIComponent(slug)}/${spec.file}`;
             try {
               const resp = await AdminAuth.fetchWithAuth(url);
@@ -373,7 +400,7 @@
 
         async function loadMeta() {
           let meta = null;
-          if (apiBase && apiKey) {
+          if (canUseApi()) {
             const resp = await AdminAuth.fetchWithAuth(
               `${apiBase}/api/applications/${encodeURIComponent(slug)}`
             );
@@ -398,7 +425,7 @@
               .join(" · ");
           const linksEl = document.getElementById("meta-links");
           linksEl.innerHTML = AdminAuth.linksHtml(AdminAuth.buildApplicationLinks(meta, slug));
-          fillSettingsForm(meta.settings);
+          fillSettingsForm(settingsFromMeta(meta));
           loadDoc(doc in files ? doc : "resume");
         }
 
@@ -458,8 +485,9 @@
         bindDownloads();
 
         async function boot(loginKey) {
-          apiKey = loginKey || AdminAuth.getApiKey();
-          await loadApiConfig();
+          const cfg = await AdminAuth.loadAdminConfig();
+          apiBase = AdminAuth.resolveApiBase(cfg);
+          apiKey = loginKey || AdminAuth.resolveApiKey(Boolean(cfg.apiBase));
           await loadMeta();
         }
 
