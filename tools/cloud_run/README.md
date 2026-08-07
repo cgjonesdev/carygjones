@@ -87,7 +87,7 @@ python run_protocols.py
 
 - **GitHub Pages** can host a read-only dashboard; it cannot run this pipeline (needs secrets + OpenAI + Gmail).
 - **LinkedIn Easy Apply** stays manual; cloud generates files and stores apply URLs in `meta.json`.
-- LinkedIn phase uses `LINKED_API_TOKEN` + `LINKED_IDENTIFICATION_TOKEN`; endpoint may need adjustment per Linked API docs.
+- LinkedIn phase uses workflow API: `POST /workflows` with `st.searchJobs`, then polls `GET /workflows/{id}` (not `/v1/jobs/search`).
 
 ## Admin dashboard
 

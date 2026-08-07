@@ -220,7 +220,20 @@
       if (phase.jobs && phase.jobs.length) {
         parts.push(`<p class="hint">${phase.jobs_found || phase.jobs.length} LinkedIn jobs</p>`);
         parts.push(
-          `<pre style="overflow:auto;font-size:0.8rem;background:var(--surface-2);padding:0.75rem;border-radius:0.5rem;">${escapeHtml(JSON.stringify(phase.jobs, null, 2))}</pre>`
+          renderOutputTable(
+            phase.jobs.map((j) => ({
+              slug: j.jobId || "—",
+              company: j.company || j.companyName || "—",
+              score: "—",
+              reason: [j.title, j.location].filter(Boolean).join(" · "),
+              apply_url: j.apply_url || j.jobUrl,
+            })),
+            (r) => {
+              const links = [];
+              if (r.apply_url) links.push({ label: "LinkedIn job", url: r.apply_url });
+              return links;
+            }
+          )
         );
       }
 
