@@ -187,28 +187,34 @@
       }
 
       if (Array.isArray(phase.skipped) && phase.skipped.length) {
-        parts.push(`<p class="hint" style="margin-top:0.5rem">Skipped</p>`);
+        const skippedTable = renderOutputTable(phase.skipped, (r) => {
+          const links = phaseLinks(r);
+          if (r.gmail_url) links.push({ label: "Gmail", url: r.gmail_url });
+          return links;
+        });
         parts.push(
-          renderOutputTable(phase.skipped, (r) => {
-            const links = phaseLinks(r);
-            if (r.gmail_url) links.push({ label: "Gmail", url: r.gmail_url });
-            return links;
-          })
+          `<details class="protocol-collapsible">
+            <summary>Skipped (${phase.skipped.length})</summary>
+            ${skippedTable}
+          </details>`
         );
       }
 
       if (Array.isArray(phase.errors) && phase.errors.length) {
-        parts.push(`<p class="hint" style="margin-top:0.5rem">Errors</p>`);
+        const errorsTable = renderOutputTable(
+          phase.errors.map((e) => ({
+            slug: e.slug || "—",
+            company: "—",
+            score: "—",
+            reason: e.error || e.message || JSON.stringify(e),
+          })),
+          () => []
+        );
         parts.push(
-          renderOutputTable(
-            phase.errors.map((e) => ({
-              slug: e.slug || "—",
-              company: "—",
-              score: "—",
-              reason: e.error || e.message || JSON.stringify(e),
-            })),
-            () => []
-          )
+          `<details class="protocol-collapsible">
+            <summary>Errors (${phase.errors.length})</summary>
+            ${errorsTable}
+          </details>`
         );
       }
 
