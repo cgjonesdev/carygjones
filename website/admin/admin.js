@@ -38,15 +38,13 @@
 
   async function loadConfig() {
     try {
-      const resp = await fetch("config.json");
-      if (resp.ok) {
-        const cfg = await resp.json();
-        state.pagesBase = cfg.pagesBase || ".";
-        state.repoBase = cfg.repoBase || "";
-        if (cfg.apiBase) {
-          state.apiBase = String(cfg.apiBase).replace(/\/$/, "");
-          state.configApiBase = true;
-        }
+      const cfg = await AdminAuth.loadAdminConfig();
+      state.pagesBase = cfg.pagesBase || ".";
+      state.repoBase = cfg.repoBase || "";
+      state.passwordProtected = AdminAuth.authRequired(cfg);
+      if (cfg.apiBase) {
+        state.apiBase = String(cfg.apiBase).replace(/\/$/, "");
+        state.configApiBase = true;
       }
     } catch (_) {
       /* static fallback */
@@ -74,6 +72,9 @@
         hint.textContent =
           "Read-only mode until ADMIN_API_BASE_URL is set in GitHub repo variables and the site is redeployed.";
       }
+    }
+    if (state.passwordProtected && document.getElementById("api-key-wrap")) {
+      document.getElementById("api-key-wrap").hidden = true;
     }
   }
 
@@ -383,17 +384,35 @@
       loadApplications();
       loadProtocolRun();
     });
+
+    const signOut = document.getElementById("btn-sign-out");
+    if (signOut) {
+      signOut.hidden = !state.passwordProtected;
+      signOut.addEventListener("click", () => {
+        AdminAuth.clearAuth();
+        location.reload();
+      });
+    }
   }
 
-  async function init() {
-    await loadConfig();
-    loadSettings();
+  async function boot(apiKeyFromLogin) {
+    if (apiKeyFromLogin) {
+      state.apiKey = apiKeyFromLogin;
+    } else {
+      loadSettings();
+      if (!state.apiKey) state.apiKey = AdminAuth.getApiKey();
+    }
     bindUi();
     if (state.apiBase) {
       setStatus(document.getElementById("run-status"), `API: ${state.apiBase}`, "ok");
     }
     await loadApplications();
     await loadProtocolRun();
+  }
+
+  async function init() {
+    await loadConfig();
+    AdminAuth.requireAuth((apiKey) => boot(apiKey));
   }
 
   document.addEventListener("DOMContentLoaded", init);
