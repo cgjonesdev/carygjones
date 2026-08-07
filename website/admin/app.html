@@ -78,6 +78,16 @@
 
       <section class="panel">
         <div id="meta-links" class="links-cell" style="margin-bottom:0.75rem"></div>
+        <p class="hint" style="margin-bottom:0.75rem">
+          Download PDFs for job portal uploads. Gmail drafts attach these automatically.
+        </p>
+        <div class="btn-row" style="margin-bottom:0.75rem">
+          <button id="btn-dl-resume-pdf" class="btn" type="button">Download resume.pdf</button>
+          <button id="btn-dl-cover-pdf" class="btn" type="button">Download cover_letter.pdf</button>
+          <button id="btn-dl-resume-docx" class="btn" type="button">Download resume.docx</button>
+          <button id="btn-dl-cover-docx" class="btn" type="button">Download cover_letter.docx</button>
+        </div>
+        <div id="download-status" class="status-bar" hidden></div>
         <div class="doc-tabs">
           <a id="tab-resume" href="#">Resume</a>
           <a id="tab-cover" href="#">Cover letter</a>
@@ -349,8 +359,60 @@
           loadDoc(doc in files ? doc : "resume");
         }
 
+        function setDownloadStatus(message, kind) {
+          const el = document.getElementById("download-status");
+          if (!message) {
+            el.hidden = true;
+            el.textContent = "";
+            return;
+          }
+          el.hidden = false;
+          el.textContent = message;
+          el.className = "status-bar" + (kind ? ` ${kind}` : "");
+        }
+
+        async function downloadFile(filename) {
+          setDownloadStatus(`Downloading ${filename}…`, "running");
+          try {
+            if (apiBase && apiKey) {
+              await AdminAuth.downloadApplicationFile(apiBase, slug, filename);
+            } else {
+              const resp = await fetch(`apps/${encodeURIComponent(slug)}/${filename}`);
+              if (!resp.ok) throw new Error(`${filename} not found — sync from GCS or regenerate PDFs.`);
+              const blob = await resp.blob();
+              const objectUrl = URL.createObjectURL(blob);
+              const anchor = document.createElement("a");
+              anchor.href = objectUrl;
+              anchor.download = filename;
+              document.body.appendChild(anchor);
+              anchor.click();
+              anchor.remove();
+              URL.revokeObjectURL(objectUrl);
+            }
+            setDownloadStatus(`Downloaded ${filename}.`, "ok");
+          } catch (err) {
+            setDownloadStatus(err.message, "err");
+          }
+        }
+
+        function bindDownloads() {
+          document.getElementById("btn-dl-resume-pdf").addEventListener("click", () =>
+            downloadFile("resume.pdf")
+          );
+          document.getElementById("btn-dl-cover-pdf").addEventListener("click", () =>
+            downloadFile("cover_letter.pdf")
+          );
+          document.getElementById("btn-dl-resume-docx").addEventListener("click", () =>
+            downloadFile("resume.docx")
+          );
+          document.getElementById("btn-dl-cover-docx").addEventListener("click", () =>
+            downloadFile("cover_letter.docx")
+          );
+        }
+
         document.getElementById("btn-save-settings").addEventListener("click", saveSettings);
         document.getElementById("btn-draft").addEventListener("click", createDraft);
+        bindDownloads();
 
         async function boot(loginKey) {
           apiKey = loginKey || AdminAuth.getApiKey();
