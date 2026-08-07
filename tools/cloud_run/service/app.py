@@ -19,7 +19,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import gcs_apps  # noqa: E402
+from app_settings import apply_settings_update, settings_from_meta  # noqa: E402
 from orchestrator import run_all, run_generate, run_gmail, run_linkedin, run_phases  # noqa: E402
+from phases.gmail_draft import run_gmail_draft  # noqa: E402
 from phases.manual_jd import run_manual_jd  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -47,6 +49,22 @@ class RunRequest(BaseModel):
     parallel: bool = False
 
 
+class ApplicationSettingsUpdate(BaseModel):
+    recruiter_email: str | None = None
+    recruiter_name: str | None = None
+    apply_url: str | None = None
+    gmail_message_id: str | None = None
+    email_subject: str | None = None
+    status: str | None = None
+    notes: str | None = None
+
+
+class GmailDraftRequest(BaseModel):
+    regenerate: bool = False
+    force: bool = False
+    dry_run: bool = False
+
+
 def _require_admin_key(x_admin_key: str | None = Header(default=None)) -> None:
     expected = os.environ.get("ADMIN_API_KEY", "").strip()
     if not expected:
@@ -68,7 +86,7 @@ def _application_row(slug: str, meta: dict[str, Any]) -> dict[str, Any]:
     apply_url = meta.get("apply_url")
     interview_url = meta.get("interview_url")
     gmail_url = _gmail_url(meta)
-    base = f"/admin/app.html?slug={slug}"
+    app_base = f"app.html?slug={slug}"
     links = []
     if apply_url:
         links.append({"label": "Apply", "url": apply_url})
@@ -78,9 +96,10 @@ def _application_row(slug: str, meta: dict[str, Any]) -> dict[str, Any]:
         links.append({"label": "Gmail", "url": gmail_url})
     links.extend(
         [
-            {"label": "Resume", "url": f"{base}&doc=resume"},
-            {"label": "Cover", "url": f"{base}&doc=cover"},
-            {"label": "Folder", "url": f"/api/applications/{slug}/meta.json"},
+            {"label": "Resume", "url": f"{app_base}&doc=resume"},
+            {"label": "Cover", "url": f"{app_base}&doc=cover"},
+            {"label": "JD", "url": f"{app_base}&doc=jd"},
+            {"label": "Settings", "url": app_base},
         ]
     )
     return {
@@ -130,29 +149,87 @@ def get_application(slug: str, _: None = Depends(_require_admin_key)) -> dict[st
     meta = gcs_apps.load_app_meta(slug)
     if not meta:
         raise HTTPException(status_code=404, detail="Application not found")
-    return _application_row(slug, meta)
+    row = _application_row(slug, meta)
+    row["settings"] = settings_from_meta(meta)
+    return row
+
+
+@app.patch("/api/applications/{slug}")
+def update_application(
+    slug: str,
+    body: ApplicationSettingsUpdate,
+    _: None = Depends(_require_admin_key),
+) -> dict[str, Any]:
+    meta = gcs_apps.load_app_meta(slug)
+    if not meta:
+        raise HTTPException(status_code=404, detail="Application not found")
+    try:
+        updated = apply_settings_update(meta, body.model_dump())
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    gcs_apps.save_app_meta(slug, updated)
+    row = _application_row(slug, updated)
+    row["settings"] = settings_from_meta(updated)
+    return row
+
+
+@app.post("/api/applications/{slug}/gmail-draft")
+def create_gmail_draft(
+    slug: str,
+    body: GmailDraftRequest,
+    _: None = Depends(_require_admin_key),
+) -> dict[str, Any]:
+    result = run_gmail_draft(
+        slug,
+        regenerate=body.regenerate,
+        force=body.force,
+        dry_run=body.dry_run,
+    )
+    if result.get("error"):
+        raise HTTPException(status_code=400, detail=result["error"])
+    if result.get("outcome") == "skipped":
+        raise HTTPException(status_code=400, detail=result.get("detail") or "Draft skipped")
+    return result
 
 
 @app.get("/api/applications/{slug}/{filename}")
-def get_application_file(slug: str, filename: str, _: None = Depends(_require_admin_key)):
+def get_application_file(
+    slug: str,
+    filename: str,
+    _: None = Depends(_require_admin_key),
+):
     allowed = {
         "meta.json": "application/json",
         "jd.txt": "text/plain; charset=utf-8",
         "resume.html": "text/html; charset=utf-8",
         "cover_letter.html": "text/html; charset=utf-8",
         "reply_email.txt": "text/plain; charset=utf-8",
+        "resume.pdf": "application/pdf",
+        "cover_letter.pdf": "application/pdf",
+        "resume.docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "cover_letter.docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     }
     if filename not in allowed:
         raise HTTPException(status_code=404, detail="File not found")
-    raw = gcs_apps.download_text(f"applications/{slug}/{filename}")
-    if raw is None:
+
+    path = f"applications/{slug}/{filename}"
+    media = allowed[filename]
+    headers = {"Content-Disposition": f'attachment; filename="{filename}"'}
+
+    if filename.endswith((".pdf", ".docx")):
+        raw = gcs_apps.download_bytes(path)
+        if raw is None:
+            raise HTTPException(status_code=404, detail="File not found")
+        return Response(content=raw, media_type=media, headers=headers)
+
+    text = gcs_apps.download_text(path)
+    if text is None:
         raise HTTPException(status_code=404, detail="File not found")
     if filename == "meta.json":
-        return JSONResponse(content=json.loads(raw))
-    media = allowed[filename]
+        return JSONResponse(content=json.loads(text))
     if filename.endswith(".html"):
-        return HTMLResponse(content=raw, media_type=media)
-    return Response(content=raw, media_type=media)
+        return HTMLResponse(content=text, media_type=media)
+    return Response(content=text, media_type=media)
 
 
 @app.get("/api/protocols/latest")
