@@ -109,6 +109,56 @@
     return fetch(url, { ...options, headers });
   }
 
+  function normalizeAdminLink(url) {
+    const raw = String(url ?? "");
+    if (raw.startsWith("/api/applications/")) {
+      const match = raw.match(/\/api\/applications\/([^/]+)/);
+      return match ? `app.html?slug=${encodeURIComponent(match[1])}` : raw;
+    }
+    if (raw.startsWith("/admin/")) return raw.slice("/admin/".length);
+    return raw;
+  }
+
+  function buildApplicationLinks(meta, slug) {
+    const s = slug || meta?.slug || "";
+    const appBase = `app.html?slug=${encodeURIComponent(s)}`;
+    const links = [];
+    if (meta?.apply_url) links.push({ label: "Apply", url: meta.apply_url });
+    if (meta?.interview_url) links.push({ label: "Interview", url: meta.interview_url });
+    if (meta?.gmail_url) links.push({ label: "Gmail", url: meta.gmail_url });
+    links.push(
+      { label: "Resume", url: `${appBase}&doc=resume` },
+      { label: "Cover", url: `${appBase}&doc=cover` },
+      { label: "JD", url: `${appBase}&doc=jd` },
+      { label: "Settings", url: appBase }
+    );
+    return links;
+  }
+
+  function escapeHtml(s) {
+    return String(s ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function escapeAttr(s) {
+    return escapeHtml(s).replace(/'/g, "&#39;");
+  }
+
+  function linksHtml(links) {
+    if (!links || !links.length) return "—";
+    return links
+      .map((l) => {
+        const href = normalizeAdminLink(l.url);
+        const internal = href.startsWith("app.html");
+        const target = internal ? "" : ' target="_blank" rel="noopener"';
+        return `<a href="${escapeAttr(href)}"${target}>${escapeHtml(l.label)}</a>`;
+      })
+      .join("");
+  }
+
   window.AdminAuth = {
     requireAuth,
     getApiKey,
@@ -117,5 +167,8 @@
     loadAdminConfig,
     authRequired,
     fetchWithAuth,
+    normalizeAdminLink,
+    buildApplicationLinks,
+    linksHtml,
   };
 })();
