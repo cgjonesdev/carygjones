@@ -572,8 +572,13 @@
         } catch (err) {
           if (staticApps.length) {
             state.applications = staticApps;
+            const authHint =
+              String(err.message || "").includes("401") ||
+              String(err.message || "").toLowerCase().includes("invalid or missing")
+                ? " Cloud Run admin-api-key must match your admin login password."
+                : "";
             showDataSourceWarning(
-              `Using deploy snapshot (${staticApps.length} apps). Live API: ${err.message}`
+              `Using deploy snapshot (${staticApps.length} apps). Live API: ${err.message}.${authHint}`
             );
           } else {
             throw err;
@@ -741,7 +746,7 @@
       state.apiKey = apiKeyFromLogin;
     } else {
       loadSettings();
-      if (!state.apiKey) state.apiKey = AdminAuth.getApiKey();
+      state.apiKey = AdminAuth.resolveApiKey(state.configApiBase);
     }
     bindUi();
     if (state.apiBase) {
