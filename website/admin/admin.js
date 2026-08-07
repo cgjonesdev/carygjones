@@ -135,12 +135,186 @@
     return `<span class="badge badge-${s.replace(/[^a-z]/g, "") || "ready"}">${escapeHtml(status || "—")}</span>`;
   }
 
+  const INTEREST_SCORE = 80;
+  const DONE_STATUSES = new Set(["applied", "skipped", "rejected", "offer"]);
+
+  function settingsUrl(slug) {
+    return `app.html?slug=${encodeURIComponent(slug)}`;
+  }
+
+  function isLinkedInApply(url) {
+    return Boolean(url && /linkedin\.com/i.test(url));
+  }
+
+  function isEmailApply(app) {
+    const method = String(app.apply_method || "").toLowerCase();
+    if (/email|reply|proposal|recruiter/.test(method)) return true;
+    if (!app.apply_url) return true;
+    if (/mailto:/i.test(app.apply_url)) return true;
+    return false;
+  }
+
+  function classifyApplicationAction(app) {
+    const status = String(app.status || "ready").toLowerCase();
+    if (DONE_STATUSES.has(status)) return null;
+
+    const score = Number(app.match_score ?? -1);
+    const appSettings = settingsUrl(app.slug);
+    const subtitle = [app.company || app.slug, app.role, score >= 0 ? `score ${score}` : ""]
+      .filter(Boolean)
+      .join(" · ");
+
+    if (status === "interview") {
+      return {
+        priority: 1,
+        kind: "interview",
+        title: "Interview prep",
+        detail: subtitle,
+        primary: app.interview_url
+          ? { label: "Interview link", url: app.interview_url, external: true }
+          : { label: "Open application", url: appSettings },
+        secondary: { label: "Settings", url: appSettings },
+      };
+    }
+
+    if (score < INTEREST_SCORE) return null;
+
+    if (app.gmail_draft_id) {
+      return {
+        priority: 2,
+        kind: "draft",
+        title: "Review Gmail draft & send",
+        detail: subtitle,
+        primary: {
+          label: "Gmail drafts",
+          url: "https://mail.google.com/mail/u/0/#drafts",
+          external: true,
+        },
+        secondary: { label: "Settings", url: appSettings },
+      };
+    }
+
+    if (app.apply_url && !isEmailApply(app)) {
+      const title = isLinkedInApply(app.apply_url)
+        ? "Easy Apply on LinkedIn"
+        : "Apply on job portal";
+      return {
+        priority: 3,
+        kind: "apply",
+        title,
+        detail: subtitle,
+        primary: { label: "Apply", url: app.apply_url, external: true },
+        secondary: { label: "Cover letter", url: `${appSettings}&doc=cover` },
+      };
+    }
+
+    return {
+      priority: 4,
+      kind: "email",
+      title: "Create Gmail draft",
+      detail: `${subtitle}${subtitle ? " · " : ""}email apply`,
+      primary: { label: "Settings & draft", url: appSettings },
+      secondary: app.gmail_url
+        ? { label: "Recruiter email", url: app.gmail_url, external: true }
+        : null,
+    };
+  }
+
+  function collectProtocolActionables(run) {
+    if (!run?.phases) return [];
+    const items = [];
+    for (const phase of run.phases) {
+      if (phase.error) {
+        items.push({
+          priority: 0,
+          kind: "protocol-error",
+          title: `Fix ${phase.phase || "protocol"} error`,
+          detail: phase.error,
+          primary: { label: "Run protocols", url: "#run-protocols" },
+        });
+      }
+      for (const err of phase.errors || []) {
+        items.push({
+          priority: 0,
+          kind: "protocol-error",
+          title: "Protocol error",
+          detail: err.error || err.message || JSON.stringify(err),
+          primary: { label: "Run protocols", url: "#run-protocols" },
+        });
+      }
+    }
+    return items;
+  }
+
+  function collectActionables(applications, protocolRun) {
+    const items = collectProtocolActionables(protocolRun);
+    for (const app of sortApplicationsByScore(applications || [])) {
+      const action = classifyApplicationAction(app);
+      if (action) {
+        items.push({ ...action, slug: app.slug, score: app.match_score });
+      }
+    }
+    items.sort((a, b) => {
+      if (a.priority !== b.priority) return a.priority - b.priority;
+      return Number(b.score ?? -1) - Number(a.score ?? -1);
+    });
+    return items;
+  }
+
+  function renderActionable() {
+    const container = document.getElementById("actionable-list");
+    if (!container) return;
+
+    const items = collectActionables(state.applications, state.protocolRun);
+    if (!items.length) {
+      container.innerHTML =
+        '<p class="empty">Nothing urgent right now. Run protocols or check Applications below.</p>';
+      return;
+    }
+
+    container.innerHTML = `<ul class="action-list">${items
+      .map((item) => {
+        const secondary = item.secondary
+          ? `<a class="btn" href="${escapeAttr(item.secondary.url)}"${
+              item.secondary.external ? ' target="_blank" rel="noopener"' : ""
+            }>${escapeHtml(item.secondary.label)}</a>`
+          : "";
+        return `<li class="action-item action-${escapeAttr(item.kind)}">
+          <div class="action-copy">
+            <strong>${escapeHtml(item.title)}</strong>
+            <span class="action-detail">${escapeHtml(item.detail || item.slug || "")}</span>
+          </div>
+          <div class="action-buttons btn-row">
+            <a class="btn btn-primary" href="${escapeAttr(item.primary.url)}"${
+              item.primary.external ? ' target="_blank" rel="noopener"' : ""
+            }>${escapeHtml(item.primary.label)}</a>
+            ${secondary}
+          </div>
+        </li>`;
+      })
+      .join("")}</ul>`;
+  }
+
+  function sortApplicationsByScore(rows) {
+    return [...rows].sort((a, b) => {
+      const scoreA = a.match_score ?? a.score;
+      const scoreB = b.match_score ?? b.score;
+      const numA = scoreA == null || scoreA === "" ? -1 : Number(scoreA);
+      const numB = scoreB == null || scoreB === "" ? -1 : Number(scoreB);
+      if (numB !== numA) return numB - numA;
+      const updatedCmp = String(b.updated || "").localeCompare(String(a.updated || ""));
+      if (updatedCmp !== 0) return updatedCmp;
+      return String(a.slug || "").localeCompare(String(b.slug || ""));
+    });
+  }
+
   function renderApplicationsTable(tbody, rows) {
-    if (!rows.length) {
+    const sorted = sortApplicationsByScore(rows);
+    if (!sorted.length) {
       tbody.innerHTML = `<tr><td colspan="7" class="empty">No applications found.</td></tr>`;
       return;
     }
-    tbody.innerHTML = rows
+    tbody.innerHTML = sorted
       .map(
         (r) => `<tr>
           <td><a href="app.html?slug=${escapeAttr(r.slug)}">${escapeHtml(r.slug)}</a></td>
@@ -253,7 +427,26 @@
         );
       } else if (phase.applied_sync?.applied_list_error) {
         parts.push(
-          `<p class="hint" style="margin-top:0.5rem">Applied-list sync: ${escapeHtml(phase.applied_sync.applied_list_error)}</p>`
+          `<p class="hint" style="margin-top:0.5rem">Applied search sync (legacy run): ${escapeHtml(phase.applied_sync.applied_list_error)}. Re-run LinkedIn search to refresh.</p>`
+        );
+      } else if (
+        phase.applied_sync &&
+        (phase.applied_sync.tracked_jobs_checked || phase.applied_sync.applied_jobs_fetched)
+      ) {
+        const bits = [];
+        if (phase.applied_sync.tracked_jobs_checked) {
+          bits.push(
+            `Checked ${phase.applied_sync.tracked_jobs_checked} tracked job(s); ${phase.applied_sync.tracked_jobs_applied || 0} marked applied on LinkedIn`
+          );
+        }
+        if (phase.applied_sync.applied_jobs_fetched) {
+          bits.push(`${phase.applied_sync.applied_jobs_fetched} from custom search URL`);
+        }
+        parts.push(`<p class="hint" style="margin-top:0.5rem">${escapeHtml(bits.join(" · "))}</p>`);
+      }
+      if (phase.applied_sync?.tracked_errors?.length) {
+        parts.push(
+          `<p class="hint" style="margin-top:0.35rem">Tracked-job checks: ${escapeHtml(phase.applied_sync.tracked_errors.join("; "))}</p>`
         );
       }
 
@@ -300,6 +493,7 @@
         state.applications = data.applications || [];
       }
       renderApplicationsTable(tbody, state.applications);
+      renderActionable();
     } catch (err) {
       tbody.innerHTML = `<tr><td colspan="7" class="empty">${escapeHtml(err.message)}</td></tr>`;
     }
@@ -315,6 +509,7 @@
         if (resp.ok) state.protocolRun = await resp.json();
       }
       renderProtocolOutputs(container, state.protocolRun);
+      renderActionable();
     } catch (err) {
       container.innerHTML = `<p class="empty">${escapeHtml(err.message)}</p>`;
     }
@@ -416,6 +611,7 @@
     document.getElementById("btn-refresh").addEventListener("click", () => {
       loadApplications();
       loadProtocolRun();
+      renderActionable();
     });
 
     const signOut = document.getElementById("btn-sign-out");
