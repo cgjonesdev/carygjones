@@ -23,11 +23,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Authenticate to Google Cloud
+        id: gcp-auth
+        continue-on-error: true
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
       - name: Prepare site assets
+        env:
+          ADMIN_API_BASE_URL: ${{ vars.ADMIN_API_BASE_URL }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          GCS_BUCKET: cgjonesdev-recruiter-inbox
+          SYNC_GCS_BEFORE_BUILD: ${{ steps.gcp-auth.outcome == 'success' && '1' || '0' }}
         run: |
           if [ -f headshot.jpg ] && [ ! -f website/headshot.jpg ]; then
             cp headshot.jpg website/headshot.jpg
           fi
+          python3 -m pip install --quiet google-cloud-storage
+          python3 scripts/build_admin_data.py
           touch website/.nojekyll
 
       - uses: actions/configure-pages@v5

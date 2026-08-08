@@ -111,7 +111,8 @@ label {
 
 input[type="text"],
 input[type="password"],
-textarea {
+textarea,
+select {
   width: 100%;
   background: var(--surface-2);
   border: 1px solid var(--border);
@@ -290,6 +291,12 @@ tr:hover td {
   background: var(--surface-2);
 }
 
+.local-sync-wrap {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
 .panel-compact .settings-grid {
   grid-template-columns: 1fr auto;
 }
@@ -314,4 +321,106 @@ body.login-mode main {
 
 .login-card input[type="password"] {
   margin-bottom: 0.75rem;
+}
+
+.protocol-collapsible {
+  margin-top: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface-2);
+}
+
+.protocol-collapsible summary {
+  cursor: pointer;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  list-style: none;
+}
+
+.protocol-collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+.protocol-collapsible summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.protocol-collapsible[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.protocol-collapsible[open] summary {
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.protocol-collapsible .table-wrap {
+  margin-top: 0;
+}
+
+.action-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background: var(--surface-2);
+}
+
+.action-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.action-copy strong {
+  font-size: 0.95rem;
+}
+
+.action-detail {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.action-buttons {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.action-item.action-interview {
+  border-color: rgba(129, 140, 248, 0.45);
+}
+
+.action-item.action-draft,
+.action-item.action-email {
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.action-item.action-apply {
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+.action-item.action-protocol-error {
+  border-color: rgba(248, 113, 113, 0.45);
+}
+
+@media (max-width: 720px) {
+  .action-item {
+    align-items: flex-start;
+  }
 }
