@@ -857,8 +857,17 @@ tr:hover td {
 }
 
 .badge-ready { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+.badge-applicationinprogress { background: rgba(56, 189, 248, 0.12); color: var(--accent); }
 .badge-applied { background: rgba(52, 211, 153, 0.15); color: var(--success); }
 .badge-interview { background: rgba(129, 140, 248, 0.15); color: var(--accent-2); }
+.badge-screeninginterviewcomplete,
+.badge-intechnicalinterviews,
+.badge-technicalinterviewscomplete,
+.badge-infinalinterviews,
+.badge-finalinterviewscomplete {
+  background: rgba(129, 140, 248, 0.12);
+  color: var(--accent-2);
+}
 .badge-needsrateconfirmation { background: rgba(251, 191, 36, 0.15); color: var(--warn); }
 .badge-waitingonresponse { background: rgba(156, 163, 175, 0.15); color: var(--muted); }
 .badge-offer { background: rgba(52, 211, 153, 0.22); color: var(--success); }

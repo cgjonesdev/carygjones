@@ -272,14 +272,20 @@
   }
 
   const STATUS_LABELS = {
-    ready: "ready",
-    applied: "applied",
-    interview: "interview",
-    needs_rate_confirmation: "needs rate confirmation",
-    waiting_on_response: "waiting on response",
-    rejected: "rejected",
-    offer: "offer",
-    skipped: "skipped",
+    ready: "Ready",
+    application_in_progress: "Application in progress",
+    applied: "Applied",
+    waiting_on_response: "Waiting on response",
+    needs_rate_confirmation: "Needs rate confirmation",
+    interview: "Interview scheduled",
+    screening_interview_complete: "Screening interview complete",
+    in_technical_interviews: "In technical interviews",
+    technical_interviews_complete: "Technical interviews complete",
+    in_final_interviews: "In final interviews",
+    final_interviews_complete: "Final interviews complete",
+    offer: "Offer",
+    rejected: "Rejected",
+    skipped: "Skipped",
   };
 
   const INTEREST_SCORE = 80;
@@ -289,6 +295,14 @@
   const BACKLOG_SCORE = 60;
   const DONE_STATUSES = new Set(["applied", "skipped", "rejected", "offer"]);
   const WAITING_STATUSES = new Set(["waiting_on_response"]);
+  const INTERVIEW_STATUSES = new Set([
+    "interview",
+    "screening_interview_complete",
+    "in_technical_interviews",
+    "technical_interviews_complete",
+    "in_final_interviews",
+    "final_interviews_complete",
+  ]);
 
   function applicationStatus(app) {
     return String(app?.status ?? "ready")
@@ -420,12 +434,12 @@
       .filter(Boolean)
       .join(" · ");
 
-    if (status === "interview") {
+    if (INTERVIEW_STATUSES.has(status)) {
       const action = {
         priority: 1,
         quadrant: "do",
         kind: "interview",
-        title: "Interview prep",
+        title: STATUS_LABELS[status] || "Interview prep",
         detail: subtitle,
         primary: app.interview_url
           ? { label: "Interview link", url: app.interview_url, external: true }
@@ -557,7 +571,7 @@
     const items = [];
     for (const app of sortApplicationsByScore(applications || [])) {
       const status = applicationStatus(app);
-      if (DONE_STATUSES.has(status) || status === "interview" || WAITING_STATUSES.has(status)) continue;
+      if (DONE_STATUSES.has(status) || INTERVIEW_STATUSES.has(status) || WAITING_STATUSES.has(status)) continue;
       const score = Number(app.match_score ?? -1);
       const minScore = minActionScore(app);
       if (score < BACKLOG_SCORE || score >= minScore) continue;

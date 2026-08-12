@@ -115,14 +115,38 @@ def parse_gmail_message_id(value: str) -> str:
 ALLOWED_STATUSES = frozenset(
     {
         "ready",
+        "application_in_progress",
         "applied",
-        "interview",
-        "needs_rate_confirmation",
         "waiting_on_response",
-        "rejected",
+        "needs_rate_confirmation",
+        "interview",
+        "screening_interview_complete",
+        "in_technical_interviews",
+        "technical_interviews_complete",
+        "in_final_interviews",
+        "final_interviews_complete",
         "offer",
+        "rejected",
         "skipped",
     }
+)
+
+# Logical pipeline order for UI and error messages.
+STATUS_ORDER: tuple[str, ...] = (
+    "ready",
+    "application_in_progress",
+    "applied",
+    "waiting_on_response",
+    "needs_rate_confirmation",
+    "interview",
+    "screening_interview_complete",
+    "in_technical_interviews",
+    "technical_interviews_complete",
+    "in_final_interviews",
+    "final_interviews_complete",
+    "offer",
+    "rejected",
+    "skipped",
 )
 
 
@@ -130,7 +154,7 @@ def normalize_status(value: str | None, *, fallback: str = "ready") -> str:
     status = (value or fallback).strip().lower().replace(" ", "_")
     if status not in ALLOWED_STATUSES:
         raise ValueError(
-            f"Invalid status {value!r}. Allowed: {', '.join(sorted(ALLOWED_STATUSES))}"
+            f"Invalid status {value!r}. Allowed: {', '.join(STATUS_ORDER)}"
         )
     return status
 
@@ -169,7 +193,7 @@ def apply_settings_update(meta: dict[str, Any], payload: dict[str, Any]) -> dict
     if status not in ALLOWED_STATUSES:
         raise ValueError(
             f"Invalid status {payload.get('status')!r}. "
-            f"Allowed: {', '.join(sorted(ALLOWED_STATUSES))}"
+            f"Allowed: {', '.join(STATUS_ORDER)}"
         )
     notes = payload.get("notes")
     if notes is not None:

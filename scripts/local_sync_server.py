@@ -27,6 +27,22 @@ ALLOWED_ORIGINS = {
     "http://127.0.0.1:8765",
 }
 APP_PATH_RE = re.compile(r"^/api/applications/([^/]+)/?$")
+APP_GENERATE_RE = re.compile(r"^/api/applications/([^/]+)/generate$")
+APP_FILE_RE = re.compile(r"^/api/applications/([^/]+)/files/([^/]+)$")
+
+APPLICATION_FILE_TYPES: dict[str, str] = {
+    "jd.txt": "text/plain; charset=utf-8",
+    "resume.html": "text/html; charset=utf-8",
+    "cover_letter.html": "text/html; charset=utf-8",
+    "reply_email.txt": "text/plain; charset=utf-8",
+    "freelancer_bid.txt": "text/plain; charset=utf-8",
+    "craigslist_reply.txt": "text/plain; charset=utf-8",
+    "meta.json": "application/json",
+    "resume.pdf": "application/pdf",
+    "cover_letter.pdf": "application/pdf",
+    "resume.docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "cover_letter.docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+}
 
 
 def _cloud_run_imports():
@@ -183,6 +199,14 @@ def discover_interview_prep_for_slug(slug: str) -> list[dict]:
     return mod.discover_interview_prep(slug)
 
 
+def run_generate_for_slug_local(slug: str) -> dict:
+    if str(CLOUD_RUN) not in sys.path:
+        sys.path.insert(0, str(CLOUD_RUN))
+    from phases.generate_slug import run_generate_for_slug
+
+    return run_generate_for_slug(slug, repo=REPO_ROOT)
+
+
 def application_response(slug: str, meta: dict) -> dict:
     apply_settings_update, settings_from_meta = _cloud_run_imports()
     _ = apply_settings_update
@@ -261,6 +285,15 @@ class SyncHandler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Headers", "Content-Type, X-Admin-Key")
         self.end_headers()
 
+    def _send_file(self, path: Path, content_type: str) -> None:
+        data = path.read_bytes()
+        self.send_response(200)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Access-Control-Allow-Origin", _cors_origin(self))
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
+
     def do_GET(self) -> None:
         path = urlparse(self.path).path
         if path == "/api/health":
@@ -287,6 +320,20 @@ class SyncHandler(BaseHTTPRequestHandler):
 
         if path == "/api/protocols/latest":
             self._send_json(200, load_local_protocol_run())
+            return
+
+        file_match = APP_FILE_RE.match(path)
+        if file_match:
+            slug, filename = file_match.group(1), file_match.group(2)
+            content_type = APPLICATION_FILE_TYPES.get(filename)
+            if not content_type:
+                self._send_json(404, {"detail": "File not found"})
+                return
+            file_path = REPO_ROOT / "applications" / slug / filename
+            if not file_path.is_file():
+                self._send_json(404, {"detail": f"{filename} not found for {slug}"})
+                return
+            self._send_file(file_path, content_type)
             return
 
         match = APP_PATH_RE.match(path)
@@ -383,6 +430,37 @@ class SyncHandler(BaseHTTPRequestHandler):
                 self._send_json(500, {"detail": str(exc)})
                 return
             self._send_json(200, summary)
+            return
+
+        generate_match = APP_GENERATE_RE.match(path)
+        if generate_match:
+            slug = generate_match.group(1)
+            if not load_local_meta(slug):
+                self._send_json(404, {"detail": "Application not found"})
+                return
+            try:
+                result = run_generate_for_slug_local(slug)
+            except Exception as exc:
+                self._send_json(500, {"detail": str(exc)})
+                return
+            if result.get("error"):
+                self._send_json(400, result)
+                return
+            ok, rebuild_out = rebuild_admin_data(slug)
+            if not ok:
+                self._send_json(
+                    500,
+                    {
+                        "detail": "Generated files but build_admin_data.py failed",
+                        "stderr": rebuild_out,
+                        "generate": result,
+                    },
+                )
+                return
+            payload = dict(result)
+            if rebuild_out:
+                payload["rebuild_stdout"] = rebuild_out
+            self._send_json(200, payload)
             return
 
         if path != "/api/sync":

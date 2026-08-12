@@ -164,6 +164,143 @@
           reply: { file: "craigslist_reply.txt", tab: "tab-reply" },
         };
 
+        const TAB_LABELS = {
+          resume: "Resume",
+          cover: "Cover letter",
+          jd: "JD",
+          bid: "Freelancer bid",
+          reply: "Craigslist reply",
+        };
+
+        const GENERATABLE_DOCS = new Set(["resume", "cover"]);
+
+        const DOWNLOAD_BUTTONS = {
+          "btn-dl-resume-pdf": { file: "resume.pdf", key: "resume", label: "Download resume.pdf" },
+          "btn-dl-cover-pdf": { file: "cover_letter.pdf", key: "cover", label: "Download cover_letter.pdf" },
+          "btn-dl-resume-docx": { file: "resume.docx", key: "resume", label: "Download resume.docx" },
+          "btn-dl-cover-docx": { file: "cover_letter.docx", key: "cover", label: "Download cover_letter.docx" },
+        };
+
+        function setTabFetching(key, fetching) {
+          const tabId = files[key]?.tab;
+          if (!tabId) return;
+          const tab = document.getElementById(tabId);
+          if (!tab) return;
+          const defaultLabel = tab.dataset.defaultLabel || TAB_LABELS[key] || tab.textContent;
+          if (!tab.dataset.defaultLabel) tab.dataset.defaultLabel = defaultLabel;
+          if (fetching) {
+            tab.textContent = "Fetching…";
+            tab.setAttribute("aria-busy", "true");
+          } else {
+            tab.textContent = tab.dataset.defaultLabel;
+            tab.removeAttribute("aria-busy");
+          }
+        }
+
+        function setDownloadButtonFetching(btnId, fetching) {
+          const btn = document.getElementById(btnId);
+          if (!btn) return;
+          const spec = DOWNLOAD_BUTTONS[btnId];
+          const defaultLabel = btn.dataset.defaultLabel || spec?.label || btn.textContent;
+          if (!btn.dataset.defaultLabel) btn.dataset.defaultLabel = defaultLabel;
+          btn.disabled = fetching;
+          btn.textContent = fetching ? "Loading…" : btn.dataset.defaultLabel;
+        }
+
+        async function localAssetExists(filename) {
+          const candidates = [`apps/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`];
+          if (await AdminAuth.isLocalSyncReachable()) {
+            candidates.push(
+              `${AdminAuth.localSyncBase()}/api/applications/${encodeURIComponent(slug)}/files/${encodeURIComponent(filename)}`
+            );
+          }
+          for (const url of candidates) {
+            try {
+              const resp = await fetch(url, { method: "GET", cache: "no-store" });
+              if (resp.ok) return true;
+            } catch (_) {
+              /* try next */
+            }
+          }
+          return false;
+        }
+
+        async function ensureApplicationGenerated(key) {
+          if (!GENERATABLE_DOCS.has(key)) return;
+          const needResume = !(await localAssetExists("resume.html"));
+          const needCover = !(await localAssetExists("cover_letter.html"));
+          if (!needResume && !needCover) return;
+
+          async function postGenerate(url, useAuth) {
+            const opts = {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: "{}",
+            };
+            const resp = useAuth
+              ? await AdminAuth.fetchWithAuth(url, opts)
+              : await fetch(url, opts);
+            return resp;
+          }
+
+          let resp = null;
+          if (await AdminAuth.isLocalSyncReachable()) {
+            resp = await postGenerate(
+              `${AdminAuth.localSyncBase()}/api/applications/${encodeURIComponent(slug)}/generate`,
+              false
+            );
+          }
+
+          if ((!resp || resp.status === 404) && canUseProtocolApi()) {
+            resp = await postGenerate(
+              `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/generate`,
+              true
+            );
+          }
+
+          if (!resp) {
+            throw new Error(
+              "Start ./scripts/serve_admin_local.sh to generate resume and cover letter from the JD."
+            );
+          }
+
+          if (!resp.ok) {
+            let detail = `Generate failed (${resp.status})`;
+            try {
+              const data = await resp.json();
+              detail = data.detail || data.error || detail;
+            } catch (_) {
+              /* ignore */
+            }
+            if (resp.status === 404) {
+              detail =
+                "Generate API not found — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again).";
+            }
+            throw new Error(detail);
+          }
+          const data = await resp.json();
+          if (data.error) throw new Error(data.error);
+        }
+
+        async function fetchApplicationFileText(filename) {
+          const localUrl = `apps/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`;
+          let resp = await fetch(localUrl);
+          if (resp.ok) return resp.text();
+          if (await AdminAuth.isLocalSyncReachable()) {
+            resp = await fetch(
+              `${AdminAuth.localSyncBase()}/api/applications/${encodeURIComponent(slug)}/files/${encodeURIComponent(filename)}`
+            );
+            if (resp.ok) return resp.text();
+          }
+          if (canUseProtocolApi()) {
+            resp = await AdminAuth.fetchWithAuth(
+              `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`
+            );
+            if (resp.ok) return resp.text();
+          }
+          throw new Error(`${filename} not found — click Resume again to generate, or run: python scripts/build_admin_data.py --slug ${slug}`);
+        }
+
         function isCraigslistApp(meta) {
           const method = String(meta?.apply_method || "").toLowerCase();
           if (method === "craigslist") return true;
@@ -565,19 +702,12 @@
 
         async function loadDocFromLocal(spec) {
           const frame = document.getElementById("doc-frame");
-          const localUrl = `apps/${encodeURIComponent(slug)}/${spec.file}`;
           if (spec.file.endsWith(".txt") || spec.file.endsWith(".html")) {
-            const resp = await fetch(localUrl);
-            if (!resp.ok) {
-              throw new Error(
-                `${spec.file} not found locally — run: python scripts/build_admin_data.py --slug ${slug}`
-              );
-            }
-            renderDocInFrame(frame, spec, await resp.text());
+            renderDocInFrame(frame, spec, await fetchApplicationFileText(spec.file));
             return;
           }
           frame.srcdoc = "";
-          frame.src = localUrl;
+          frame.src = `apps/${encodeURIComponent(slug)}/${spec.file}`;
         }
 
         async function loadDocFromCloud(spec) {
@@ -603,6 +733,14 @@
 
           const useLocal = AdminAuth.preferLocalAppFiles();
           try {
+            if (GENERATABLE_DOCS.has(key)) {
+              setTabFetching(key, true);
+              try {
+                await ensureApplicationGenerated(key);
+              } finally {
+                setTabFetching(key, false);
+              }
+            }
             if (useLocal) {
               await loadDocFromLocal(spec);
               return;
@@ -731,9 +869,14 @@
           URL.revokeObjectURL(objectUrl);
         }
 
-        async function downloadFile(filename) {
+        async function downloadFile(filename, btnId) {
+          const dlSpec = btnId ? DOWNLOAD_BUTTONS[btnId] : null;
+          if (dlSpec) setDownloadButtonFetching(btnId, true);
           setDownloadStatus(`Downloading ${filename}…`, "running");
           try {
+            if (dlSpec) {
+              await ensureApplicationGenerated(dlSpec.key);
+            }
             if (AdminAuth.preferLocalAppFiles()) {
               await downloadFileFromLocal(filename);
             } else if (canUseProtocolApi()) {
@@ -748,22 +891,17 @@
             setDownloadStatus(`Downloaded ${filename}.`, "ok");
           } catch (err) {
             setDownloadStatus(err.message, "err");
+          } finally {
+            if (dlSpec) setDownloadButtonFetching(btnId, false);
           }
         }
 
         function bindDownloads() {
-          document.getElementById("btn-dl-resume-pdf").addEventListener("click", () =>
-            downloadFile("resume.pdf")
-          );
-          document.getElementById("btn-dl-cover-pdf").addEventListener("click", () =>
-            downloadFile("cover_letter.pdf")
-          );
-          document.getElementById("btn-dl-resume-docx").addEventListener("click", () =>
-            downloadFile("resume.docx")
-          );
-          document.getElementById("btn-dl-cover-docx").addEventListener("click", () =>
-            downloadFile("cover_letter.docx")
-          );
+          Object.entries(DOWNLOAD_BUTTONS).forEach(([btnId, spec]) => {
+            document.getElementById(btnId).addEventListener("click", () =>
+              downloadFile(spec.file, btnId)
+            );
+          });
         }
 
         document.getElementById("btn-save-settings").addEventListener("click", saveSettings);
