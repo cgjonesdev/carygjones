@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>Application · Admin</title>
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <meta name="theme-color" content="#0b1120">
     <link rel="stylesheet" href="admin.css">
   </head>
   <body>
@@ -605,6 +609,22 @@
           }
         }
 
+        function appendOpenApplicationDocButtons(actionsEl) {
+          const docs = [
+            { file: "resume.html", label: "Open resume" },
+            { file: "cover_letter.html", label: "Open cover letter" },
+          ];
+          for (const doc of docs) {
+            const open = document.createElement("a");
+            open.className = "btn";
+            open.href = `apps/${encodeURIComponent(slug)}/${encodeURIComponent(doc.file)}`;
+            open.target = "_blank";
+            open.rel = "noopener";
+            open.textContent = doc.label;
+            actionsEl.appendChild(open);
+          }
+        }
+
         function renderInterviewPrep(meta) {
           const panel = document.getElementById("interview-prep-panel");
           const summaryEl = document.getElementById("interview-prep-summary");
@@ -635,6 +655,7 @@
 
           actionsEl.innerHTML = "";
           appendCursorPrepButtons({ ...meta, slug }, actionsEl);
+          appendOpenApplicationDocButtons(actionsEl);
           if (meta.interview_url) {
             const join = document.createElement("a");
             join.className = "btn btn-primary";
@@ -667,7 +688,7 @@
 
             const open = document.createElement("a");
             open.className = "btn";
-            open.href = `apps/${encodeURIComponent(slug)}/${encodeURIComponent(item.file)}`;
+            open.href = `apps/${encodeURIComponent(prepAssetsSlug())}/${encodeURIComponent(item.file)}`;
             open.target = "_blank";
             open.rel = "noopener";
             open.textContent = `Open ${item.label || item.file}`;
@@ -687,7 +708,7 @@
           frame.hidden = false;
           frame.removeAttribute("src");
           frame.srcdoc = "<p style='font-family:sans-serif;padding:1rem;color:#666'>Loading…</p>";
-          const url = `apps/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`;
+          const url = `apps/${encodeURIComponent(prepAssetsSlug())}/${encodeURIComponent(filename)}`;
           try {
             const resp = await fetch(url);
             if (!resp.ok) {
@@ -786,11 +807,36 @@
           });
         });
 
-        async function staticApplicationRow() {
+        const PREP_SLUG_ALIASES = {
+          ustechsolutions: "nextera",
+          ustech: "nextera",
+        };
+
+        function prepAssetsSlug() {
+          return PREP_SLUG_ALIASES[slug] || slug;
+        }
+
+        async function staticApplicationRow(targetSlug = slug) {
           const resp = await fetch("data/applications.json");
           if (!resp.ok) return null;
           const data = await resp.json();
-          return (data.applications || []).find((a) => a.slug === slug) || null;
+          return (data.applications || []).find((a) => a.slug === targetSlug) || null;
+        }
+
+        async function enrichMetaWithPrep(meta) {
+          if (!meta) return meta;
+          if (meta.interview_prep?.length) return meta;
+          const alias = PREP_SLUG_ALIASES[slug];
+          if (!alias) return meta;
+          const aliasRow = await staticApplicationRow(alias);
+          if (!aliasRow?.interview_prep?.length) return meta;
+          return {
+            ...meta,
+            interview_prep: aliasRow.interview_prep,
+            interview_url: meta.interview_url || aliasRow.interview_url,
+            gmail_url: meta.gmail_url || aliasRow.gmail_url,
+            status: meta.status || aliasRow.status,
+          };
         }
 
         function mergeMetaWithStatic(meta, staticRow) {
@@ -808,6 +854,9 @@
           if (!merged.links?.length && staticRow.links?.length) {
             merged.links = staticRow.links;
           }
+          if (!merged.status && staticRow.status) {
+            merged.status = staticRow.status;
+          }
           return merged;
         }
 
@@ -823,6 +872,7 @@
           if (!meta) {
             meta = staticRow;
           }
+          meta = await enrichMetaWithPrep(meta);
           if (!meta) {
             document.getElementById("app-subtitle").textContent = slug;
             loadDoc(doc in files ? doc : "resume");
