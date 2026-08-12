@@ -39,7 +39,7 @@ RUN pip install --no-cache-dir \
     -r /tmp/requirements-gmail.txt \
     && playwright install chromium
 
-COPY tools/gmail/auth.py tools/gmail/scanner.py tools/gmail/storage.py tools/gmail/job_runner.py /app/gmail/
+COPY tools/gmail/auth.py tools/gmail/scanner.py tools/gmail/storage.py tools/gmail/job_runner.py tools/gmail/text_clean.py tools/gmail/draft_reply.py tools/gmail/reply_generator.py /app/gmail/
 COPY tools/cloud_run/ /app/cloud_run/
 COPY base/cary_jones_resume.html /app/assets/cary_jones_resume.html
 COPY website/contact.json /app/assets/contact.json

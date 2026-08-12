@@ -25,16 +25,18 @@ if [[ -z "${ADMIN_API_BASE_URL:-}" ]]; then
 fi
 export ADMIN_API_BASE_URL="${ADMIN_API_BASE_URL:-https://job-search-admin-416806702268.us-west1.run.app}"
 
-free_sync_port() {
+free_listen_port() {
+  local listen_port="$1"
+  local label="$2"
   local pids
-  pids="$(lsof -nP -iTCP:"$sync_port" -sTCP:LISTEN -t 2>/dev/null || true)"
+  pids="$(lsof -nP -iTCP:"$listen_port" -sTCP:LISTEN -t 2>/dev/null || true)"
   if [[ -n "$pids" ]]; then
-    echo "Stopping stale sync server on port ${sync_port} (pid(s): ${pids//$'\n'/ })"
+    echo "Stopping stale ${label} on port ${listen_port} (pid(s): ${pids//$'\n'/ })"
     kill $pids 2>/dev/null || true
     sleep 0.5
-    pids="$(lsof -nP -iTCP:"$sync_port" -sTCP:LISTEN -t 2>/dev/null || true)"
+    pids="$(lsof -nP -iTCP:"$listen_port" -sTCP:LISTEN -t 2>/dev/null || true)"
     if [[ -n "$pids" ]]; then
-      echo "Port ${sync_port} still in use. Run: lsof -nP -iTCP:${sync_port} -sTCP:LISTEN" >&2
+      echo "Port ${listen_port} still in use (${label}). Run: lsof -nP -iTCP:${listen_port} -sTCP:LISTEN" >&2
       exit 1
     fi
   fi
@@ -42,9 +44,18 @@ free_sync_port() {
 
 echo "GCS_BUCKET=$GCS_BUCKET"
 echo "ADMIN_API_BASE_URL=$ADMIN_API_BASE_URL"
+if [[ "${SYNC_GCS_ON_SERVE:-1}" != "0" ]]; then
+  echo "Syncing applications/ from GCS before admin build…"
+  if python3 "$root/tools/gmail/sync_gcs_inbox.py" --applications; then
+    echo "Synced applications/ from GCS"
+  else
+    echo "GCS applications sync skipped (offline or misconfigured)" >&2
+  fi
+fi
 python3 "$root/scripts/build_admin_data.py" >/dev/null
 
-free_sync_port
+free_listen_port "$sync_port" "sync server"
+free_listen_port "$port" "admin UI server"
 python3 "$root/scripts/local_sync_server.py" "$sync_port" &
 sync_pid=$!
 cleanup() {
@@ -70,6 +81,6 @@ fi
 
 echo "Admin UI:  http://localhost:${port}/admin/"
 echo "Sync API:  http://127.0.0.1:${sync_port}/api/sync"
-echo "Protocol API: ${ADMIN_API_BASE_URL} (enter admin password in Connection → Save key to run protocols)"
+echo "Protocol API: ${ADMIN_API_BASE_URL} (Gmail/Generate/LinkedIn) · Side-gig scans run locally via sync port ${sync_port}"
 echo "Press Ctrl+C to stop both servers."
 exec python3 -m http.server "$port" --directory "$root/website"

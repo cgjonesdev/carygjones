@@ -18,8 +18,20 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from location_score import display_match_score  # noqa: E402
+from app_settings import apply_settings_update, settings_from_meta  # noqa: E402
 import gcs_apps  # noqa: E402
-from orchestrator import run_all, run_generate, run_gmail, run_linkedin, run_phases  # noqa: E402
+from orchestrator import (  # noqa: E402
+    run_all,
+    run_craigslist,
+    run_freelancer,
+    run_generate,
+    run_gmail,
+    run_indeed,
+    run_linkedin,
+    run_phases,
+)
+from phases.gmail_draft import run_gmail_draft  # noqa: E402
 from phases.manual_jd import run_manual_jd  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -47,6 +59,22 @@ class RunRequest(BaseModel):
     parallel: bool = False
 
 
+class ApplicationSettingsUpdate(BaseModel):
+    recruiter_email: str | None = None
+    recruiter_name: str | None = None
+    apply_url: str | None = None
+    gmail_message_id: str | None = None
+    email_subject: str | None = None
+    status: str | None = None
+    notes: str | None = None
+
+
+class GmailDraftRequest(BaseModel):
+    regenerate: bool = False
+    force: bool = False
+    dry_run: bool = False
+
+
 def _require_admin_key(x_admin_key: str | None = Header(default=None)) -> None:
     expected = os.environ.get("ADMIN_API_KEY", "").strip()
     if not expected:
@@ -68,7 +96,7 @@ def _application_row(slug: str, meta: dict[str, Any]) -> dict[str, Any]:
     apply_url = meta.get("apply_url")
     interview_url = meta.get("interview_url")
     gmail_url = _gmail_url(meta)
-    base = f"/admin/app.html?slug={slug}"
+    app_base = f"app.html?slug={slug}"
     links = []
     if apply_url:
         links.append({"label": "Apply", "url": apply_url})
@@ -78,24 +106,28 @@ def _application_row(slug: str, meta: dict[str, Any]) -> dict[str, Any]:
         links.append({"label": "Gmail", "url": gmail_url})
     links.extend(
         [
-            {"label": "Resume", "url": f"{base}&doc=resume"},
-            {"label": "Cover", "url": f"{base}&doc=cover"},
-            {"label": "Folder", "url": f"/api/applications/{slug}/meta.json"},
+            {"label": "Resume", "url": f"{app_base}&doc=resume"},
+            {"label": "Cover", "url": f"{app_base}&doc=cover"},
+            {"label": "JD", "url": f"{app_base}&doc=jd"},
+            {"label": "Settings", "url": app_base},
         ]
     )
-    return {
+    row = {
         "slug": slug,
         "company": meta.get("company"),
         "role": meta.get("role"),
         "location": meta.get("location"),
-        "match_score": meta.get("match_score"),
+        "match_score": display_match_score(meta),
         "status": meta.get("status"),
         "updated": meta.get("updated"),
         "apply_url": apply_url,
+        "apply_method": meta.get("apply_method"),
+        "gmail_draft_id": meta.get("gmail_draft_id"),
         "interview_url": interview_url,
         "gmail_url": gmail_url,
         "links": links,
     }
+    return row
 
 
 app = FastAPI(title="Job Search Admin API", version="1.0.0")
@@ -121,7 +153,14 @@ def list_applications(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
         if not meta:
             continue
         rows.append(_application_row(slug, meta))
-    rows.sort(key=lambda r: (r.get("updated") or "", r.get("slug") or ""), reverse=True)
+    rows.sort(
+        key=lambda r: (
+            r.get("match_score") if r.get("match_score") is not None else -1,
+            r.get("updated") or "",
+            r.get("slug") or "",
+        ),
+        reverse=True,
+    )
     return {"applications": rows, "count": len(rows)}
 
 
@@ -130,29 +169,94 @@ def get_application(slug: str, _: None = Depends(_require_admin_key)) -> dict[st
     meta = gcs_apps.load_app_meta(slug)
     if not meta:
         raise HTTPException(status_code=404, detail="Application not found")
-    return _application_row(slug, meta)
+    row = _application_row(slug, meta)
+    row["settings"] = settings_from_meta(meta)
+    return row
+
+
+@app.patch("/api/applications/{slug}")
+def update_application(
+    slug: str,
+    body: ApplicationSettingsUpdate,
+    _: None = Depends(_require_admin_key),
+) -> dict[str, Any]:
+    meta = gcs_apps.load_app_meta(slug)
+    if not meta:
+        raise HTTPException(status_code=404, detail="Application not found")
+    try:
+        updated = apply_settings_update(meta, body.model_dump())
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    gcs_apps.save_app_meta(slug, updated)
+    row = _application_row(slug, updated)
+    row["settings"] = settings_from_meta(updated)
+    return row
+
+
+@app.post("/api/applications/{slug}/gmail-draft")
+def create_gmail_draft(
+    slug: str,
+    body: GmailDraftRequest,
+    _: None = Depends(_require_admin_key),
+) -> dict[str, Any]:
+    try:
+        result = run_gmail_draft(
+            slug,
+            regenerate=body.regenerate,
+            force=body.force,
+            dry_run=body.dry_run,
+        )
+    except Exception as exc:  # noqa: BLE001 — return JSON instead of crashing the worker
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    if result.get("error"):
+        detail = result["error"]
+        status = 503 if "Gmail token" in detail or "OAuth" in detail else 400
+        raise HTTPException(status_code=status, detail=detail)
+    if result.get("outcome") == "skipped":
+        raise HTTPException(status_code=400, detail=result.get("detail") or "Draft skipped")
+    return result
 
 
 @app.get("/api/applications/{slug}/{filename}")
-def get_application_file(slug: str, filename: str, _: None = Depends(_require_admin_key)):
+def get_application_file(
+    slug: str,
+    filename: str,
+    _: None = Depends(_require_admin_key),
+):
     allowed = {
         "meta.json": "application/json",
         "jd.txt": "text/plain; charset=utf-8",
         "resume.html": "text/html; charset=utf-8",
         "cover_letter.html": "text/html; charset=utf-8",
         "reply_email.txt": "text/plain; charset=utf-8",
+        "freelancer_bid.txt": "text/plain; charset=utf-8",
+        "craigslist_reply.txt": "text/plain; charset=utf-8",
+        "resume.pdf": "application/pdf",
+        "cover_letter.pdf": "application/pdf",
+        "resume.docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "cover_letter.docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     }
     if filename not in allowed:
         raise HTTPException(status_code=404, detail="File not found")
-    raw = gcs_apps.download_text(f"applications/{slug}/{filename}")
-    if raw is None:
+
+    path = f"applications/{slug}/{filename}"
+    media = allowed[filename]
+    headers = {"Content-Disposition": f'attachment; filename="{filename}"'}
+
+    if filename.endswith((".pdf", ".docx")):
+        raw = gcs_apps.download_bytes(path)
+        if raw is None:
+            raise HTTPException(status_code=404, detail="File not found")
+        return Response(content=raw, media_type=media, headers=headers)
+
+    text = gcs_apps.download_text(path)
+    if text is None:
         raise HTTPException(status_code=404, detail="File not found")
     if filename == "meta.json":
-        return JSONResponse(content=json.loads(raw))
-    media = allowed[filename]
+        return JSONResponse(content=json.loads(text))
     if filename.endswith(".html"):
-        return HTMLResponse(content=raw, media_type=media)
-    return Response(content=raw, media_type=media)
+        return HTMLResponse(content=text, media_type=media)
+    return Response(content=text, media_type=media)
 
 
 @app.get("/api/protocols/latest")
@@ -178,6 +282,24 @@ def api_run_generate(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
 @app.post("/api/run/linkedin")
 def api_run_linkedin(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
     result = run_phases([("linkedin", run_linkedin)])
+    return result
+
+
+@app.post("/api/run/freelancer")
+def api_run_freelancer(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
+    result = run_phases([("freelancer_scan", run_freelancer)])
+    return result
+
+
+@app.post("/api/run/craigslist")
+def api_run_craigslist(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
+    result = run_phases([("craigslist_scan", run_craigslist)])
+    return result
+
+
+@app.post("/api/run/indeed")
+def api_run_indeed(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
+    result = run_phases([("indeed_scan", run_indeed)])
     return result
 
 

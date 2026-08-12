@@ -45,6 +45,9 @@
       if (cfg.apiBase) {
         state.apiBase = String(cfg.apiBase).replace(/\/$/, "");
         state.configApiBase = true;
+      } else {
+        loadSettings();
+        state.apiBase = AdminAuth.resolveProtocolApiBase(cfg);
       }
     } catch (_) {
       /* static fallback */
@@ -67,6 +70,77 @@
     wrap.hidden = !isLocalAdminHost();
   }
 
+  const LOCAL_APP_SYNC_THROTTLE_MS = 90_000;
+  let localAppSyncPromise = null;
+
+  async function loadApplicationsFromLocalSync() {
+    if (!isLocalAdminHost() || !(await AdminAuth.isLocalSyncReachable())) return null;
+    try {
+      const resp = await fetch(`${AdminAuth.localSyncBase()}/api/applications`);
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      return data.applications || null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  async function syncLocalApplicationsFromGcs(force = false) {
+    if (!isLocalAdminHost() || !(await AdminAuth.isLocalSyncReachable())) return false;
+    const throttleKey = "jobSearchAdminAppSyncAt";
+    const last = Number(sessionStorage.getItem(throttleKey) || 0);
+    if (!force && Date.now() - last < LOCAL_APP_SYNC_THROTTLE_MS) {
+      return false;
+    }
+    const resp = await fetch(`${AdminAuth.localSyncBase()}/api/sync`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ inbox: false, applications: true, rebuild_admin_data: true }),
+    });
+    if (!resp.ok) {
+      const data = await resp.json().catch(() => ({}));
+      throw new Error(data.error || data.detail || resp.statusText);
+    }
+    sessionStorage.setItem(throttleKey, String(Date.now()));
+    return true;
+  }
+
+  async function resolveLocalApplications(staticApps) {
+    if (!AdminAuth.isLocalAdminHost() || !(await AdminAuth.isLocalSyncReachable())) {
+      return staticApps;
+    }
+    const liveApps = await loadApplicationsFromLocalSync();
+    if (liveApps?.length) {
+      return mergeApplicationsBySlug(liveApps, staticApps);
+    }
+    return staticApps;
+  }
+
+  function backgroundSyncLocalApplications() {
+    if (localAppSyncPromise) return localAppSyncPromise;
+    localAppSyncPromise = (async () => {
+      if (!isLocalAdminHost() || !(await AdminAuth.isLocalSyncReachable())) return;
+      const statusEl = document.getElementById("local-sync-status");
+      try {
+        const didSync = await syncLocalApplicationsFromGcs(false);
+        if (!didSync) return;
+        if (statusEl) setStatus(statusEl, "Refreshing from GCS…", "running");
+        const staticApps = await loadStaticApplications().catch(() => [...state.applications]);
+        const liveApps = await loadApplicationsFromLocalSync();
+        if (liveApps?.length) {
+          state.applications = mergeApplicationsBySlug(liveApps, staticApps);
+          paintDashboard();
+        }
+        if (statusEl) setStatus(statusEl, "Applications synced from GCS.", "ok");
+      } catch (err) {
+        showDataSourceWarning(`Background GCS sync: ${err.message}`);
+      } finally {
+        localAppSyncPromise = null;
+      }
+    })();
+    return localAppSyncPromise;
+  }
+
   async function pullFromGcsLocal() {
     const statusEl = document.getElementById("local-sync-status");
     if (!isLocalAdminHost()) {
@@ -83,9 +157,8 @@
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok) throw new Error(data.error || data.detail || resp.statusText);
       setStatus(statusEl, (data.sync_stdout || "Sync complete.") + " Reloading…", "ok");
-      await loadApplications();
-      await loadProtocolRun();
-      renderActionable();
+      sessionStorage.setItem("jobSearchAdminAppSyncAt", String(Date.now()));
+      await loadDashboardData();
     } catch (err) {
       const hint =
         err.message === "Failed to fetch"
@@ -111,6 +184,14 @@
         hint.textContent = `Protocol API: ${state.apiBase} (from deploy config)`;
       }
       panel.classList.add("panel-compact");
+    } else if (isLocalAdminHost()) {
+      if (hint) {
+        hint.textContent =
+          "Local dev: sign in (or Save password) to run protocols on Cloud Run. API URL is filled automatically unless you override it below.";
+      }
+      if (!apiInput.value && state.apiBase) {
+        apiInput.value = state.apiBase;
+      }
     } else if (!state.apiBase) {
       if (hint) {
         hint.textContent =
@@ -127,16 +208,18 @@
     return base ? `${base}${path}` : "";
   }
 
-  async function apiFetch(path, options = {}) {
-    const url = apiUrl(path);
+  async function apiFetch(path, options = {}, apiBaseOverride) {
+    const base = (apiBaseOverride || state.apiBase || "").replace(/\/$/, "");
+    const url = base ? `${base}${path}` : "";
     if (!url) {
       const hint = AdminAuth.isLocalAdminHost()
-        ? "Set admin password in Connection → Save key (same as GitHub Pages login)."
+        ? "Fill in Protocol API URL under Connection (or restart ./scripts/serve_admin_local.sh)."
         : "Set GitHub variable ADMIN_API_BASE_URL and redeploy.";
       throw new Error(`Protocol API URL is not configured (${hint})`);
     }
     const headers = { ...(options.headers || {}) };
-    if (state.apiKey) headers["X-Admin-Key"] = state.apiKey;
+    const key = AdminAuth.resolveApiKey(state.configApiBase);
+    if (key && !apiBaseOverride) headers["X-Admin-Key"] = key;
     if (options.body && !headers["Content-Type"]) {
       headers["Content-Type"] = "application/json";
     }
@@ -180,12 +263,106 @@
   }
 
   function badge(status) {
-    const s = (status || "unknown").toLowerCase();
-    return `<span class="badge badge-${s.replace(/[^a-z]/g, "") || "ready"}">${escapeHtml(status || "—")}</span>`;
+    const raw = String(status ?? "unknown")
+      .trim()
+      .toLowerCase();
+    const label = STATUS_LABELS[raw] || status || "—";
+    const cls = raw.replace(/[^a-z0-9_]/g, "").replace(/_/g, "") || "ready";
+    return `<span class="badge badge-${escapeAttr(cls)}">${escapeHtml(label)}</span>`;
   }
 
+  const STATUS_LABELS = {
+    ready: "ready",
+    applied: "applied",
+    interview: "interview",
+    needs_rate_confirmation: "needs rate confirmation",
+    waiting_on_response: "waiting on response",
+    rejected: "rejected",
+    offer: "offer",
+    skipped: "skipped",
+  };
+
   const INTEREST_SCORE = 80;
+  const FREELANCER_INTEREST_SCORE = 70;
+  const CRAIGSLIST_INTEREST_SCORE = 60;
+  const INDEED_INTEREST_SCORE = 70;
+  const BACKLOG_SCORE = 60;
   const DONE_STATUSES = new Set(["applied", "skipped", "rejected", "offer"]);
+  const WAITING_STATUSES = new Set(["waiting_on_response"]);
+
+  function applicationStatus(app) {
+    return String(app?.status ?? "ready")
+      .trim()
+      .toLowerCase();
+  }
+
+  function isDoneApplication(app) {
+    return DONE_STATUSES.has(applicationStatus(app));
+  }
+
+  function mergeApplicationRecord(apiApp, staticApp) {
+    if (!apiApp) return staticApp;
+    if (!staticApp) return apiApp;
+
+    const apiStatus = applicationStatus(apiApp);
+    const staticStatus = applicationStatus(staticApp);
+    const merged = { ...staticApp, ...apiApp };
+
+    if (DONE_STATUSES.has(staticStatus)) {
+      merged.status = staticApp.status;
+      merged.updated = staticApp.updated || merged.updated;
+    } else if (DONE_STATUSES.has(apiStatus)) {
+      merged.status = apiApp.status;
+      merged.updated = apiApp.updated || merged.updated;
+    } else     if ((staticApp.updated || "") > (apiApp.updated || "")) {
+      merged.status = staticApp.status ?? merged.status;
+      merged.updated = staticApp.updated;
+    }
+
+    if (!merged.interview_prep?.length && staticApp.interview_prep?.length) {
+      merged.interview_prep = staticApp.interview_prep;
+    }
+    if (!merged.interview_url && staticApp.interview_url) {
+      merged.interview_url = staticApp.interview_url;
+    }
+    if (!merged.gmail_url && staticApp.gmail_url) {
+      merged.gmail_url = staticApp.gmail_url;
+    }
+    if (!merged.links?.length && staticApp.links?.length) {
+      merged.links = staticApp.links;
+    }
+
+    return merged;
+  }
+
+  const QUADRANTS = [
+    {
+      id: "do",
+      title: "Do first",
+      subtitle: "Urgent · Important",
+      hint: "Interviews and blockers — handle before anything else.",
+    },
+    {
+      id: "schedule",
+      title: "Schedule",
+      subtitle: "Important · Not urgent",
+      hint: "Block time for drafts, email replies, and portal applies.",
+    },
+    {
+      id: "quick",
+      title: "Quick wins",
+      subtitle: "Urgent · Less effort",
+      hint: "One-click applies, Freelancer bids, Craigslist replies, Indeed jobs, and fast sends.",
+    },
+    {
+      id: "later",
+      title: "Later",
+      subtitle: "Important · Someday",
+      hint: "Worth keeping on radar — review when the top rows are clear.",
+    },
+  ];
+
+  const QUADRANT_PREVIEW = 6;
 
   function settingsUrl(slug) {
     return `app.html?slug=${encodeURIComponent(slug)}`;
@@ -193,6 +370,36 @@
 
   function isLinkedInApply(url) {
     return Boolean(url && /linkedin\.com/i.test(url));
+  }
+
+  function isFreelancerApp(app) {
+    const method = String(app.apply_method || "").toLowerCase();
+    if (method === "freelancer") return true;
+    return String(app.slug || "").startsWith("freelancer_");
+  }
+
+  function isCraigslistApp(app) {
+    const method = String(app.apply_method || "").toLowerCase();
+    if (method === "craigslist") return true;
+    if (String(app.slug || "").startsWith("craigslist_")) return true;
+    const company = String(app.company || "").toLowerCase();
+    const url = String(app.apply_url || "").toLowerCase();
+    return company.includes("craigslist") || url.includes("craigslist.org");
+  }
+
+  function isIndeedApp(app) {
+    const method = String(app.apply_method || "").toLowerCase();
+    if (method === "indeed") return true;
+    if (String(app.slug || "").startsWith("indeed_")) return true;
+    const url = String(app.apply_url || "").toLowerCase();
+    return url.includes("indeed.com/viewjob") || url.includes("cts.indeed.com");
+  }
+
+  function minActionScore(app) {
+    if (isFreelancerApp(app)) return FREELANCER_INTEREST_SCORE;
+    if (isCraigslistApp(app)) return CRAIGSLIST_INTEREST_SCORE;
+    if (isIndeedApp(app)) return INDEED_INTEREST_SCORE;
+    return INTEREST_SCORE;
   }
 
   function isEmailApply(app) {
@@ -204,8 +411,8 @@
   }
 
   function classifyApplicationAction(app) {
-    const status = String(app.status || "ready").toLowerCase();
-    if (DONE_STATUSES.has(status)) return null;
+    const status = applicationStatus(app);
+    if (DONE_STATUSES.has(status) || WAITING_STATUSES.has(status)) return null;
 
     const score = Number(app.match_score ?? -1);
     const appSettings = settingsUrl(app.slug);
@@ -214,23 +421,99 @@
       .join(" · ");
 
     if (status === "interview") {
-      return {
+      const action = {
         priority: 1,
+        quadrant: "do",
         kind: "interview",
         title: "Interview prep",
         detail: subtitle,
         primary: app.interview_url
           ? { label: "Interview link", url: app.interview_url, external: true }
           : { label: "Open application", url: appSettings },
-        secondary: { label: "Settings", url: appSettings },
+        secondary:
+          (app.interview_prep && app.interview_prep.length) || app.interview_url
+            ? { label: "Prep guide", url: `${appSettings}#interview-prep` }
+            : { label: "Settings", url: appSettings },
+      };
+      if (AdminAuth.isLocalAdminHost()) {
+        action.cursor = {
+          label: "Mock in Cursor",
+          mode: "mock",
+          slug: app.slug,
+          company: app.company,
+          role: app.role,
+          client: app.client,
+          status: app.status,
+          notes: app.notes,
+          interview_url: app.interview_url,
+        };
+      }
+      return action;
+    }
+
+    if (status === "needs_rate_confirmation") {
+      return {
+        priority: 2,
+        quadrant: "schedule",
+        kind: "rate",
+        title: "Confirm rate",
+        detail: subtitle,
+        primary: { label: "Open settings", url: appSettings },
+        secondary: app.gmail_url
+          ? { label: "Gmail thread", url: app.gmail_url, external: true }
+          : null,
       };
     }
 
-    if (score < INTEREST_SCORE) return null;
+    const minScore = minActionScore(app);
+    if (score < minScore) return null;
+
+    if (isFreelancerApp(app)) {
+      return {
+        priority: 2,
+        quadrant: "quick",
+        kind: "freelancer-bid",
+        title: "Submit Freelancer bid",
+        detail: subtitle,
+        primary: app.apply_url
+          ? { label: "Bid on Freelancer", url: app.apply_url, external: true }
+          : { label: "Open application", url: appSettings },
+        secondary: { label: "Copy bid text", url: `${appSettings}&doc=bid` },
+      };
+    }
+
+    if (isCraigslistApp(app)) {
+      return {
+        priority: 2,
+        quadrant: "quick",
+        kind: "craigslist-reply",
+        title: "Send Craigslist reply",
+        detail: subtitle,
+        primary: app.apply_url
+          ? { label: "Open posting", url: app.apply_url, external: true }
+          : { label: "Open application", url: appSettings },
+        secondary: { label: "Copy reply", url: `${appSettings}&doc=reply` },
+      };
+    }
+
+    if (isIndeedApp(app)) {
+      return {
+        priority: 2,
+        quadrant: "quick",
+        kind: "indeed-apply",
+        title: "Apply on Indeed",
+        detail: subtitle,
+        primary: app.apply_url
+          ? { label: "Indeed job", url: app.apply_url, external: true }
+          : { label: "Open application", url: appSettings },
+        secondary: { label: "JD", url: `${appSettings}&doc=jd` },
+      };
+    }
 
     if (app.gmail_draft_id) {
       return {
         priority: 2,
+        quadrant: "schedule",
         kind: "draft",
         title: "Review Gmail draft & send",
         detail: subtitle,
@@ -244,11 +527,11 @@
     }
 
     if (app.apply_url && !isEmailApply(app)) {
-      const title = isLinkedInApply(app.apply_url)
-        ? "Easy Apply on LinkedIn"
-        : "Apply on job portal";
+      const linkedin = isLinkedInApply(app.apply_url);
+      const title = linkedin ? "Easy Apply on LinkedIn" : "Apply on job portal";
       return {
-        priority: 3,
+        priority: linkedin ? 3 : 3,
+        quadrant: linkedin ? "quick" : "schedule",
         kind: "apply",
         title,
         detail: subtitle,
@@ -259,6 +542,7 @@
 
     return {
       priority: 4,
+      quadrant: "schedule",
       kind: "email",
       title: "Create Gmail draft",
       detail: `${subtitle}${subtitle ? " · " : ""}email apply`,
@@ -269,6 +553,44 @@
     };
   }
 
+  function collectBacklogItems(applications) {
+    const items = [];
+    for (const app of sortApplicationsByScore(applications || [])) {
+      const status = applicationStatus(app);
+      if (DONE_STATUSES.has(status) || status === "interview" || WAITING_STATUSES.has(status)) continue;
+      const score = Number(app.match_score ?? -1);
+      const minScore = minActionScore(app);
+      if (score < BACKLOG_SCORE || score >= minScore) continue;
+      const subtitle = [app.company || app.slug, app.role, `score ${score}`]
+        .filter(Boolean)
+        .join(" · ");
+      const backlogTitle = isFreelancerApp(app)
+        ? "Review Freelancer fit"
+        : isCraigslistApp(app)
+          ? "Review Craigslist fit"
+          : isIndeedApp(app)
+            ? "Review Indeed fit"
+            : "Review fit";
+      items.push({
+        quadrant: "later",
+        kind: isFreelancerApp(app)
+          ? "freelancer-backlog"
+          : isCraigslistApp(app)
+            ? "craigslist-backlog"
+            : isIndeedApp(app)
+              ? "indeed-backlog"
+              : "backlog",
+        title: backlogTitle,
+        detail: subtitle,
+        slug: app.slug,
+        score,
+        primary: { label: "Open", url: settingsUrl(app.slug) },
+        secondary: { label: "Settings", url: settingsUrl(app.slug) },
+      });
+    }
+    return items;
+  }
+
   function collectProtocolActionables(run) {
     if (!run?.phases) return [];
     const items = [];
@@ -276,19 +598,21 @@
       if (phase.error) {
         items.push({
           priority: 0,
+          quadrant: "do",
           kind: "protocol-error",
           title: `Fix ${phase.phase || "protocol"} error`,
           detail: phase.error,
-          primary: { label: "Run protocols", url: "#run-protocols" },
+          primary: { label: "Open admin", action: "open-admin" },
         });
       }
       for (const err of phase.errors || []) {
         items.push({
           priority: 0,
+          quadrant: "do",
           kind: "protocol-error",
           title: "Protocol error",
           detail: err.error || err.message || JSON.stringify(err),
-          primary: { label: "Run protocols", url: "#run-protocols" },
+          primary: { label: "Open admin", action: "open-admin" },
         });
       }
     }
@@ -303,6 +627,9 @@
         items.push({ ...action, slug: app.slug, score: app.match_score });
       }
     }
+    for (const item of collectBacklogItems(applications)) {
+      items.push(item);
+    }
     items.sort((a, b) => {
       if (a.priority !== b.priority) return a.priority - b.priority;
       return Number(b.score ?? -1) - Number(a.score ?? -1);
@@ -310,38 +637,79 @@
     return items;
   }
 
+  function renderTodoCard(item) {
+    const secondary = item.secondary
+      ? `<a class="btn btn-sm" href="${escapeAttr(item.secondary.url)}"${
+          item.secondary.external ? ' target="_blank" rel="noopener"' : ""
+        }>${escapeHtml(item.secondary.label)}</a>`
+      : "";
+    const primary =
+      item.primary?.action === "open-admin"
+        ? `<button class="btn btn-primary btn-sm" type="button" data-open-admin>${escapeHtml(item.primary.label)}</button>`
+        : `<a class="btn btn-primary btn-sm" href="${escapeAttr(item.primary.url)}"${
+            item.primary.external ? ' target="_blank" rel="noopener"' : ""
+          }>${escapeHtml(item.primary.label)}</a>`;
+    return `<li class="todo-card action-${escapeAttr(item.kind)}">
+      <div class="todo-card-copy">
+        <strong>${escapeHtml(item.title)}</strong>
+        <span class="todo-card-detail">${escapeHtml(item.detail || item.slug || "")}</span>
+      </div>
+      <div class="todo-card-actions">${primary}${secondary}</div>
+    </li>`;
+  }
+
+  function renderQuadrantBody(list, quadrantId) {
+    if (!list.length) return '<p class="quadrant-empty">Clear</p>';
+    const preview = list.slice(0, QUADRANT_PREVIEW);
+    const rest = list.slice(QUADRANT_PREVIEW);
+    let html = `<ul class="todo-list">${preview.map(renderTodoCard).join("")}</ul>`;
+    if (rest.length) {
+      html += `<button type="button" class="btn btn-sm quadrant-show-more" data-show-quadrant="${escapeAttr(quadrantId)}">Show ${rest.length} more</button>`;
+      html += `<ul class="todo-list quadrant-more" data-quadrant="${escapeAttr(quadrantId)}" hidden>${rest.map(renderTodoCard).join("")}</ul>`;
+    }
+    return html;
+  }
+
   function renderActionable() {
-    const container = document.getElementById("actionable-list");
-    if (!container) return;
+    const board = document.getElementById("actionable-board");
+    const summary = document.getElementById("actionable-summary");
+    if (!board) return;
 
     const items = collectActionables(state.applications, state.protocolRun);
-    if (!items.length) {
-      container.innerHTML =
-        '<p class="empty">Nothing urgent right now. Run protocols or check Applications below.</p>';
+    const byQuadrant = Object.fromEntries(QUADRANTS.map((q) => [q.id, []]));
+    for (const item of items) {
+      const q = item.quadrant || "schedule";
+      if (byQuadrant[q]) byQuadrant[q].push(item);
+    }
+
+    const total = items.length;
+    const urgent = byQuadrant.do.length + byQuadrant.quick.length;
+    if (summary) {
+      summary.textContent = total
+        ? `${urgent} urgent · ${total} total in queue`
+        : "Queue clear";
+    }
+
+    if (!total) {
+      board.innerHTML =
+        '<p class="empty">Nothing in the queue. Open <strong>Admin</strong> to run protocols or pull from GCS.</p>';
       return;
     }
 
-    container.innerHTML = `<ul class="action-list">${items
-      .map((item) => {
-        const secondary = item.secondary
-          ? `<a class="btn" href="${escapeAttr(item.secondary.url)}"${
-              item.secondary.external ? ' target="_blank" rel="noopener"' : ""
-            }>${escapeHtml(item.secondary.label)}</a>`
-          : "";
-        return `<li class="action-item action-${escapeAttr(item.kind)}">
-          <div class="action-copy">
-            <strong>${escapeHtml(item.title)}</strong>
-            <span class="action-detail">${escapeHtml(item.detail || item.slug || "")}</span>
+    board.innerHTML = QUADRANTS.map((q) => {
+      const list = byQuadrant[q.id];
+      return `<div class="quadrant quadrant-${q.id}">
+        <header class="quadrant-header">
+          <div>
+            <h3>${escapeHtml(q.title)}</h3>
+            <span class="quadrant-sub">${escapeHtml(q.subtitle)}</span>
           </div>
-          <div class="action-buttons btn-row">
-            <a class="btn btn-primary" href="${escapeAttr(item.primary.url)}"${
-              item.primary.external ? ' target="_blank" rel="noopener"' : ""
-            }>${escapeHtml(item.primary.label)}</a>
-            ${secondary}
-          </div>
-        </li>`;
-      })
-      .join("")}</ul>`;
+          <span class="quadrant-count">${list.length}</span>
+        </header>
+        <p class="quadrant-hint">${escapeHtml(q.hint)}</p>
+        ${renderQuadrantBody(list, q.id)}
+      </div>`;
+    }).join("");
   }
 
   function sortApplicationsByScore(rows) {
@@ -355,6 +723,97 @@
       if (updatedCmp !== 0) return updatedCmp;
       return String(a.slug || "").localeCompare(String(b.slug || ""));
     });
+  }
+
+  function filterApplications(query, limit = 12) {
+    const q = query.trim().toLowerCase();
+    if (!q || q.length < 2) return [];
+    const terms = q.split(/\s+/).filter(Boolean);
+    const matches = [];
+    for (const app of state.applications || []) {
+      const hay = [
+        app.slug,
+        app.company,
+        app.role,
+        app.location,
+        app.status,
+        app.apply_method,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      if (terms.every((term) => hay.includes(term))) {
+        matches.push(app);
+      }
+    }
+    return sortApplicationsByScore(matches.filter((app) => !isDoneApplication(app))).slice(0, limit);
+  }
+
+  function renderApplicationSearch() {
+    const input = document.getElementById("app-search");
+    const container = document.getElementById("app-search-results");
+    if (!input || !container) return;
+
+    const query = input.value.trim();
+    if (query.length < 2) {
+      container.hidden = true;
+      container.innerHTML = "";
+      return;
+    }
+
+    const rows = filterApplications(query);
+    if (!rows.length) {
+      container.hidden = false;
+      container.innerHTML = `<div class="search-results-empty">
+        <span class="search-results-empty-icon" aria-hidden="true">⌕</span>
+        <p>No matches for <strong>${escapeHtml(query)}</strong></p>
+        <span class="search-results-empty-hint">Try company name, role title, or status like “interview”</span>
+      </div>`;
+      return;
+    }
+
+    container.hidden = false;
+    container.innerHTML = `<div class="search-results-header">${rows.length} match${rows.length === 1 ? "" : "es"}</div>
+      <ul class="search-results-list">${rows
+      .map((app) => {
+        const subtitle = [app.role, app.location, app.match_score != null ? `score ${app.match_score}` : ""]
+          .filter(Boolean)
+          .join(" · ");
+        const settingsUrl = `app.html?slug=${encodeURIComponent(app.slug)}`;
+        return `<li class="search-result-item">
+          <a class="search-result-main" href="${escapeAttr(settingsUrl)}">
+            <span class="search-result-title">${escapeHtml(app.company || app.slug)}</span>
+            <span class="search-result-detail">${escapeHtml(subtitle || app.slug)}</span>
+            <span class="search-result-slug">${escapeHtml(app.slug)}</span>
+          </a>
+          <div class="search-result-aside">${badge(app.status)}<span class="search-result-arrow" aria-hidden="true">→</span></div>
+        </li>`;
+      })
+      .join("")}</ul>`;
+  }
+
+  function bindApplicationSearch() {
+    const input = document.getElementById("app-search");
+    if (!input || input.dataset.bound) return;
+    input.dataset.bound = "1";
+    const field = input.closest(".search-field");
+    let timer = null;
+    const syncFieldState = () => {
+      field?.classList.toggle("has-value", input.value.length > 0);
+    };
+    input.addEventListener("input", () => {
+      syncFieldState();
+      window.clearTimeout(timer);
+      timer = window.setTimeout(renderApplicationSearch, 120);
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        input.value = "";
+        syncFieldState();
+        renderApplicationSearch();
+      }
+    });
+    syncFieldState();
   }
 
   function renderApplicationsTable(tbody, rows) {
@@ -502,6 +961,31 @@
       if (phase.exit_code !== undefined && phase.exit_code !== 0) {
         parts.push(`<p class="status-bar err">Gmail scan exit code ${phase.exit_code}</p>`);
       }
+
+      if (phase.jobs_found !== undefined) {
+        const cats = Array.isArray(phase.categories) ? phase.categories.join(", ") : "";
+        const searchUrl = phase.search_url ? ` · ${phase.search_url}` : "";
+        const label =
+          phase.phase === "craigslist_scan"
+            ? "Craigslist listings scanned"
+            : phase.phase === "indeed_scan"
+              ? "Indeed jobs scanned"
+              : "Freelancer listings scanned";
+        const extra =
+          phase.phase === "indeed_scan"
+            ? ` · ${phase.search_query || "—"} in ${phase.search_location || "—"}`
+            : searchUrl
+              ? ` · ${escapeHtml(searchUrl)}`
+              : "";
+        parts.push(
+          `<p class="hint">${phase.jobs_found} ${label}${cats ? ` (${escapeHtml(cats)})` : ""}${extra} · threshold ${phase.min_score ?? "—"}%</p>`
+        );
+      }
+      if (Array.isArray(phase.fetch_errors) && phase.fetch_errors.length) {
+        parts.push(
+          `<p class="status-bar err">${escapeHtml(phase.fetch_errors.join("; "))}</p>`
+        );
+      }
     }
 
     if (run.started_at) {
@@ -535,7 +1019,9 @@
       if (app?.slug) bySlug.set(app.slug, app);
     }
     for (const app of primary || []) {
-      if (app?.slug) bySlug.set(app.slug, app);
+      if (!app?.slug) continue;
+      const existing = bySlug.get(app.slug);
+      bySlug.set(app.slug, existing ? mergeApplicationRecord(app, existing) : app);
     }
     return Array.from(bySlug.values());
   }
@@ -560,17 +1046,57 @@
     }
   }
 
-  async function loadApplications() {
-    const tbody = document.getElementById("apps-table-body");
-    let staticApps = [];
-    try {
-      staticApps = await loadStaticApplications();
-    } catch (_) {
-      /* static bundle optional when API-only */
-    }
+  function shouldFetchLiveApi() {
+    if (!state.apiBase) return false;
+    if (AdminAuth.isLocalAdminHost() && !state.apiKey) return false;
+    return true;
+  }
 
-    try {
-      if (state.apiBase) {
+  function paintDashboard() {
+    renderActionable();
+    updateApplicationsCount(state.applications.length);
+    renderApplicationSearch();
+    renderApplicationsTableIfVisible();
+  }
+
+  function paintProtocolOutput() {
+    const container = document.getElementById("protocol-output");
+    if (container) renderProtocolOutputs(container, state.protocolRun);
+  }
+
+  function renderApplicationsTableIfVisible() {
+    const panel = document.getElementById("applications-panel");
+    const tbody = document.getElementById("apps-table-body");
+    if (!tbody) return;
+    if (panel && !panel.open) return;
+    renderApplicationsTable(tbody, state.applications);
+  }
+
+  async function hydrateFromStatic() {
+    const [staticApps, run] = await Promise.all([
+      loadStaticApplications().catch(() => []),
+      loadStaticProtocolRun().catch(() => null),
+    ]);
+    const apps = await resolveLocalApplications(staticApps);
+    if (apps.length) {
+      state.applications = apps;
+    } else if (!state.applications.length) {
+      throw new Error("Missing data/applications.json — run scripts/build_admin_data.py");
+    }
+    if (run) state.protocolRun = run;
+    paintDashboard();
+    paintProtocolOutput();
+    void backgroundSyncLocalApplications();
+  }
+
+  async function refreshFromLiveApi() {
+    if (!shouldFetchLiveApi()) return;
+
+    const staticApps = [...state.applications];
+    const staticRun = state.protocolRun;
+
+    await Promise.all([
+      (async () => {
         try {
           const data = await apiFetch("/api/applications");
           state.applications = mergeApplicationsBySlug(data.applications || [], staticApps);
@@ -585,19 +1111,36 @@
             showDataSourceWarning(
               `Using deploy snapshot (${staticApps.length} apps). Live API: ${err.message}.${authHint}`
             );
-          } else {
-            throw err;
           }
         }
-      } else if (staticApps.length) {
-        state.applications = staticApps;
-      } else {
-        throw new Error("Missing data/applications.json — run scripts/build_admin_data.py");
-      }
-      renderApplicationsTable(tbody, state.applications);
-      renderActionable();
+      })(),
+      (async () => {
+        try {
+          const run = await fetchProtocolRun();
+          if (run) state.protocolRun = run;
+        } catch (err) {
+          if (staticRun) {
+            state.protocolRun = staticRun;
+            showDataSourceWarning(`Using cached protocol output. Live API: ${err.message}`);
+          }
+        }
+      })(),
+    ]);
+
+    paintDashboard();
+    paintProtocolOutput();
+  }
+
+  async function loadApplications() {
+    const tbody = document.getElementById("apps-table-body");
+    try {
+      await hydrateFromStatic();
+      await refreshFromLiveApi();
+      if (tbody) renderApplicationsTable(tbody, state.applications);
     } catch (err) {
-      tbody.innerHTML = `<tr><td colspan="7" class="empty">${escapeHtml(err.message)}</td></tr>`;
+      if (tbody) {
+        tbody.innerHTML = `<tr><td colspan="7" class="empty">${escapeHtml(err.message)}</td></tr>`;
+      }
       renderActionable();
     }
   }
@@ -612,7 +1155,7 @@
     }
 
     try {
-      if (state.apiBase) {
+      if (shouldFetchLiveApi()) {
         try {
           state.protocolRun = await apiFetch("/api/protocols/latest");
         } catch (err) {
@@ -623,14 +1166,164 @@
             throw err;
           }
         }
-      } else {
+      } else if (staticRun) {
         state.protocolRun = staticRun;
       }
-      renderProtocolOutputs(container, state.protocolRun);
+      if (container) renderProtocolOutputs(container, state.protocolRun);
       renderActionable();
     } catch (err) {
-      container.innerHTML = `<p class="empty">${escapeHtml(err.message)}</p>`;
+      if (container) container.innerHTML = `<p class="empty">${escapeHtml(err.message)}</p>`;
       renderActionable();
+    }
+  }
+
+  async function loadDashboardData() {
+    try {
+      await hydrateFromStatic();
+    } catch (err) {
+      const board = document.getElementById("actionable-board");
+      if (board) board.innerHTML = `<p class="empty">${escapeHtml(err.message)}</p>`;
+      throw err;
+    }
+    void refreshFromLiveApi();
+  }
+
+  async function fetchProtocolRun() {
+    if (AdminAuth.isLocalAdminHost() && (await AdminAuth.isLocalSyncReachable())) {
+      try {
+        const resp = await fetch(`${localSyncBase()}/api/protocols/latest`);
+        if (resp.ok) return resp.json();
+      } catch (_) {
+        /* fall through to Cloud Run / static */
+      }
+    }
+    if (shouldFetchLiveApi()) {
+      return apiFetch("/api/protocols/latest");
+    }
+    return loadStaticProtocolRun();
+  }
+
+  async function localSyncSupportsProtocol(protocolKey) {
+    try {
+      const resp = await fetch(`${localSyncBase()}/api/health`);
+      if (!resp.ok) return false;
+      const data = await resp.json();
+      return data?.protocols?.[protocolKey] === true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  async function runLocalSideGigScan(endpoint, label, protocolKey, statusEl) {
+    if (state.running) return;
+    state.running = true;
+    setStatus(statusEl, `Running ${label}…`, "running");
+    document.querySelectorAll(".run-btn").forEach((b) => (b.disabled = true));
+    try {
+      if (!AdminAuth.isLocalAdminHost()) {
+        const data = await apiFetch(endpoint, { method: "POST" });
+        state.protocolRun = data;
+        renderProtocolOutputs(document.getElementById("protocol-output"), data);
+        const generated = (data.phases || []).flatMap((p) => p.generated || []);
+        setStatus(statusEl, `${label} finished (${generated.length} new).`, "ok");
+        await loadApplications();
+        return;
+      }
+
+      const syncUp = await AdminAuth.isLocalSyncReachable();
+      if (!syncUp) {
+        throw new Error(
+          `${label} runs locally — start ./scripts/serve_admin_local.sh (sync server on port 8765).`
+        );
+      }
+      if (!(await localSyncSupportsProtocol(protocolKey))) {
+        throw new Error(
+          "Local sync server is outdated — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again)."
+        );
+      }
+      const data = await apiFetch(endpoint, { method: "POST" }, localSyncBase());
+      state.protocolRun = data;
+      renderProtocolOutputs(document.getElementById("protocol-output"), data);
+      const generated = (data.phases || []).flatMap((p) => p.generated || []);
+      setStatus(statusEl, `${label} finished locally (${generated.length} new).`, "ok");
+      await loadApplications();
+    } catch (err) {
+      const msg = String(err.message || err);
+      if (msg === "Not found" || msg.includes("404")) {
+        setStatus(
+          statusEl,
+          AdminAuth.isLocalAdminHost()
+            ? `${label} route missing — restart ./scripts/serve_admin_local.sh to reload the sync server.`
+            : `${label} route missing on Cloud Run — redeploy tools/cloud_run/service/cloud/deploy.sh.`,
+          "err"
+        );
+      } else {
+        setStatus(statusEl, msg, "err");
+      }
+    } finally {
+      state.running = false;
+      document.querySelectorAll(".run-btn").forEach((b) => (b.disabled = false));
+    }
+  }
+
+  async function runFreelancerScan(statusEl) {
+    return runLocalSideGigScan("/api/run/freelancer", "Freelancer scan", "freelancer", statusEl);
+  }
+
+  async function runCraigslistScan(statusEl) {
+    return runLocalSideGigScan("/api/run/craigslist", "Craigslist LA gigs scan", "craigslist", statusEl);
+  }
+
+  async function runIndeedScan(statusEl) {
+    if (state.running) return;
+    state.running = true;
+    setStatus(statusEl, "Running Indeed…", "running");
+    document.querySelectorAll(".run-btn").forEach((b) => (b.disabled = true));
+    try {
+      let data;
+      const syncUp =
+        AdminAuth.isLocalAdminHost() && (await AdminAuth.isLocalSyncReachable());
+      if (syncUp) {
+        if (!(await localSyncSupportsProtocol("indeed"))) {
+          throw new Error(
+            "Local sync server is outdated — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again)."
+          );
+        }
+        data = await apiFetch("/api/run/indeed", { method: "POST" }, localSyncBase());
+      } else if (shouldFetchLiveApi()) {
+        data = await apiFetch("/api/run/indeed", { method: "POST" });
+      } else if (AdminAuth.isLocalAdminHost()) {
+        throw new Error(
+          "Indeed — start ./scripts/serve_admin_local.sh (sync server on port 8765) or save admin password for Cloud Run."
+        );
+      } else {
+        throw new Error("Indeed requires Cloud Run API (set ADMIN_API_BASE_URL and sign in).");
+      }
+      state.protocolRun = data;
+      renderProtocolOutputs(document.getElementById("protocol-output"), data);
+      const generated = (data.phases || []).flatMap((p) => p.generated || []);
+      setStatus(
+        statusEl,
+        syncUp ? `Indeed finished locally (${generated.length} new).` : `Indeed finished (${generated.length} new).`,
+        "ok"
+      );
+      await loadApplications();
+    } catch (err) {
+      const msg = String(err.message || err);
+      if (msg === "Not found" || msg.includes("404")) {
+        setStatus(
+          statusEl,
+          AdminAuth.isLocalAdminHost()
+            ? "Indeed route missing — restart ./scripts/serve_admin_local.sh to reload the sync server."
+            : "Indeed route missing on Cloud Run — redeploy tools/cloud_run/service/cloud/deploy.sh.",
+          "err"
+        );
+      } else {
+        setStatus(statusEl, msg, "err");
+      }
+    } finally {
+      state.running = false;
+      document.querySelectorAll(".run-btn").forEach((b) => (b.disabled = false));
     }
   }
 
@@ -687,6 +1380,93 @@
     }
   }
 
+  function updateApplicationsCount(n) {
+    const el = document.getElementById("apps-count");
+    if (el) el.textContent = `${n} total`;
+  }
+
+  function openAdminDrawer() {
+    const drawer = document.getElementById("admin-drawer");
+    const backdrop = document.getElementById("admin-drawer-backdrop");
+    const toggle = document.getElementById("btn-admin-drawer");
+    if (!drawer || !backdrop) return;
+    drawer.hidden = false;
+    backdrop.hidden = false;
+    document.body.classList.add("admin-drawer-open");
+    if (toggle) toggle.setAttribute("aria-expanded", "true");
+    requestAnimationFrame(() => {
+      drawer.classList.add("is-open");
+      backdrop.classList.add("is-open");
+    });
+  }
+
+  function closeAdminDrawer() {
+    const drawer = document.getElementById("admin-drawer");
+    const backdrop = document.getElementById("admin-drawer-backdrop");
+    const toggle = document.getElementById("btn-admin-drawer");
+    if (!drawer || !backdrop) return;
+    drawer.classList.remove("is-open");
+    backdrop.classList.remove("is-open");
+    document.body.classList.remove("admin-drawer-open");
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+    window.setTimeout(() => {
+      if (!drawer.classList.contains("is-open")) {
+        drawer.hidden = true;
+        backdrop.hidden = true;
+      }
+    }, 220);
+  }
+
+  function bindAdminDrawer() {
+    document.getElementById("btn-admin-drawer")?.addEventListener("click", openAdminDrawer);
+    document.getElementById("btn-admin-drawer-close")?.addEventListener("click", closeAdminDrawer);
+    document.getElementById("admin-drawer-backdrop")?.addEventListener("click", closeAdminDrawer);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && document.body.classList.contains("admin-drawer-open")) {
+        closeAdminDrawer();
+      }
+    });
+  }
+
+  function bindActionableBoard() {
+    const board = document.getElementById("actionable-board");
+    if (!board || board.dataset.bound) return;
+    board.dataset.bound = "1";
+    board.addEventListener("click", (e) => {
+      if (e.target.closest("[data-open-admin]")) {
+        openAdminDrawer();
+        return;
+      }
+      const cursorBtn = e.target.closest("[data-cursor-prep]");
+      if (cursorBtn && window.AdminCursor) {
+        e.preventDefault();
+        const runStatus = document.getElementById("run-status");
+        try {
+          const meta = JSON.parse(cursorBtn.getAttribute("data-cursor-meta") || "{}");
+          const mode = cursorBtn.getAttribute("data-cursor-prep") || "mock";
+          setStatus(runStatus, "Opening Cursor…", "running");
+          void AdminCursor.launchCursorInterviewPrep(meta, mode)
+            .then((result) => {
+              setStatus(
+                runStatus,
+                `Cursor opened (${mode})${result.copied ? " · prompt copied to clipboard" : ""} — review and send in chat.`,
+                "ok"
+              );
+            })
+            .catch((err) => setStatus(runStatus, err.message, "err"));
+        } catch (err) {
+          setStatus(runStatus, err.message, "err");
+        }
+        return;
+      }
+      const btn = e.target.closest("[data-show-quadrant]");
+      if (!btn) return;
+      const q = btn.getAttribute("data-show-quadrant");
+      board.querySelector(`.quadrant-more[data-quadrant="${q}"]`)?.removeAttribute("hidden");
+      btn.remove();
+    });
+  }
+
   function bindUi() {
     const apiInput = document.getElementById("api-base");
     const keyInput = document.getElementById("api-key");
@@ -695,18 +1475,28 @@
 
     configureSettingsPanel();
     configureLocalSyncPanel();
+    bindAdminDrawer();
+    bindActionableBoard();
+    bindApplicationSearch();
+
+    document.getElementById("applications-panel")?.addEventListener("toggle", (e) => {
+      if (e.target.open) renderApplicationsTableIfVisible();
+    });
 
     document.getElementById("save-settings").addEventListener("click", () => {
       if (!state.configApiBase) {
-        state.apiBase = apiInput.value.trim().replace(/\/$/, "");
+        const fromInput = apiInput.value.trim().replace(/\/$/, "");
+        state.apiBase = fromInput || AdminAuth.resolveProtocolApiBase({});
       }
-      state.apiKey = keyInput.value.trim();
+      const fromInputKey = keyInput.value.trim();
+      state.apiKey = fromInputKey || AdminAuth.resolveApiKey(state.configApiBase);
       saveSettings();
-      loadApplications();
-      loadProtocolRun();
+      void loadDashboardData();
       setStatus(
         runStatus,
-        state.apiBase ? `API: ${state.apiBase}` : "Read-only mode (static JSON).",
+        state.apiBase
+          ? `Connected to ${state.apiBase}${state.apiKey ? "" : " (add password to run protocols)"}`
+          : "Read-only mode (static JSON).",
         state.apiBase ? "ok" : ""
       );
     });
@@ -720,6 +1510,15 @@
     document.getElementById("btn-linkedin").addEventListener("click", () =>
       runProtocol("/api/run/linkedin", "LinkedIn search", runStatus)
     );
+    document.getElementById("btn-indeed").addEventListener("click", () =>
+      runIndeedScan(runStatus)
+    );
+    document.getElementById("btn-freelancer").addEventListener("click", () =>
+      runFreelancerScan(document.getElementById("side-gig-status"))
+    );
+    document.getElementById("btn-craigslist").addEventListener("click", () =>
+      runCraigslistScan(document.getElementById("side-gig-status"))
+    );
     document.getElementById("btn-all-seq").addEventListener("click", () =>
       runProtocol("/api/run/all", "All protocols (sequential)", runStatus, false)
     );
@@ -731,9 +1530,7 @@
     const pullGcs = document.getElementById("btn-pull-gcs");
     if (pullGcs) pullGcs.addEventListener("click", () => pullFromGcsLocal());
     document.getElementById("btn-refresh").addEventListener("click", () => {
-      loadApplications();
-      loadProtocolRun();
-      renderActionable();
+      void loadDashboardData();
     });
 
     const signOut = document.getElementById("btn-sign-out");
@@ -747,18 +1544,24 @@
   }
 
   async function boot(apiKeyFromLogin) {
+    loadSettings();
     if (apiKeyFromLogin) {
       state.apiKey = apiKeyFromLogin;
     } else {
-      loadSettings();
       state.apiKey = AdminAuth.resolveApiKey(state.configApiBase);
+    }
+    if (!state.apiBase && !state.configApiBase) {
+      state.apiBase = AdminAuth.resolveProtocolApiBase({});
     }
     bindUi();
     if (state.apiBase) {
       setStatus(document.getElementById("run-status"), `API: ${state.apiBase}`, "ok");
     }
-    await loadApplications();
-    await loadProtocolRun();
+    try {
+      await loadDashboardData();
+    } catch (_) {
+      /* hydrateFromStatic already surfaced error in board */
+    }
   }
 
   async function init() {

@@ -55,6 +55,18 @@ Skip phases with env vars on the job (re-deploy or override at execute time):
 | `SKIP_GMAIL_SCAN=1` | Skip phase 1 |
 | `SKIP_GENERATE=1` | Skip OpenAI generation |
 | `SKIP_LINKEDIN=1` | Skip LinkedIn search |
+| `SKIP_FREELANCER_SCAN=1` | Skip Freelancer scan (default on `run all`) |
+| `FREELANCER_MATCH_THRESHOLD=70` | Minimum score to create bid folders |
+| `FREELANCER_MAX_PER_RUN=5` | Cap new Freelancer applications per scan |
+| `SKIP_CRAIGSLIST_SCAN=1` | Skip Craigslist LA gigs scan (default on `run all`) |
+| `CRAIGSLIST_SEARCH_URL=…` | Craigslist search URL (default LA Central `cat=ggg`) |
+| `CRAIGSLIST_MATCH_THRESHOLD=60` | Minimum score to create reply folders |
+| `CRAIGSLIST_MAX_PER_RUN=5` | Cap new Craigslist applications per scan |
+| `SKIP_INDEED_SCAN=1` | Skip Indeed job search (default on `run all`) |
+| `INDEED_SEARCH_QUERY=python developer` | Indeed search keywords |
+| `INDEED_SEARCH_LOCATION=Los Angeles, CA` | Indeed search location |
+| `INDEED_MATCH_THRESHOLD=70` | Minimum score after location adjustment |
+| `INDEED_MAX_PER_RUN=5` | Cap new Indeed applications per scan |
 | `MAX_GENERATE_PER_RUN=5` | Cap new applications per run |
 | `MATCH_THRESHOLD=80` | Minimum score to generate |
 
@@ -88,6 +100,11 @@ python run_protocols.py
 - **GitHub Pages** can host a read-only dashboard; it cannot run this pipeline (needs secrets + OpenAI + Gmail).
 - **LinkedIn Easy Apply** stays manual; cloud generates files and stores apply URLs in `meta.json`.
 - LinkedIn phase uses workflow API: `POST /workflows` with `st.searchJobs`, then polls `GET /workflows/{id}` (not `/v1/jobs/search`).
+- **Location scoring:** after OpenAI scoring, apply a server-side adjustment (`tools/cloud_run/location_score.py`):
+  - **Remote** — anywhere; no penalty
+  - **Onsite / hybrid** — **Los Angeles metro** or **SF Bay Area** only; no penalty
+  - **Onsite / hybrid outside those metros** — `match_score × 0.1` (falls below the 80 generate threshold and ranks at the bottom of the admin table)
+- **Applied status sync:** opens each tracked application’s LinkedIn job via `st.openJob` (up to `LINKEDIN_APPLIED_CHECK_LIMIT`, default 15) and marks `meta.json` `status: applied` when LinkedIn shows an applied signal. Linked API does not support the Job tracker Applied tab URL — that path was removed.
 
 ## Admin dashboard
 
@@ -96,7 +113,7 @@ Static UI: `website/admin/` (deployed with GitHub Pages at `/admin/`).
 | Feature | Where |
 |---------|--------|
 | Manual JD textarea | Admin UI → calls `POST /api/jd/manual` |
-| Run Gmail / Generate / LinkedIn / All (parallel or sequential) | Admin UI → `POST /api/run/*` |
+| Run Gmail / Generate / LinkedIn / Indeed / Freelancer / Craigslist / All | Admin UI → `POST /api/run/*` |
 | Applications table + clickable links | Apply · Gmail · Resume · Cover |
 | Application preview pages | `admin/app.html?slug=…` |
 

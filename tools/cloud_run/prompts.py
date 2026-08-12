@@ -4,6 +4,7 @@ import os
 
 SCORE_SYSTEM = """You score job descriptions against a candidate resume for fit (0-100).
 Weights: must-have skills/stack 50%, role level/years 20%, domain 15%, location/remote 15%.
+Location policy (server-side adjustment in location_score.py): remote anywhere = OK; onsite/hybrid LA or SF Bay only = OK; other onsite/hybrid metros penalized (×0.1).
 Respond with JSON only:
 {
   "match_score": number,
@@ -18,7 +19,7 @@ Respond with JSON only:
   "apply_url": string or null,
   "should_generate": boolean
 }
-Set should_generate true when match_score >= 80. Never invent candidate credentials."""
+Set should_generate true when match_score >= 80 before any server-side location adjustment. Never invent candidate credentials."""
 
 GENERATE_SYSTEM = """You generate tailored job application files for Cary Jones.
 Rules:

@@ -8,6 +8,8 @@ import os
 import re
 import subprocess
 import sys
+import threading
+import importlib.util
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
@@ -16,6 +18,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 CLOUD_RUN = REPO_ROOT / "tools" / "cloud_run"
 SYNC_SCRIPT = REPO_ROOT / "tools" / "gmail" / "sync_gcs_inbox.py"
 BUILD_SCRIPT = REPO_ROOT / "scripts" / "build_admin_data.py"
+PROTOCOL_STATE = REPO_ROOT / "website" / "admin" / "data" / "latest_protocol_run.json"
 DEFAULT_PORT = int(os.environ.get("LOCAL_SYNC_PORT", "8765"))
 ALLOWED_ORIGINS = {
     "http://localhost:8080",
@@ -73,9 +76,12 @@ def upload_meta_to_gcs(slug: str, meta: dict) -> bool:
         return False
 
 
-def rebuild_admin_data() -> tuple[bool, str]:
+def rebuild_admin_data(slug: str | None = None) -> tuple[bool, str]:
+    cmd = [sys.executable, str(BUILD_SCRIPT)]
+    if slug:
+        cmd.extend(["--slug", slug])
     proc = subprocess.run(
-        [sys.executable, str(BUILD_SCRIPT)],
+        cmd,
         cwd=str(REPO_ROOT),
         capture_output=True,
         text=True,
@@ -83,6 +89,98 @@ def rebuild_admin_data() -> tuple[bool, str]:
     )
     output = (proc.stdout or proc.stderr or "").strip()
     return proc.returncode == 0, output
+
+
+def save_local_protocol_run(summary: dict) -> None:
+    PROTOCOL_STATE.parent.mkdir(parents=True, exist_ok=True)
+    PROTOCOL_STATE.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+
+
+def load_local_protocol_run() -> dict:
+    if not PROTOCOL_STATE.is_file():
+        return {"phases": [], "empty": True}
+    try:
+        data = json.loads(PROTOCOL_STATE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"phases": [], "empty": True}
+    if not data.get("phases"):
+        data["empty"] = True
+    return data
+
+
+def run_freelancer_scan_local() -> dict:
+    if str(CLOUD_RUN) not in sys.path:
+        sys.path.insert(0, str(CLOUD_RUN))
+    from datetime import datetime, timezone
+
+    from phases.freelancer_scan import run_freelancer_scan_phase
+
+    os.environ.setdefault("REPO_ROOT", str(REPO_ROOT))
+    os.environ.setdefault("ASSETS_DIR", str(REPO_ROOT))
+    started_at = datetime.now(timezone.utc).isoformat()
+    phase = run_freelancer_scan_phase()
+    summary = {
+        "started_at": started_at,
+        "mode": "local",
+        "phases": [phase],
+        "finished_at": phase.get("finished_at") or datetime.now(timezone.utc).isoformat(),
+    }
+    save_local_protocol_run(summary)
+    rebuild_admin_data()
+    return summary
+
+
+def run_craigslist_scan_local() -> dict:
+    if str(CLOUD_RUN) not in sys.path:
+        sys.path.insert(0, str(CLOUD_RUN))
+    from datetime import datetime, timezone
+
+    from phases.craigslist_scan import run_craigslist_scan_phase
+
+    os.environ.setdefault("REPO_ROOT", str(REPO_ROOT))
+    os.environ.setdefault("ASSETS_DIR", str(REPO_ROOT))
+    started_at = datetime.now(timezone.utc).isoformat()
+    phase = run_craigslist_scan_phase()
+    summary = {
+        "started_at": started_at,
+        "mode": "local",
+        "phases": [phase],
+        "finished_at": phase.get("finished_at") or datetime.now(timezone.utc).isoformat(),
+    }
+    save_local_protocol_run(summary)
+    rebuild_admin_data()
+    return summary
+
+
+def run_indeed_scan_local() -> dict:
+    if str(CLOUD_RUN) not in sys.path:
+        sys.path.insert(0, str(CLOUD_RUN))
+    from datetime import datetime, timezone
+
+    from phases.indeed_scan import run_indeed_scan_phase
+
+    os.environ.setdefault("REPO_ROOT", str(REPO_ROOT))
+    os.environ.setdefault("ASSETS_DIR", str(REPO_ROOT))
+    started_at = datetime.now(timezone.utc).isoformat()
+    phase = run_indeed_scan_phase()
+    summary = {
+        "started_at": started_at,
+        "mode": "local",
+        "phases": [phase],
+        "finished_at": phase.get("finished_at") or datetime.now(timezone.utc).isoformat(),
+    }
+    save_local_protocol_run(summary)
+    rebuild_admin_data()
+    return summary
+
+
+def discover_interview_prep_for_slug(slug: str) -> list[dict]:
+    spec = importlib.util.spec_from_file_location("build_admin_data", BUILD_SCRIPT)
+    if spec is None or spec.loader is None:
+        return []
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.discover_interview_prep(slug)
 
 
 def application_response(slug: str, meta: dict) -> dict:
@@ -101,8 +199,36 @@ def application_response(slug: str, meta: dict) -> dict:
         "apply_method": meta.get("apply_method"),
         "gmail_draft_id": meta.get("gmail_draft_id"),
         "interview_url": meta.get("interview_url"),
+        "interview_prep": discover_interview_prep_for_slug(slug),
         "settings": settings,
     }
+
+
+def list_local_applications() -> list[dict]:
+    spec = importlib.util.spec_from_file_location("build_admin_data", BUILD_SCRIPT)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot load {BUILD_SCRIPT}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    rows: list[dict] = []
+    apps_dir = REPO_ROOT / "applications"
+    for meta_path in sorted(apps_dir.glob("*/meta.json")):
+        slug = meta_path.parent.name
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        rows.append(mod.build_application_row(slug, meta, pages_base="."))
+    rows.sort(
+        key=lambda r: (
+            r.get("match_score") if r.get("match_score") is not None else -1,
+            r.get("updated") or "",
+            r.get("slug") or "",
+        ),
+        reverse=True,
+    )
+    return rows
 
 
 class SyncHandler(BaseHTTPRequestHandler):
@@ -145,8 +271,22 @@ class SyncHandler(BaseHTTPRequestHandler):
                     "status": "ok",
                     "gcs_bucket": bucket or None,
                     "repo": str(REPO_ROOT),
+                    "protocols": {"freelancer": True, "craigslist": True, "indeed": True},
                 },
             )
+            return
+
+        if path == "/api/applications":
+            try:
+                rows = list_local_applications()
+            except Exception as exc:
+                self._send_json(500, {"detail": str(exc)})
+                return
+            self._send_json(200, {"applications": rows, "count": len(rows)})
+            return
+
+        if path == "/api/protocols/latest":
+            self._send_json(200, load_local_protocol_run())
             return
 
         match = APP_PATH_RE.match(path)
@@ -188,8 +328,7 @@ class SyncHandler(BaseHTTPRequestHandler):
             return
 
         save_local_meta(slug, updated)
-        uploaded = upload_meta_to_gcs(slug, updated)
-        ok, rebuild_out = rebuild_admin_data()
+        ok, rebuild_out = rebuild_admin_data(slug)
         if not ok:
             self._send_json(
                 500,
@@ -200,14 +339,52 @@ class SyncHandler(BaseHTTPRequestHandler):
             )
             return
 
+        uploaded = False
+        if os.environ.get("GCS_BUCKET", "").strip():
+            threading.Thread(
+                target=upload_meta_to_gcs,
+                args=(slug, updated),
+                daemon=True,
+            ).start()
+            uploaded = True
+
         payload = application_response(slug, updated)
         payload["saved_to_gcs"] = uploaded
+        payload["gcs_upload"] = "queued" if uploaded else "skipped"
         if rebuild_out:
             payload["rebuild_stdout"] = rebuild_out
         self._send_json(200, payload)
 
     def do_POST(self) -> None:
         path = urlparse(self.path).path
+
+        if path == "/api/run/freelancer":
+            try:
+                summary = run_freelancer_scan_local()
+            except Exception as exc:
+                self._send_json(500, {"detail": str(exc)})
+                return
+            self._send_json(200, summary)
+            return
+
+        if path == "/api/run/craigslist":
+            try:
+                summary = run_craigslist_scan_local()
+            except Exception as exc:
+                self._send_json(500, {"detail": str(exc)})
+                return
+            self._send_json(200, summary)
+            return
+
+        if path == "/api/run/indeed":
+            try:
+                summary = run_indeed_scan_local()
+            except Exception as exc:
+                self._send_json(500, {"detail": str(exc)})
+                return
+            self._send_json(200, summary)
+            return
+
         if path != "/api/sync":
             self._send_json(404, {"error": "Not found"})
             return
@@ -304,7 +481,7 @@ def main() -> int:
     print(f"Local GCS sync server on http://127.0.0.1:{port}")
     print(f"  Repo:   {REPO_ROOT}")
     print(f"  Bucket: {bucket or '(set GCS_BUCKET)'}")
-    print("  Admin UI: Pull from GCS + save application settings on localhost")
+    print("  Admin UI: Pull from GCS + save settings + run side-gig/Indeed scans locally")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
