@@ -19,8 +19,75 @@
     </header>
 
     <main>
+      <section class="panel" id="settings-panel">
+        <h2>Recruiter &amp; Gmail</h2>
+        <p class="hint">
+          Set who to reply to and which Gmail thread to use. Saved to the cloud application — no JSON editing.
+          For roles with no apply link, fill recruiter email and create a Gmail draft here.
+        </p>
+        <div class="grid-2">
+          <div>
+            <label for="recruiter-email">Recruiter email</label>
+            <input id="recruiter-email" type="text" placeholder="recruiter@company.com">
+          </div>
+          <div>
+            <label for="recruiter-name">Recruiter name (optional)</label>
+            <input id="recruiter-name" type="text" placeholder="Rishabh">
+          </div>
+          <div>
+            <label for="apply-url">Apply URL (optional)</label>
+            <input id="apply-url" type="text" placeholder="https://jobs.…">
+          </div>
+          <div>
+            <label for="app-status">Status</label>
+            <select id="app-status">
+              <option value="ready">ready</option>
+              <option value="applied">applied</option>
+              <option value="interview">interview</option>
+              <option value="rejected">rejected</option>
+              <option value="offer">offer</option>
+              <option value="skipped">skipped</option>
+            </select>
+          </div>
+          <div>
+            <label for="gmail-message-id">Gmail message ID or link</label>
+            <input id="gmail-message-id" type="text" placeholder="Paste Gmail URL or message id for threading">
+          </div>
+          <div>
+            <label for="email-subject">Original email subject (optional)</label>
+            <input id="email-subject" type="text" placeholder="Re: Sr Python Developer…">
+          </div>
+        </div>
+        <label for="app-notes" style="margin-top:0.75rem">Notes (optional)</label>
+        <textarea id="app-notes" style="min-height:80px" placeholder="Internal notes…"></textarea>
+        <div class="btn-row">
+          <button id="btn-save-settings" class="btn btn-primary" type="button">Save settings</button>
+          <button id="btn-draft" class="btn" type="button">Create Gmail draft</button>
+          <label style="display:flex;align-items:center;gap:0.35rem;margin:0">
+            <input id="draft-regenerate" type="checkbox">
+            Regenerate reply text
+          </label>
+          <label style="display:flex;align-items:center;gap:0.35rem;margin:0">
+            <input id="draft-force" type="checkbox">
+            Force new draft
+          </label>
+        </div>
+        <div id="settings-status" class="status-bar"></div>
+        <p class="hint" id="draft-info" style="margin-top:0.75rem"></p>
+      </section>
+
       <section class="panel">
         <div id="meta-links" class="links-cell" style="margin-bottom:0.75rem"></div>
+        <p class="hint" style="margin-bottom:0.75rem">
+          Download PDFs for job portal uploads. Gmail drafts attach these automatically.
+        </p>
+        <div class="btn-row" style="margin-bottom:0.75rem">
+          <button id="btn-dl-resume-pdf" class="btn" type="button">Download resume.pdf</button>
+          <button id="btn-dl-cover-pdf" class="btn" type="button">Download cover_letter.pdf</button>
+          <button id="btn-dl-resume-docx" class="btn" type="button">Download resume.docx</button>
+          <button id="btn-dl-cover-docx" class="btn" type="button">Download cover_letter.docx</button>
+        </div>
+        <div id="download-status" class="status-bar" hidden></div>
         <div class="doc-tabs">
           <a id="tab-resume" href="#">Resume</a>
           <a id="tab-cover" href="#">Cover letter</a>
@@ -44,9 +111,28 @@
         let apiBase = "";
         let apiKey = "";
 
+        function settingsFromMeta(meta) {
+          if (meta?.settings) return meta.settings;
+          return {
+            recruiter_email: meta?.recruiter_email || "",
+            recruiter_name: meta?.recruiter_name || "",
+            apply_url: meta?.apply_url || "",
+            gmail_message_id: meta?.gmail_message_id || "",
+            email_subject: meta?.email_subject || "",
+            status: meta?.status || "ready",
+            notes: meta?.notes || "",
+            gmail_draft_id: meta?.gmail_draft_id || "",
+          };
+        }
+
+        function canUseApi() {
+          if (!apiBase) return false;
+          return AdminAuth.isLocalSyncApi(apiBase) || Boolean(apiKey);
+        }
+
         async function loadApiConfig() {
           const cfg = await AdminAuth.loadAdminConfig();
-          if (cfg.apiBase) apiBase = String(cfg.apiBase).replace(/\/$/, "");
+          apiBase = AdminAuth.resolveApiBase(cfg);
         }
 
         const files = {
@@ -61,15 +147,252 @@
           });
         }
 
-        function loadDoc(key) {
+        function setStatus(el, message, kind) {
+          el.textContent = message || "";
+          el.className = "status-bar" + (kind ? ` ${kind}` : "");
+        }
+
+        function readSettingsForm() {
+          return {
+            recruiter_email: document.getElementById("recruiter-email").value.trim(),
+            recruiter_name: document.getElementById("recruiter-name").value.trim(),
+            apply_url: document.getElementById("apply-url").value.trim(),
+            gmail_message_id: document.getElementById("gmail-message-id").value.trim(),
+            email_subject: document.getElementById("email-subject").value.trim(),
+            status: document.getElementById("app-status").value,
+            notes: document.getElementById("app-notes").value.trim(),
+          };
+        }
+
+        async function parseApiError(resp) {
+          const text = await resp.text();
+          try {
+            const data = JSON.parse(text);
+            const detail = data.detail;
+            if (typeof detail === "string") return detail;
+            if (Array.isArray(detail)) return detail.map((d) => d.msg || JSON.stringify(d)).join("; ");
+            return data.error || resp.statusText;
+          } catch {
+            return text.trim() || resp.statusText || `HTTP ${resp.status}`;
+          }
+        }
+
+        async function applicationFileExists(filename) {
+          if (!canUseApi()) return null;
+          const resp = await AdminAuth.fetchWithAuth(
+            `${apiBase}/api/applications/${encodeURIComponent(slug)}/${filename}`,
+            { method: "HEAD" }
+          );
+          return resp.ok;
+        }
+
+        async function updateDraftInfo(settings) {
+          const info = document.getElementById("draft-info");
+          if (settings?.gmail_draft_id) {
+            info.textContent = `Existing Gmail draft id: ${settings.gmail_draft_id}. Check Gmail → Drafts. Use “Force new draft” to replace.`;
+            return;
+          }
+          const email = (
+            settings?.recruiter_email ||
+            document.getElementById("recruiter-email").value ||
+            ""
+          ).trim();
+          const parts = [];
+          parts.push(email ? "Recruiter email set" : "Recruiter email required");
+          if (canUseApi() && !AdminAuth.isLocalSyncApi(apiBase)) {
+            const [resumeOk, coverOk] = await Promise.all([
+              applicationFileExists("resume.pdf"),
+              applicationFileExists("cover_letter.pdf"),
+            ]);
+            parts.push(resumeOk ? "resume.pdf ready" : "resume.pdf missing in cloud");
+            parts.push(coverOk ? "cover_letter.pdf ready" : "cover_letter.pdf missing in cloud");
+          } else if (AdminAuth.isLocalSyncApi(apiBase)) {
+            parts.push("Gmail drafts need Cloud Run — set API URL in Connection");
+          } else {
+            parts.push("Sign in on the dashboard to create drafts");
+          }
+          info.textContent = parts.join(" · ");
+        }
+
+        function fillSettingsForm(settings) {
+          if (!settings) return;
+          document.getElementById("recruiter-email").value = settings.recruiter_email || "";
+          document.getElementById("recruiter-name").value = settings.recruiter_name || "";
+          document.getElementById("apply-url").value = settings.apply_url || "";
+          document.getElementById("gmail-message-id").value = settings.gmail_message_id || "";
+          document.getElementById("email-subject").value = settings.email_subject || "";
+          document.getElementById("app-status").value = settings.status || "ready";
+          document.getElementById("app-notes").value = settings.notes || "";
+          updateDraftInfo(settings);
+        }
+
+        async function saveSettings() {
+          const statusEl = document.getElementById("settings-status");
+          if (!canUseApi()) {
+            setStatus(
+              statusEl,
+              AdminAuth.isLocalAdminHost()
+                ? "Start ./scripts/serve_admin_local.sh (local sync server) or set Cloud Run API in Connection."
+                : "Saving requires the Cloud Run API (sign in on the dashboard).",
+              "err"
+            );
+            return false;
+          }
+          setStatus(statusEl, "Saving…", "running");
+          try {
+            const resp = await AdminAuth.fetchWithAuth(
+              `${apiBase}/api/applications/${encodeURIComponent(slug)}`,
+              {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(readSettingsForm()),
+              }
+            );
+            if (!resp.ok) throw new Error(await parseApiError(resp));
+            const data = await resp.json();
+            fillSettingsForm(data.settings || settingsFromMeta(data));
+            const savedVia = AdminAuth.isLocalSyncApi(apiBase) ? "Saved locally." : "Settings saved.";
+            setStatus(statusEl, savedVia, "ok");
+            return true;
+          } catch (err) {
+            setStatus(statusEl, err.message, "err");
+            return false;
+          }
+        }
+
+        async function createDraft() {
+          const statusEl = document.getElementById("settings-status");
+          if (!canUseApi() || AdminAuth.isLocalSyncApi(apiBase)) {
+            setStatus(
+              statusEl,
+              "Draft creation requires Cloud Run. Set the API URL in Connection on the dashboard.",
+              "err"
+            );
+            return;
+          }
+          if (!(await saveSettings())) return;
+          setStatus(statusEl, "Creating Gmail draft…", "running");
+          try {
+            const resp = await AdminAuth.fetchWithAuth(
+              `${apiBase}/api/applications/${encodeURIComponent(slug)}/gmail-draft`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  regenerate: document.getElementById("draft-regenerate").checked,
+                  force: document.getElementById("draft-force").checked,
+                  dry_run: false,
+                }),
+              }
+            );
+            if (!resp.ok) throw new Error(await parseApiError(resp));
+            const data = await resp.json();
+            setStatus(
+              statusEl,
+              `Draft created for ${data.to_addr} — subject: ${data.subject}. Open Gmail → Drafts.`,
+              "ok"
+            );
+            const metaResp = await AdminAuth.fetchWithAuth(
+              `${apiBase}/api/applications/${encodeURIComponent(slug)}`
+            );
+            if (metaResp.ok) {
+              const meta = await metaResp.json();
+              fillSettingsForm(meta.settings);
+              if (meta.links && meta.links.length) {
+                document.getElementById("meta-links").innerHTML = AdminAuth.linksHtml(
+                  AdminAuth.buildApplicationLinks(meta, slug)
+                );
+              }
+            }
+          } catch (err) {
+            setStatus(statusEl, err.message, "err");
+          }
+        }
+
+        function cleanJdText(raw) {
+          let text = String(raw ?? "");
+          text = text.replace(/\u00a0/g, " ").replace(/\xa0/g, " ");
+          text = text.replace(/(?<=[A-Za-z])a0(?=[A-Za-z])/g, " ");
+          text = text.replace(/a0/g, " ");
+          const lines = text.split(/\r?\n/);
+          const cssLine =
+            /^\s*(@import\b|@media\b|@keyframes\b|[\w.#][\w\s\-.,#'"():/]*\{[^}]*\})/i;
+          const jdStart =
+            /^(hello\b|hi\b|dear\b|subject:|position:|job description|about the role|responsibilities|requirements|qualifications|location:|duration:|source:)/i;
+          const kept = [];
+          let started = false;
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) {
+              if (started && kept.length && kept[kept.length - 1] !== "") kept.push("");
+              continue;
+            }
+            if (trimmed.toLowerCase().startsWith("your email title")) continue;
+            if (!started) {
+              if (cssLine.test(trimmed)) continue;
+              if (jdStart.test(trimmed) || trimmed.length <= 120) started = true;
+              else if (trimmed.includes("{") && trimmed.includes(";")) continue;
+              else started = true;
+            }
+            if (cssLine.test(trimmed)) continue;
+            if (/^to unsubscribe from future emails/i.test(trimmed)) break;
+            kept.push(trimmed);
+          }
+          return kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+        }
+
+        function escapeHtml(s) {
+          return String(s ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+
+        async function loadDoc(key) {
           const spec = files[key] || files.resume;
           setActiveTab(key);
           const frame = document.getElementById("doc-frame");
-          if (apiBase) {
-            frame.src = `${apiBase}/api/applications/${encodeURIComponent(slug)}/${spec.file}`;
-          } else {
-            frame.src = `apps/${encodeURIComponent(slug)}/${spec.file}`;
+          frame.removeAttribute("src");
+          frame.srcdoc = "<p style='font-family:sans-serif;padding:1rem;color:#666'>Loading…</p>";
+
+          if (canUseApi() && !AdminAuth.isLocalSyncApi(apiBase)) {
+            const url = `${apiBase}/api/applications/${encodeURIComponent(slug)}/${spec.file}`;
+            try {
+              const resp = await AdminAuth.fetchWithAuth(url);
+              if (!resp.ok) {
+                const detail = resp.status === 401 ? "Invalid or missing admin key — sign in again from the dashboard." : `HTTP ${resp.status}`;
+                frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">${escapeHtml(detail)}</p>`;
+                return;
+              }
+              const text = await resp.text();
+              if (spec.file.endsWith(".html")) {
+                frame.srcdoc = text;
+              } else {
+                const cleaned = spec.file.endsWith(".txt") ? cleanJdText(text) : text;
+                frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(cleaned)}</pre>`;
+              }
+              return;
+            } catch (err) {
+              frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">${escapeHtml(err.message)}</p>`;
+              return;
+            }
           }
+
+          frame.srcdoc = "";
+          if (spec.file.endsWith(".txt")) {
+            try {
+              const resp = await fetch(`apps/${encodeURIComponent(slug)}/${spec.file}`);
+              if (resp.ok) {
+                const text = cleanJdText(await resp.text());
+                frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(text)}</pre>`;
+                return;
+              }
+            } catch (_) {
+              /* fall through to iframe src */
+            }
+          }
+          frame.src = `apps/${encodeURIComponent(slug)}/${spec.file}`;
         }
 
         Object.entries(files).forEach(([key, v]) => {
@@ -82,11 +405,13 @@
 
         async function loadMeta() {
           let meta = null;
-          if (apiBase) {
-            const headers = apiKey ? { "X-Admin-Key": apiKey } : {};
-            const resp = await fetch(`${apiBase}/api/applications/${encodeURIComponent(slug)}`, { headers });
+          if (canUseApi()) {
+            const resp = await AdminAuth.fetchWithAuth(
+              `${apiBase}/api/applications/${encodeURIComponent(slug)}`
+            );
             if (resp.ok) meta = await resp.json();
-          } else {
+          }
+          if (!meta) {
             const resp = await fetch("data/applications.json");
             if (resp.ok) {
               const data = await resp.json();
@@ -104,17 +429,70 @@
               .filter(Boolean)
               .join(" · ");
           const linksEl = document.getElementById("meta-links");
-          if (meta.links && meta.links.length) {
-            linksEl.innerHTML = meta.links
-              .map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`)
-              .join("");
-          }
+          linksEl.innerHTML = AdminAuth.linksHtml(AdminAuth.buildApplicationLinks(meta, slug));
+          fillSettingsForm(settingsFromMeta(meta));
           loadDoc(doc in files ? doc : "resume");
         }
 
+        function setDownloadStatus(message, kind) {
+          const el = document.getElementById("download-status");
+          if (!message) {
+            el.hidden = true;
+            el.textContent = "";
+            return;
+          }
+          el.hidden = false;
+          el.textContent = message;
+          el.className = "status-bar" + (kind ? ` ${kind}` : "");
+        }
+
+        async function downloadFile(filename) {
+          setDownloadStatus(`Downloading ${filename}…`, "running");
+          try {
+            if (apiBase && apiKey) {
+              await AdminAuth.downloadApplicationFile(apiBase, slug, filename);
+            } else {
+              const resp = await fetch(`apps/${encodeURIComponent(slug)}/${filename}`);
+              if (!resp.ok) throw new Error(`${filename} not found — sync from GCS or regenerate PDFs.`);
+              const blob = await resp.blob();
+              const objectUrl = URL.createObjectURL(blob);
+              const anchor = document.createElement("a");
+              anchor.href = objectUrl;
+              anchor.download = filename;
+              document.body.appendChild(anchor);
+              anchor.click();
+              anchor.remove();
+              URL.revokeObjectURL(objectUrl);
+            }
+            setDownloadStatus(`Downloaded ${filename}.`, "ok");
+          } catch (err) {
+            setDownloadStatus(err.message, "err");
+          }
+        }
+
+        function bindDownloads() {
+          document.getElementById("btn-dl-resume-pdf").addEventListener("click", () =>
+            downloadFile("resume.pdf")
+          );
+          document.getElementById("btn-dl-cover-pdf").addEventListener("click", () =>
+            downloadFile("cover_letter.pdf")
+          );
+          document.getElementById("btn-dl-resume-docx").addEventListener("click", () =>
+            downloadFile("resume.docx")
+          );
+          document.getElementById("btn-dl-cover-docx").addEventListener("click", () =>
+            downloadFile("cover_letter.docx")
+          );
+        }
+
+        document.getElementById("btn-save-settings").addEventListener("click", saveSettings);
+        document.getElementById("btn-draft").addEventListener("click", createDraft);
+        bindDownloads();
+
         async function boot(loginKey) {
-          apiKey = loginKey || AdminAuth.getApiKey();
-          await loadApiConfig();
+          const cfg = await AdminAuth.loadAdminConfig();
+          apiBase = AdminAuth.resolveApiBase(cfg);
+          apiKey = loginKey || AdminAuth.resolveApiKey(Boolean(cfg.apiBase));
           await loadMeta();
         }
 

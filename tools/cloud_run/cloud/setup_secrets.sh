@@ -58,8 +58,11 @@ fi
 ADMIN_API_KEY_SECRET="${ADMIN_API_KEY_SECRET:-admin-api-key}"
 if [[ -n "${ADMIN_API_KEY:-}" ]]; then
   create_or_update_secret "$ADMIN_API_KEY_SECRET" "$ADMIN_API_KEY"
+elif [[ -n "${ADMIN_PASSWORD:-}" ]]; then
+  create_or_update_secret "$ADMIN_API_KEY_SECRET" "$ADMIN_PASSWORD"
+  echo "Set ${ADMIN_API_KEY_SECRET} from ADMIN_PASSWORD (matches GitHub Pages login / X-Admin-Key)"
 else
-  echo "Tip: ADMIN_API_KEY=… ./setup_secrets.sh to protect the admin dashboard API."
+  echo "Tip: ADMIN_API_KEY=… or ADMIN_PASSWORD=… ./setup_secrets.sh so Pages sign-in works with the API."
 fi
 
 JOB_SA="recruiter-scan-job@${GCP_PROJECT}.iam.gserviceaccount.com"

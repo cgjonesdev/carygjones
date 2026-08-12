@@ -8,13 +8,29 @@ import hashlib
 import json
 import os
 import shutil
+import subprocess
 import sys
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
+
+
+def _cloud_run_path() -> Path:
+    return repo_root() / "tools" / "cloud_run"
+
+
+def display_match_score(meta: dict) -> int | None:
+    cloud_run = _cloud_run_path()
+    if str(cloud_run) not in sys.path:
+        sys.path.insert(0, str(cloud_run))
+    from location_score import display_match_score as _display
+
+    return _display(meta)
 
 
 def gmail_url(meta: dict) -> str | None:
@@ -46,13 +62,95 @@ def build_links(slug: str, meta: dict, *, pages_base: str) -> list[dict[str, str
 def copy_app_assets(slug: str, app_dir: Path, dest_apps: Path) -> None:
     dest = dest_apps / slug
     dest.mkdir(parents=True, exist_ok=True)
-    for name in ("resume.html", "cover_letter.html", "jd.txt"):
+    for name in ("resume.html", "cover_letter.html", "jd.txt", "resume.pdf", "cover_letter.pdf", "resume.docx", "cover_letter.docx"):
         src = app_dir / name
         if src.is_file():
             shutil.copy2(src, dest / name)
 
 
-    return 0
+def sync_applications_from_gcs(root: Path) -> None:
+    sync_script = root / "tools" / "gmail" / "sync_gcs_inbox.py"
+    if not sync_script.is_file():
+        raise FileNotFoundError(f"missing {sync_script}")
+    subprocess.run(
+        [sys.executable, str(sync_script), "--applications"],
+        cwd=str(root),
+        check=True,
+    )
+
+
+def export_protocol_run_from_gcs(admin_data: Path) -> None:
+    cloud_run = _cloud_run_path()
+    if str(cloud_run) not in sys.path:
+        sys.path.insert(0, str(cloud_run))
+    import gcs_apps
+
+    raw = gcs_apps.download_text(f"{gcs_apps.STATE_PREFIX}/latest_protocol_run.json")
+    if not raw:
+        return
+    (admin_data / "latest_protocol_run.json").write_text(raw, encoding="utf-8")
+    print(f"Wrote {admin_data / 'latest_protocol_run.json'} from GCS")
+
+
+def _admin_api_get(api_base: str, admin_key: str, path: str) -> dict | None:
+    url = f"{api_base.rstrip('/')}{path}"
+    req = urllib.request.Request(url, headers={"X-Admin-Key": admin_key})
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        print(
+            f"Admin API GET {path} failed ({exc.code}): {body[:300]}",
+            file=sys.stderr,
+        )
+        if exc.code == 401:
+            print(
+                "Hint: Cloud Run secret admin-api-key must match GitHub secret ADMIN_PASSWORD "
+                "(same value you use to sign in on Pages).",
+                file=sys.stderr,
+            )
+        return None
+    except Exception as exc:
+        print(f"Admin API GET {path} failed: {exc}", file=sys.stderr)
+        return None
+
+
+def export_from_admin_api(
+    admin_data: Path,
+    *,
+    api_base: str,
+    admin_password: str,
+) -> tuple[int, int]:
+    """Overwrite static snapshot from live Cloud Run (GCS-backed) data."""
+    apps_payload = _admin_api_get(api_base, admin_password, "/api/applications")
+    if not apps_payload:
+        return 0, 0
+
+    apps = apps_payload.get("applications") or []
+    out = admin_data / "applications.json"
+    out.write_text(
+        json.dumps(
+            {
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "source": "cloud_run_api",
+                "applications": apps,
+                "count": len(apps),
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    print(f"Wrote {out} from Cloud Run API ({len(apps)} applications)")
+
+    protocol = _admin_api_get(api_base, admin_password, "/api/protocols/latest")
+    if protocol and not protocol.get("empty"):
+        proto_out = admin_data / "latest_protocol_run.json"
+        proto_out.write_text(json.dumps(protocol, indent=2) + "\n", encoding="utf-8")
+        print(f"Wrote {proto_out} from Cloud Run API")
+
+    return len(apps), 0
 
 
 def write_admin_config(
@@ -97,6 +195,13 @@ def main() -> int:
     args = parser.parse_args()
 
     root = repo_root()
+    if os.environ.get("SYNC_GCS_BEFORE_BUILD", "0") == "1":
+        try:
+            sync_applications_from_gcs(root)
+            print("Synced applications/ from GCS")
+        except Exception as exc:
+            print(f"GCS sync skipped: {exc}", file=sys.stderr)
+
     apps_dir = root / "applications"
     admin_data = root / "website" / "admin" / "data"
     admin_apps = root / "website" / "admin" / "apps"
@@ -120,17 +225,26 @@ def main() -> int:
                 "company": meta.get("company"),
                 "role": meta.get("role"),
                 "location": meta.get("location"),
-                "match_score": meta.get("match_score"),
+                "match_score": display_match_score(meta),
                 "status": meta.get("status"),
                 "updated": meta.get("updated"),
                 "apply_url": meta.get("apply_url"),
+                "apply_method": meta.get("apply_method"),
+                "gmail_draft_id": meta.get("gmail_draft_id"),
                 "interview_url": meta.get("interview_url"),
                 "gmail_url": gmail_url(meta),
                 "links": build_links(slug, meta, pages_base=args.pages_base),
             }
         )
 
-    rows.sort(key=lambda r: (r.get("updated") or "", r.get("slug") or ""), reverse=True)
+    rows.sort(
+        key=lambda r: (
+            r.get("match_score") if r.get("match_score") is not None else -1,
+            r.get("updated") or "",
+            r.get("slug") or "",
+        ),
+        reverse=True,
+    )
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "applications": rows,
@@ -138,8 +252,26 @@ def main() -> int:
     }
     out = admin_data / "applications.json"
     out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {out} ({len(rows)} applications)")
+    print(f"Wrote {out} ({len(rows)} applications from repo)")
     print(f"Copied HTML assets to {admin_apps}/")
+
+    if args.api_base and args.admin_password:
+        api_count, _ = export_from_admin_api(
+            admin_data,
+            api_base=args.api_base,
+            admin_password=args.admin_password,
+        )
+        if api_count == 0:
+            print(
+                "WARNING: Cloud Run export failed — Pages will only show repo applications "
+                "until admin-api-key matches ADMIN_PASSWORD.",
+                file=sys.stderr,
+            )
+    else:
+        try:
+            export_protocol_run_from_gcs(admin_data)
+        except Exception as exc:
+            print(f"Protocol run export skipped: {exc}", file=sys.stderr)
 
     cfg_path = write_admin_config(
         api_base=args.api_base,
