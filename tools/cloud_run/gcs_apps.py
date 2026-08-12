@@ -93,6 +93,10 @@ def list_application_slugs() -> set[str]:
     return slugs
 
 
+def save_app_meta(slug: str, meta: dict[str, Any]) -> str:
+    return upload_json(f"{APPS_PREFIX}/{slug}/meta.json", meta)
+
+
 def load_app_meta(slug: str) -> dict[str, Any] | None:
     raw = download_text(f"{APPS_PREFIX}/{slug}/meta.json")
     if not raw:

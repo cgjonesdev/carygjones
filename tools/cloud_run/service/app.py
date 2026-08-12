@@ -18,9 +18,19 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-import gcs_apps  # noqa: E402
+from location_score import display_match_score  # noqa: E402
 from app_settings import apply_settings_update, settings_from_meta  # noqa: E402
-from orchestrator import run_all, run_generate, run_gmail, run_linkedin, run_phases  # noqa: E402
+import gcs_apps  # noqa: E402
+from orchestrator import (  # noqa: E402
+    run_all,
+    run_craigslist,
+    run_freelancer,
+    run_generate,
+    run_gmail,
+    run_indeed,
+    run_linkedin,
+    run_phases,
+)
 from phases.gmail_draft import run_gmail_draft  # noqa: E402
 from phases.manual_jd import run_manual_jd  # noqa: E402
 
@@ -102,19 +112,22 @@ def _application_row(slug: str, meta: dict[str, Any]) -> dict[str, Any]:
             {"label": "Settings", "url": app_base},
         ]
     )
-    return {
+    row = {
         "slug": slug,
         "company": meta.get("company"),
         "role": meta.get("role"),
         "location": meta.get("location"),
-        "match_score": meta.get("match_score"),
+        "match_score": display_match_score(meta),
         "status": meta.get("status"),
         "updated": meta.get("updated"),
         "apply_url": apply_url,
+        "apply_method": meta.get("apply_method"),
+        "gmail_draft_id": meta.get("gmail_draft_id"),
         "interview_url": interview_url,
         "gmail_url": gmail_url,
         "links": links,
     }
+    return row
 
 
 app = FastAPI(title="Job Search Admin API", version="1.0.0")
@@ -140,7 +153,14 @@ def list_applications(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
         if not meta:
             continue
         rows.append(_application_row(slug, meta))
-    rows.sort(key=lambda r: (r.get("updated") or "", r.get("slug") or ""), reverse=True)
+    rows.sort(
+        key=lambda r: (
+            r.get("match_score") if r.get("match_score") is not None else -1,
+            r.get("updated") or "",
+            r.get("slug") or "",
+        ),
+        reverse=True,
+    )
     return {"applications": rows, "count": len(rows)}
 
 
@@ -179,14 +199,19 @@ def create_gmail_draft(
     body: GmailDraftRequest,
     _: None = Depends(_require_admin_key),
 ) -> dict[str, Any]:
-    result = run_gmail_draft(
-        slug,
-        regenerate=body.regenerate,
-        force=body.force,
-        dry_run=body.dry_run,
-    )
+    try:
+        result = run_gmail_draft(
+            slug,
+            regenerate=body.regenerate,
+            force=body.force,
+            dry_run=body.dry_run,
+        )
+    except Exception as exc:  # noqa: BLE001 — return JSON instead of crashing the worker
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
     if result.get("error"):
-        raise HTTPException(status_code=400, detail=result["error"])
+        detail = result["error"]
+        status = 503 if "Gmail token" in detail or "OAuth" in detail else 400
+        raise HTTPException(status_code=status, detail=detail)
     if result.get("outcome") == "skipped":
         raise HTTPException(status_code=400, detail=result.get("detail") or "Draft skipped")
     return result
@@ -204,6 +229,8 @@ def get_application_file(
         "resume.html": "text/html; charset=utf-8",
         "cover_letter.html": "text/html; charset=utf-8",
         "reply_email.txt": "text/plain; charset=utf-8",
+        "freelancer_bid.txt": "text/plain; charset=utf-8",
+        "craigslist_reply.txt": "text/plain; charset=utf-8",
         "resume.pdf": "application/pdf",
         "cover_letter.pdf": "application/pdf",
         "resume.docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -255,6 +282,24 @@ def api_run_generate(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
 @app.post("/api/run/linkedin")
 def api_run_linkedin(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
     result = run_phases([("linkedin", run_linkedin)])
+    return result
+
+
+@app.post("/api/run/freelancer")
+def api_run_freelancer(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
+    result = run_phases([("freelancer_scan", run_freelancer)])
+    return result
+
+
+@app.post("/api/run/craigslist")
+def api_run_craigslist(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
+    result = run_phases([("craigslist_scan", run_craigslist)])
+    return result
+
+
+@app.post("/api/run/indeed")
+def api_run_indeed(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
+    result = run_phases([("indeed_scan", run_indeed)])
     return result
 
 

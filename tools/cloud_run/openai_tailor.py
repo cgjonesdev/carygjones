@@ -12,6 +12,7 @@ from typing import Any
 from openai import OpenAI
 
 from prompts import GENERATE_SYSTEM, SCORE_SYSTEM
+from location_score import apply_location_to_score_data
 
 MATCH_THRESHOLD = int(os.environ.get("MATCH_THRESHOLD", "80"))
 
@@ -81,9 +82,7 @@ def score_jd(jd_text: str, subject: str = "", apply_url: str | None = None) -> d
         temperature=0.2,
     )
     data = _parse_json(resp.choices[0].message.content or "{}")
-    score = int(data.get("match_score") or 0)
-    data["should_generate"] = score >= MATCH_THRESHOLD or bool(data.get("should_generate"))
-    return data
+    return apply_location_to_score_data(data, threshold=MATCH_THRESHOLD)
 
 
 def generate_application(

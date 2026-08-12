@@ -41,7 +41,7 @@ gcloud builds submit "$REPO_ROOT" \
   --config="${ROOT}/cloud/cloudbuild.yaml" \
   --quiet
 
-ENV_VARS="JOB_MODE=cloud,GCS_BUCKET=${GCS_BUCKET},APP_ROOT=/app,ASSETS_DIR=/app/assets"
+ENV_VARS="JOB_MODE=cloud,GCS_BUCKET=${GCS_BUCKET},APP_ROOT=/app,ASSETS_DIR=/app/assets,LINKEDIN_SYNC_APPLIED=0"
 for var in MATCH_THRESHOLD MAX_GENERATE_PER_RUN OPENAI_MODEL_SCORE OPENAI_MODEL_GENERATE ADMIN_CORS_ORIGINS; do
   if [[ -n "${!var:-}" ]]; then
     ENV_VARS="${ENV_VARS},${var}=${!var}"

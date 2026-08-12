@@ -56,16 +56,85 @@ def build_links(slug: str, meta: dict, *, pages_base: str) -> list[dict[str, str
         links.append({"label": "Gmail", "url": g_url})
     links.append({"label": "Resume", "url": f"{app_base}&doc=resume"})
     links.append({"label": "Cover", "url": f"{app_base}&doc=cover"})
+    links.append({"label": "Prep", "url": f"{app_base}#interview-prep"})
     return links
+
+
+PREP_SLUG_SOURCES: dict[str, list[str]] = {
+    "ltimindtree": ["ltimindtree", "paramount"],
+}
+
+
+def prep_source_slugs(slug: str) -> list[str]:
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for candidate in [slug, *PREP_SLUG_SOURCES.get(slug, [])]:
+        if candidate not in seen:
+            seen.add(candidate)
+            ordered.append(candidate)
+    return ordered
+
+
+def discover_interview_prep(slug: str) -> list[dict[str, str]]:
+    root = repo_root()
+    prep_dir = root / "interview" / "prep"
+    app_dir = root / "applications" / slug
+    items: list[dict[str, str]] = []
+    seen_files: set[str] = set()
+
+    for source_slug in prep_source_slugs(slug):
+        candidates = [
+            (prep_dir / f"{source_slug}.html", "prep.html", "Prep guide"),
+            (prep_dir / f"{source_slug}_cram.html", "prep_cram.html", "Cram sheet"),
+        ]
+        for src, dest_name, label in candidates:
+            if dest_name in seen_files or not src.is_file():
+                continue
+            seen_files.add(dest_name)
+            items.append({"file": dest_name, "label": label})
+
+    cheat = app_dir / "interview_cheat_sheet.html"
+    if cheat.is_file() and "interview_cheat_sheet.html" not in seen_files:
+        items.append({"file": "interview_cheat_sheet.html", "label": "Cheat sheet"})
+    return items
 
 
 def copy_app_assets(slug: str, app_dir: Path, dest_apps: Path) -> None:
     dest = dest_apps / slug
     dest.mkdir(parents=True, exist_ok=True)
-    for name in ("resume.html", "cover_letter.html", "jd.txt", "resume.pdf", "cover_letter.pdf", "resume.docx", "cover_letter.docx"):
+    for name in (
+        "resume.html",
+        "cover_letter.html",
+        "jd.txt",
+        "freelancer_bid.txt",
+        "craigslist_reply.txt",
+        "reply_email.txt",
+        "resume.pdf",
+        "cover_letter.pdf",
+        "resume.docx",
+        "cover_letter.docx",
+    ):
         src = app_dir / name
         if src.is_file():
             shutil.copy2(src, dest / name)
+
+    prep_dir = repo_root() / "interview" / "prep"
+    copied_prep: set[str] = set()
+    for source_slug in prep_source_slugs(slug):
+        for src_name, dest_name in (
+            (f"{source_slug}.html", "prep.html"),
+            (f"{source_slug}_cram.html", "prep_cram.html"),
+        ):
+            if dest_name in copied_prep:
+                continue
+            src = prep_dir / src_name
+            if src.is_file():
+                shutil.copy2(src, dest / dest_name)
+                copied_prep.add(dest_name)
+
+    cheat = app_dir / "interview_cheat_sheet.html"
+    if cheat.is_file():
+        shutil.copy2(cheat, dest / "interview_cheat_sheet.html")
 
 
 def sync_applications_from_gcs(root: Path) -> None:
@@ -162,8 +231,17 @@ def write_admin_config(
 ) -> Path:
     admin_dir = repo_root() / "website" / "admin"
     admin_dir.mkdir(parents=True, exist_ok=True)
+    out = admin_dir / "config.json"
+    existing_api_base = ""
+    if out.exists():
+        try:
+            existing = json.loads(out.read_text(encoding="utf-8"))
+            existing_api_base = str(existing.get("apiBase") or "").strip()
+        except (json.JSONDecodeError, OSError):
+            pass
+    resolved_api_base = (api_base or existing_api_base).rstrip("/")
     payload = {
-        "apiBase": api_base.rstrip("/"),
+        "apiBase": resolved_api_base,
         "pagesBase": pages_base,
         "repoBase": repo_base,
         "built_at": datetime.now(timezone.utc).isoformat(),
@@ -173,6 +251,76 @@ def write_admin_config(
     out = admin_dir / "config.json"
     out.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     return out
+
+
+def build_application_row(slug: str, meta: dict, *, pages_base: str) -> dict:
+    return {
+        "slug": slug,
+        "company": meta.get("company"),
+        "role": meta.get("role"),
+        "location": meta.get("location"),
+        "match_score": display_match_score(meta),
+        "status": meta.get("status"),
+        "updated": meta.get("updated"),
+        "apply_url": meta.get("apply_url"),
+        "apply_method": meta.get("apply_method"),
+        "gmail_draft_id": meta.get("gmail_draft_id"),
+        "interview_url": meta.get("interview_url"),
+        "interview_prep": discover_interview_prep(slug),
+        "gmail_url": gmail_url(meta),
+        "links": build_links(slug, meta, pages_base=pages_base),
+    }
+
+
+def refresh_single_application(
+    slug: str,
+    *,
+    pages_base: str = ".",
+) -> tuple[bool, str]:
+    """Fast path: update one row in applications.json and copy that app's assets."""
+    root = repo_root()
+    meta_path = root / "applications" / slug / "meta.json"
+    if not meta_path.is_file():
+        return False, f"missing applications/{slug}/meta.json"
+
+    try:
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return False, f"invalid json in {meta_path}: {exc}"
+
+    admin_data = root / "website" / "admin" / "data"
+    admin_apps = root / "website" / "admin" / "apps"
+    admin_data.mkdir(parents=True, exist_ok=True)
+    admin_apps.mkdir(parents=True, exist_ok=True)
+
+    copy_app_assets(slug, meta_path.parent, admin_apps)
+    row = build_application_row(slug, meta, pages_base=pages_base)
+
+    apps_json = admin_data / "applications.json"
+    payload: dict
+    if apps_json.is_file():
+        payload = json.loads(apps_json.read_text(encoding="utf-8"))
+        rows = payload.get("applications") or []
+        rows = [r for r in rows if r.get("slug") != slug]
+        rows.append(row)
+    else:
+        rows = [row]
+
+    rows.sort(
+        key=lambda r: (
+            r.get("match_score") if r.get("match_score") is not None else -1,
+            r.get("updated") or "",
+            r.get("slug") or "",
+        ),
+        reverse=True,
+    )
+    payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "applications": rows,
+        "count": len(rows),
+    }
+    apps_json.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    return True, f"Updated {apps_json} ({slug})"
 
 
 def main() -> int:
@@ -192,7 +340,20 @@ def main() -> int:
         default=os.environ.get("ADMIN_PASSWORD", "").strip(),
         help="Admin page password (or set ADMIN_PASSWORD env var; stored as SHA-256 hash only)",
     )
+    parser.add_argument(
+        "--slug",
+        default="",
+        help="Fast path: refresh only this application in admin data (skip full rebuild)",
+    )
     args = parser.parse_args()
+
+    if args.slug:
+        ok, message = refresh_single_application(args.slug, pages_base=args.pages_base)
+        if not ok:
+            print(message, file=sys.stderr)
+            return 1
+        print(message)
+        return 0
 
     root = repo_root()
     if os.environ.get("SYNC_GCS_BEFORE_BUILD", "0") == "1":
@@ -219,23 +380,7 @@ def main() -> int:
             print(f"skip invalid json: {meta_path}", file=sys.stderr)
             continue
         copy_app_assets(slug, meta_path.parent, admin_apps)
-        rows.append(
-            {
-                "slug": slug,
-                "company": meta.get("company"),
-                "role": meta.get("role"),
-                "location": meta.get("location"),
-                "match_score": display_match_score(meta),
-                "status": meta.get("status"),
-                "updated": meta.get("updated"),
-                "apply_url": meta.get("apply_url"),
-                "apply_method": meta.get("apply_method"),
-                "gmail_draft_id": meta.get("gmail_draft_id"),
-                "interview_url": meta.get("interview_url"),
-                "gmail_url": gmail_url(meta),
-                "links": build_links(slug, meta, pages_base=args.pages_base),
-            }
-        )
+        rows.append(build_application_row(slug, meta, pages_base=args.pages_base))
 
     rows.sort(
         key=lambda r: (

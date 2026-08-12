@@ -64,6 +64,8 @@ def _merge_meta(
     meta.setdefault("role", score_data.get("role"))
     meta.setdefault("location", score_data.get("location"))
     meta.setdefault("match_score", score_data.get("match_score"))
+    if score_data.get("raw_match_score") is not None:
+        meta.setdefault("raw_match_score", score_data.get("raw_match_score"))
     meta.setdefault("status", "ready")
     meta.setdefault("created", today)
     meta.setdefault("updated", today)

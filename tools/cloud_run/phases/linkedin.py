@@ -8,6 +8,14 @@ from typing import Any
 
 import requests
 
+from phases.linkedin_applied import (
+    is_applied_signal,
+    linkedin_job_open_url,
+    list_tracked_jobs_to_check,
+    should_check_tracked_jobs,
+    sync_applied_status,
+    tracked_jobs_limit,
+)
 from prompts import LINKEDIN_SEARCH_TERM
 
 DEFAULT_FILTERS = {
@@ -46,13 +54,7 @@ def _poll_interval() -> int:
     return int(os.environ.get("LINKED_API_POLL_INTERVAL", "5"))
 
 
-def _start_search_workflow(*, term: str, limit: int) -> dict[str, Any]:
-    payload = {
-        "actionType": "st.searchJobs",
-        "term": term,
-        "limit": limit,
-        "filter": DEFAULT_FILTERS,
-    }
+def _start_workflow(payload: dict[str, Any]) -> dict[str, Any]:
     resp = requests.post(
         f"{_api_base()}/workflows",
         headers=_headers(),
@@ -102,14 +104,11 @@ def _poll_workflow(workflow_id: str) -> dict[str, Any]:
             completion = result.get("completion") or {}
             if not completion.get("success"):
                 err = completion.get("error") or {}
-                raise RuntimeError(err.get("message") or "LinkedIn search action failed")
-            jobs = completion.get("data") or []
-            if not isinstance(jobs, list):
-                jobs = []
+                raise RuntimeError(err.get("message") or "LinkedIn workflow action failed")
             return {
                 "workflowId": workflow_id,
                 "message": last_message,
-                "jobs": jobs,
+                "completion": completion,
             }
 
         if status == "failed":
@@ -124,6 +123,60 @@ def _poll_workflow(workflow_id: str) -> dict[str, Any]:
     )
 
 
+def _completion_jobs(completion: dict[str, Any]) -> list[dict[str, Any]]:
+    data = completion.get("data")
+    if isinstance(data, list):
+        return [j for j in data if isinstance(j, dict)]
+    if isinstance(data, dict):
+        return [data]
+    return []
+
+
+def _run_search_jobs(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    started = _start_workflow(payload)
+    polled = _poll_workflow(started["workflowId"])
+    return _completion_jobs(polled.get("completion") or {})
+
+
+def _run_open_job(job_url: str) -> dict[str, Any]:
+    normalized = linkedin_job_open_url(None, job_url) or job_url.strip()
+    started = _start_workflow(
+        {
+            "actionType": "st.openJob",
+            "jobUrl": normalized,
+            "basicInfo": True,
+        }
+    )
+    polled = _poll_workflow(started["workflowId"])
+    jobs = _completion_jobs(polled.get("completion") or {})
+    return jobs[0] if jobs else {}
+
+
+def _check_tracked_jobs_applied() -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    meta: dict[str, Any] = {"checked": 0, "applied_found": 0, "errors": []}
+    if not should_check_tracked_jobs():
+        return [], meta
+
+    applied_jobs: list[dict[str, Any]] = []
+    for row in list_tracked_jobs_to_check()[: tracked_jobs_limit()]:
+        try:
+            data = _run_open_job(row["job_url"])
+            meta["checked"] += 1
+            if is_applied_signal(data):
+                meta["applied_found"] += 1
+                applied_jobs.append(
+                    {
+                        "jobId": row["job_id"],
+                        "jobUrl": row["job_url"],
+                        "applied": True,
+                        "slug": row["slug"],
+                    }
+                )
+        except Exception as exc:
+            meta["errors"].append(f"{row['slug']}: {exc}")
+    return applied_jobs, meta
+
+
 def _normalize_job(raw: dict[str, Any]) -> dict[str, Any]:
     return {
         "jobId": raw.get("jobId"),
@@ -134,6 +187,7 @@ def _normalize_job(raw: dict[str, Any]) -> dict[str, Any]:
         "easyApply": raw.get("easyApply"),
         "apply_url": raw.get("jobUrl") or raw.get("applyUrl"),
         "salary": raw.get("salary"),
+        "linkedin_applied": raw.get("applied") if "applied" in raw else None,
     }
 
 
@@ -146,17 +200,36 @@ def run_linkedin_search(*, limit: int = 5) -> dict[str, Any]:
         }
 
     try:
-        started = _start_search_workflow(term=LINKEDIN_SEARCH_TERM, limit=limit)
-        polled = _poll_workflow(started["workflowId"])
-        jobs = [_normalize_job(j) for j in polled.get("jobs", []) if isinstance(j, dict)]
-        return {
+        search_raw = _run_search_jobs(
+            {
+                "actionType": "st.searchJobs",
+                "term": LINKEDIN_SEARCH_TERM,
+                "limit": limit,
+                "filter": DEFAULT_FILTERS,
+            }
+        )
+        tracked_raw, tracked_meta = _check_tracked_jobs_applied()
+        sync_result = sync_applied_status(
+            search_jobs=search_raw,
+            applied_jobs=tracked_raw or None,
+        )
+        jobs = [_normalize_job(j) for j in search_raw]
+
+        result: dict[str, Any] = {
             "phase": "linkedin",
             "jobs_found": len(jobs),
             "jobs": jobs[:limit],
-            "workflowId": started["workflowId"],
-            "queue_message": started.get("message"),
-            "completion_message": polled.get("message"),
+            "applied_sync": {
+                "tracked_jobs_checked": tracked_meta.get("checked", 0),
+                "tracked_jobs_applied": tracked_meta.get("applied_found", 0),
+                "meta_updated": sync_result.get("updated") or [],
+                "already_applied": sync_result.get("already_applied", 0),
+                "applied_job_ids_seen": sync_result.get("applied_job_ids_seen", 0),
+            },
         }
+        if tracked_meta.get("errors"):
+            result["applied_sync"]["tracked_errors"] = tracked_meta["errors"]
+        return result
     except TimeoutError as exc:
         return {"phase": "linkedin", "skipped": True, "reason": str(exc)}
     except Exception as exc:

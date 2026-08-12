@@ -44,6 +44,8 @@
               <option value="ready">ready</option>
               <option value="applied">applied</option>
               <option value="interview">interview</option>
+              <option value="needs_rate_confirmation">needs rate confirmation</option>
+              <option value="waiting_on_response">waiting on response</option>
               <option value="rejected">rejected</option>
               <option value="offer">offer</option>
               <option value="skipped">skipped</option>
@@ -76,6 +78,23 @@
         <p class="hint" id="draft-info" style="margin-top:0.75rem"></p>
       </section>
 
+      <section class="panel" id="interview-prep-panel">
+        <h2 id="interview-prep">Interview prep</h2>
+        <p class="hint">
+          Join links, prep guides, and cram sheets for this role.
+          <span id="cursor-prep-hint"> On localhost, use the Cursor buttons below to pre-fill the interview prep agent prompt.</span>
+          Otherwise run <code>run interview prep</code> or <code id="interview-prep-cmd">prep mock</code> in Cursor.
+        </p>
+        <div id="interview-prep-summary" class="prep-summary"></div>
+        <div id="interview-prep-actions" class="btn-row" style="margin-bottom:0.75rem"></div>
+        <div id="cursor-prep-status" class="status-bar" hidden></div>
+        <div id="interview-prep-tabs" class="doc-tabs" hidden></div>
+        <iframe id="prep-frame" class="doc-frame prep-frame" hidden title="Interview prep document"></iframe>
+        <p class="empty" id="interview-prep-empty" hidden>
+          No prep guide checked in for this slug yet.
+        </p>
+      </section>
+
       <section class="panel">
         <div id="meta-links" class="links-cell" style="margin-bottom:0.75rem"></div>
         <p class="hint" style="margin-bottom:0.75rem">
@@ -92,6 +111,8 @@
           <a id="tab-resume" href="#">Resume</a>
           <a id="tab-cover" href="#">Cover letter</a>
           <a id="tab-jd" href="#">JD</a>
+          <a id="tab-bid" href="#" hidden>Freelancer bid</a>
+          <a id="tab-reply" href="#" hidden>Craigslist reply</a>
         </div>
         <iframe id="doc-frame" class="doc-frame" title="Application document"></iframe>
       </section>
@@ -108,7 +129,8 @@
           return;
         }
 
-        let apiBase = "";
+        let saveApiBase = "";
+        let protocolApiBase = "";
         let apiKey = "";
 
         function settingsFromMeta(meta) {
@@ -125,21 +147,181 @@
           };
         }
 
-        function canUseApi() {
-          if (!apiBase) return false;
-          return AdminAuth.isLocalSyncApi(apiBase) || Boolean(apiKey);
+        function canSaveSettings() {
+          if (!saveApiBase) return false;
+          return AdminAuth.isLocalSyncApi(saveApiBase) || Boolean(apiKey);
         }
 
-        async function loadApiConfig() {
-          const cfg = await AdminAuth.loadAdminConfig();
-          apiBase = AdminAuth.resolveApiBase(cfg);
+        function canUseProtocolApi() {
+          return Boolean(protocolApiBase && apiKey);
         }
 
         const files = {
           resume: { file: "resume.html", tab: "tab-resume" },
           cover: { file: "cover_letter.html", tab: "tab-cover" },
           jd: { file: "jd.txt", tab: "tab-jd" },
+          bid: { file: "freelancer_bid.txt", tab: "tab-bid" },
+          reply: { file: "craigslist_reply.txt", tab: "tab-reply" },
         };
+
+        const TAB_LABELS = {
+          resume: "Resume",
+          cover: "Cover letter",
+          jd: "JD",
+          bid: "Freelancer bid",
+          reply: "Craigslist reply",
+        };
+
+        const GENERATABLE_DOCS = new Set(["resume", "cover"]);
+
+        const DOWNLOAD_BUTTONS = {
+          "btn-dl-resume-pdf": { file: "resume.pdf", key: "resume", label: "Download resume.pdf" },
+          "btn-dl-cover-pdf": { file: "cover_letter.pdf", key: "cover", label: "Download cover_letter.pdf" },
+          "btn-dl-resume-docx": { file: "resume.docx", key: "resume", label: "Download resume.docx" },
+          "btn-dl-cover-docx": { file: "cover_letter.docx", key: "cover", label: "Download cover_letter.docx" },
+        };
+
+        function setTabFetching(key, fetching) {
+          const tabId = files[key]?.tab;
+          if (!tabId) return;
+          const tab = document.getElementById(tabId);
+          if (!tab) return;
+          const defaultLabel = tab.dataset.defaultLabel || TAB_LABELS[key] || tab.textContent;
+          if (!tab.dataset.defaultLabel) tab.dataset.defaultLabel = defaultLabel;
+          if (fetching) {
+            tab.textContent = "Fetching…";
+            tab.setAttribute("aria-busy", "true");
+          } else {
+            tab.textContent = tab.dataset.defaultLabel;
+            tab.removeAttribute("aria-busy");
+          }
+        }
+
+        function setDownloadButtonFetching(btnId, fetching) {
+          const btn = document.getElementById(btnId);
+          if (!btn) return;
+          const spec = DOWNLOAD_BUTTONS[btnId];
+          const defaultLabel = btn.dataset.defaultLabel || spec?.label || btn.textContent;
+          if (!btn.dataset.defaultLabel) btn.dataset.defaultLabel = defaultLabel;
+          btn.disabled = fetching;
+          btn.textContent = fetching ? "Loading…" : btn.dataset.defaultLabel;
+        }
+
+        async function localAssetExists(filename) {
+          const candidates = [`apps/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`];
+          if (await AdminAuth.isLocalSyncReachable()) {
+            candidates.push(
+              `${AdminAuth.localSyncBase()}/api/applications/${encodeURIComponent(slug)}/files/${encodeURIComponent(filename)}`
+            );
+          }
+          for (const url of candidates) {
+            try {
+              const resp = await fetch(url, { method: "GET", cache: "no-store" });
+              if (resp.ok) return true;
+            } catch (_) {
+              /* try next */
+            }
+          }
+          return false;
+        }
+
+        async function ensureApplicationGenerated(key) {
+          if (!GENERATABLE_DOCS.has(key)) return;
+          const needResume = !(await localAssetExists("resume.html"));
+          const needCover = !(await localAssetExists("cover_letter.html"));
+          if (!needResume && !needCover) return;
+
+          async function postGenerate(url, useAuth) {
+            const opts = {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: "{}",
+            };
+            const resp = useAuth
+              ? await AdminAuth.fetchWithAuth(url, opts)
+              : await fetch(url, opts);
+            return resp;
+          }
+
+          let resp = null;
+          if (await AdminAuth.isLocalSyncReachable()) {
+            resp = await postGenerate(
+              `${AdminAuth.localSyncBase()}/api/applications/${encodeURIComponent(slug)}/generate`,
+              false
+            );
+          }
+
+          if ((!resp || resp.status === 404) && canUseProtocolApi()) {
+            resp = await postGenerate(
+              `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/generate`,
+              true
+            );
+          }
+
+          if (!resp) {
+            throw new Error(
+              "Start ./scripts/serve_admin_local.sh to generate resume and cover letter from the JD."
+            );
+          }
+
+          if (!resp.ok) {
+            let detail = `Generate failed (${resp.status})`;
+            try {
+              const data = await resp.json();
+              detail = data.detail || data.error || detail;
+            } catch (_) {
+              /* ignore */
+            }
+            if (resp.status === 404) {
+              detail =
+                "Generate API not found — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again).";
+            }
+            throw new Error(detail);
+          }
+          const data = await resp.json();
+          if (data.error) throw new Error(data.error);
+        }
+
+        async function fetchApplicationFileText(filename) {
+          const localUrl = `apps/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`;
+          let resp = await fetch(localUrl);
+          if (resp.ok) return resp.text();
+          if (await AdminAuth.isLocalSyncReachable()) {
+            resp = await fetch(
+              `${AdminAuth.localSyncBase()}/api/applications/${encodeURIComponent(slug)}/files/${encodeURIComponent(filename)}`
+            );
+            if (resp.ok) return resp.text();
+          }
+          if (canUseProtocolApi()) {
+            resp = await AdminAuth.fetchWithAuth(
+              `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`
+            );
+            if (resp.ok) return resp.text();
+          }
+          throw new Error(`${filename} not found — click Resume again to generate, or run: python scripts/build_admin_data.py --slug ${slug}`);
+        }
+
+        function isCraigslistApp(meta) {
+          const method = String(meta?.apply_method || "").toLowerCase();
+          if (method === "craigslist") return true;
+          if (String(slug || "").startsWith("craigslist_")) return true;
+          const company = String(meta?.company || "").toLowerCase();
+          const url = String(meta?.apply_url || "").toLowerCase();
+          return company.includes("craigslist") || url.includes("craigslist.org");
+        }
+
+        function enableSideGigTabs(meta) {
+          const showBid =
+            meta?.apply_method === "freelancer" ||
+            String(slug || "").startsWith("freelancer_");
+          const showReply = isCraigslistApp(meta);
+          const bidTab = document.getElementById("tab-bid");
+          const replyTab = document.getElementById("tab-reply");
+          if (bidTab) bidTab.hidden = !showBid;
+          if (replyTab) replyTab.hidden = !showReply;
+          if (showBid && doc === "bid") loadDoc("bid");
+          if (showReply && doc === "reply") loadDoc("reply");
+        }
 
         function setActiveTab(key) {
           Object.entries(files).forEach(([k, v]) => {
@@ -178,9 +360,9 @@
         }
 
         async function applicationFileExists(filename) {
-          if (!canUseApi()) return null;
+          if (!canUseProtocolApi()) return null;
           const resp = await AdminAuth.fetchWithAuth(
-            `${apiBase}/api/applications/${encodeURIComponent(slug)}/${filename}`,
+            `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/${filename}`,
             { method: "HEAD" }
           );
           return resp.ok;
@@ -199,15 +381,15 @@
           ).trim();
           const parts = [];
           parts.push(email ? "Recruiter email set" : "Recruiter email required");
-          if (canUseApi() && !AdminAuth.isLocalSyncApi(apiBase)) {
+          if (canUseProtocolApi()) {
             const [resumeOk, coverOk] = await Promise.all([
               applicationFileExists("resume.pdf"),
               applicationFileExists("cover_letter.pdf"),
             ]);
             parts.push(resumeOk ? "resume.pdf ready" : "resume.pdf missing in cloud");
             parts.push(coverOk ? "cover_letter.pdf ready" : "cover_letter.pdf missing in cloud");
-          } else if (AdminAuth.isLocalSyncApi(apiBase)) {
-            parts.push("Gmail drafts need Cloud Run — set API URL in Connection");
+          } else if (AdminAuth.isLocalSyncApi(saveApiBase)) {
+            parts.push("Gmail drafts need Cloud Run — Admin → Connection → Save key (admin password)");
           } else {
             parts.push("Sign in on the dashboard to create drafts");
           }
@@ -226,22 +408,29 @@
           updateDraftInfo(settings);
         }
 
+        async function ensureSaveApiReady() {
+          if (AdminAuth.isLocalAdminHost()) {
+            saveApiBase = (await AdminAuth.isLocalSyncReachable()) ? AdminAuth.localSyncBase() : "";
+            return AdminAuth.isLocalSyncApi(saveApiBase);
+          }
+          if (canSaveSettings()) return true;
+          const cfg = await AdminAuth.loadAdminConfig();
+          saveApiBase = await AdminAuth.resolveSaveApiBase(cfg);
+          apiKey = AdminAuth.resolveApiKey(true);
+          return canSaveSettings();
+        }
+
         async function saveSettings() {
           const statusEl = document.getElementById("settings-status");
-          if (!canUseApi()) {
-            setStatus(
-              statusEl,
-              AdminAuth.isLocalAdminHost()
-                ? "Start ./scripts/serve_admin_local.sh (local sync server) or set Cloud Run API in Connection."
-                : "Saving requires the Cloud Run API (sign in on the dashboard).",
-              "err"
-            );
+          if (!(await ensureSaveApiReady())) {
+            const cfg = await AdminAuth.loadAdminConfig();
+            setStatus(statusEl, AdminAuth.saveBlockedMessage(cfg), "err");
             return false;
           }
           setStatus(statusEl, "Saving…", "running");
           try {
             const resp = await AdminAuth.fetchWithAuth(
-              `${apiBase}/api/applications/${encodeURIComponent(slug)}`,
+              `${saveApiBase}/api/applications/${encodeURIComponent(slug)}`,
               {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
@@ -251,7 +440,7 @@
             if (!resp.ok) throw new Error(await parseApiError(resp));
             const data = await resp.json();
             fillSettingsForm(data.settings || settingsFromMeta(data));
-            const savedVia = AdminAuth.isLocalSyncApi(apiBase) ? "Saved locally." : "Settings saved.";
+            const savedVia = AdminAuth.isLocalSyncApi(saveApiBase) ? "Saved locally." : "Settings saved.";
             setStatus(statusEl, savedVia, "ok");
             return true;
           } catch (err) {
@@ -262,10 +451,10 @@
 
         async function createDraft() {
           const statusEl = document.getElementById("settings-status");
-          if (!canUseApi() || AdminAuth.isLocalSyncApi(apiBase)) {
+          if (!canUseProtocolApi()) {
             setStatus(
               statusEl,
-              "Draft creation requires Cloud Run. Set the API URL in Connection on the dashboard.",
+              "Draft creation requires Cloud Run. Admin → Connection → Save key (your admin password).",
               "err"
             );
             return;
@@ -274,7 +463,7 @@
           setStatus(statusEl, "Creating Gmail draft…", "running");
           try {
             const resp = await AdminAuth.fetchWithAuth(
-              `${apiBase}/api/applications/${encodeURIComponent(slug)}/gmail-draft`,
+              `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/gmail-draft`,
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -293,7 +482,7 @@
               "ok"
             );
             const metaResp = await AdminAuth.fetchWithAuth(
-              `${apiBase}/api/applications/${encodeURIComponent(slug)}`
+              `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}`
             );
             if (metaResp.ok) {
               const meta = await metaResp.json();
@@ -349,6 +538,192 @@
             .replace(/"/g, "&quot;");
         }
 
+        function escapeAttr(s) {
+          return escapeHtml(s).replace(/'/g, "&#39;");
+        }
+
+        let prepMaterials = [];
+
+        function setCursorPrepStatus(message, kind) {
+          const el = document.getElementById("cursor-prep-status");
+          if (!el) return;
+          if (!message) {
+            el.hidden = true;
+            el.textContent = "";
+            el.className = "status-bar";
+            return;
+          }
+          el.hidden = false;
+          el.textContent = message;
+          el.className = "status-bar" + (kind ? ` ${kind}` : "");
+        }
+
+        async function handleCursorPrep(meta, mode) {
+          if (!window.AdminCursor) return;
+          setCursorPrepStatus("Opening Cursor…", "running");
+          try {
+            const payload = meta?.slug ? meta : { ...meta, slug };
+            const result = await AdminCursor.launchCursorInterviewPrep(payload, mode);
+            const copied = result.copied ? " Prompt copied to clipboard." : "";
+            setCursorPrepStatus(
+              `Cursor opened with ${mode === "mock" ? "mock" : mode === "full" ? "full mock" : "prep"} prompt — review and send in chat.${copied}`,
+              "ok"
+            );
+          } catch (err) {
+            setCursorPrepStatus(err.message, "err");
+          }
+        }
+
+        function appendCursorPrepButtons(meta, actionsEl) {
+          if (!AdminAuth.isLocalAdminHost() || !window.AdminCursor) return;
+          const modes = [
+            { mode: "prep", label: "Run interview prep in Cursor", primary: true },
+            { mode: "mock", label: "Start mock in Cursor", primary: false },
+            { mode: "full", label: "Full mock in Cursor", primary: false },
+          ];
+          for (const spec of modes) {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = spec.primary ? "btn btn-primary" : "btn";
+            btn.textContent = spec.label;
+            btn.addEventListener("click", () => handleCursorPrep(meta, spec.mode));
+            actionsEl.appendChild(btn);
+          }
+        }
+
+        function renderInterviewPrep(meta) {
+          const panel = document.getElementById("interview-prep-panel");
+          const summaryEl = document.getElementById("interview-prep-summary");
+          const actionsEl = document.getElementById("interview-prep-actions");
+          const tabsEl = document.getElementById("interview-prep-tabs");
+          const frame = document.getElementById("prep-frame");
+          const emptyEl = document.getElementById("interview-prep-empty");
+          const settings = settingsFromMeta(meta);
+          const status = settings.status || meta.status || "";
+          prepMaterials = Array.isArray(meta.interview_prep) ? meta.interview_prep : [];
+
+          const bits = [];
+          if (status === "interview") {
+            bits.push('<span class="badge badge-interview">interview scheduled</span>');
+          }
+          if (meta.interview_url) {
+            bits.push(
+              `<a href="${escapeAttr(meta.interview_url)}" target="_blank" rel="noopener">Join interview</a>`
+            );
+          }
+          if (meta.gmail_url) {
+            bits.push(
+              `<a href="${escapeAttr(meta.gmail_url)}" target="_blank" rel="noopener">Gmail thread</a>`
+            );
+          }
+          summaryEl.innerHTML = bits.length ? bits.join(" · ") : "";
+          summaryEl.hidden = !bits.length;
+
+          actionsEl.innerHTML = "";
+          appendCursorPrepButtons({ ...meta, slug }, actionsEl);
+          if (meta.interview_url) {
+            const join = document.createElement("a");
+            join.className = "btn btn-primary";
+            join.href = meta.interview_url;
+            join.target = "_blank";
+            join.rel = "noopener";
+            join.textContent = "Open interview link";
+            actionsEl.appendChild(join);
+          }
+
+          tabsEl.innerHTML = "";
+          tabsEl.hidden = prepMaterials.length === 0;
+          frame.hidden = prepMaterials.length === 0;
+          emptyEl.hidden = prepMaterials.length > 0 || status === "interview" || meta.interview_url;
+
+          prepMaterials.forEach((item, index) => {
+            const tab = document.createElement("a");
+            tab.href = "#";
+            tab.textContent = item.label || item.file;
+            tab.dataset.file = item.file;
+            tab.classList.toggle("active", index === 0);
+            tab.addEventListener("click", (e) => {
+              e.preventDefault();
+              prepMaterials.forEach((_, i) => {
+                tabsEl.children[i]?.classList.toggle("active", i === index);
+              });
+              loadPrepDoc(item.file);
+            });
+            tabsEl.appendChild(tab);
+
+            const open = document.createElement("a");
+            open.className = "btn";
+            open.href = `apps/${encodeURIComponent(slug)}/${encodeURIComponent(item.file)}`;
+            open.target = "_blank";
+            open.rel = "noopener";
+            open.textContent = `Open ${item.label || item.file}`;
+            actionsEl.appendChild(open);
+          });
+
+          if (prepMaterials.length) {
+            loadPrepDoc(prepMaterials[0].file);
+          } else {
+            frame.removeAttribute("src");
+            frame.srcdoc = "";
+          }
+        }
+
+        async function loadPrepDoc(filename) {
+          const frame = document.getElementById("prep-frame");
+          frame.hidden = false;
+          frame.removeAttribute("src");
+          frame.srcdoc = "<p style='font-family:sans-serif;padding:1rem;color:#666'>Loading…</p>";
+          const url = `apps/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`;
+          try {
+            const resp = await fetch(url);
+            if (!resp.ok) {
+              frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">Prep file not found (${escapeHtml(filename)}).</p>`;
+              return;
+            }
+            const text = await resp.text();
+            if (filename.endsWith(".html")) {
+              frame.srcdoc = text;
+            } else {
+              frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(text)}</pre>`;
+            }
+          } catch (err) {
+            frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">${escapeHtml(err.message)}</p>`;
+          }
+        }
+
+        function renderDocInFrame(frame, spec, text) {
+          if (spec.file.endsWith(".html")) {
+            frame.srcdoc = text;
+          } else {
+            const cleaned = spec.file.endsWith(".txt") ? cleanJdText(text) : text;
+            frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(cleaned)}</pre>`;
+          }
+        }
+
+        async function loadDocFromLocal(spec) {
+          const frame = document.getElementById("doc-frame");
+          if (spec.file.endsWith(".txt") || spec.file.endsWith(".html")) {
+            renderDocInFrame(frame, spec, await fetchApplicationFileText(spec.file));
+            return;
+          }
+          frame.srcdoc = "";
+          frame.src = `apps/${encodeURIComponent(slug)}/${spec.file}`;
+        }
+
+        async function loadDocFromCloud(spec) {
+          const frame = document.getElementById("doc-frame");
+          const url = `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/${spec.file}`;
+          const resp = await AdminAuth.fetchWithAuth(url);
+          if (!resp.ok) {
+            const detail =
+              resp.status === 401
+                ? "Invalid or missing admin key — sign in again from the dashboard."
+                : `HTTP ${resp.status}`;
+            throw new Error(detail);
+          }
+          renderDocInFrame(frame, spec, await resp.text());
+        }
+
         async function loadDoc(key) {
           const spec = files[key] || files.resume;
           setActiveTab(key);
@@ -356,43 +731,37 @@
           frame.removeAttribute("src");
           frame.srcdoc = "<p style='font-family:sans-serif;padding:1rem;color:#666'>Loading…</p>";
 
-          if (canUseApi() && !AdminAuth.isLocalSyncApi(apiBase)) {
-            const url = `${apiBase}/api/applications/${encodeURIComponent(slug)}/${spec.file}`;
-            try {
-              const resp = await AdminAuth.fetchWithAuth(url);
-              if (!resp.ok) {
-                const detail = resp.status === 401 ? "Invalid or missing admin key — sign in again from the dashboard." : `HTTP ${resp.status}`;
-                frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">${escapeHtml(detail)}</p>`;
-                return;
+          const useLocal = AdminAuth.preferLocalAppFiles();
+          try {
+            if (GENERATABLE_DOCS.has(key)) {
+              setTabFetching(key, true);
+              try {
+                await ensureApplicationGenerated(key);
+              } finally {
+                setTabFetching(key, false);
               }
-              const text = await resp.text();
-              if (spec.file.endsWith(".html")) {
-                frame.srcdoc = text;
-              } else {
-                const cleaned = spec.file.endsWith(".txt") ? cleanJdText(text) : text;
-                frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(cleaned)}</pre>`;
-              }
-              return;
-            } catch (err) {
-              frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">${escapeHtml(err.message)}</p>`;
+            }
+            if (useLocal) {
+              await loadDocFromLocal(spec);
               return;
             }
-          }
-
-          frame.srcdoc = "";
-          if (spec.file.endsWith(".txt")) {
-            try {
-              const resp = await fetch(`apps/${encodeURIComponent(slug)}/${spec.file}`);
-              if (resp.ok) {
-                const text = cleanJdText(await resp.text());
-                frame.srcdoc = `<pre style="white-space:pre-wrap;font-family:monospace;padding:1rem">${escapeHtml(text)}</pre>`;
-                return;
-              }
-            } catch (_) {
-              /* fall through to iframe src */
+            if (canUseProtocolApi()) {
+              await loadDocFromCloud(spec);
+              return;
             }
+            await loadDocFromLocal(spec);
+          } catch (err) {
+            if (!useLocal && canUseProtocolApi()) {
+              try {
+                await loadDocFromLocal(spec);
+                return;
+              } catch (_) {
+                /* show cloud error below */
+              }
+            }
+            frame.removeAttribute("src");
+            frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">${escapeHtml(err.message)}</p>`;
           }
-          frame.src = `apps/${encodeURIComponent(slug)}/${spec.file}`;
         }
 
         Object.entries(files).forEach(([key, v]) => {
@@ -403,20 +772,42 @@
           });
         });
 
+        async function staticApplicationRow() {
+          const resp = await fetch("data/applications.json");
+          if (!resp.ok) return null;
+          const data = await resp.json();
+          return (data.applications || []).find((a) => a.slug === slug) || null;
+        }
+
+        function mergeMetaWithStatic(meta, staticRow) {
+          if (!staticRow) return meta;
+          const merged = { ...meta };
+          if (!merged.interview_prep?.length && staticRow.interview_prep?.length) {
+            merged.interview_prep = staticRow.interview_prep;
+          }
+          if (!merged.interview_url && staticRow.interview_url) {
+            merged.interview_url = staticRow.interview_url;
+          }
+          if (!merged.gmail_url && staticRow.gmail_url) {
+            merged.gmail_url = staticRow.gmail_url;
+          }
+          if (!merged.links?.length && staticRow.links?.length) {
+            merged.links = staticRow.links;
+          }
+          return merged;
+        }
+
         async function loadMeta() {
           let meta = null;
-          if (canUseApi()) {
+          const staticRow = await staticApplicationRow();
+          if (canSaveSettings()) {
             const resp = await AdminAuth.fetchWithAuth(
-              `${apiBase}/api/applications/${encodeURIComponent(slug)}`
+              `${saveApiBase}/api/applications/${encodeURIComponent(slug)}`
             );
-            if (resp.ok) meta = await resp.json();
+            if (resp.ok) meta = mergeMetaWithStatic(await resp.json(), staticRow);
           }
           if (!meta) {
-            const resp = await fetch("data/applications.json");
-            if (resp.ok) {
-              const data = await resp.json();
-              meta = (data.applications || []).find((a) => a.slug === slug);
-            }
+            meta = staticRow;
           }
           if (!meta) {
             document.getElementById("app-subtitle").textContent = slug;
@@ -428,10 +819,24 @@
             [meta.role, meta.location, meta.match_score ? `score ${meta.match_score}` : ""]
               .filter(Boolean)
               .join(" · ");
+          const prepCmd = document.getElementById("interview-prep-cmd");
+          if (prepCmd) {
+            prepCmd.textContent = `prep mock for ${meta.company || slug}`;
+          }
           const linksEl = document.getElementById("meta-links");
           linksEl.innerHTML = AdminAuth.linksHtml(AdminAuth.buildApplicationLinks(meta, slug));
           fillSettingsForm(settingsFromMeta(meta));
-          loadDoc(doc in files ? doc : "resume");
+          renderInterviewPrep(meta);
+          enableSideGigTabs(meta);
+          const defaultDoc =
+            doc === "bid" && !document.getElementById("tab-bid")?.hidden
+              ? "bid"
+              : doc === "reply" && !document.getElementById("tab-reply")?.hidden
+                ? "reply"
+                : doc in files
+                  ? doc
+                  : "resume";
+          loadDoc(defaultDoc in files ? defaultDoc : "resume");
         }
 
         function setDownloadStatus(message, kind) {
@@ -446,43 +851,57 @@
           el.className = "status-bar" + (kind ? ` ${kind}` : "");
         }
 
-        async function downloadFile(filename) {
+        async function downloadFileFromLocal(filename) {
+          const resp = await fetch(`apps/${encodeURIComponent(slug)}/${filename}`);
+          if (!resp.ok) {
+            throw new Error(
+              `${filename} not found locally — run: python scripts/build_admin_data.py --slug ${slug}`
+            );
+          }
+          const blob = await resp.blob();
+          const objectUrl = URL.createObjectURL(blob);
+          const anchor = document.createElement("a");
+          anchor.href = objectUrl;
+          anchor.download = filename;
+          document.body.appendChild(anchor);
+          anchor.click();
+          anchor.remove();
+          URL.revokeObjectURL(objectUrl);
+        }
+
+        async function downloadFile(filename, btnId) {
+          const dlSpec = btnId ? DOWNLOAD_BUTTONS[btnId] : null;
+          if (dlSpec) setDownloadButtonFetching(btnId, true);
           setDownloadStatus(`Downloading ${filename}…`, "running");
           try {
-            if (apiBase && apiKey) {
-              await AdminAuth.downloadApplicationFile(apiBase, slug, filename);
+            if (dlSpec) {
+              await ensureApplicationGenerated(dlSpec.key);
+            }
+            if (AdminAuth.preferLocalAppFiles()) {
+              await downloadFileFromLocal(filename);
+            } else if (canUseProtocolApi()) {
+              try {
+                await AdminAuth.downloadApplicationFile(protocolApiBase, slug, filename);
+              } catch (err) {
+                await downloadFileFromLocal(filename);
+              }
             } else {
-              const resp = await fetch(`apps/${encodeURIComponent(slug)}/${filename}`);
-              if (!resp.ok) throw new Error(`${filename} not found — sync from GCS or regenerate PDFs.`);
-              const blob = await resp.blob();
-              const objectUrl = URL.createObjectURL(blob);
-              const anchor = document.createElement("a");
-              anchor.href = objectUrl;
-              anchor.download = filename;
-              document.body.appendChild(anchor);
-              anchor.click();
-              anchor.remove();
-              URL.revokeObjectURL(objectUrl);
+              await downloadFileFromLocal(filename);
             }
             setDownloadStatus(`Downloaded ${filename}.`, "ok");
           } catch (err) {
             setDownloadStatus(err.message, "err");
+          } finally {
+            if (dlSpec) setDownloadButtonFetching(btnId, false);
           }
         }
 
         function bindDownloads() {
-          document.getElementById("btn-dl-resume-pdf").addEventListener("click", () =>
-            downloadFile("resume.pdf")
-          );
-          document.getElementById("btn-dl-cover-pdf").addEventListener("click", () =>
-            downloadFile("cover_letter.pdf")
-          );
-          document.getElementById("btn-dl-resume-docx").addEventListener("click", () =>
-            downloadFile("resume.docx")
-          );
-          document.getElementById("btn-dl-cover-docx").addEventListener("click", () =>
-            downloadFile("cover_letter.docx")
-          );
+          Object.entries(DOWNLOAD_BUTTONS).forEach(([btnId, spec]) => {
+            document.getElementById(btnId).addEventListener("click", () =>
+              downloadFile(spec.file, btnId)
+            );
+          });
         }
 
         document.getElementById("btn-save-settings").addEventListener("click", saveSettings);
@@ -491,9 +910,15 @@
 
         async function boot(loginKey) {
           const cfg = await AdminAuth.loadAdminConfig();
-          apiBase = AdminAuth.resolveApiBase(cfg);
-          apiKey = loginKey || AdminAuth.resolveApiKey(Boolean(cfg.apiBase));
+          protocolApiBase = AdminAuth.resolveProtocolApiBase(cfg);
+          saveApiBase = await AdminAuth.resolveSaveApiBase(cfg);
+          apiKey = loginKey || AdminAuth.resolveApiKey(true);
+          const cursorHint = document.getElementById("cursor-prep-hint");
+          if (cursorHint) cursorHint.hidden = !AdminAuth.isLocalAdminHost();
           await loadMeta();
+          if (location.hash === "#interview-prep") {
+            document.getElementById("interview-prep")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         }
 
         AdminAuth.requireAuth((loginKey) => boot(loginKey));

@@ -45,9 +45,18 @@
     return host === "localhost" || host === "127.0.0.1";
   }
 
+  /** Local admin copies live under website/admin/apps/ — use those on localhost, not Cloud Run. */
+  function preferLocalAppFiles() {
+    return isLocalAdminHost();
+  }
+
   function localSyncBase() {
     const port = Number(new URLSearchParams(location.search).get("syncPort") || "8765");
-    return `http://127.0.0.1:${port}`;
+    const host =
+      location.hostname === "localhost" || location.hostname === "127.0.0.1"
+        ? location.hostname
+        : "127.0.0.1";
+    return `http://${host}:${port}`;
   }
 
   function isLocalSyncApi(base) {
@@ -63,7 +72,11 @@
     }
   }
 
-  function resolveApiBase(config) {
+  /** Same default as scripts/serve_admin_local.sh */
+  const DEFAULT_LOCAL_PROTOCOL_API =
+    "https://job-search-admin-416806702268.us-west1.run.app";
+
+  function resolveProtocolApiBase(config) {
     if (config?.apiBase) {
       return String(config.apiBase).replace(/\/$/, "");
     }
@@ -72,17 +85,54 @@
       return String(saved.apiBase).replace(/\/$/, "");
     }
     if (isLocalAdminHost()) {
-      return localSyncBase();
+      return DEFAULT_LOCAL_PROTOCOL_API.replace(/\/$/, "");
     }
     return "";
   }
 
-  function resolveApiKey(configApiBase) {
+  /** Cloud Run URL for protocols/drafts (from deploy config). */
+  function resolveApiBase(config) {
+    return resolveProtocolApiBase(config);
+  }
+
+  async function isLocalSyncReachable() {
+    if (!isLocalAdminHost()) return false;
+    try {
+      const resp = await fetch(`${localSyncBase()}/api/health`);
+      return resp.ok;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /** Where application settings PATCH should go (local sync on localhost when running). */
+  async function resolveSaveApiBase(config) {
+    if (isLocalAdminHost()) {
+      return (await isLocalSyncReachable()) ? localSyncBase() : "";
+    }
+    const cloud = resolveProtocolApiBase(config);
+    const key = resolveApiKey(true);
+    if (cloud && key) {
+      return cloud;
+    }
+    return "";
+  }
+
+  function saveBlockedMessage(config) {
+    if (isLocalAdminHost()) {
+      return "Local sync server not responding on port 8765 — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again). Settings save on localhost does not use Cloud Run.";
+    }
+    if (resolveProtocolApiBase(config)) {
+      return "Saving requires signing in on the admin dashboard (same password as Cloud Run).";
+    }
+    return "Saving requires the Cloud Run API (set ADMIN_API_BASE_URL and redeploy).";
+  }
+
+  function resolveApiKey(_configApiBase) {
     const fromSession = getApiKey();
     if (fromSession) return fromSession;
     const saved = loadDashboardSettings();
-    if (!configApiBase && saved.apiKey) return saved.apiKey;
-    return "";
+    return saved.apiKey || "";
   }
 
   function showLoginScreen(config, onSuccess) {
@@ -148,9 +198,11 @@
   }
 
   async function fetchWithAuth(url, options = {}) {
-    const key = getApiKey();
     const headers = { ...(options.headers || {}) };
-    if (key) headers["X-Admin-Key"] = key;
+    if (!isLocalSyncApi(url)) {
+      const key = resolveApiKey(true);
+      if (key) headers["X-Admin-Key"] = key;
+    }
     return fetch(url, { ...options, headers });
   }
 
@@ -175,6 +227,7 @@
       { label: "Resume", url: `${appBase}&doc=resume` },
       { label: "Cover", url: `${appBase}&doc=cover` },
       { label: "JD", url: `${appBase}&doc=jd` },
+      { label: "Prep", url: `${appBase}#interview-prep` },
       { label: "Settings", url: appBase }
     );
     return links;
@@ -230,6 +283,120 @@
     URL.revokeObjectURL(objectUrl);
   }
 
+  const CURSOR_DEEPLINK_BASE = "cursor://anysphere.cursor-deeplink/prompt";
+  const CURSOR_WEB_LINK_BASE = "https://cursor.com/link/prompt";
+
+  function buildInterviewPrepPrompt(meta, mode) {
+    const slug = String(meta?.slug || "").trim();
+    const company = String(meta?.company || slug).trim();
+    const client = String(meta?.client || "").trim();
+    const role = String(meta?.role || "").trim();
+    const status = String(meta?.status || meta?.settings?.status || "").trim();
+    const notes = String(meta?.notes || meta?.settings?.notes || "").trim();
+    const interviewUrl = String(meta?.interview_url || "").trim();
+
+    const contextLines = [
+      `Slug: ${slug}`,
+      company ? `Company: ${company}` : "",
+      client ? `Client: ${client}` : "",
+      role ? `Role: ${role}` : "",
+      status ? `Status: ${status}` : "",
+      interviewUrl ? `Interview link: ${interviewUrl}` : "",
+      notes ? `Notes: ${notes}` : "",
+    ].filter(Boolean);
+
+    const shared = [
+      "Follow tools/interview/.prompt completely.",
+      "",
+      ...contextLines,
+      "",
+      "Read applications/" +
+        slug +
+        "/meta.json, jd.txt, resume.html and any existing interview/prep/* + interview/sessions/*_mock.md.",
+      "After creating or updating prep files, run: python scripts/build_admin_data.py --slug " + slug,
+      "Ensure interview prep shows at http://localhost:8080/admin/app.html?slug=" +
+        slug +
+        "#interview-prep",
+    ].join("\n");
+
+    if (mode === "mock") {
+      return [
+        `prep mock for ${company}`,
+        "",
+        shared,
+        "",
+        "Start with a pre-flight block (when, format, links table), then ask behavioral Q1 only.",
+        "Wait for my answer before scoring. Interactive — one question at a time.",
+      ].join("\n");
+    }
+
+    if (mode === "full") {
+      return [
+        `Full ${company} mock interview`,
+        "",
+        shared,
+        "",
+        "Run full mock per tools/interview/.prompt: behavioral → technical → design/scoping → one coding problem if applicable.",
+        "Interactive — one question at a time; wait for answers before scoring.",
+      ].join("\n");
+    }
+
+    return [
+      `run interview prep for ${slug}`,
+      "",
+      shared,
+      "",
+      "Create or refresh interview/prep/" +
+        slug +
+        ".md, .html, interview/sessions/" +
+        slug +
+        "_mock.md, and coding drill if role warrants it.",
+      "Show pre-flight, then start interactive mock with behavioral Q1.",
+    ].join("\n");
+  }
+
+  function cursorPromptDeeplink(text) {
+    const url = new URL(CURSOR_DEEPLINK_BASE);
+    url.searchParams.set("text", text);
+    return url.toString();
+  }
+
+  function cursorPromptWebLink(text) {
+    const url = new URL(CURSOR_WEB_LINK_BASE);
+    url.searchParams.set("text", text);
+    return url.toString();
+  }
+
+  async function launchCursorInterviewPrep(meta, mode) {
+    const prompt = buildInterviewPrepPrompt(meta, mode);
+    if (prompt.length > 7800) {
+      throw new Error("Prompt too long for Cursor deeplink — shorten notes in meta.json.");
+    }
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(prompt);
+      copied = true;
+    } catch (_) {
+      /* clipboard optional */
+    }
+    const appLink = cursorPromptDeeplink(prompt);
+    const webLink = cursorPromptWebLink(prompt);
+    const anchor = document.createElement("a");
+    anchor.href = appLink;
+    anchor.style.display = "none";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    return { copied, appLink, webLink, prompt };
+  }
+
+  window.AdminCursor = {
+    buildInterviewPrepPrompt,
+    cursorPromptDeeplink,
+    cursorPromptWebLink,
+    launchCursorInterviewPrep,
+  };
+
   window.AdminAuth = {
     requireAuth,
     getApiKey,
@@ -238,10 +405,16 @@
     loadAdminConfig,
     authRequired,
     isLocalAdminHost,
+    preferLocalAppFiles,
     localSyncBase,
     isLocalSyncApi,
     resolveApiBase,
+    resolveProtocolApiBase,
+    resolveSaveApiBase,
+    isLocalSyncReachable,
+    saveBlockedMessage,
     resolveApiKey,
+    DEFAULT_LOCAL_PROTOCOL_API,
     fetchWithAuth,
     normalizeAdminLink,
     buildApplicationLinks,

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import tempfile
 from datetime import date
 from pathlib import Path
@@ -13,6 +14,11 @@ from urllib.parse import urlparse
 import gcs_apps
 from openai_tailor import generate_application, score_jd, slugify
 from render_assets import render_application_files
+
+_GMAIL_DIR = Path(__file__).resolve().parents[2] / "gmail"
+if _GMAIL_DIR.is_dir() and str(_GMAIL_DIR) not in sys.path:
+    sys.path.insert(0, str(_GMAIL_DIR))
+from text_clean import clean_jd_text  # noqa: E402
 
 
 def _extract_apply_url(body: str, apply_url: str | None) -> str | None:
@@ -53,6 +59,8 @@ def _merge_meta(
     meta.setdefault("role", score_data.get("role"))
     meta.setdefault("location", score_data.get("location"))
     meta.setdefault("match_score", score_data.get("match_score"))
+    if score_data.get("raw_match_score") is not None:
+        meta.setdefault("raw_match_score", score_data.get("raw_match_score"))
     meta.setdefault("status", "ready")
     meta.setdefault("created", today)
     meta.setdefault("updated", today)
@@ -73,7 +81,7 @@ def run_manual_jd(
     force: bool = False,
 ) -> dict[str, Any]:
     """Score pasted JD and generate application files when above threshold."""
-    jd_text = jd_text.strip()
+    jd_text = clean_jd_text(jd_text.strip())
     if len(jd_text) < 80:
         return {"phase": "manual_jd", "error": "JD text too short (need at least 80 characters)."}
 

@@ -12,32 +12,106 @@
       <nav class="admin-nav">
         <div>
           <h1>Job Search Admin</h1>
-          <p class="sub">Protocols · applications · next actions</p>
+          <p class="sub">Focus on what matters — admin tools in the side panel</p>
         </div>
-        <a href="../index.html">← Portfolio</a>
-        <button id="btn-sign-out" class="btn" type="button" hidden>Sign out</button>
+        <div class="admin-nav-actions">
+          <button id="btn-admin-drawer" class="btn btn-primary" type="button" aria-expanded="false" aria-controls="admin-drawer">
+            Admin
+          </button>
+          <a href="../index.html">← Portfolio</a>
+          <button id="btn-sign-out" class="btn" type="button" hidden>Sign out</button>
+        </div>
       </nav>
     </header>
 
+    <div id="admin-drawer-backdrop" class="admin-drawer-backdrop" hidden></div>
+    <aside id="admin-drawer" class="admin-drawer" aria-label="Admin tools" hidden>
+      <div class="admin-drawer-header">
+        <h2>Admin</h2>
+        <button id="btn-admin-drawer-close" class="btn btn-icon" type="button" aria-label="Close admin panel">×</button>
+      </div>
+      <div class="admin-drawer-body">
+        <section class="drawer-section" id="api-settings-panel">
+          <h3>Connection</h3>
+          <p class="hint" id="api-settings-hint">
+            Cloud Run API URL is injected at deploy from GitHub repo variable
+            <code>ADMIN_API_BASE_URL</code>.
+          </p>
+          <div class="settings-grid">
+            <div id="api-base-wrap">
+              <label for="api-base">API base URL (local dev override)</label>
+              <input id="api-base" type="text" placeholder="https://job-search-admin-….run.app">
+            </div>
+            <div id="api-key-wrap">
+              <label for="api-key">Admin API key (optional, stored in this browser only)</label>
+              <input id="api-key" type="password" placeholder="X-Admin-Key if Cloud Run requires it">
+            </div>
+            <button id="save-settings" class="btn btn-primary" type="button">Save key</button>
+          </div>
+          <div id="local-sync-wrap" class="local-sync-wrap" hidden>
+            <p class="hint" style="margin-top:0.75rem;margin-bottom:0.5rem">
+              Local dev: pull <code>applications/</code> and inbox from GCS into this repo.
+            </p>
+            <div class="btn-row">
+              <button id="btn-pull-gcs" class="btn btn-primary" type="button">Pull from GCS</button>
+            </div>
+            <div id="local-sync-status" class="status-bar"></div>
+          </div>
+        </section>
+
+        <section class="drawer-section" id="run-protocols">
+          <h3>Run protocols</h3>
+          <p class="hint">Gmail → Generate → LinkedIn → Indeed</p>
+          <div class="btn-row">
+            <button id="btn-gmail" class="btn run-btn" type="button">Gmail</button>
+            <button id="btn-generate" class="btn run-btn" type="button">Generate</button>
+            <button id="btn-linkedin" class="btn run-btn" type="button">LinkedIn</button>
+            <button id="btn-indeed" class="btn run-btn" type="button">Indeed</button>
+            <button id="btn-all-par" class="btn btn-primary run-btn" type="button">All parallel</button>
+            <button id="btn-all-seq" class="btn run-btn" type="button">All sequential</button>
+            <button id="btn-refresh" class="btn" type="button">Refresh data</button>
+          </div>
+          <div id="run-status" class="status-bar"></div>
+        </section>
+
+        <section class="drawer-section" id="side-gig-scans">
+          <h3>Side gig scans</h3>
+          <p class="hint">Run locally when sync server is up · Craigslist: LA Central gigs (<code>cat=ggg</code>)</p>
+          <div class="btn-row">
+            <button id="btn-freelancer" class="btn run-btn" type="button">Freelancer</button>
+            <button id="btn-craigslist" class="btn run-btn" type="button">Craigslist LA gigs</button>
+          </div>
+          <div id="side-gig-status" class="status-bar"></div>
+        </section>
+      </div>
+    </aside>
+
     <main>
-      <section class="panel" id="actionable-panel">
-        <h2>Actionable</h2>
-        <p class="hint">What to do next — apply, email drafts, interviews, and protocol fixes.</p>
-        <div id="actionable-list"><p class="empty">Loading…</p></div>
+      <section class="panel panel-focus" id="actionable-panel">
+        <div class="panel-focus-header">
+          <div>
+            <h2>Today</h2>
+            <p class="hint">Work the grid top-left first, then schedule. One clear next step per card.</p>
+          </div>
+          <p id="actionable-summary" class="actionable-summary"></p>
+        </div>
+        <div id="actionable-board" class="eisenhower-board"><p class="empty">Loading…</p></div>
       </section>
 
-      <section class="panel" id="run-protocols">
-        <h2>Run protocols</h2>
-        <p class="hint">Cloud Run phases: Gmail scan, triage + OpenAI generate, LinkedIn search. Run individually or all together.</p>
-        <div class="btn-row">
-          <button id="btn-gmail" class="btn run-btn" type="button">1 · Gmail scan</button>
-          <button id="btn-generate" class="btn run-btn" type="button">2 · Triage + generate</button>
-          <button id="btn-linkedin" class="btn run-btn" type="button">3 · LinkedIn search</button>
-          <button id="btn-all-par" class="btn btn-primary run-btn" type="button">All · parallel</button>
-          <button id="btn-all-seq" class="btn run-btn" type="button">All · sequential</button>
-          <button id="btn-refresh" class="btn" type="button">Refresh tables</button>
+      <section class="panel panel-search" id="app-search-panel">
+        <div class="panel-search-intro">
+          <h2>Find application</h2>
+          <p class="hint">Search anything you remember — jump straight to status settings.</p>
         </div>
-        <div id="run-status" class="status-bar"></div>
+        <label for="app-search" class="sr-only">Search applications</label>
+        <div class="search-field">
+          <span class="search-field-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          </span>
+          <input id="app-search" type="search" placeholder="Company, role, slug, or status…" autocomplete="off" spellcheck="false">
+          <kbd class="search-field-kbd" aria-hidden="true">esc</kbd>
+        </div>
+        <div id="app-search-results" class="search-results" hidden></div>
       </section>
 
       <section class="panel">
@@ -45,8 +119,11 @@
         <div id="protocol-output"><p class="empty">Loading…</p></div>
       </section>
 
-      <section class="panel">
-        <h2>Applications</h2>
+      <details class="panel panel-collapsible" id="applications-panel">
+        <summary>
+          <span class="panel-collapsible-title">Applications</span>
+          <span id="apps-count" class="panel-collapsible-meta">…</span>
+        </summary>
         <div class="table-wrap">
           <table>
             <thead>
@@ -61,11 +138,11 @@
               </tr>
             </thead>
             <tbody id="apps-table-body">
-              <tr><td colspan="7" class="empty">Loading…</td></tr>
+              <tr><td colspan="7" class="empty">Expand to load table…</td></tr>
             </tbody>
           </table>
         </div>
-      </section>
+      </details>
 
       <section class="panel" id="manual-jd-panel">
         <h2>Manual JD entry</h2>
@@ -88,34 +165,6 @@
           <button id="btn-jd-submit" class="btn btn-primary" type="button">Score &amp; generate</button>
         </div>
         <div id="jd-status" class="status-bar"></div>
-      </section>
-
-      <section class="panel" id="api-settings-panel">
-        <h2>Connection</h2>
-        <p class="hint" id="api-settings-hint">
-          Cloud Run API URL is injected at deploy from GitHub repo variable
-          <code>ADMIN_API_BASE_URL</code>.
-        </p>
-        <div class="settings-grid">
-          <div id="api-base-wrap">
-            <label for="api-base">API base URL (local dev override)</label>
-            <input id="api-base" type="text" placeholder="https://job-search-admin-….run.app">
-          </div>
-          <div id="api-key-wrap">
-            <label for="api-key">Admin API key (optional, stored in this browser only)</label>
-            <input id="api-key" type="password" placeholder="X-Admin-Key if Cloud Run requires it">
-          </div>
-          <button id="save-settings" class="btn btn-primary" type="button">Save key</button>
-        </div>
-        <div id="local-sync-wrap" class="local-sync-wrap" hidden>
-          <p class="hint" style="margin-top:0.75rem;margin-bottom:0.5rem">
-            Local dev: pull <code>applications/</code> and inbox from GCS into this repo.
-          </p>
-          <div class="btn-row">
-            <button id="btn-pull-gcs" class="btn btn-primary" type="button">Pull from GCS</button>
-          </div>
-          <div id="local-sync-status" class="status-bar"></div>
-        </div>
       </section>
     </main>
 
