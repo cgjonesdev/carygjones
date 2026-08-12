@@ -41,14 +41,20 @@
           <div>
             <label for="app-status">Status</label>
             <select id="app-status">
-              <option value="ready">ready</option>
-              <option value="applied">applied</option>
-              <option value="interview">interview</option>
-              <option value="needs_rate_confirmation">needs rate confirmation</option>
-              <option value="waiting_on_response">waiting on response</option>
-              <option value="rejected">rejected</option>
-              <option value="offer">offer</option>
-              <option value="skipped">skipped</option>
+              <option value="ready">Ready</option>
+              <option value="application_in_progress">Application in progress</option>
+              <option value="applied">Applied</option>
+              <option value="waiting_on_response">Waiting on response</option>
+              <option value="needs_rate_confirmation">Needs rate confirmation</option>
+              <option value="interview">Interview scheduled</option>
+              <option value="screening_interview_complete">Screening interview complete</option>
+              <option value="in_technical_interviews">In technical interviews</option>
+              <option value="technical_interviews_complete">Technical interviews complete</option>
+              <option value="in_final_interviews">In final interviews</option>
+              <option value="final_interviews_complete">Final interviews complete</option>
+              <option value="offer">Offer</option>
+              <option value="rejected">Rejected</option>
+              <option value="skipped">Skipped</option>
             </select>
           </div>
           <div>
@@ -403,7 +409,15 @@
           document.getElementById("apply-url").value = settings.apply_url || "";
           document.getElementById("gmail-message-id").value = settings.gmail_message_id || "";
           document.getElementById("email-subject").value = settings.email_subject || "";
-          document.getElementById("app-status").value = settings.status || "ready";
+          const statusEl = document.getElementById("app-status");
+          const status = settings.status || "ready";
+          if (![...statusEl.options].some((o) => o.value === status)) {
+            const opt = document.createElement("option");
+            opt.value = status;
+            opt.textContent = status.replace(/_/g, " ");
+            statusEl.appendChild(opt);
+          }
+          statusEl.value = status;
           document.getElementById("app-notes").value = settings.notes || "";
           updateDraftInfo(settings);
         }
