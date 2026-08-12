@@ -130,6 +130,11 @@
           return AdminAuth.isLocalSyncApi(apiBase) || Boolean(apiKey);
         }
 
+        async function loadApiConfig() {
+          const cfg = await AdminAuth.loadAdminConfig();
+          apiBase = AdminAuth.resolveApiBase(cfg);
+        }
+
         const files = {
           resume: { file: "resume.html", tab: "tab-resume" },
           cover: { file: "cover_letter.html", tab: "tab-cover" },

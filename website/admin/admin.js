@@ -746,7 +746,7 @@
       state.apiKey = apiKeyFromLogin;
     } else {
       loadSettings();
-      state.apiKey = AdminAuth.resolveApiKey(state.configApiBase);
+      state.apiKey = AdminAuth.resolveApiKey(state.configApiBase) || AdminAuth.getApiKey();
     }
     bindUi();
     if (state.apiBase) {
