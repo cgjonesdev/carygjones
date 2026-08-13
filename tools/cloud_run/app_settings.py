@@ -170,6 +170,7 @@ def settings_from_meta(meta: dict[str, Any]) -> dict[str, Any]:
         "email_subject": source.get("subject") or "",
         "status": meta.get("status") or "ready",
         "notes": meta.get("notes") or "",
+        "interview_notes": meta.get("interview_notes") or "",
         "gmail_draft_id": meta.get("gmail_draft_id") or "",
         "gmail_sent_message_id": meta.get("gmail_sent_message_id") or "",
     }
@@ -198,6 +199,8 @@ def apply_settings_update(meta: dict[str, Any], payload: dict[str, Any]) -> dict
     notes = payload.get("notes")
     if notes is not None:
         meta["notes"] = str(notes).strip()
+    if "interview_notes" in payload:
+        meta["interview_notes"] = str(payload.get("interview_notes") or "").strip()
 
     if recruiter_email:
         meta["recruiter_email"] = recruiter_email

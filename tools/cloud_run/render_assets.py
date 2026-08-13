@@ -38,6 +38,9 @@ def render_application_files(
     cover_html: str,
     work_dir: Path,
 ) -> dict[str, Path]:
+    from cover_letter_html import normalize_cover_letter_html
+
+    cover_html = normalize_cover_letter_html(cover_html)
     work_dir.mkdir(parents=True, exist_ok=True)
     resume_html_path = work_dir / "resume.html"
     cover_html_path = work_dir / "cover_letter.html"

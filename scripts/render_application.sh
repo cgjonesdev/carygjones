@@ -29,6 +29,7 @@ fi
 "$render_docx" "$resume_html" "$app/resume.docx"
 
 if [[ -f "$cover_html" ]]; then
+  python3 "$root/scripts/normalize_cover_letters.py" "$cover_html"
   "$render_pdf" "$cover_html" "$app/cover_letter.pdf"
   "$render_docx" "$cover_html" "$app/cover_letter.docx"
 else

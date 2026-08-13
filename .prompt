@@ -58,6 +58,7 @@ When I post a job description (abbreviated as "JD"):
      - LinkedIn: https://www.linkedin.com/in/cary-g-jones/
      - GitHub: https://github.com/cgjonesdev
      - Portfolio: https://cgjonesdev.github.io/carygjones/
+   - Cover letter sender block: one contact item per line (`<br>` between lines — name, location, phone, email, LinkedIn, GitHub, portfolio). Do not pipe-separate contact on one line. Left-align sender, meta, subject, and closing; justify body paragraphs only.
    - Use existing applications in `applications/` and content in `archive/` as references
 
    Styling rules (do not use `archive/legacy/resume.css` or `cover_letter.css` for new applications):

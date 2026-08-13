@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>Application · Admin</title>
-    <link rel="icon" href="../favicon.ico" sizes="any">
-    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
     <meta name="theme-color" content="#0b1120">
     <link rel="stylesheet" href="admin.css">
@@ -18,11 +18,28 @@
           <h1 id="app-title">Application</h1>
           <p class="sub" id="app-subtitle"></p>
         </div>
-        <a href="index.html">← Admin dashboard</a>
+        <div class="admin-nav-actions">
+          <div id="header-apply-actions" class="btn-row apply-actions"></div>
+          <a href="index.html">← Admin dashboard</a>
+        </div>
       </nav>
     </header>
 
     <main>
+      <section class="panel panel-focus" id="apply-panel">
+        <div class="panel-focus-header">
+          <div>
+            <h2>Apply</h2>
+            <p class="hint" id="apply-hint">Open the job posting or send your application.</p>
+          </div>
+        </div>
+        <div class="btn-row apply-actions">
+          <a id="btn-apply-link" class="btn btn-primary" hidden>Apply</a>
+          <button id="btn-apply-draft" class="btn btn-primary js-apply-draft" type="button" hidden>Apply via Gmail draft</button>
+        </div>
+        <div id="apply-status" class="status-bar" hidden></div>
+      </section>
+
       <section class="panel" id="settings-panel">
         <h2>Recruiter &amp; Gmail</h2>
         <p class="hint">
@@ -103,6 +120,35 @@
         <p class="empty" id="interview-prep-empty" hidden>
           No prep guide checked in for this slug yet.
         </p>
+        <div class="interview-notes-wrap">
+          <label for="interview-notes">Interview notes</label>
+          <p class="hint">Saved to this application — questions they asked, your answers, follow-ups, and debrief.</p>
+          <textarea
+            id="interview-notes"
+            class="interview-notes"
+            placeholder="Round 1 — …&#10;Questions: …&#10;Follow up: …"
+          ></textarea>
+          <div class="btn-row">
+            <button id="btn-save-interview-notes" class="btn btn-primary" type="button">Save notes</button>
+          </div>
+          <div id="interview-notes-status" class="status-bar"></div>
+        </div>
+        <div class="interview-llm-wrap">
+          <label for="llm-input">Prep assistant (LLM)</label>
+          <p class="hint">Uses JD, resume, and your saved notes from GCS. All data stays in the cloud bucket.</p>
+          <div class="btn-row llm-mode-row">
+            <button type="button" class="btn llm-mode active" data-mode="assistant">Ask</button>
+            <button type="button" class="btn llm-mode" data-mode="mock_question">Mock question</button>
+            <button type="button" class="btn llm-mode" data-mode="expand_notes">Expand notes</button>
+            <button type="button" class="btn llm-mode" data-mode="debrief">Debrief</button>
+          </div>
+          <textarea id="llm-input" class="interview-notes" placeholder="What should I emphasize about my Django experience?" style="min-height:100px"></textarea>
+          <div class="btn-row">
+            <button id="btn-llm-send" class="btn btn-primary" type="button">Send</button>
+          </div>
+          <div id="llm-status" class="status-bar"></div>
+          <div id="llm-reply" class="llm-reply" hidden></div>
+        </div>
       </section>
 
       <section class="panel">
@@ -142,28 +188,39 @@
         let saveApiBase = "";
         let protocolApiBase = "";
         let apiKey = "";
+        let interviewNotesSavedValue = "";
+        let interviewNotesSaveTimer = null;
+        let currentMeta = null;
 
         function settingsFromMeta(meta) {
-          if (meta?.settings) return meta.settings;
-          return {
-            recruiter_email: meta?.recruiter_email || "",
-            recruiter_name: meta?.recruiter_name || "",
-            apply_url: meta?.apply_url || "",
-            gmail_message_id: meta?.gmail_message_id || "",
-            email_subject: meta?.email_subject || "",
-            status: meta?.status || "ready",
-            notes: meta?.notes || "",
-            gmail_draft_id: meta?.gmail_draft_id || "",
-          };
+          const base = meta?.settings
+            ? { ...meta.settings }
+            : {
+                recruiter_email: meta?.recruiter_email || "",
+                recruiter_name: meta?.recruiter_name || "",
+                apply_url: meta?.apply_url || "",
+                gmail_message_id: meta?.gmail_message_id || "",
+                email_subject: meta?.email_subject || "",
+                status: meta?.status || "ready",
+                notes: meta?.notes || "",
+                gmail_draft_id: meta?.gmail_draft_id || "",
+              };
+          if (base.interview_notes == null || base.interview_notes === "") {
+            base.interview_notes = meta?.interview_notes || "";
+          }
+          return base;
         }
 
         function canSaveSettings() {
           if (!saveApiBase) return false;
+          if (saveApiBase === window.location.origin) return true;
           return AdminAuth.isLocalSyncApi(saveApiBase) || Boolean(apiKey);
         }
 
         function canUseProtocolApi() {
-          return Boolean(protocolApiBase && apiKey);
+          if (!protocolApiBase) return false;
+          if (protocolApiBase === window.location.origin) return true;
+          return Boolean(apiKey);
         }
 
         const files = {
@@ -254,23 +311,21 @@
           }
 
           let resp = null;
-          if (await AdminAuth.isLocalSyncReachable()) {
+          if (canUseProtocolApi()) {
+            resp = await postGenerate(
+              `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/generate`,
+              true
+            );
+          } else if (await AdminAuth.isLocalSyncReachable()) {
             resp = await postGenerate(
               `${AdminAuth.localSyncBase()}/api/applications/${encodeURIComponent(slug)}/generate`,
               false
             );
           }
 
-          if ((!resp || resp.status === 404) && canUseProtocolApi()) {
-            resp = await postGenerate(
-              `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/generate`,
-              true
-            );
-          }
-
           if (!resp) {
             throw new Error(
-              "Start ./scripts/serve_admin_local.sh to generate resume and cover letter from the JD."
+              "Start ./scripts/serve_admin_local.sh (unified API) or sign in with admin password."
             );
           }
 
@@ -311,13 +366,64 @@
           throw new Error(`${filename} not found — click Resume again to generate, or run: python scripts/build_admin_data.py --slug ${slug}`);
         }
 
+        function updateApplyUI(meta) {
+          const action = AdminAuth.resolveApplyAction(
+            meta,
+            slug,
+            document.getElementById("apply-url")?.value?.trim()
+          );
+          const linkBtn = document.getElementById("btn-apply-link");
+          const draftBtn = document.getElementById("btn-apply-draft");
+          const hint = document.getElementById("apply-hint");
+          const header = document.getElementById("header-apply-actions");
+
+          if (linkBtn) {
+            linkBtn.hidden = true;
+            linkBtn.removeAttribute("href");
+            linkBtn.onclick = null;
+          }
+          if (draftBtn) draftBtn.hidden = true;
+
+          if (action?.type === "link" && linkBtn) {
+            AdminAuth.configureApplyLink(linkBtn, action.url, action.label);
+            if (hint) {
+              hint.textContent = "Opens the application page in a new tab.";
+            }
+          } else if (action?.type === "draft" && draftBtn) {
+            draftBtn.textContent = action.label;
+            draftBtn.hidden = false;
+            if (hint) {
+              hint.textContent =
+                "Creates a Gmail draft with resume and cover letter attached. Set recruiter email below first.";
+            }
+          } else if (hint) {
+            hint.textContent =
+              action?.hint ||
+              "Add an apply URL in settings, or set recruiter email and use Apply via Gmail draft.";
+          }
+
+          if (header) {
+            header.innerHTML = "";
+            header.hidden = false;
+            if (action?.type === "link") {
+              const b = document.createElement("a");
+              b.className = "btn btn-primary";
+              AdminAuth.configureApplyLink(b, action.url, action.label);
+              header.appendChild(b);
+            } else if (action?.type === "draft") {
+              const b = document.createElement("button");
+              b.type = "button";
+              b.className = "btn btn-primary js-apply-draft";
+              b.textContent = action.label;
+              header.appendChild(b);
+            } else {
+              header.hidden = true;
+            }
+          }
+        }
+
         function isCraigslistApp(meta) {
-          const method = String(meta?.apply_method || "").toLowerCase();
-          if (method === "craigslist") return true;
-          if (String(slug || "").startsWith("craigslist_")) return true;
-          const company = String(meta?.company || "").toLowerCase();
-          const url = String(meta?.apply_url || "").toLowerCase();
-          return company.includes("craigslist") || url.includes("craigslist.org");
+          return AdminAuth.isCraigslistApp(meta, slug);
         }
 
         function enableSideGigTabs(meta) {
@@ -340,8 +446,36 @@
         }
 
         function setStatus(el, message, kind) {
-          el.textContent = message || "";
+          if (!el) return;
+          if (!message) {
+            el.hidden = true;
+            el.textContent = "";
+            el.className = "status-bar";
+            return;
+          }
+          el.hidden = false;
+          el.textContent = message;
           el.className = "status-bar" + (kind ? ` ${kind}` : "");
+        }
+
+        function setApplyStatus(message, kind) {
+          setStatus(document.getElementById("apply-status"), message, kind);
+          setStatus(document.getElementById("settings-status"), message, kind);
+        }
+
+        async function fetchWithTimeout(url, options = {}, timeoutMs = 45000) {
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), timeoutMs);
+          try {
+            return await AdminAuth.fetchWithAuth(url, { ...options, signal: controller.signal });
+          } catch (err) {
+            if (err.name === "AbortError") {
+              throw new Error("Request timed out — check that the admin API and GCS are reachable, then retry.");
+            }
+            throw err;
+          } finally {
+            clearTimeout(timer);
+          }
         }
 
         function readSettingsForm() {
@@ -372,8 +506,8 @@
         async function applicationFileExists(filename) {
           if (!canUseProtocolApi()) return null;
           const resp = await AdminAuth.fetchWithAuth(
-            `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/${filename}`,
-            { method: "HEAD" }
+            `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`,
+            { method: "GET" }
           );
           return resp.ok;
         }
@@ -396,10 +530,10 @@
               applicationFileExists("resume.pdf"),
               applicationFileExists("cover_letter.pdf"),
             ]);
-            parts.push(resumeOk ? "resume.pdf ready" : "resume.pdf missing in cloud");
-            parts.push(coverOk ? "cover_letter.pdf ready" : "cover_letter.pdf missing in cloud");
-          } else if (AdminAuth.isLocalSyncApi(saveApiBase)) {
-            parts.push("Gmail drafts need Cloud Run — Admin → Connection → Save key (admin password)");
+            parts.push(resumeOk ? "resume.pdf in GCS" : "resume.pdf missing — open Resume tab to generate");
+            parts.push(coverOk ? "cover_letter.pdf in GCS" : "cover_letter.pdf missing — open Cover tab to generate");
+          } else if (!AdminAuth.usesUnifiedGcsApi(saveApiBase)) {
+            parts.push("Sign in with admin password to create drafts via the unified API");
           } else {
             parts.push("Sign in on the dashboard to create drafts");
           }
@@ -423,15 +557,74 @@
           }
           statusEl.value = status;
           document.getElementById("app-notes").value = settings.notes || "";
+          fillInterviewNotes(settings);
           updateDraftInfo(settings);
         }
 
-        async function ensureSaveApiReady() {
-          if (AdminAuth.isLocalAdminHost()) {
-            saveApiBase = (await AdminAuth.isLocalSyncReachable()) ? AdminAuth.localSyncBase() : "";
-            return AdminAuth.isLocalSyncApi(saveApiBase);
+        function fillInterviewNotes(settings) {
+          const el = document.getElementById("interview-notes");
+          if (!el) return;
+          const value = settings?.interview_notes || "";
+          el.value = value;
+          interviewNotesSavedValue = value;
+        }
+
+        function scheduleInterviewNotesSave() {
+          const statusEl = document.getElementById("interview-notes-status");
+          const el = document.getElementById("interview-notes");
+          if (!el) return;
+          if (el.value === interviewNotesSavedValue) {
+            setStatus(statusEl, "", "");
+            return;
           }
-          if (canSaveSettings()) return true;
+          setStatus(statusEl, "Unsaved changes…", "warn");
+          clearTimeout(interviewNotesSaveTimer);
+          interviewNotesSaveTimer = setTimeout(() => {
+            void saveInterviewNotes({ auto: true });
+          }, 1500);
+        }
+
+        async function saveInterviewNotes({ auto = false } = {}) {
+          const statusEl = document.getElementById("interview-notes-status");
+          const el = document.getElementById("interview-notes");
+          if (!el) return false;
+          const value = el.value;
+          if (auto && value === interviewNotesSavedValue) return true;
+          if (!(await ensureSaveApiReady())) {
+            const cfg = await AdminAuth.loadAdminConfig();
+            setStatus(statusEl, AdminAuth.saveBlockedMessage(cfg), "err");
+            return false;
+          }
+          setStatus(statusEl, auto ? "Saving…" : "Saving notes…", "running");
+          try {
+            const resp = await AdminAuth.fetchWithAuth(
+              `${saveApiBase}/api/applications/${encodeURIComponent(slug)}`,
+              {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ interview_notes: value }),
+              }
+            );
+            if (!resp.ok) throw new Error(await parseApiError(resp));
+            const data = await resp.json();
+            const settings = data.settings || settingsFromMeta(data);
+            fillInterviewNotes(settings);
+            setStatus(
+              statusEl,
+              AdminAuth.formatSaveStatus(
+                { ...data, api_base: saveApiBase },
+                "Interview notes"
+              ),
+              data.gcs_warning || data.gcs_error ? "warn" : "ok"
+            );
+            return true;
+          } catch (err) {
+            setStatus(statusEl, err.message, "err");
+            return false;
+          }
+        }
+
+        async function ensureSaveApiReady() {
           const cfg = await AdminAuth.loadAdminConfig();
           saveApiBase = await AdminAuth.resolveSaveApiBase(cfg);
           apiKey = AdminAuth.resolveApiKey(true);
@@ -447,7 +640,7 @@
           }
           setStatus(statusEl, "Saving…", "running");
           try {
-            const resp = await AdminAuth.fetchWithAuth(
+            const resp = await fetchWithTimeout(
               `${saveApiBase}/api/applications/${encodeURIComponent(slug)}`,
               {
                 method: "PATCH",
@@ -458,8 +651,19 @@
             if (!resp.ok) throw new Error(await parseApiError(resp));
             const data = await resp.json();
             fillSettingsForm(data.settings || settingsFromMeta(data));
-            const savedVia = AdminAuth.isLocalSyncApi(saveApiBase) ? "Saved locally." : "Settings saved.";
-            setStatus(statusEl, savedVia, "ok");
+            if (currentMeta) {
+              currentMeta = {
+                ...currentMeta,
+                ...readSettingsForm(),
+                apply_url: document.getElementById("apply-url").value.trim(),
+              };
+              updateApplyUI(currentMeta);
+            }
+            setStatus(
+              statusEl,
+              AdminAuth.formatSaveStatus({ ...data, api_base: saveApiBase }, "Settings"),
+              data.gcs_warning || data.gcs_error ? "warn" : "ok"
+            );
             return true;
           } catch (err) {
             setStatus(statusEl, err.message, "err");
@@ -467,20 +671,51 @@
           }
         }
 
+        let draftInFlight = false;
+
         async function createDraft() {
-          const statusEl = document.getElementById("settings-status");
+          if (draftInFlight) return;
+          const applyPanel = document.getElementById("apply-panel");
+          const recruiterEl = document.getElementById("recruiter-email");
+
+          if (!(await ensureSaveApiReady())) {
+            const cfg = await AdminAuth.loadAdminConfig();
+            setApplyStatus(AdminAuth.saveBlockedMessage(cfg), "err");
+            document.getElementById("settings-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            return;
+          }
           if (!canUseProtocolApi()) {
-            setStatus(
-              statusEl,
-              "Draft creation requires Cloud Run. Admin → Connection → Save key (your admin password).",
+            setApplyStatus(
+              "Sign in with your admin password on the dashboard to create Gmail drafts.",
               "err"
             );
             return;
           }
-          if (!(await saveSettings())) return;
-          setStatus(statusEl, "Creating Gmail draft…", "running");
+
+          const recruiterEmail = recruiterEl?.value?.trim() || "";
+          if (!recruiterEmail) {
+            setApplyStatus("Set recruiter email below, then try again.", "err");
+            recruiterEl?.focus();
+            document.getElementById("settings-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            return;
+          }
+
+          draftInFlight = true;
+          applyPanel?.querySelectorAll(".js-apply-draft, #btn-apply-draft").forEach((btn) => {
+            btn.disabled = true;
+          });
+          setApplyStatus("Saving settings…", "running");
           try {
-            const resp = await AdminAuth.fetchWithAuth(
+            if (!(await saveSettings())) {
+              setApplyStatus(
+                document.getElementById("settings-status")?.textContent ||
+                  "Could not save settings — fix errors below and retry.",
+                "err"
+              );
+              return;
+            }
+            setApplyStatus("Creating Gmail draft…", "running");
+            const resp = await fetchWithTimeout(
               `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/gmail-draft`,
               {
                 method: "POST",
@@ -490,21 +725,28 @@
                   force: document.getElementById("draft-force").checked,
                   dry_run: false,
                 }),
-              }
+              },
+              120000
             );
             if (!resp.ok) throw new Error(await parseApiError(resp));
             const data = await resp.json();
-            setStatus(
-              statusEl,
+            if (data.error) throw new Error(data.error);
+            if (data.outcome === "skipped") {
+              throw new Error(data.detail || "Draft was skipped — check status and recruiter email.");
+            }
+            if (data.outcome === "error") {
+              throw new Error(data.detail || "Gmail draft failed.");
+            }
+            setApplyStatus(
               `Draft created for ${data.to_addr} — subject: ${data.subject}. Open Gmail → Drafts.`,
               "ok"
             );
-            const metaResp = await AdminAuth.fetchWithAuth(
+            const metaResp = await fetchWithTimeout(
               `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}`
             );
             if (metaResp.ok) {
               const meta = await metaResp.json();
-              fillSettingsForm(meta.settings);
+              fillSettingsForm(meta.settings || settingsFromMeta(meta));
               if (meta.links && meta.links.length) {
                 document.getElementById("meta-links").innerHTML = AdminAuth.linksHtml(
                   AdminAuth.buildApplicationLinks(meta, slug)
@@ -512,7 +754,12 @@
               }
             }
           } catch (err) {
-            setStatus(statusEl, err.message, "err");
+            setApplyStatus(err.message, "err");
+          } finally {
+            draftInFlight = false;
+            applyPanel?.querySelectorAll(".js-apply-draft, #btn-apply-draft").forEach((btn) => {
+              btn.disabled = false;
+            });
           }
         }
 
@@ -708,14 +955,24 @@
           frame.hidden = false;
           frame.removeAttribute("src");
           frame.srcdoc = "<p style='font-family:sans-serif;padding:1rem;color:#666'>Loading…</p>";
-          const url = `apps/${encodeURIComponent(prepAssetsSlug())}/${encodeURIComponent(filename)}`;
           try {
-            const resp = await fetch(url);
-            if (!resp.ok) {
-              frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">Prep file not found (${escapeHtml(filename)}).</p>`;
-              return;
+            let text = "";
+            if (canUseProtocolApi()) {
+              const resp = await AdminAuth.fetchWithAuth(
+                `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/${encodeURIComponent(filename)}`
+              );
+              if (resp.ok) text = await resp.text();
             }
-            const text = await resp.text();
+            if (!text) {
+              const resp = await fetch(
+                `apps/${encodeURIComponent(prepAssetsSlug())}/${encodeURIComponent(filename)}`
+              );
+              if (!resp.ok) {
+                frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">Prep file not found (${escapeHtml(filename)}).</p>`;
+                return;
+              }
+              text = await resp.text();
+            }
             if (filename.endsWith(".html")) {
               frame.srcdoc = text;
             } else {
@@ -723,6 +980,41 @@
             }
           } catch (err) {
             frame.srcdoc = `<p style="font-family:sans-serif;padding:1rem;color:#b91c1c">${escapeHtml(err.message)}</p>`;
+          }
+        }
+
+        let llmMode = "assistant";
+
+        async function sendInterviewLlm() {
+          const statusEl = document.getElementById("llm-status");
+          const replyEl = document.getElementById("llm-reply");
+          const message = document.getElementById("llm-input").value.trim();
+          if (!message) {
+            setStatus(statusEl, "Enter a question or prompt.", "err");
+            return;
+          }
+          if (!canUseProtocolApi()) {
+            setStatus(statusEl, "Sign in on the dashboard (admin password) to use the LLM assistant.", "err");
+            return;
+          }
+          setStatus(statusEl, "Thinking…", "running");
+          replyEl.hidden = true;
+          try {
+            const resp = await AdminAuth.fetchWithAuth(
+              `${protocolApiBase}/api/applications/${encodeURIComponent(slug)}/llm`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message, mode: llmMode }),
+              }
+            );
+            if (!resp.ok) throw new Error(await parseApiError(resp));
+            const data = await resp.json();
+            replyEl.textContent = data.reply || "";
+            replyEl.hidden = !data.reply;
+            setStatus(statusEl, `Reply (${data.model || "LLM"})`, "ok");
+          } catch (err) {
+            setStatus(statusEl, err.message, "err");
           }
         }
 
@@ -851,6 +1143,12 @@
           if (!merged.gmail_url && staticRow.gmail_url) {
             merged.gmail_url = staticRow.gmail_url;
           }
+          if (!merged.apply_url && staticRow.apply_url) {
+            merged.apply_url = staticRow.apply_url;
+          }
+          if (!merged.apply_method && staticRow.apply_method) {
+            merged.apply_method = staticRow.apply_method;
+          }
           if (!merged.links?.length && staticRow.links?.length) {
             merged.links = staticRow.links;
           }
@@ -860,24 +1158,8 @@
           return merged;
         }
 
-        async function loadMeta() {
-          let meta = null;
-          const staticRow = await staticApplicationRow();
-          if (canSaveSettings()) {
-            const resp = await AdminAuth.fetchWithAuth(
-              `${saveApiBase}/api/applications/${encodeURIComponent(slug)}`
-            );
-            if (resp.ok) meta = mergeMetaWithStatic(await resp.json(), staticRow);
-          }
-          if (!meta) {
-            meta = staticRow;
-          }
-          meta = await enrichMetaWithPrep(meta);
-          if (!meta) {
-            document.getElementById("app-subtitle").textContent = slug;
-            loadDoc(doc in files ? doc : "resume");
-            return;
-          }
+        function paintApplicationMeta(meta) {
+          if (!meta) return;
           document.getElementById("app-title").textContent = meta.company || slug;
           document.getElementById("app-subtitle").textContent =
             [meta.role, meta.location, meta.match_score ? `score ${meta.match_score}` : ""]
@@ -888,10 +1170,47 @@
             prepCmd.textContent = `prep mock for ${meta.company || slug}`;
           }
           const linksEl = document.getElementById("meta-links");
-          linksEl.innerHTML = AdminAuth.linksHtml(AdminAuth.buildApplicationLinks(meta, slug));
+          if (linksEl) {
+            linksEl.innerHTML = AdminAuth.linksHtml(AdminAuth.buildApplicationLinks(meta, slug));
+          }
           fillSettingsForm(settingsFromMeta(meta));
+          updateApplyUI(meta);
           renderInterviewPrep(meta);
           enableSideGigTabs(meta);
+        }
+
+        async function loadMeta() {
+          const staticRow = await staticApplicationRow();
+          if (staticRow) {
+            currentMeta = staticRow;
+            paintApplicationMeta(staticRow);
+          }
+
+          let meta = staticRow;
+          if (canSaveSettings()) {
+            try {
+              const resp = await AdminAuth.fetchWithAuth(
+                `${saveApiBase}/api/applications/${encodeURIComponent(slug)}`
+              );
+              if (resp.ok) {
+                meta = mergeMetaWithStatic(await resp.json(), staticRow);
+              }
+            } catch (err) {
+              console.error("loadMeta: cloud fetch failed", err);
+            }
+          }
+
+          if (!meta) {
+            document.getElementById("app-subtitle").textContent = slug;
+            updateApplyUI({ slug, apply_method: "email" });
+            loadDoc(doc in files ? doc : "resume");
+            return;
+          }
+
+          meta = await enrichMetaWithPrep(meta);
+          currentMeta = meta;
+          paintApplicationMeta(meta);
+
           const defaultDoc =
             doc === "bid" && !document.getElementById("tab-bid")?.hidden
               ? "bid"
@@ -968,13 +1287,44 @@
           });
         }
 
+        document.getElementById("apply-url")?.addEventListener("input", () => {
+          if (currentMeta) {
+            updateApplyUI({
+              ...currentMeta,
+              apply_url: document.getElementById("apply-url").value.trim(),
+            });
+          }
+        });
+        document.body.addEventListener("click", (e) => {
+          const btn = e.target.closest("#btn-apply-draft, .js-apply-draft");
+          if (!btn || btn.hidden) return;
+          e.preventDefault();
+          void createDraft();
+        });
         document.getElementById("btn-save-settings").addEventListener("click", saveSettings);
+        document.getElementById("btn-save-interview-notes")?.addEventListener("click", () => {
+          void saveInterviewNotes();
+        });
+        document.getElementById("interview-notes")?.addEventListener("input", scheduleInterviewNotesSave);
+        document.getElementById("interview-notes")?.addEventListener("blur", () => {
+          const el = document.getElementById("interview-notes");
+          if (el && el.value !== interviewNotesSavedValue) {
+            void saveInterviewNotes({ auto: true });
+          }
+        });
+        document.querySelectorAll(".llm-mode").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            llmMode = btn.dataset.mode || "assistant";
+            document.querySelectorAll(".llm-mode").forEach((b) => b.classList.toggle("active", b === btn));
+          });
+        });
+        document.getElementById("btn-llm-send")?.addEventListener("click", () => void sendInterviewLlm());
         document.getElementById("btn-draft").addEventListener("click", createDraft);
         bindDownloads();
 
         async function boot(loginKey) {
           const cfg = await AdminAuth.loadAdminConfig();
-          protocolApiBase = AdminAuth.resolveProtocolApiBase(cfg);
+          protocolApiBase = await AdminAuth.resolveUnifiedApiBase(cfg);
           saveApiBase = await AdminAuth.resolveSaveApiBase(cfg);
           apiKey = loginKey || AdminAuth.resolveApiKey(true);
           const cursorHint = document.getElementById("cursor-prep-hint");
@@ -985,7 +1335,15 @@
           }
         }
 
-        AdminAuth.requireAuth((loginKey) => boot(loginKey));
+        AdminAuth.requireAuth((loginKey) => {
+          boot(loginKey).catch((err) => {
+            console.error("Application page failed to load", err);
+            const hint = document.getElementById("apply-hint");
+            if (hint) {
+              hint.textContent = `Failed to load application: ${err.message}`;
+            }
+          });
+        });
       })();
     </script>
   </body>

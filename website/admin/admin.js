@@ -42,7 +42,11 @@
       state.pagesBase = cfg.pagesBase || ".";
       state.repoBase = cfg.repoBase || "";
       state.passwordProtected = AdminAuth.authRequired(cfg);
-      if (cfg.apiBase) {
+      const unified = await AdminAuth.probeSameOriginApi();
+      if (unified) {
+        state.apiBase = unified;
+        state.configApiBase = false;
+      } else if (cfg.apiBase) {
         state.apiBase = String(cfg.apiBase).replace(/\/$/, "");
         state.configApiBase = true;
       } else {
@@ -303,6 +307,54 @@
     "in_final_interviews",
     "final_interviews_complete",
   ]);
+  // Keep in sync with scripts/build_admin_data.py PREP_SLUG_SOURCES
+  const PREP_SLUG_SOURCES = {
+    ltimindtree: ["ltimindtree", "paramount"],
+    ustechsolutions: ["nextera"],
+    ustech: ["nextera"],
+  };
+
+  function canonicalPrepSlug(app) {
+    const explicit = String(app?.prep_slug || "").trim();
+    if (explicit) return explicit;
+    const sources = PREP_SLUG_SOURCES[app?.slug];
+    if (sources?.length) return sources[0];
+    return String(app?.slug || "");
+  }
+
+  function interviewDedupeKey(app) {
+    const url = String(app?.interview_url || "")
+      .trim()
+      .replace(/\/$/, "")
+      .toLowerCase();
+    if (url) return `url:${url}`;
+    const prep = canonicalPrepSlug(app);
+    if (prep) return `prep:${prep}`;
+    return `slug:${app?.slug || ""}`;
+  }
+
+  function preferInterviewApp(candidate, existing) {
+    const cSlug = String(candidate?.slug || "");
+    const eSlug = String(existing?.slug || "");
+    const cCanon = canonicalPrepSlug(candidate);
+    const eCanon = canonicalPrepSlug(existing);
+    if (cSlug === cCanon && eSlug !== eCanon) return candidate;
+    if (eSlug === eCanon && cSlug !== cCanon) return existing;
+    return String(candidate?.updated || "") > String(existing?.updated || "")
+      ? candidate
+      : existing;
+  }
+
+  function interviewRepresentatives(applications) {
+    const byKey = new Map();
+    for (const app of applications || []) {
+      if (!INTERVIEW_STATUSES.has(applicationStatus(app))) continue;
+      const key = interviewDedupeKey(app);
+      const prev = byKey.get(key);
+      byKey.set(key, prev ? preferInterviewApp(app, prev) : app);
+    }
+    return new Set(byKey.values());
+  }
 
   function applicationStatus(app) {
     return String(app?.status ?? "ready")
@@ -328,9 +380,26 @@
     } else if (DONE_STATUSES.has(apiStatus)) {
       merged.status = apiApp.status;
       merged.updated = apiApp.updated || merged.updated;
-    } else     if ((staticApp.updated || "") > (apiApp.updated || "")) {
+    } else if ((staticApp.updated || "") > (apiApp.updated || "")) {
       merged.status = staticApp.status ?? merged.status;
       merged.updated = staticApp.updated;
+    }
+
+    const INTERVIEW_STATUSES = new Set([
+      "interview",
+      "screening_interview_complete",
+      "in_technical_interviews",
+      "technical_interviews_complete",
+      "in_final_interviews",
+      "final_interviews_complete",
+    ]);
+    if (INTERVIEW_STATUSES.has(staticStatus) && DONE_STATUSES.has(apiStatus)) {
+      merged.status = staticApp.status;
+      merged.updated = staticApp.updated || merged.updated;
+      merged.interview_url = staticApp.interview_url || merged.interview_url;
+      merged.interview_prep = staticApp.interview_prep?.length
+        ? staticApp.interview_prep
+        : merged.interview_prep;
     }
 
     if (!merged.interview_prep?.length && staticApp.interview_prep?.length) {
@@ -635,7 +704,14 @@
 
   function collectActionables(applications, protocolRun) {
     const items = collectProtocolActionables(protocolRun);
+    const interviewReps = interviewRepresentatives(applications);
     for (const app of sortApplicationsByScore(applications || [])) {
+      if (
+        INTERVIEW_STATUSES.has(applicationStatus(app)) &&
+        !interviewReps.has(app)
+      ) {
+        continue;
+      }
       const action = classifyApplicationAction(app);
       if (action) {
         items.push({ ...action, slug: app.slug, score: app.match_score });
@@ -1285,7 +1361,7 @@
   }
 
   async function runCraigslistScan(statusEl) {
-    return runLocalSideGigScan("/api/run/craigslist", "Craigslist LA gigs scan", "craigslist", statusEl);
+    return runLocalSideGigScan("/api/run/craigslist", "Craigslist gigs scan", "craigslist", statusEl);
   }
 
   async function runIndeedScan(statusEl) {
@@ -1564,7 +1640,10 @@
     } else {
       state.apiKey = AdminAuth.resolveApiKey(state.configApiBase);
     }
-    if (!state.apiBase && !state.configApiBase) {
+    const unified = await AdminAuth.probeSameOriginApi();
+    if (unified) {
+      state.apiBase = unified;
+    } else if (!state.apiBase && !state.configApiBase) {
       state.apiBase = AdminAuth.resolveProtocolApiBase({});
     }
     bindUi();

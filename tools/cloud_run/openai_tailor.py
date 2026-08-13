@@ -109,7 +109,13 @@ def generate_application(
         ],
         temperature=0.4,
     )
-    return _parse_json(resp.choices[0].message.content or "{}")
+    data = _parse_json(resp.choices[0].message.content or "{}")
+    cover = data.get("cover_letter_html")
+    if isinstance(cover, str) and cover.strip():
+        from cover_letter_html import normalize_cover_letter_html
+
+        data["cover_letter_html"] = normalize_cover_letter_html(cover)
+    return data
 
 
 def slugify(name: str) -> str:

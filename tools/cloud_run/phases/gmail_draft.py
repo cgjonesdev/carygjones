@@ -19,6 +19,62 @@ from auth import SCOPES_COMPOSE, get_gmail_service  # noqa: E402
 from draft_reply import draft_application  # noqa: E402
 from reply_generator import write_reply_file  # noqa: E402
 
+MANUAL_DRAFT_STATUSES = frozenset(
+    {
+        "ready",
+        "application_in_progress",
+        "applied",
+        "waiting_on_response",
+        "needs_rate_confirmation",
+        "interview",
+        "screening_interview_complete",
+        "in_technical_interviews",
+        "technical_interviews_complete",
+        "in_final_interviews",
+        "final_interviews_complete",
+    }
+)
+
+
+def _ensure_rendered_pdfs(slug: str, app_dir: Path) -> str | None:
+    """Render PDF attachments from HTML in GCS when missing."""
+    resume_pdf = app_dir / "resume.pdf"
+    cover_pdf = app_dir / "cover_letter.pdf"
+    if resume_pdf.is_file() and cover_pdf.is_file():
+        return None
+
+    resume_html = app_dir / "resume.html"
+    cover_html = app_dir / "cover_letter.html"
+    if not resume_html.is_file() or not cover_html.is_file():
+        missing = [p.name for p in (resume_pdf, cover_pdf) if not p.is_file()]
+        return f"missing {', '.join(missing)} — generate application first"
+
+    cloud_run = Path(__file__).resolve().parents[1]
+    if str(cloud_run) not in sys.path:
+        sys.path.insert(0, str(cloud_run))
+    from render_assets import render_application_files
+
+    render_application_files(
+        resume_html.read_text(encoding="utf-8"),
+        cover_html.read_text(encoding="utf-8"),
+        app_dir,
+    )
+
+    for name, ctype in (
+        ("resume.pdf", "application/pdf"),
+        ("cover_letter.pdf", "application/pdf"),
+        ("resume.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
+        ("cover_letter.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
+    ):
+        path = app_dir / name
+        if path.is_file():
+            gcs_apps.upload_application_file(slug, name, path.read_bytes(), ctype)
+
+    if not resume_pdf.is_file() or not cover_pdf.is_file():
+        missing = [p.name for p in (resume_pdf, cover_pdf) if not p.is_file()]
+        return f"missing {', '.join(missing)} after render"
+    return None
+
 
 def _materialize_application(slug: str, root: Path) -> Path:
     meta = gcs_apps.load_app_meta(slug)
@@ -88,6 +144,10 @@ def run_gmail_draft(
         except RuntimeError as exc:
             return {"phase": "gmail_draft", "error": str(exc)}
 
+        render_err = _ensure_rendered_pdfs(slug, app_dir)
+        if render_err:
+            return {"phase": "gmail_draft", "error": render_err}
+
         result = draft_application(
             service,
             slug,
@@ -95,6 +155,7 @@ def run_gmail_draft(
             send=False,
             dry_run=dry_run,
             force=force,
+            statuses=MANUAL_DRAFT_STATUSES,
             root=root,
         )
 

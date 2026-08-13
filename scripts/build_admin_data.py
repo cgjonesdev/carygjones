@@ -62,12 +62,20 @@ def build_links(slug: str, meta: dict, *, pages_base: str) -> list[dict[str, str
 
 PREP_SLUG_SOURCES: dict[str, list[str]] = {
     "ltimindtree": ["ltimindtree", "paramount"],
+    # Michael Gonzales / NextEra interview folder shares prep with nextera slug
+    "ustechsolutions": ["nextera"],
+    "ustech": ["nextera"],
 }
 
 
-def prep_source_slugs(slug: str) -> list[str]:
+def prep_source_slugs(slug: str, meta: dict | None = None) -> list[str]:
     seen: set[str] = set()
     ordered: list[str] = []
+    if meta:
+        explicit = str(meta.get("prep_slug") or "").strip()
+        if explicit and explicit not in seen:
+            seen.add(explicit)
+            ordered.append(explicit)
     for candidate in [slug, *PREP_SLUG_SOURCES.get(slug, [])]:
         if candidate not in seen:
             seen.add(candidate)
@@ -75,14 +83,14 @@ def prep_source_slugs(slug: str) -> list[str]:
     return ordered
 
 
-def discover_interview_prep(slug: str) -> list[dict[str, str]]:
+def discover_interview_prep(slug: str, meta: dict | None = None) -> list[dict[str, str]]:
     root = repo_root()
     prep_dir = root / "interview" / "prep"
     app_dir = root / "applications" / slug
     items: list[dict[str, str]] = []
     seen_files: set[str] = set()
 
-    for source_slug in prep_source_slugs(slug):
+    for source_slug in prep_source_slugs(slug, meta):
         candidates = [
             (prep_dir / f"{source_slug}.html", "prep.html", "Prep guide"),
             (prep_dir / f"{source_slug}_cram.html", "prep_cram.html", "Cram sheet"),
@@ -99,7 +107,30 @@ def discover_interview_prep(slug: str) -> list[dict[str, str]]:
     return items
 
 
-def copy_app_assets(slug: str, app_dir: Path, dest_apps: Path) -> None:
+def copy_admin_branding_assets(admin_dir: Path) -> None:
+    """Copy favicons into admin static dir (Cloud Run only mounts /admin)."""
+    website = admin_dir.parent
+    admin_dir.mkdir(parents=True, exist_ok=True)
+    for name in (
+        "favicon.ico",
+        "favicon.svg",
+        "favicon-16x16.png",
+        "favicon-32x32.png",
+        "apple-touch-icon.png",
+    ):
+        src = website / name
+        if src.is_file():
+            shutil.copy2(src, admin_dir / name)
+
+
+def copy_app_assets(slug: str, app_dir: Path, dest_apps: Path, meta: dict | None = None) -> None:
+    if meta is None:
+        meta_path = app_dir / "meta.json"
+        if meta_path.is_file():
+            try:
+                meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                meta = None
     dest = dest_apps / slug
     dest.mkdir(parents=True, exist_ok=True)
     for name in (
@@ -120,7 +151,7 @@ def copy_app_assets(slug: str, app_dir: Path, dest_apps: Path) -> None:
 
     prep_dir = repo_root() / "interview" / "prep"
     copied_prep: set[str] = set()
-    for source_slug in prep_source_slugs(slug):
+    for source_slug in prep_source_slugs(slug, meta):
         for src_name, dest_name in (
             (f"{source_slug}.html", "prep.html"),
             (f"{source_slug}_cram.html", "prep_cram.html"),
@@ -266,7 +297,7 @@ def build_application_row(slug: str, meta: dict, *, pages_base: str) -> dict:
         "apply_method": meta.get("apply_method"),
         "gmail_draft_id": meta.get("gmail_draft_id"),
         "interview_url": meta.get("interview_url"),
-        "interview_prep": discover_interview_prep(slug),
+        "interview_prep": discover_interview_prep(slug, meta),
         "gmail_url": gmail_url(meta),
         "links": build_links(slug, meta, pages_base=pages_base),
     }
@@ -366,7 +397,9 @@ def main() -> int:
     apps_dir = root / "applications"
     admin_data = root / "website" / "admin" / "data"
     admin_apps = root / "website" / "admin" / "apps"
+    admin_dir = root / "website" / "admin"
     admin_data.mkdir(parents=True, exist_ok=True)
+    copy_admin_branding_assets(admin_dir)
     if admin_apps.exists():
         shutil.rmtree(admin_apps)
     admin_apps.mkdir(parents=True)

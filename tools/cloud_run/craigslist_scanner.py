@@ -12,7 +12,14 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-DEFAULT_SEARCH_URL = "https://www.craigslist.org/search/subarea/lac?cat=ggg"
+DEFAULT_SEARCH_REGIONS: list[tuple[str, str]] = [
+    ("LA Central gigs", "https://www.craigslist.org/search/subarea/lac?cat=ggg"),
+    ("SF Bay Area gigs", "https://sfbay.craigslist.org/search/ggg"),
+    ("San Diego gigs", "https://sandiego.craigslist.org/search/ggg"),
+]
+
+# Backward compat for callers/tests that referenced a single default URL.
+DEFAULT_SEARCH_URL = DEFAULT_SEARCH_REGIONS[0][1]
 
 CARY_KEYWORDS: list[tuple[str, int]] = [
     ("python", 10),
@@ -113,8 +120,16 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+def search_regions() -> list[tuple[str, str]]:
+    """Return (label, search_url) pairs. Override with CRAIGSLIST_SEARCH_URL (single URL)."""
+    raw = os.environ.get("CRAIGSLIST_SEARCH_URL", "").strip()
+    if raw:
+        return [("Craigslist gigs", raw)]
+    return list(DEFAULT_SEARCH_REGIONS)
+
+
 def search_url() -> str:
-    return os.environ.get("CRAIGSLIST_SEARCH_URL", DEFAULT_SEARCH_URL).strip()
+    return search_regions()[0][1]
 
 
 def _fetch(url: str) -> str:
@@ -231,9 +246,17 @@ def _location_from_title(title: str) -> str:
         loc = parts[1].strip()
         if len(loc) <= 80:
             return loc
-    if "los angeles" in title.lower():
+    lower = title.lower()
+    if "san diego" in lower:
+        return "San Diego area"
+    if any(
+        token in lower
+        for token in ("san francisco", "sf bay", "bay area", "oakland", "berkeley", "peninsula")
+    ):
+        return "SF Bay Area"
+    if "los angeles" in lower:
         return "Los Angeles area"
-    return "Los Angeles area (in-person likely)"
+    return "Southern California (in-person likely)"
 
 
 def _role_from_title(title: str) -> str:
@@ -309,6 +332,7 @@ def _write_application(
     job: dict[str, str],
     score: int,
     profile: str,
+    region_label: str = "LA Central gigs",
 ) -> None:
     today = date.today().isoformat()
     app_dir = apps_dir / slug
@@ -327,7 +351,7 @@ Compensation: {price or 'Not stated on listing'}
 {job.get('description') or job.get('title') or ''}
 """
     meta = {
-        "company": "Craigslist — private (LA Central gigs)",
+        "company": f"Craigslist — private ({region_label})",
         "client": None,
         "role": role,
         "location": location,
@@ -338,7 +362,7 @@ Compensation: {price or 'Not stated on listing'}
         "updated": today,
         "salary": price,
         "styling_notes": None,
-        "notes": "Created by Craigslist LA gigs scan. Paste craigslist_reply.txt into Craigslist reply. Review and personalize before sending.",
+        "notes": f"Created by Craigslist {region_label} scan. Paste craigslist_reply.txt into Craigslist reply. Review and personalize before sending.",
         "apply_url": job.get("url"),
         "apply_method": "craigslist",
     }
@@ -389,13 +413,21 @@ def run_craigslist_scan(
         upload_gcs = bool(os.environ.get("GCS_BUCKET", "").strip())
 
     url = search_url()
+    regions = search_regions()
     fetch_errors: list[str] = []
-    try:
-        html = _fetch(url)
-        listings = _parse_search_listings(html)
-    except Exception as exc:
-        fetch_errors.append(str(exc))
-        listings = []
+    listings: list[dict[str, str]] = []
+    seen_urls: set[str] = set()
+    for region_label, region_url in regions:
+        try:
+            html = _fetch(region_url)
+            for job in _parse_search_listings(html):
+                url_norm = job["url"].rstrip("/")
+                if url_norm in seen_urls:
+                    continue
+                seen_urls.add(url_norm)
+                listings.append({**job, "region": region_label})
+        except Exception as exc:
+            fetch_errors.append(f"{region_label} ({region_url}): {exc}")
 
     existing_urls = _existing_apply_urls(apps_dir)
     existing_slugs = {p.name for p in apps_dir.iterdir() if p.is_dir()}
@@ -460,7 +492,14 @@ def run_craigslist_scan(
             continue
 
         try:
-            _write_application(apps_dir, slug=slug, job=job, score=score, profile=profile)
+            _write_application(
+                apps_dir,
+                slug=slug,
+                job=job,
+                score=score,
+                profile=profile,
+                region_label=job.get("region") or "Craigslist gigs",
+            )
             if upload_gcs:
                 _upload_to_gcs(slug, apps_dir / slug)
             generated.append(
@@ -493,6 +532,7 @@ def run_craigslist_scan(
         "phase": "craigslist_scan",
         "jobs_found": len(listings),
         "search_url": url,
+        "search_regions": [{"label": label, "url": region_url} for label, region_url in regions],
         "min_score": min_score,
         "generated": generated,
         "skipped": skipped[:40],

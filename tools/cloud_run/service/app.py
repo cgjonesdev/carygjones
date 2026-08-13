@@ -32,7 +32,10 @@ from orchestrator import (  # noqa: E402
     run_phases,
 )
 from phases.gmail_draft import run_gmail_draft  # noqa: E402
+from phases.generate_slug import run_generate_for_slug  # noqa: E402
 from phases.manual_jd import run_manual_jd  # noqa: E402
+from interview_llm import run_interview_chat  # noqa: E402
+import prep_assets  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 ADMIN_STATIC = Path(
@@ -67,12 +70,22 @@ class ApplicationSettingsUpdate(BaseModel):
     email_subject: str | None = None
     status: str | None = None
     notes: str | None = None
+    interview_notes: str | None = None
 
 
 class GmailDraftRequest(BaseModel):
     regenerate: bool = False
     force: bool = False
     dry_run: bool = False
+
+
+class GenerateSlugRequest(BaseModel):
+    force: bool = False
+
+
+class InterviewLlmRequest(BaseModel):
+    message: str = Field(..., min_length=1, max_length=12000)
+    mode: str = Field(default="assistant")
 
 
 def _require_admin_key(x_admin_key: str | None = Header(default=None)) -> None:
@@ -109,6 +122,7 @@ def _application_row(slug: str, meta: dict[str, Any]) -> dict[str, Any]:
             {"label": "Resume", "url": f"{app_base}&doc=resume"},
             {"label": "Cover", "url": f"{app_base}&doc=cover"},
             {"label": "JD", "url": f"{app_base}&doc=jd"},
+            {"label": "Prep", "url": f"{app_base}#interview-prep"},
             {"label": "Settings", "url": app_base},
         ]
     )
@@ -124,6 +138,7 @@ def _application_row(slug: str, meta: dict[str, Any]) -> dict[str, Any]:
         "apply_method": meta.get("apply_method"),
         "gmail_draft_id": meta.get("gmail_draft_id"),
         "interview_url": interview_url,
+        "interview_prep": prep_assets.ensure_prep_in_gcs(slug, meta),
         "gmail_url": gmail_url,
         "links": links,
     }
@@ -141,8 +156,13 @@ app.add_middleware(
 
 
 @app.get("/api/health")
-def health() -> dict[str, str]:
-    return {"status": "ok"}
+def health() -> dict[str, Any]:
+    return {
+        "status": "ok",
+        "mode": "cloud",
+        "gcs_bucket": os.environ.get("GCS_BUCKET") or None,
+        "llm": bool(os.environ.get("OPENAI_API_KEY", "").strip()),
+    }
 
 
 @app.get("/api/applications")
@@ -190,7 +210,33 @@ def update_application(
     gcs_apps.save_app_meta(slug, updated)
     row = _application_row(slug, updated)
     row["settings"] = settings_from_meta(updated)
+    row["saved_to_gcs"] = True
     return row
+
+
+@app.post("/api/applications/{slug}/generate")
+def generate_application_files(
+    slug: str,
+    body: GenerateSlugRequest,
+    _: None = Depends(_require_admin_key),
+) -> dict[str, Any]:
+    os.environ.setdefault("JOB_MODE", "cloud")
+    result = run_generate_for_slug(slug, force=body.force)
+    if result.get("error"):
+        raise HTTPException(status_code=400, detail=result["error"])
+    return result
+
+
+@app.post("/api/applications/{slug}/llm")
+def interview_llm(
+    slug: str,
+    body: InterviewLlmRequest,
+    _: None = Depends(_require_admin_key),
+) -> dict[str, Any]:
+    result = run_interview_chat(slug, body.message, mode=body.mode)
+    if result.get("error"):
+        raise HTTPException(status_code=400, detail=result["error"])
+    return result
 
 
 @app.post("/api/applications/{slug}/gmail-draft")
@@ -235,9 +281,21 @@ def get_application_file(
         "cover_letter.pdf": "application/pdf",
         "resume.docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         "cover_letter.docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "prep.html": "text/html; charset=utf-8",
+        "prep_cram.html": "text/html; charset=utf-8",
+        "interview_cheat_sheet.html": "text/html; charset=utf-8",
     }
     if filename not in allowed:
         raise HTTPException(status_code=404, detail="File not found")
+
+    if filename in {"prep.html", "prep_cram.html", "interview_cheat_sheet.html"}:
+        meta = gcs_apps.load_app_meta(slug)
+        if not meta:
+            raise HTTPException(status_code=404, detail="Application not found")
+        text = prep_assets.read_prep_file(slug, filename, meta)
+        if not text:
+            raise HTTPException(status_code=404, detail="Prep file not found")
+        return HTMLResponse(content=text, media_type=allowed[filename])
 
     path = f"applications/{slug}/{filename}"
     media = allowed[filename]

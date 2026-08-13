@@ -72,8 +72,21 @@ a:hover {
   flex-wrap: wrap;
 }
 
-.admin-nav-actions a {
+.admin-nav-actions a:not(.btn) {
   font-size: 0.9rem;
+}
+
+.admin-nav-actions .btn,
+.admin-nav-actions .btn:hover {
+  text-decoration: none;
+}
+
+.apply-actions.btn-row {
+  margin-top: 0;
+}
+
+#apply-panel .btn-row {
+  margin-top: 0;
 }
 
 .btn-sm {
@@ -763,6 +776,7 @@ textarea {
   cursor: pointer;
   background: var(--surface-2);
   color: var(--text);
+  text-decoration: none;
 }
 
 .btn:hover:not(:disabled) {
@@ -935,6 +949,47 @@ tr:hover td {
 
 .prep-frame {
   min-height: 55vh;
+}
+
+.interview-notes-wrap {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.interview-notes {
+  min-height: 220px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.interview-llm-wrap {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.llm-mode-row {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.llm-mode-row .llm-mode.active {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.llm-reply {
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface-2);
+  white-space: pre-wrap;
+  line-height: 1.55;
+  font-size: 0.95rem;
 }
 
 .local-sync-wrap {

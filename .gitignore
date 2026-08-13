@@ -12,3 +12,5 @@ website/admin/apps/
 website/admin/data/
 tools/cloud_run/cloud/config.env
 tools/cloud_run/cloud/config.env~
+.env
+.env~

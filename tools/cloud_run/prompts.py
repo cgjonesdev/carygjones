@@ -28,6 +28,8 @@ Rules:
 - Embed all CSS in a <style> block in each HTML file
 - Tailor summary, skills order, bullets to the JD
 - Cover letter: full HTML document with sender block matching contact
+- Cover letter sender (.sender) and recipient (.meta): each line block-level (use <br> between lines). Put phone, email, LinkedIn, GitHub, and portfolio on separate lines — never pipe-separated on one line
+- Only body paragraphs use text-align: justify; .sender, .meta, .subject, and .closing must be text-align: left
 - meta.json must match schema: company, client (null if none), role, location, match_score, status "ready", created/updated YYYY-MM-DD, salary, styling_notes, notes, apply_url, apply_method, linkedin_job_id (optional)
 Respond with JSON only:
 {

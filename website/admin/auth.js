@@ -90,6 +90,29 @@
     return "";
   }
 
+  let cachedSameOriginApi = null;
+
+  async function probeSameOriginApi() {
+    if (cachedSameOriginApi !== null) return cachedSameOriginApi;
+    try {
+      const resp = await fetch("/api/health", { credentials: "same-origin" });
+      if (resp.ok) {
+        cachedSameOriginApi = window.location.origin;
+        return cachedSameOriginApi;
+      }
+    } catch (_) {
+      /* not served from unified admin API */
+    }
+    cachedSameOriginApi = "";
+    return "";
+  }
+
+  async function resolveUnifiedApiBase(config) {
+    const same = await probeSameOriginApi();
+    if (same) return same;
+    return resolveProtocolApiBase(config);
+  }
+
   /** Cloud Run URL for protocols/drafts (from deploy config). */
   function resolveApiBase(config) {
     return resolveProtocolApiBase(config);
@@ -105,8 +128,10 @@
     }
   }
 
-  /** Where application settings PATCH should go (local sync on localhost when running). */
+  /** Where application settings PATCH should go — unified API on same host, else legacy local sync. */
   async function resolveSaveApiBase(config) {
+    const same = await probeSameOriginApi();
+    if (same) return same;
     if (isLocalAdminHost()) {
       return (await isLocalSyncReachable()) ? localSyncBase() : "";
     }
@@ -120,12 +145,38 @@
 
   function saveBlockedMessage(config) {
     if (isLocalAdminHost()) {
-      return "Local sync server not responding on port 8765 — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again). Settings save on localhost does not use Cloud Run.";
+      return "Start ./scripts/serve_admin_local.sh (unified GCS API) or set ADMIN_LEGACY=1 for the old sync server.";
     }
     if (resolveProtocolApiBase(config)) {
       return "Saving requires signing in on the admin dashboard (same password as Cloud Run).";
     }
     return "Saving requires the Cloud Run API (set ADMIN_API_BASE_URL and redeploy).";
+  }
+
+  /** True when saves go to the unified admin API (local uvicorn or Cloud Run), not legacy :8765 sync. */
+  function usesUnifiedGcsApi(apiBase) {
+    const base = String(apiBase || "").replace(/\/$/, "");
+    if (!base) return false;
+    if (base === window.location.origin.replace(/\/$/, "")) return true;
+    return !isLocalSyncApi(base);
+  }
+
+  function formatSaveStatus(data, label = "Settings") {
+    if (data?.gcs_warning) {
+      return `${label} saved — ${data.gcs_warning}`;
+    }
+    if (data?.saved_to_gcs === true || usesUnifiedGcsApi(data?.api_base)) {
+      return `${label} saved to GCS.`;
+    }
+    if (data?.saved_to_gcs === false || data?.gcs_error) {
+      return data.gcs_error || `${label} could not reach GCS — check GCS_BUCKET and retry.`;
+    }
+    if (isLocalSyncApi(data?.api_base)) {
+      return data?.saved_to_gcs
+        ? `${label} saved to GCS.`
+        : `${label} could not reach GCS — check GCS_BUCKET on the sync server.`;
+    }
+    return `${label} saved to GCS.`;
   }
 
   function resolveApiKey(_configApiBase) {
@@ -220,7 +271,8 @@
     const s = slug || meta?.slug || "";
     const appBase = `app.html?slug=${encodeURIComponent(s)}`;
     const links = [];
-    if (meta?.apply_url) links.push({ label: "Apply", url: meta.apply_url });
+    const applyUrl = applyUrlFromMeta(meta, s);
+    if (applyUrl) links.push({ label: "Apply", url: applyUrl });
     if (meta?.interview_url) links.push({ label: "Interview", url: meta.interview_url });
     if (meta?.gmail_url) links.push({ label: "Gmail", url: meta.gmail_url });
     links.push(
@@ -231,6 +283,184 @@
       { label: "Settings", url: appBase }
     );
     return links;
+  }
+
+  function isLikelyInvalidApplyUrl(url) {
+    const raw = String(url || "").trim();
+    if (!raw) return false;
+    if (/\.(png|jpe?g|gif|webp|svg|ico)(\?|#|$)/i.test(raw)) return true;
+    if (/ashbyhq\.com\/api\/images\//i.test(raw)) return true;
+    return false;
+  }
+
+  function applyUrlFromMeta(meta, slug) {
+    const direct = String(meta?.apply_url || "").trim();
+    if (direct && !isLikelyInvalidApplyUrl(direct)) return direct;
+    for (const link of meta?.links || []) {
+      if (String(link?.label || "").toLowerCase() === "apply" && link?.url) {
+        const candidate = String(link.url).trim();
+        if (candidate && !isLikelyInvalidApplyUrl(candidate)) return candidate;
+      }
+    }
+    return "";
+  }
+
+  function isLinkedInApply(url) {
+    return Boolean(url && /linkedin\.com/i.test(url));
+  }
+
+  function isFreelancerApp(meta, slug) {
+    const method = String(meta?.apply_method || "").toLowerCase();
+    if (method === "freelancer") return true;
+    return String(slug || meta?.slug || "").startsWith("freelancer_");
+  }
+
+  function isIndeedApp(meta, slug) {
+    const method = String(meta?.apply_method || "").toLowerCase();
+    if (method === "indeed") return true;
+    if (String(slug || meta?.slug || "").startsWith("indeed_")) return true;
+    const url = String(applyUrlFromMeta(meta, slug) || "").toLowerCase();
+    return url.includes("indeed.com/viewjob") || url.includes("cts.indeed.com");
+  }
+
+  function isCraigslistApp(meta, slug) {
+    const method = String(meta?.apply_method || "").toLowerCase();
+    if (method === "craigslist") return true;
+    if (String(slug || meta?.slug || "").startsWith("craigslist_")) return true;
+    const company = String(meta?.company || "").toLowerCase();
+    const url = String(applyUrlFromMeta(meta, slug) || "").toLowerCase();
+    return company.includes("craigslist") || url.includes("craigslist.org");
+  }
+
+  function isEmailApply(meta, slug) {
+    const method = String(meta?.apply_method || "").toLowerCase();
+    if (/email|reply|proposal|recruiter/.test(method)) return true;
+    const url = applyUrlFromMeta(meta, slug);
+    if (!url) return true;
+    return /mailto:/i.test(url);
+  }
+
+  function resolveApplyAction(meta, slug, formApplyUrl) {
+    const s = slug || meta?.slug || "";
+    let applyUrl = String(formApplyUrl ?? applyUrlFromMeta(meta, s)).trim();
+    if (isLikelyInvalidApplyUrl(applyUrl)) applyUrl = "";
+    const ctx = { ...(meta || {}), apply_url: applyUrl, slug: s };
+
+    if (isFreelancerApp(ctx, s)) {
+      if (!applyUrl) {
+        return { type: "none", hint: "Add a Freelancer posting URL in settings to apply." };
+      }
+      return { type: "link", label: "Bid on Freelancer", url: applyUrl, external: true };
+    }
+
+    if (isCraigslistApp(ctx, s)) {
+      if (applyUrl) {
+        return { type: "link", label: "Open Craigslist posting", url: applyUrl, external: true };
+      }
+      return {
+        type: "link",
+        label: "View Craigslist reply",
+        url: `app.html?slug=${encodeURIComponent(s)}&doc=reply`,
+      };
+    }
+
+    if (isIndeedApp(ctx, s)) {
+      if (!applyUrl) {
+        return { type: "none", hint: "Add an Indeed job URL in settings to apply." };
+      }
+      return { type: "link", label: "Apply on Indeed", url: applyUrl, external: true };
+    }
+
+    if (applyUrl && !isEmailApply(ctx, s)) {
+      return {
+        type: "link",
+        label: isLinkedInApply(applyUrl) ? "Easy Apply on LinkedIn" : "Apply on job portal",
+        url: applyUrl,
+        external: true,
+      };
+    }
+
+    return { type: "draft", label: "Apply via Gmail draft" };
+  }
+
+  function normalizeNavUrl(url) {
+    const raw = String(url || "").trim();
+    if (!raw) return "";
+    if (/^(https?:|mailto:|tel:)/i.test(raw)) return raw;
+    if (raw.startsWith("//")) return `https:${raw}`;
+    if (raw.startsWith("app.html") || raw.startsWith("#") || raw.startsWith("/admin/")) return raw;
+    return `https://${raw}`;
+  }
+
+  function isInternalNavUrl(url) {
+    const u = String(url || "").trim();
+    return u.startsWith("app.html") || u.startsWith("#") || u.startsWith("/admin/");
+  }
+
+  /** Open job portals — fall back to same-tab navigation when popups are blocked. */
+  function openExternalUrl(url) {
+    const target = normalizeNavUrl(url);
+    if (!target) return false;
+    if (isInternalNavUrl(target)) {
+      window.location.href = target;
+      return true;
+    }
+    let opened = false;
+    try {
+      const popup = window.open(target, "_blank", "noopener,noreferrer");
+      if (popup) {
+        try {
+          opened = !popup.closed;
+        } catch (_) {
+          opened = true;
+        }
+      }
+    } catch (_) {
+      opened = false;
+    }
+    if (!opened) {
+      window.location.assign(target);
+    }
+    return true;
+  }
+
+  function configureApplyLink(el, url, label) {
+    if (!el) return;
+    const target = normalizeNavUrl(url);
+    if (!target) {
+      el.hidden = true;
+      return;
+    }
+    if (label) el.textContent = label;
+    el.hidden = false;
+    if (el.tagName === "A") {
+      el.href = target;
+      if (isInternalNavUrl(target)) {
+        el.removeAttribute("target");
+        el.removeAttribute("rel");
+        el.onclick = null;
+        return;
+      }
+      el.target = "_blank";
+      el.rel = "noopener noreferrer";
+      el.onclick = null;
+      return;
+    }
+    bindNavLink(el, target);
+  }
+
+  function bindNavLink(el, url) {
+    if (!el) return;
+    const target = normalizeNavUrl(url);
+    if (el.tagName === "A") {
+      configureApplyLink(el, target);
+      return;
+    }
+    el.onclick = (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      openExternalUrl(target);
+    };
   }
 
   function escapeHtml(s) {
@@ -251,8 +481,10 @@
       .map((l) => {
         const href = normalizeAdminLink(l.url);
         const internal = href.startsWith("app.html");
+        const external = !internal && href && !href.startsWith("#");
         const target = internal ? "" : ' target="_blank" rel="noopener"';
-        return `<a href="${escapeAttr(href)}"${target}>${escapeHtml(l.label)}</a>`;
+        const cls = external ? ' class="external-nav-link"' : "";
+        return `<a href="${escapeAttr(normalizeNavUrl(href))}"${cls}${target}>${escapeHtml(l.label)}</a>`;
       })
       .join("");
   }
@@ -410,14 +642,28 @@
     isLocalSyncApi,
     resolveApiBase,
     resolveProtocolApiBase,
+    resolveUnifiedApiBase,
+    probeSameOriginApi,
     resolveSaveApiBase,
     isLocalSyncReachable,
+    usesUnifiedGcsApi,
+    formatSaveStatus,
     saveBlockedMessage,
     resolveApiKey,
     DEFAULT_LOCAL_PROTOCOL_API,
     fetchWithAuth,
     normalizeAdminLink,
     buildApplicationLinks,
+    applyUrlFromMeta,
+    isLikelyInvalidApplyUrl,
+    isFreelancerApp,
+    isIndeedApp,
+    isCraigslistApp,
+    resolveApplyAction,
+    normalizeNavUrl,
+    openExternalUrl,
+    configureApplyLink,
+    bindNavLink,
     linksHtml,
     downloadApplicationFile,
   };

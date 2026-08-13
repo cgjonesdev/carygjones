@@ -58,8 +58,8 @@ Skip phases with env vars on the job (re-deploy or override at execute time):
 | `SKIP_FREELANCER_SCAN=1` | Skip Freelancer scan (default on `run all`) |
 | `FREELANCER_MATCH_THRESHOLD=70` | Minimum score to create bid folders |
 | `FREELANCER_MAX_PER_RUN=5` | Cap new Freelancer applications per scan |
-| `SKIP_CRAIGSLIST_SCAN=1` | Skip Craigslist LA gigs scan (default on `run all`) |
-| `CRAIGSLIST_SEARCH_URL=…` | Craigslist search URL (default LA Central `cat=ggg`) |
+| `SKIP_CRAIGSLIST_SCAN=1` | Skip Craigslist gigs scan — LA Central, SF Bay Area, San Diego (default on `run all`) |
+| `CRAIGSLIST_SEARCH_URL=…` | Override with a single Craigslist search URL (default: all three regions) |
 | `CRAIGSLIST_MATCH_THRESHOLD=60` | Minimum score to create reply folders |
 | `CRAIGSLIST_MAX_PER_RUN=5` | Cap new Craigslist applications per scan |
 | `SKIP_INDEED_SCAN=1` | Skip Indeed job search (default on `run all`) |
@@ -106,7 +106,24 @@ python run_protocols.py
   - **Onsite / hybrid outside those metros** — `match_score × 0.1` (falls below the 80 generate threshold and ranks at the bottom of the admin table)
 - **Applied status sync:** opens each tracked application’s LinkedIn job via `st.openJob` (up to `LINKEDIN_APPLIED_CHECK_LIMIT`, default 15) and marks `meta.json` `status: applied` when LinkedIn shows an applied signal. Linked API does not support the Job tracker Applied tab URL — that path was removed.
 
-## Admin dashboard
+## Unified admin (dev = prod)
+
+One Cloud Run **service** serves `/admin/` UI and `/api/*` — all application data lives in **GCS** (no separate local sync server).
+
+| Environment | How to run | Data |
+|-------------|------------|------|
+| **Local dev** | `./scripts/serve_admin_local.sh` → uvicorn on `:8080` | Same GCS bucket as prod |
+| **Production** | `tools/cloud_run/service/cloud/deploy.sh` | GCS |
+
+Legacy split (static server + `:8765` sync): `ADMIN_LEGACY=1 ./scripts/serve_admin_local.sh`
+
+**LLM in admin:** `POST /api/applications/{slug}/llm` (interview prep assistant). Requires `OPENAI_API_KEY` on the service.
+
+**Generate one app:** `POST /api/applications/{slug}/generate` (GCS-only; works on Cloud Run and local unified API).
+
+GitHub Pages can remain a read-only portfolio mirror; interactive admin should use the Cloud Run URL (or local unified API).
+
+## Admin dashboard (legacy Pages + API split)
 
 Static UI: `website/admin/` (deployed with GitHub Pages at `/admin/`).
 

@@ -44,6 +44,7 @@ COPY tools/cloud_run/ /app/cloud_run/
 COPY base/cary_jones_resume.html /app/assets/cary_jones_resume.html
 COPY website/contact.json /app/assets/contact.json
 COPY applications/weave/resume.html /app/assets/examples/weave/resume.html
+COPY interview/prep/ /app/interview/prep/
 COPY website/admin/ /app/website/admin/
 
 WORKDIR /app/cloud_run
