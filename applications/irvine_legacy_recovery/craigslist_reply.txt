@@ -1,0 +1,27 @@
+Subject: legacy server drive recovery — assessment, file/DB extraction, local replay
+
+Hi,
+
+This is squarely in the kind of work I do — happy to help recover your old site from those Seagate drives.
+
+**Background:** I'm a senior software engineer (15+ years) with strong Linux/server admin, database work (MySQL, PostgreSQL, MSSQL), and full-stack web experience. I've handled legacy migrations, forensic-style file recovery from old disks, and spinning up Docker/VM environments to run outdated stacks locally when the original hardware is gone.
+
+**What I'd do (typical flow):**
+1. **Assess** — Safely image or read-only mount the drives; identify filesystem, OS, and web stack (LAMP, .NET, Java, etc.) without writing to the originals.
+2. **Recover** — Pull site files, configs, and any database dumps or raw DB files; copy everything to your external drive in a Mac-friendly layout.
+3. **Replay** — Stand up a local VM or container matching the original stack so pages render as they did (where dependencies still exist).
+4. **Preserve** — Optional static HTML archive or full tarball backup for long-term keeping.
+
+**Hardware:** Comfortable with SATA enterprise drives. If they're SAS-only, I can discuss adapter options before we meet.
+
+**Location:** Based in Temple City — Irvine works well. You can bring the drives to me, or we can meet somewhere convenient in South LA / OC.
+
+**Rates:** I'd start with a paid assessment session (1–2 hours) to inspect the drives and give you a fixed scope + price for the full recovery. Consulting rate is **$100/hour** for on-site or in-person work; assessment fee applies toward the project if you proceed.
+
+Happy to talk this week and schedule a time for you to bring the drives by.
+
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

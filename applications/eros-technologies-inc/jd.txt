@@ -1,0 +1,97 @@
+Source: Eros Technologies Inc.
+
+Subject: Sr Full Stack Developer with Python || Miami, FL(Onsite) || Contract
+
+Hello Cary Jones
+
+My name is Brajesh Eros and I am a Staffing Specialist at Eros Technologies Inc. I am reaching out to you on an exciting job opportunity with one of our clients.
+
+Sr Full Stack Developer with Python
+
+Miami, FL(Onsite)
+
+Contract
+
+Experience: 8–12 Years
+
+Role Overview
+
+We are seeking a highly skilled Full Stack Engineer with strong experience in Python-based backend development, ReactJS frontend, and modern AI/GenAI systems. The role involves designing and building scalable, data-intensive applications, integrating microservices, and agentic AI systems.
+
+Key Responsibilities
+
+Develop responsive and interactive frontend applications using React.js / Node.js, including map-based visualization of properties
+
+Design and build scalable backend services using Python (FastAPI, Flask, Django) and .NET (C#) for property, mortgage, and investment workflows
+
+Build and integrate RESTful APIs, adapters, and microservices for end-to-end feature delivery and drill-down capabilities
+
+Design and optimize database schemas using Azure SQL / PostgreSQL / MySQL / SQL Server
+
+Integrate with knowledge graph systems (Neo4j, Cosmos DB) for entity-relationship modeling
+
+Enable interaction with agentic AI systems (Python-based) and production-grade LLM integrations
+
+Develop RAG (Retrieval-Augmented Generation) pipelines and implement MCPs (Model Context Protocol / modular AI pipelines)
+
+Ensure performance, scalability, security, and high availability of applications
+
+Collaborate with product, data, and engineering teams to define architecture, HLD/LLD, and deliver end-to-end solutions
+
+Debugging frontend and backend production issues.
+
+Performance tuning and optimization.
+
+Experience in HLD (High-Level Design) and LLD (Low-Level Design) for distributed systems
+
+Data latency reduction techniques.
+
+Scalability and fault-tolerant design.
+
+Handling schema drift & concept drift in ML systems.
+
+Hands-on experience with:
+
+RAG pipelines
+
+LLM integration beyond POCs
+
+Agentic AI systems
+
+Model Context Protocols (MCPs)
+
+Must-Have Skills
+
+Strong experience in Python backend development (FastAPI / Flask / Django)
+
+Hands-on expertise in ReactJS (Hooks, state management)
+
+Azure SQL, PostgreSQL, MySQL
+
+Experience with Microsoft Azure
+
+Understanding of:
+
+Containerization using Docker & Kubernetes
+
+CI/CD pipelines (Azure DevOps / GitHub Actions / Jenkins)
+
+Should you be interested, please send me a copy of your resume in word format along with the following details ASAP.
+
+Full Name:
+Current Location:
+Hourly rate on C2C/W2:
+Work Authorization:
+
+LinkedIn:
+Earliest Available date to start:
+Date and times available to interview:
+Two Professional References:(Preferably Supervisory references):
+
+Best Regards,
+
+Brajesh Eros
+
+N/A
+
+brajesh@erostechnologies.com

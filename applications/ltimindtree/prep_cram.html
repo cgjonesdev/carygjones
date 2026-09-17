@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Paramount — 1-Page Cram</title>
+  <style>
+    @page { margin: 0.5in; }
+    body { font-family: system-ui, sans-serif; font-size: 11pt; line-height: 1.35; color: #1e293b; max-width: 8in; margin: 0.5in auto; }
+    h1 { font-size: 1.2rem; color: #003875; margin: 0 0 0.5rem; border-bottom: 2px solid #003875; }
+    h2 { font-size: 0.95rem; margin: 0.75rem 0 0.25rem; color: #334155; }
+    ul { margin: 0.2rem 0 0.5rem 1rem; padding: 0; }
+    li { margin-bottom: 0.15rem; }
+    .box { background: #f0f4f8; padding: 0.4rem 0.6rem; border-radius: 4px; margin: 0.5rem 0; font-size: 10.5pt; }
+  </style>
+</head>
+<body>
+<h1>Paramount+ — Day-Of Cram Sheet</h1>
+
+<h2>60-sec intro</h2>
+<ul>
+  <li>15 yrs Python/AWS · Disney media/financial backend · $10M+ daily · batch 8hr→45min · 99.99% uptime</li>
+  <li>CGJSoftware Lambda/ECS · 2.5M daily txns · &lt;120ms</li>
+  <li>Why Paramount: scalable media platform — ingest, catalog, HA APIs</li>
+</ul>
+
+<h2>Disney STAR (payment team)</h2>
+<ul>
+  <li>Monolith SQL → pitched API + UI → hub-and-spoke (Jira, Airtable, costing)</li>
+  <li>Result: month-end payroll <strong>8hr → 45min</strong> in 3 months</li>
+  <li>Hulu acquisition: streaming-adjacent context; owned batch/reporting on AWS</li>
+</ul>
+
+<h2>AWS quick hits</h2>
+<ul>
+  <li><strong>Lambda:</strong> event-driven, spiky · <strong>Fargate:</strong> long-running API · hybrid both</li>
+  <li><strong>Ingest:</strong> S3 → SQS → Lambda → DynamoDB → Step Functions → MediaConvert → CDN</li>
+  <li><strong>Lambda code:</strong> thin handler → service → repo · idempotent on messageId</li>
+  <li><strong>Step Functions:</strong> Retry transient · Catch permanent · SNS alert</li>
+  <li><strong>DynamoDB:</strong> PK CONTENT#id · SK METADATA/EPISODE#n · GSI slug + genre/date</li>
+</ul>
+
+<h2>AI tools</h2>
+<ul>
+  <li>Cursor/Copilot for tests/refactors · 65%→92% coverage · never ship unreviewed</li>
+</ul>
+
+<h2>Ask them</h2>
+<ul>
+  <li>What does media platform team own? · Lambda vs ECS split? · DynamoDB in catalog?</li>
+</ul>
+
+<div class="box"><strong>Day-of tip:</strong> Open this HTML in Chrome/Safari — faster than PDF. Don't re-render PDF during the call.</div>
+</body>
+</html>

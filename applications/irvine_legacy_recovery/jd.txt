@@ -1,0 +1,19 @@
+Recover Legacy Website and Files From Old Server Hard Drives (Irvine)
+
+Jamboree near Michelson
+
+compensation: Will discuss once drives are assessed.
+
+I have a set of old Seagate Constellation enterprise hard drives pulled from a decommissioned server. They contain a website that was built for me 10 years ago — I don't know the OS, database, or language/framework it was built on. I need someone in South Los Angeles County to Orange County who can meet in person (I can bring the drives to you) to:
+
+- Safely image/mount the drives and identify the filesystem, OS, and web stack (e.g., LAMP, .NET, Java, etc.)
+- Recover the site files and any associated database.
+- Recover graphics and all files on the drives and transfer them to a drive that I can use on my Mac (I will supply the external hard drive).
+- Set up a working local/virtual environment so the site runs and every page is browsable exactly as it was (if possible)
+- Optionally, produce a static HTML archive or full backup so the site is preserved going forward
+
+Ideal skills: Linux/Windows server administration, data recovery, SAS/SATA hardware handling, database recovery (MySQL/PHP, Java, MSSQL/PostgreSQL), general full-stack web development, Docker/VM setup for legacy environments.
+
+Budget: Fixed price or hourly — happy to discuss scope once you've assessed the drives.
+
+Source: https://www.craigslist.org/view/d/irvine-recover-legacy-website-and-files/8TFfp5EN8r77VBkoFcXSLJ

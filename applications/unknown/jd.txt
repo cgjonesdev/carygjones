@@ -1,0 +1,33 @@
+Source: N/A
+
+Job Title - Sr. Python Developer
+
+Job Description :
+
+Required Skills
+
+10+ years of overall software development experience.
+6+ years of hands-on experience in Python backend development.
+Strong proficiency in Python and asynchronous programming.
+Hands-on experience with FastAPI, Django, or Flask.
+Experience designing and developing RESTful APIs and GraphQL APIs.
+Strong understanding of Microservices Architecture and Event-Driven Systems.
+Experience with relational databases such as PostgreSQL and MySQL.
+Experience with NoSQL databases including MongoDB and Redis.
+Hands-on experience with AWS services such as EC2, Lambda, and RDS.
+Experience with Docker and CI/CD pipelines.
+Proficiency with Git version control.
+Strong understanding of Agile/Scrum methodologies.
+Experience writing Unit Tests, Integration Tests, and automated tests.
+Strong knowledge of software design principles and clean coding practices.
+Bachelor's degree in Computer Science, Engineering, or equivalent practical experience.
+
+Preferred Skills
+
+Experience in Retail, eCommerce, or Supply Chain domains.
+Experience with Shopify Plus APIs or other headless eCommerce platforms.
+Knowledge of Kafka or RabbitMQ.
+Experience integrating with ERP systems and third-party logistics (3PL) APIs.
+Experience building scalable cloud-native backend applications.
+Strong communication and collaboration skills.
+Passion for wellness, fitness, or yoga industry is a plus.

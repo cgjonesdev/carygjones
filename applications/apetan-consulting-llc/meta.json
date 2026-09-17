@@ -1,0 +1,24 @@
+{
+  "company": "Apetan Consulting LLC",
+  "client": null,
+  "role": "Lead Backend Software Engineer (Golang / AWS)",
+  "location": "McLean, VA | Richmond, VA | Plano, TX (Hybrid \u2013 3 days onsite per week) / Remote",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design should emphasize technical leadership and cloud expertise, using a clean and professional palette to highlight key skills and accomplishments.",
+  "notes": "Emphasize experience with Golang, AWS, microservices, and leadership. Highlight financial services experience.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd2236b9d290dd",
+    "thread_id": "19fd2236b9d290dd",
+    "subject": "Lead Backend Software Engineer (Golang / AWS) || McLean, VA | Richmond, VA | Plano, TX (Hybrid \u2013 3 days onsite per week) / Remote (Previous Capital One Experience) ",
+    "sender": "Sankalp Pokhriyal <sankalp@apetan.com>"
+  },
+  "recruiter_email": "sankalp@apetan.com",
+  "recruiter_name": "Sankalp"
+}

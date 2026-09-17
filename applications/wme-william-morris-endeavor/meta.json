@@ -1,0 +1,22 @@
+{
+  "company": "WME | William Morris Endeavor",
+  "client": null,
+  "role": "Senior Software Engineer",
+  "location": "Orange County, CA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-08",
+  "updated": "2026-08-08",
+  "salary": null,
+  "styling_notes": "The resume design emphasizes clarity and professionalism, suitable for a senior engineering role.",
+  "notes": "Strong match due to experience in software engineering, cloud architecture, and microservices. No specific experience in the entertainment industry or Salesforce mentioned.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4402738007/?trackingId=JJfwro6cb87pLblI5BQLWg%3D%3D&refId=CReF7E9MQtpXsmjzyja%2B0Q%3D%3D",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4402738007",
+  "source_email": {
+    "message_id": "19fcd97375530f35",
+    "thread_id": "19fcd97375530f35",
+    "subject": "Senior Software Engineer at WME | William Morris Endeavor",
+    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+  }
+}

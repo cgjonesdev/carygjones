@@ -1,0 +1,18 @@
+Subject: Squarespace + Mailchimp link — available ASAP, DTLA on-site
+
+Hi,
+
+I can help link your Squarespace site to Mailchimp — happy to come on-site in DTLA.
+
+**Squarespace:** I've set up and maintained Squarespace sites, including custom forms, newsletter blocks, and third-party embeds. Familiar with Squarespace's native email/marketing options and where they hit limits vs. needing Mailchimp.
+
+**Mailchimp:** Comfortable with audiences, signup forms, embedded forms, API/key setup, and syncing subscribers from external sources. Common fixes: form action URLs, double opt-in settings, blocked domains, and making sure Squarespace form submissions actually land in the right Mailchimp audience (not just "connected" in the UI but actually flowing).
+
+**Your setup:** On a Mac — no problem. I can walk through the connection with you live and verify a test signup end-to-end before I leave.
+
+**Availability:** Can respond ASAP — flexible this week for a ~2-hour on-site session at your stated rate ($35/hr, 2-hour minimum). Parking covered is appreciated.
+
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/

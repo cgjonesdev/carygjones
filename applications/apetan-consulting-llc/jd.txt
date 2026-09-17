@@ -1,0 +1,76 @@
+Source: Apetan Consulting LLC
+
+Subject: Lead Backend Software Engineer (Golang / AWS) || McLean, VA | Richmond, VA | Plano, TX (Hybrid – 3 days onsite per week) / Remote (Previous Capital One Experience)
+
+Please provide RESUME/LINKEDIN/WORK AUTH
+
+Job Title: Lead Backend Software Engineer (Golang / AWS)
+
+Location:
+
+Preferred: McLean, VA | Richmond, VA | Plano, TX (Hybrid – 3 days onsite per week)
+Remote: Available only for candidates with prior Capital One contracting experience
+
+Duration: 9+ Months Contract
+
+Interview: Virtual
+
+Preference:
+
+Prior Capital One contractors are highly preferred.
+Strong experience in the financial services/banking domain is highly preferred.
+Local candidates to McLean, Richmond, or Plano are strongly preferred for hybrid roles.
+
+Job Summary
+
+We are seeking an experienced Lead Backend Software Engineer with strong expertise in Golang and AWS to design, build, and maintain scalable backend services in a cloud-native environment. The ideal candidate will have extensive experience developing distributed microservices, working with cloud platforms, and leading engineering initiatives within large enterprise environments, preferably in the financial services industry.
+
+This role requires a hands-on technical leader who enjoys solving complex engineering challenges, mentoring developers, and building high-performance, resilient backend systems.
+
+Required Qualifications
+
+Bachelor's degree in Computer Science, Engineering, or related field.
+Minimum 4 years of professional software engineering experience (excluding internships).
+At least 1 year of hands-on experience with a public cloud platform (AWS preferred, Azure or GCP acceptable).
+Strong backend development experience using Golang.
+Experience designing and developing RESTful APIs and microservices.
+Experience building distributed systems in cloud environments.
+Strong understanding of object-oriented programming and software design principles.
+Experience with SQL and NoSQL databases.
+Experience with Git-based version control systems.
+Familiarity with Agile/Scrum development methodologies.
+
+Preferred Qualifications
+
+Master's degree in Computer Science or related field.
+7+ years of professional experience with Golang.
+2+ years of hands-on experience with AWS or other cloud platforms.
+4+ years working with open-source frameworks and modern backend technologies.
+2+ years of experience working in Agile teams.
+Experience leveraging AI-assisted development tools to improve engineering productivity.
+Prior Capital One experience.
+Financial services or banking industry experience.
+
+Technical Skills
+
+Languages: Golang, Java, Python, SQL, Node.js, Scala
+Cloud: AWS (preferred), Azure, Google Cloud Platform
+Architecture: Microservices, Distributed Systems, REST APIs
+Containers & Orchestration: Docker, Kubernetes
+Databases: SQL, NoSQL, Open Source RDBMS
+Development Practices: CI/CD, Git, Agile, Test-Driven Development
+Cloud Services: AWS compute, storage, networking, and serverless technologies
+
+Responsibilities
+
+Design, develop, and maintain scalable backend applications using Golang.
+Build cloud-native applications and distributed microservices on AWS.
+Lead multiple engineering initiatives and provide technical guidance to development teams.
+Develop secure, resilient, and high-performance backend services.
+Collaborate with product managers, architects, and cross-functional engineering teams to deliver business-critical solutions.
+Participate in architecture discussions, code reviews, and technical design sessions.
+Mentor junior engineers and promote engineering best practices.
+Evaluate emerging technologies and contribute to continuous platform improvements.
+Work within Agile teams to deliver high-quality software solutions.
+Implement scalable APIs and integrate with enterprise systems and cloud services.
+Ensure application reliability, scalability, performance, and security throughout the software development lifecycle.

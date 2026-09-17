@@ -1,0 +1,22 @@
+{
+  "company": "Turing",
+  "client": null,
+  "role": "Remote Python Developer",
+  "location": "Remote",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-12",
+  "updated": "2026-08-12",
+  "salary": "$200 - $300 an hour",
+  "styling_notes": "The resume design emphasizes clarity and professionalism, suitable for tech roles.",
+  "notes": "The candidate has a strong background in Python development and AI integration, suitable for Turing's needs. However, there is no specific mention of AI model training initiatives in the candidate's experience.",
+  "apply_url": "https://cts.indeed.com/v3/H4sIAAAAAAAA_42RS2-jMBRG_wvSsBoa83I8kdAI6CSFPNrmUaLZIGMIGAMOYKCh6n8fOosuuurqSufT1dX9zpvUSQspE-LaLmazYRjuaBUnSXxHeDlryIwU7HfOLDMi6sWEECamBtS5Ll8aXlo5j6iGw2mUWJBMaRJMBO2xoLxSkko5HcKkxLSQBbPUvK-zPClQZdYlAqocRRZ1FDcFBoKOwoJnn-VszXeKN46_at9v-1P28mIbY1yzoHLO2crfCqyvwGVDd2IbguXJbs_BsXbu8fn2uNkrLh_c2nOONCKj_SfYt-GtGjyIbM9Z67rTFRvovRYUGRew2qDmER1iNY8cPBqB53Z9W-004-wv_2b0Yf_sIf7ASs930egvFeOHfi-_MhJZB-6GcL7VU9g4un2zVxlYRyOL3fjpSW7y6-ercX3V1LoCAEk_pVJavEmYEN5VwounxjUAdVUzTDCFOE19Hv3HKtA0ONeQqppTQApK2DFreJdmUyiaLvmkt2syoZ4mw1T_RD-ETOC7SqYNwT4OftEivb__A8rRACETAgAA/SzDdmT1AsTenadkXX9DNxOaMShcWtNHTvLbfcZmxSEw",
+  "apply_method": "Online Application",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19ff519c3d5cb0ab",
+    "thread_id": "19ff519c3d5cb0ab",
+    "subject": "Remote Python Developer @ Turing",
+    "sender": "Indeed <donotreply@match.indeed.com>"
+  }
+}

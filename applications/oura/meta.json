@@ -2,16 +2,21 @@
   "company": "Oura",
   "client": null,
   "role": "Senior Backend Engineer (Python)",
-  "location": "United States (Remote — US-Pacific preferred)",
-  "match_score": 91,
-  "status": "applied",
-  "created": "2026-08-04",
-  "updated": "2026-08-04",
-  "salary": "$162k–$203k (Region 1 CA estimate)",
-  "styling_notes": "Wearable health / readiness platform — warm amber (#b45309) with deep charcoal; Python AWS production services, privacy/regulatory, scalable backend ownership",
-  "notes": "Sourced via LinkedIn MCP search. External apply via Greenhouse. Applied 2026-08-04 (applications/oura/resume.pdf + cover_letter.pdf). Excellent fit: Python backend 5+ years, AWS scalable services, FastAPI, regulated healthcare background, data pipeline experience. CA-based meets US-Pacific preference.",
-  "apply_url": "https://job-boards.greenhouse.io/oura/jobs/4053067009?gh_src=lbbc4gkk9us",
-  "easy_apply": false,
-  "apply_method": "greenhouse_external",
-  "linkedin_job_id": "4320074598"
+  "location": "Remote",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-13",
+  "updated": "2026-08-13",
+  "salary": "$139,000 - $203,000 a year",
+  "styling_notes": "The resume design uses a clean and modern palette to highlight technical skills and accomplishments effectively.",
+  "notes": "Cary's extensive experience in Python and proficiency in Flask and Django align well with the role requirements. Highlighting cloud architecture and microservices expertise will be beneficial.",
+  "apply_url": "https://cts.indeed.com/v3/H4sIAAAAAAAA_42RS2-bQBRG_wtSvarjYXgYLKHKj9SAQ0oMBNmbiBlewwBD8QC2o_z3TrrIoquurnS-exf3O-_SIK2kkvPuslospml6IG2aZekDZs2ixwtc0x8VtTA28gQuVagqJkwUOMt71lgVQwQmb2I0CcflvM8SzMmYcMLaedbOo-AtaxJSzzi15GrkKoBGRyqkG8CYIWTt-aaJm0Amhwrs6jwI3Xn4hPWW9bfQIMV6PD3jw0S8FPDRfeaerTjh0g1ak-5D34nxeVtupmTp4HMb6bsjdJGc_4prHhpsu35pr5douB6jlJn77krNPII1Qtna-Z1PT9Q7jEoU3G9usLP913tnHO3q0BmnR08dbCdWzja8X6rs5-vx8dKdnG_KbnalGFkB26j60lMKc-3HTqRDF-zRnabb1PdnfdV9vSqnkGqmZgAkfZcaafUuJRizoeVOKhqHQFdkqGpAhElRuAz9xaapmQrQgAEFxzXBNCx7NhSlyHg_ZF_01mUCjSSbRPuCfvoQ4H-NiAtOxf6_VqSPjz-5KZ2nEgIAAA/MP6oW5SMyxsKbG4rF2HCXHHiQrPGJpzMPTz9H51uxls",
+  "apply_method": "Online",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19ffa40127fb6924",
+    "thread_id": "19ffa40127fb6924",
+    "subject": "Senior Backend Engineer (Python) @ Oura",
+    "sender": "Indeed <donotreply@match.indeed.com>"
+  }
 }

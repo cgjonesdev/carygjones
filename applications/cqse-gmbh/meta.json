@@ -1,0 +1,22 @@
+{
+  "company": "CQSE GmbH",
+  "client": null,
+  "role": "Software Engineering Consultant",
+  "location": "Remote",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-10",
+  "updated": "2026-08-10",
+  "salary": null,
+  "styling_notes": "The resume design emphasizes clarity and professionalism, aligning with the consulting role's expectations.",
+  "notes": "Extensive experience in software engineering and consulting roles, strong background in cloud architecture and microservices, proven track record in leading cross-functional teams and projects.",
+  "apply_url": null,
+  "apply_method": null,
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fe90e6a727cd5b",
+    "thread_id": "19fe90e6a727cd5b",
+    "subject": "Software Engineering Consultant: CQSE GmbH hired recently",
+    "sender": "LinkedIn <messages-noreply@linkedin.com>"
+  }
+}

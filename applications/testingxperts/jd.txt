@@ -1,0 +1,75 @@
+Source: N/A
+
+Subject: FULL TIME ROLE Full Stack Engineer (Python & React) Santa Clara, CA (Hybrid)
+
+Hello Cary Jones
+
+My name is Hitakshi Kumar and I am a Staffing Specialist at TestingXperts. I am reaching out to you on an exciting job opportunity with one of our clients.
+
+Full Stack Engineer (Python & React)
+
+Full-time
+
+Santa Clara, CA (Hybrid)
+
+Description:
+
+We are looking for an expert developer who is highly skilled with Python & React. Primary focus will be developing and maintaining the Software development, Write unit test cases, Interact with teams in different time zones, develop cloud-based solutions following generally accepted practices and workflows. Ensuring that you produce robust, secure, modular, and maintainable code. You will coordinate with other team members, including frontend, backend, devops engineers. Your commitment to team collaboration, perfect communication, and a quality product is crucial.
+
+Qualifications and Skills:
+
+B Tech, MS or PhD degree in Computer Science or similar.
+3-6 years of strong hands-on experience in Python.
+3-6 years of strong hands-on experience in React.
+Strong hands-on experience in Bash scripting.
+Strong knowledge of Docker, Google Cloud Platform (GKE, Artifact Registry, Pub/Sub, compute, GCS)
+Should have working experience in databases like Mysql, MongoDB.
+Strong Python Backend & React Frontend & few Google Cloud certifications is a big plus.
+Should have good experience in leveraging AI tools like Co-pilot for assisting in code writing development & understanding / analysis of the ticket, making a plan etc.
+Should have working experience with Airflow, Google Cloud composer.
+Good communication skills and ability to work independently
+Expertise in understanding and analyzing requirements
+Participate in pair programming and peer reviews. You'll collaborate with other engineers on problems of all shapes and sizes, from code to new ideas and methodologies.
+Incorporate automated testing into development and maintenance procedures.
+Strong Knowledge of data structure, functional programming and object-oriented programming paradigms
+Ability to write efficient, secure, well-documented, and clean Python code
+Proficiency with modern development tools, like Git
+Experience with both consuming and designing Pipelines setups.
+Suggest any enhancements or changes that are required to stay up with modern security and development best practices.
+
+Responsibilities:
+
+Designs, analyzes, and documents software development.
+Investigates and analyzes verbal and written requests for monitoring & Software development.
+Excellent teamwork and communication abilities
+Write backend code/scripts in programming languages like Python / BASH. .
+Write frontend code/scripts in programming languages like React.
+Maintains high standards of quality for code, functional specification documentation, and deliverables..
+Self-motivated and self-managing, with strong organizational skills
+Ability to work with tight deadlines and multiple competing priorities
+Write efficient, secure, clean, scalable and robust Python code that is effective
+Test and troubleshoot the pipeline to ensure its performance.
+Ability to optimize the pipeline for performance
+Interact with development teams to develop a strong understanding of the project and testing objectives.
+Participate in troubleshooting of issues with different teams to drive towards root cause identification and resolution
+Documentation skills to track the development and implementations
+Effective communication skills: Regularly achieve consensus with peers, and clear status updates.
+
+Desired Skills:
+
+Python [Must]
+React [Must]
+Bash scripting [Must]
+Containerization (Docker) [Must]
+Google Cloud Platform, GKE, Airflow, Cloud Composer [Must]
+Data Structures / Object oriented programming concepts [Must]
+Experience in building Google cloud solutions and/or microservices. [Must]
+Knowledge of Git [Must]
+
+Best Regards,
+
+Hitakshi Kumar
+
+N/A
+
+Hitakshi@testingxperts.com

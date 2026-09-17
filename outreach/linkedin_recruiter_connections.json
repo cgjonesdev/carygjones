@@ -1,0 +1,924 @@
+{
+  "recruiters": [
+    {
+      "name": "Pooja Chauhan",
+      "url": "https://www.linkedin.com/in/pooja-chauhan-258561101",
+      "headline": "Senior Technical Recruiter at Meta",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Jeba Tamizh",
+      "url": "https://www.linkedin.com/in/jeba-tamizh-2b106211b",
+      "headline": "Senior US IT Recruiter",
+      "location": "Crowley, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Zafar Choudhury",
+      "url": "https://www.linkedin.com/in/zafarchoudhury",
+      "headline": "Engineering Recruiter and Talent Acquisition Manager. I specialize in scaling startups by identifying exceptional engineering talent and building teams that drive innovation and excellence.",
+      "location": "Austin, Texas Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Carla Crull",
+      "url": "https://www.linkedin.com/in/cjcrull",
+      "headline": "Senior Technical Recruiter",
+      "location": "Blanco, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Kyla Salac",
+      "url": "https://www.linkedin.com/in/kylasalac",
+      "headline": "Senior Technical Recruiter @ Google Cloud AI",
+      "location": "Irvine, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Kyle Ashby",
+      "url": "https://www.linkedin.com/in/kylejashby",
+      "headline": "Technical Talent Acquisition | MBA",
+      "location": "Philadelphia, Pennsylvania, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Ashlyn Brownell",
+      "url": "https://www.linkedin.com/in/ashlyn-b-473a8179",
+      "headline": "Senior Technical Recruiter- information Technology/ cybersecurity/ Legal Services : Business Development Professional-MSP: small-large scale business",
+      "location": "Longmont, Colorado, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Kate Fairchild",
+      "url": "https://www.linkedin.com/in/kfairchild1",
+      "headline": "Director, Talent Solutions I Technical Recruiter",
+      "location": "San Diego, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Tony Sear",
+      "url": "https://www.linkedin.com/in/tony-sear-12418650",
+      "headline": "Senior Technical Recruiter @ SpaceX \ud83d\ude80",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Adam Thrall",
+      "url": "https://www.linkedin.com/in/adamthrall",
+      "headline": "Technical Recruiter @ Google",
+      "location": "Greater Seattle Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Rebecca Fouts, MA",
+      "url": "https://www.linkedin.com/in/rebeccafouts",
+      "headline": "Lead Technical Recruiter",
+      "location": "San Diego, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Jackie \ud83d\udc3a Wileman",
+      "url": "https://www.linkedin.com/in/jedijackie",
+      "headline": "Rebel Alliance Leader & Tech Recruiter @ Cadre Talent \ud83d\udc3a \ud83c\udf08",
+      "location": "Culver City, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Suriya Ponnada",
+      "url": "https://www.linkedin.com/in/suriya-ponnada-07b5a3168",
+      "headline": "Technical Recruiter | TAG | Lead Recruiter | Corporate Recruiting | Skilled in AI-Powered Recruitment Tools",
+      "location": "Indianapolis, Indiana, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Traci Martin",
+      "url": "https://www.linkedin.com/in/traci-martin",
+      "headline": "Principal Technical Recruiter at NinjaOne",
+      "location": "Austin, Texas Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Deepak Kumar Singh",
+      "url": "https://www.linkedin.com/in/deepak-kumar-singh-216a801a5",
+      "headline": "Hiring Full Time | Contract | W2 all over the USA                                        || US Technical Recruiter",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Aswathy Anup",
+      "url": "https://www.linkedin.com/in/aswathy-anup-9573409b",
+      "headline": "Senior Technical Recruiter | Performance-Driven | Consistent Top Performer | Championing People, Driving Performance",
+      "location": "Fremont, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "SUMAN GUHA BAKSHI",
+      "url": "https://www.linkedin.com/in/sumanbakshi",
+      "headline": "Technical Recruiter | End to End Recruiter | at ARTECH L.L.C.         United States| Canada | India",
+      "location": "Hightstown, New Jersey, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Malathi C",
+      "url": "https://www.linkedin.com/in/malathi-c-8b5114232",
+      "headline": "Senior US IT Recruiter",
+      "location": "United States",
+      "connectedAt": null
+    },
+    {
+      "name": "James Thompson",
+      "url": "https://www.linkedin.com/in/jamesathompson-cydio",
+      "headline": "Director, Talent Solutions | Technical Recruiter",
+      "location": "San Diego, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Abhishek Srivastav",
+      "url": "https://www.linkedin.com/in/abhisrivastav",
+      "headline": "Lead Technical Recruiter at Edge Global LLC",
+      "location": "Vienna, Virginia, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "James Ramirez",
+      "url": "https://www.linkedin.com/in/james-p-ramirez",
+      "headline": "Director of Recruiting | Multiple Time President\u2019s Club Winner | Champion for IT & Engineering Talent",
+      "location": "San Diego, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Sankalp Shrivastava",
+      "url": "https://www.linkedin.com/in/sankalpshrivastava14",
+      "headline": "Sr. US IT Recruiter | Coming together is beginning. Keeping together is progress, Working together is success.",
+      "location": "United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Atiya S",
+      "url": "https://www.linkedin.com/in/atiya-s-751403182",
+      "headline": "Sr. IT Recruiter",
+      "location": "Princeton, New Jersey, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Zack Metzner",
+      "url": "https://www.linkedin.com/in/zackmetzner",
+      "headline": "Business Owner, Technical Talent Acquisition, Consultant",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Kyle Rogers",
+      "url": "https://www.linkedin.com/in/kyle-rogers-atx",
+      "headline": "Software | Engineering | Information Technology | Recruitment & Staffing Professional",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Jason Shotwell",
+      "url": "https://www.linkedin.com/in/shotwelljason",
+      "headline": "Senior Technical Sourcer - Hardware Engineering @ Anduril Industries",
+      "location": "San Diego Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Mayank Wadhwa",
+      "url": "https://www.linkedin.com/in/mayank-wadhwa-7899831a7",
+      "headline": "Lead Technical Recruiter | Technical Requirements",
+      "location": "Monmouth Junction, New Jersey, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Kyle Riggs",
+      "url": "https://www.linkedin.com/in/kyle-riggs-532553129",
+      "headline": "Lead Technical Recruiter at Albert",
+      "location": "Los Angeles, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Aman Verma",
+      "url": "https://www.linkedin.com/in/aman-verma-823a83133",
+      "headline": "Senior Technical recruiter at Global Business Ser. 4u",
+      "location": "Somerset, New Jersey, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Ed Robertson",
+      "url": "https://www.linkedin.com/in/ed-robertson-5b620b2",
+      "headline": "Executive Recruiter and Career Adviser at Shepherd Search Group  Specializing in Medical, Engineering, and Manufacturing",
+      "location": "Encinitas, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Gloria Temple",
+      "url": "https://www.linkedin.com/in/gloriatemple",
+      "headline": "Senior Technical Recruiter at Zel Technologies LLC (Security Clearance) Talks about #dod, #govcon, #hiring, #sourcing, and #recruiting",
+      "location": "Bradenton, Florida, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Mohit Sharma",
+      "url": "https://www.linkedin.com/in/mohit-sharma-873376233",
+      "headline": "Technical Recruiter",
+      "location": "United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Janardhan Gonte",
+      "url": "https://www.linkedin.com/in/janardhan-gonte",
+      "headline": "Senior Talent Acquisition Professional | AI Enthusiast | Product & Cloud Engineering Hiring | Leadership Hiring",
+      "location": "Greater Hyderabad Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Mary Menet",
+      "url": "https://www.linkedin.com/in/marymenet",
+      "headline": "Recruiting Manager & Technical Recruiter",
+      "location": "Greater Chicago Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Sourabh Sharma",
+      "url": "https://www.linkedin.com/in/sourabh-sharma-artech",
+      "headline": "Senior Technical Recruitment Consultant @ Artech L.L.C | Excel with LinkedIn Recruiter Assessment",
+      "location": "Toronto, Ontario, Canada",
+      "connectedAt": null
+    },
+    {
+      "name": "Ram Kumar",
+      "url": "https://www.linkedin.com/in/ramrecruit",
+      "headline": "Sr IT Recruiter at 247Hire",
+      "location": "India",
+      "connectedAt": null
+    },
+    {
+      "name": "Zeeshan Ahmad",
+      "url": "https://www.linkedin.com/in/zeeshan-ahmad-204a82118",
+      "headline": "Senior IT Recruiter",
+      "location": "Gurugram, Haryana, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Ravindiran Rooban",
+      "url": "https://www.linkedin.com/in/ravindiran-rooban-1b9b0a187",
+      "headline": "Technical Recruiter at Quess Corp Limited",
+      "location": "Bengaluru, Karnataka, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Paneendra Rayudu V",
+      "url": "https://www.linkedin.com/in/paneendra-rayudu-v-0865b0185",
+      "headline": "Sr. Technical Talent Scout || Headhunter @ Hallmark (Ex IDC) (Ex ACCENTURE)",
+      "location": "Greater Hartford",
+      "connectedAt": null
+    },
+    {
+      "name": "Suraj Kumar",
+      "url": "https://www.linkedin.com/in/suraj8932",
+      "headline": "US IT Recruiter at TEK Inspirations LLC",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Sumit Kumar",
+      "url": "https://www.linkedin.com/in/sumit-kumar-342304199",
+      "headline": "Sr.Technical Recruiter \ud83d\ude80If I visited your profile, it\u2019s because I see potential and likely have an opportunity for you.",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Adarsh Sharma",
+      "url": "https://www.linkedin.com/in/adarsh-sharma-40aa1725b",
+      "headline": "Technical Recruiter at Exarca Inc.",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Varun Anand",
+      "url": "https://www.linkedin.com/in/varun-anand-077316246",
+      "headline": "Talent Partner | JS Consulting Solutions | AI Engineers | Snowflake/DBT/Kafka | RPO & W2 Delivery Expert",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Sunil Kumar",
+      "url": "https://www.linkedin.com/in/reach-sunilkumar",
+      "headline": "Sr. Delivery Manager - IT, Engineering and Non IT Roles - US Staffing",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Srinath K",
+      "url": "https://www.linkedin.com/in/srinath-k-5208b0199",
+      "headline": "Technical Recruiter at NCS",
+      "location": "Telangana, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Laura Tessier",
+      "url": "https://www.linkedin.com/in/laura-tessier-8a085129",
+      "headline": "Senior Talent Acquisition Specialist at Illumina",
+      "location": "San Diego, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "J.K. Crowley",
+      "url": "https://www.linkedin.com/in/jkcrowley",
+      "headline": "Talent Acquisition Manager - HR Transformation Consultant. Remember- Every innovation begins with 'What if...?",
+      "location": "Seal Beach, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Eddie Tigs",
+      "url": "https://www.linkedin.com/in/eddietigs",
+      "headline": "Machine Learning and Search Talent Acquisition @ Reddit",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Edith Rayo",
+      "url": "https://www.linkedin.com/in/edith-r-9a51b3137",
+      "headline": "Recruiter, Emerging Talent @ HubSpot",
+      "location": "Los Angeles, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Dhananjay Kumar",
+      "url": "https://www.linkedin.com/in/dhananjay-kumar-8363b1184",
+      "headline": "Wish me Good Luck - Global Hiring! - dkumar@bslci.com  IT & HealthCare Recruitment - USA || Canada || Mexico || UAE || UK || Saudi Arabia || India || Europe || Germany || France || Sweden || Spain || North/South America",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Aman Srivastava",
+      "url": "https://www.linkedin.com/in/aman-srivastava-837453b9",
+      "headline": "Talent Acquisition Lead",
+      "location": "Trenton, New Jersey, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Raghu Sai",
+      "url": "https://www.linkedin.com/in/raghu-sai-a81705155",
+      "headline": "Talent Acquisition | Recruitment Specialist                                                                                                         Everybody wants the reward. Few will do the work required to achieve it.",
+      "location": "United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Mohd Irfan",
+      "url": "https://www.linkedin.com/in/mohd-irfan-07613281",
+      "headline": "Senior Talent Acquisition Specialist | Connecting Talents with Opportunities | Helping candidates find the next best step in their careers! | Mitchell Martin, Inc. (MMI)",
+      "location": "New York, New York, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Vijay Reddy",
+      "url": "https://www.linkedin.com/in/vj8686053531",
+      "headline": "Senior Talent Acquisition Specialist",
+      "location": "Edison, New Jersey, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Sai Charan",
+      "url": "https://www.linkedin.com/in/sai-charan-5260241a3",
+      "headline": "Talent Acquisition Specialist",
+      "location": "Northville, Michigan, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Prabhat Pandey",
+      "url": "https://www.linkedin.com/in/prabhat-p-49a721175",
+      "headline": "Sr. Talent Acquisition Specialist",
+      "location": "Dublin, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Carrie Latta",
+      "url": "https://www.linkedin.com/in/carrie-latta-clarkston",
+      "headline": "Talent Acquisition Leader | Aligning Talent with High-Impact Consulting Roles in Life Sciences, CP & Retail | Strategic People Advocate & Career Champion",
+      "location": "Lexington, Kentucky, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Jim Smith",
+      "url": "https://www.linkedin.com/in/jimsmithrecruiter",
+      "headline": "Senior Talent Acquisition Partner - Bio-Rad",
+      "location": "San Diego County, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Arif M",
+      "url": "https://www.linkedin.com/in/arif-m-9800bb28",
+      "headline": "Lead Talent Acquisition Specialist at Momentousa",
+      "location": "Bellmawr, New Jersey, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Sean Patterson",
+      "url": "https://www.linkedin.com/in/sean-dpatterson",
+      "headline": "Staff Recruiter @ Databricks",
+      "location": "United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Mohd Zeeshan",
+      "url": "https://www.linkedin.com/in/mohd-zeeshan-714b8b109",
+      "headline": "Lead Recruiter/ Senior Recruiter at Ask Consulting.",
+      "location": "United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Ashley Chalupsky",
+      "url": "https://www.linkedin.com/in/ashleychalupsky",
+      "headline": "HIRING at ZipRecruiter | Talent Acquisition Executive | 3x TA Function Builder | Scalable & Predictable Hiring Systems | Partner to CEOs, CPOs & Hiring Leaders | TA Strategy Thought Leader",
+      "location": "San Diego, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Aditya Paturkar",
+      "url": "https://www.linkedin.com/in/aditya-paturkar-5621b26",
+      "headline": "Global Recruitment Lead at Virtusa",
+      "location": "Mumbai, Maharashtra, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Aaron Allen",
+      "url": "https://www.linkedin.com/in/aaronallen9581",
+      "headline": "Driving Talent Acquisition Success | Corporate Recruiter @ Centerfield",
+      "location": "Los Angeles Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Manisha Pasi",
+      "url": "https://www.linkedin.com/in/manisha-pasi-a5439566",
+      "headline": "Lead Recruiter at SPECTRAFORCE",
+      "location": "Raleigh, North Carolina, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Travis Kauffmann",
+      "url": "https://www.linkedin.com/in/travis-kauffmann",
+      "headline": "Tech Enthusiast, Recruiter, and Team Builder committed to excellent candidate and company experiences.",
+      "location": "Los Angeles, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Jeff Sawhill",
+      "url": "https://www.linkedin.com/in/jsawhill",
+      "headline": "Senior Talent Sourcer @ eBay",
+      "location": "San Jose, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Isaiah Knox, PHR",
+      "url": "https://www.linkedin.com/in/isaiah-knox-phr-0a329210a",
+      "headline": "Talent Acquisition and Workforce Development Specialist III at Tekscend Photomask Round Rock Inc.",
+      "location": "Round Rock, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Lance Perry",
+      "url": "https://www.linkedin.com/in/lanceperry",
+      "headline": "Staff Recruiter, Research and Development at Apple \uf8ff",
+      "location": "San Diego, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Mark Cook II",
+      "url": "https://www.linkedin.com/in/markstanleycookii",
+      "headline": "Senior Recruiter (Ops, Tech, GTM, G&A)",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Cadence Timm",
+      "url": "https://www.linkedin.com/in/cadencetimm",
+      "headline": "Global Talent Acquisition Partner @ Xurrent | Full-Cycle Recruiting Across All Functions",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Hitesh Tahashildar",
+      "url": "https://www.linkedin.com/in/hitesh-tahashildar-495825140",
+      "headline": "Senior Talent Specialist @ Stage 4 Solutions -- We Fill Gaps in Marketing, IT & Operations Teams; hitesh.tahashildar@stage4solutions.com",
+      "location": "Santa Clara, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Josh Fleming",
+      "url": "https://www.linkedin.com/in/josh-fleming-28475944",
+      "headline": "Director of Recruiting at Technology Navigators, Inc.",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Kathrin Fluegel",
+      "url": "https://www.linkedin.com/in/kathrin-fluegel-b7920ab9",
+      "headline": "Employee Recruiting Manager at Salesforce",
+      "location": "Austin, Texas Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Elena Saragosa",
+      "url": "https://www.linkedin.com/in/elenasaragosa",
+      "headline": "Recruiting Manager @ Luna Data Solutions",
+      "location": "Austin, Texas Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Lisa Barone",
+      "url": "https://www.linkedin.com/in/lisa-barone-22b3471",
+      "headline": "Professional Recruiter",
+      "location": "Oceanside, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Kevin Maxwell",
+      "url": "https://www.linkedin.com/in/kevin-maxwell-24a27583",
+      "headline": "Hiring Project Manager \u2013 Sales Performance Management (SPM) - REMOTE - Long term Contract - USA ONLY  mmaxwell@tsp.tech",
+      "location": "Rajahmundry, Andhra Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Johnny Chang",
+      "url": "https://www.linkedin.com/in/johnnychang",
+      "headline": "Owner and Recruiter",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Tyler Guimar\u00e3es",
+      "url": "https://www.linkedin.com/in/tyler-guimaraes",
+      "headline": "Mythic Headhunter | Founding Recruiter",
+      "location": "Torrance, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Priya Limma",
+      "url": "https://www.linkedin.com/in/priya-l-b2837718a",
+      "headline": "Recruitment Manager",
+      "location": "Brooklyn, New York, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Luxmi Shanker",
+      "url": "https://www.linkedin.com/in/shankerluxmi",
+      "headline": "Recruiting & Resource Delivery Associate at Rose International",
+      "location": "San Ramon, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Adrienne Fulton Huebner",
+      "url": "https://www.linkedin.com/in/adriennehuebner",
+      "headline": "Recruiting Consultant",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Ilisa Burke",
+      "url": "https://www.linkedin.com/in/ilisaburke",
+      "headline": "Division Chief of Attorney Recruitment @ Texas Attorney General",
+      "location": "Cedar Park, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Parker Willis",
+      "url": "https://www.linkedin.com/in/parker-willis",
+      "headline": "Healthcare Recruitment",
+      "location": "Fayetteville, Arkansas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Russell Wolf",
+      "url": "https://www.linkedin.com/in/russellmwolf",
+      "headline": "Recruiting Leader | Career Coach | Resume & LinkedIn Strategy | Straight talk from the other side of the hiring table",
+      "location": "Huntington Beach, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Laura Gonzalez - MS, CHJMC, CCTC",
+      "url": "https://www.linkedin.com/in/theheadhuntress",
+      "headline": "I Find the Leaders Others Can\u2019t Place | Retained & Exclusive Executive Search | Hard-to-Fill & Hybrid Roles | Director to C-Suite | The Headhuntress",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Nitesh Pandey",
+      "url": "https://www.linkedin.com/in/niteshkpandey",
+      "headline": "HeadHunter",
+      "location": "San Jose, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Arash Mobayen",
+      "url": "https://www.linkedin.com/in/arashmobayen",
+      "headline": "Technology Staffing & Recruiting",
+      "location": "Los Angeles, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Julie Hunt",
+      "url": "https://www.linkedin.com/in/sdhrconsultinginc",
+      "headline": "Chief Executive Officer @ San Diego Human Resources Consulting Inc. | HR Strategy & Compliance, Talent Acquisition, CHRO",
+      "location": "Carlsbad, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Robert Taylor",
+      "url": "https://www.linkedin.com/in/robert-taylor-039996",
+      "headline": "Staffing Industry Leader | Consulting | Team Building | Talent Strategy",
+      "location": "Austin, Texas Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Marlene Garcia",
+      "url": "https://www.linkedin.com/in/marlenegarciaprovenrecruiting",
+      "headline": "Sr. Partner, Technology Practice (Retired) at Proven Recruiting",
+      "location": "San Diego, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Rio Wagner",
+      "url": "https://www.linkedin.com/in/rio-wagner-aa51152",
+      "headline": "Senior Account Manager at Eastridge Workforce Solutions",
+      "location": "San Diego, California, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Yesenia Castillo",
+      "url": "https://www.linkedin.com/in/yesenia-castillo",
+      "headline": "Human Resources Generalist II at iQor",
+      "location": "Frisco, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Mae Marie Dagasdas - Catarman",
+      "url": "https://www.linkedin.com/in/maemariecatarman",
+      "headline": "Helping Law Firms & Medical Practices Generate Qualified Leads, Reduce Staffing Costs & Scale with Dedicated Virtual Teams | 300+ Campaigns | Co-Founder @ Loxif",
+      "location": "Boise, Idaho, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Lina Karagianni",
+      "url": "https://www.linkedin.com/in/lina-karagianni-666baa163",
+      "headline": "Senior Talent Acquisition Specialist",
+      "location": "Greece",
+      "connectedAt": null
+    },
+    {
+      "name": "Lehar Puri",
+      "url": "https://www.linkedin.com/in/lehar-puri-59b621177",
+      "headline": "Global Talent Acquisition Partner//Recruiter//Tech & Non Tech Hiring",
+      "location": "Gurugram, Haryana, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Bhagyeswari D",
+      "url": "https://www.linkedin.com/in/bhagyeswari-d-b59042185",
+      "headline": "Senior Talent specialist",
+      "location": "India",
+      "connectedAt": null
+    },
+    {
+      "name": "Morgan Dearing, M.S., SHRM-CP",
+      "url": "https://www.linkedin.com/in/morgandearing",
+      "headline": "Talent Acquisition Specialist",
+      "location": "Greater Houston",
+      "connectedAt": null
+    },
+    {
+      "name": "Shlok Srivastava",
+      "url": "https://www.linkedin.com/in/shlok-srivastava-15212221b",
+      "headline": "Tech Talent Acquisition Specialist | Talent Acquisition Expert | Connecting Tech Professionals with the Right Opportunities | MBA",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Abhinav TayaL",
+      "url": "https://www.linkedin.com/in/imabhinavtayal",
+      "headline": "Deputy Manager- Global Talent Acquisition @ HCLTech",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Aditya Dakhane",
+      "url": "https://www.linkedin.com/in/aditya-dakhane-b7815a78",
+      "headline": "(Talent Acquisition) Senior Recruitment Specialist at Persistent Systems",
+      "location": "Atlanta Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Parasuram Daram",
+      "url": "https://www.linkedin.com/in/parasuram-daram-1953a2b3",
+      "headline": "Manager - Talent Acquisition & HR Operations /CHQ /PRIL",
+      "location": "Hyderabad, Telangana, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Mounika K",
+      "url": "https://www.linkedin.com/in/mounika-k1215",
+      "headline": "#Hiring | Marketing Candidate Sourcing & Placement (W2) | Internal Requirements | C2C, W2 & Full-Time",
+      "location": "Hyderabad, Telangana, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Maryna S.",
+      "url": "https://www.linkedin.com/in/maryna-s-647581219/en",
+      "headline": "Talent Acquisition Manager",
+      "location": "Alanya, Antalya, T\u00fcrkiye",
+      "connectedAt": null
+    },
+    {
+      "name": "Lauren Formby",
+      "url": "https://www.linkedin.com/in/laurenformby",
+      "headline": "Director of Recruiting at CyberCoders",
+      "location": "Cincinnati Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Ted McDill",
+      "url": "https://www.linkedin.com/in/tedmcdill",
+      "headline": "Contract Recruiter (.Net, Java, Javascript and Mobile Applications) at Confidential (In stealth mode)",
+      "location": "",
+      "connectedAt": null
+    },
+    {
+      "name": "April Ariane Ventilacion",
+      "url": "https://www.linkedin.com/in/aprilventilacion",
+      "headline": "ALL-STAR Freelance Admin/Recruiter/Sourcing Professional",
+      "location": "Calabarzon, Philippines",
+      "connectedAt": null
+    },
+    {
+      "name": "Rahul Singh",
+      "url": "https://www.linkedin.com/in/rahul-singh-06846697",
+      "headline": "Talent Acquisition Specialist",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Madisson DeLisle",
+      "url": "https://www.linkedin.com/in/madissondelisle",
+      "headline": "Talent Acquisition & Human Resources Professional",
+      "location": "Denver Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Kaycee Pelerine",
+      "url": "https://www.linkedin.com/in/kayceepelerine",
+      "headline": "Sourcing Recruiter @ Magna International | Hiring, Recruiting",
+      "location": "Nashville Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Joshua Ciardelli",
+      "url": "https://www.linkedin.com/in/joshua-ciardelli-32b3602",
+      "headline": "Recruitment Consultant",
+      "location": "Tauranga, Bay of Plenty, New Zealand",
+      "connectedAt": null
+    },
+    {
+      "name": "Aman Singh",
+      "url": "https://www.linkedin.com/in/aman-singh-",
+      "headline": "Recruitment Manager | US Staffing Expert | MSP/VMS Specialist | Driving High-Impact Recruitment Solutions",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Anurag Pratap Pal",
+      "url": "https://www.linkedin.com/in/anurag-pratap-pal-5a5132107",
+      "headline": "Team Lead (Talent Acquisition)",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Mohd Suhail",
+      "url": "https://www.linkedin.com/in/mohd-suhail-827a4b15a",
+      "headline": "Recruiting | Sourcing \ud83d\udd0d | Screening \ud83c\udfa5\u0964 Trainer | Your success is my ambition!",
+      "location": "India",
+      "connectedAt": null
+    },
+    {
+      "name": "Jacob Sutton",
+      "url": "https://www.linkedin.com/in/jacob-sutton-0681211a0",
+      "headline": "Recruitment Consultant @ Building Careers | Recruitment Specialist",
+      "location": "Greater Philadelphia",
+      "connectedAt": null
+    },
+    {
+      "name": "Courtney Hughes",
+      "url": "https://www.linkedin.com/in/courtney-hughes-272825ba",
+      "headline": "Principal Team Lead, Talent Services at Motion Recruitment",
+      "location": "Greater Houston",
+      "connectedAt": null
+    },
+    {
+      "name": "Amy Krebbs, MBA",
+      "url": "https://www.linkedin.com/in/amy-k-9413364",
+      "headline": "Director, HRBP @ Fidelity Investments | Human Resources",
+      "location": "Dallas-Fort Worth Metroplex",
+      "connectedAt": null
+    },
+    {
+      "name": "ANUPAM CHAKRAVARTI",
+      "url": "https://www.linkedin.com/in/anupam-chakravarti-10a9b2131",
+      "headline": "Talent Acquisition | Talent Management | Account Manager | Delivery Manager",
+      "location": "Noida, Uttar Pradesh, India",
+      "connectedAt": null
+    },
+    {
+      "name": "Anant Jain",
+      "url": "https://www.linkedin.com/in/anantjain-rec",
+      "headline": "Co-founder at Recruitometry | Co-founder at Plantrs | Co-founder at Building Careers",
+      "location": "Sydney, New South Wales, Australia",
+      "connectedAt": null
+    },
+    {
+      "name": "Jenna Henriksen",
+      "url": "https://www.linkedin.com/in/jennacouture",
+      "headline": "Human Resources Director",
+      "location": "San Francisco Bay Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Anand(Anay) Singh",
+      "url": "https://www.linkedin.com/in/anand-singh3614",
+      "headline": "Recruitment Executive",
+      "location": "India",
+      "connectedAt": null
+    },
+    {
+      "name": "Steve Matas",
+      "url": "https://www.linkedin.com/in/stevematas",
+      "headline": "CEO at Clinovo | Pioneering Agentic AI for Clinical Research | Architecting Workforce Optimization through ClinAI | Transforming CRO & FSP Models with Autonomous AI Agents",
+      "location": "Nashville Metropolitan Area",
+      "connectedAt": null
+    }
+  ],
+  "hiring_managers": [
+    {
+      "name": "Michael Bychko",
+      "url": "https://www.linkedin.com/in/bychko-michael",
+      "headline": "Growth Director @ Iomico | Helping hardware companies ship & scale secure connected products faster | Electronics \u2192 Firmware \u2192 Cloud",
+      "location": "Buenos Aires, Buenos Aires Province, Argentina",
+      "connectedAt": null
+    },
+    {
+      "name": "Abhilash Patnaik",
+      "url": "https://www.linkedin.com/in/abhilash-patnaik-3948b414",
+      "headline": "Director - Global Talent Management",
+      "location": "Columbus, Ohio, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Christian Gulbrandsen",
+      "url": "https://www.linkedin.com/in/christiangulbrandsen",
+      "headline": "Managing Director | Talent Strategy at Insight Global",
+      "location": "Atlanta, Georgia, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Robert McLennand",
+      "url": "https://www.linkedin.com/in/rmclennand",
+      "headline": "Connector of people and companies",
+      "location": "Austin, Texas, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Harlan T. Beverly, PhD",
+      "url": "https://www.linkedin.com/in/hbombers",
+      "headline": "CTO at Side (Game QA/Audio/CoDev/Loc/LQA/Player Support), Assistant Professor of Instruction at TXState",
+      "location": "Austin, Texas Metropolitan Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Angela Terski",
+      "url": "https://www.linkedin.com/in/angela-terski-27a9322",
+      "headline": "Director of Business Development",
+      "location": "North Grafton, Massachusetts, United States",
+      "connectedAt": null
+    },
+    {
+      "name": "Mohammed Javeed",
+      "url": "https://www.linkedin.com/in/mohammed-j-2304bb182",
+      "headline": "Chief Talent Officer | Supporting 16+ IRS Prime Contractors | 3000+ IRS-Cleared Professionals | Federal & SAP Talent Delivery | U.S. & EMEA",
+      "location": "Greater Casper Area",
+      "connectedAt": null
+    },
+    {
+      "name": "Anne Bogaslavskaya",
+      "url": "https://www.linkedin.com/in/anna-bogoslavskaya-%E2%AD%90%E2%AD%90%E2%AD%90-",
+      "headline": "Director of Business Development @ MWDN | Delivering the best talents on the global market",
+      "location": "Warsaw, Mazowieckie, Poland",
+      "connectedAt": null
+    },
+    {
+      "name": "Aman Mishra",
+      "url": "https://www.linkedin.com/in/amanmishraqa",
+      "headline": "Director of Sales and BD | MBA in International Business Management | GTM | AI Based Sales Enablement Expert | Lead and Demand Generation Strategy for SAAS |",
+      "location": "Kolkata, West Bengal, India",
+      "connectedAt": null
+    }
+  ],
+  "total_connections": 200
+}

@@ -1,0 +1,89 @@
+Source: RulesIQ Inc.
+
+Job Title : Cloud Engineer (This role is entirely remote)
+Location : Remote – Anywhere in the US (Majority of work occurs after 5:00 PM EST)
+Schedule : Monday–Thursday, 1:00 PM – 12:00 AM EST
+Duration : 12 Months
+Employment Type : W2 Only
+Interview Process : 2 x 60-minute Zoom Interview Rounds
+
+Position Summary :
+The Cloud Operations Engineer will support cloud infrastructure and execute data rehydration and recovery activities across Azure and AWS environments. This role focuses on restoring archived and backed-up data to support disaster recovery, business continuity, regulatory compliance, and operational resilience while ensuring data integrity, system availability, and recovery within established service-level objectives.
+
+The ideal candidate combines cloud infrastructure expertise, DevOps automation skills, troubleshooting capabilities, and operational excellence to orchestrate large-scale rehydration events, monitor recovery processes, and continuously improve restoration procedures.
+
+Responsibilities :
+
+Monitor, maintain, and support cloud infrastructure across AWS and Azure environments.
+Execute data rehydration and restoration activities to support disaster recovery and business continuity.
+Develop automation solutions using Python, PowerShell, Bash, or similar scripting languages to streamline rehydration workflows.
+Support Azure cloud infrastructure, including:
+
+AKS (Azure Kubernetes Service)
+App Services
+Function Apps
+Storage Accounts
+Virtual Machines (VMs)
+Virtual Machine Scale Sets (VMSS)
+Key Vault
+Logic Apps
+Networking Services
+
+Monitor recovery operations and ensure successful restoration within service-level objectives.
+Support CI/CD pipelines using GitHub Actions or Jenkins.
+Manage Kubernetes and AKS operations.
+Maintain cloud security and access management practices.
+Support disaster recovery and business continuity initiatives.
+
+Required Skills :
+
+Hands-on experience with Azure and AWS cloud infrastructure.
+Experience with data rehydration and restoration processes.
+Strong scripting experience using Python, PowerShell, Bash, or similar languages.
+Experience with Azure services including:
+
+AKS
+App Services
+Function Apps
+Storage Accounts
+Virtual Machines (VMs)
+VMSS
+Key Vault
+Logic Apps
+Networking Services
+
+Experience with CI/CD tools such as GitHub Actions or Jenkins.
+Kubernetes and AKS operational experience.
+Cloud Security and Access Management knowledge.
+Monitoring and Observability experience.
+Disaster Recovery and Business Continuity experience.
+
+Required Experience :
+
+2+ years of experience in Cloud Operations, DevOps, Site Reliability Engineering (SRE), or Infrastructure Operations.
+
+Preferred Qualifications :
+
+Bachelor's degree.
+Experience supporting large-scale cloud recovery and restoration operations.
+Strong troubleshooting and operational excellence mindset.
+
+Thanks & Regards,
+
+Obesh Khan (O.K)
+
+Sr. Technical Recruiter
+
+Office- 7704701169 | obesh.khan@rulesiq.com
+
+Obesh Khan || LinkedIn
+
+RulesIQ Inc. | Partner with RawCubes
+
+A Minority Business Enterprise(MBE)
+
+An Illinois State Certified
+
+Note: RulesIQ INC works with Direct Client’s and Preferred Vendors Nationwide.
+
+Your confirmation would means that you understand the level of RulesIQ INC association for the mentioned project and will not approach RulesIQ INC Client directly.

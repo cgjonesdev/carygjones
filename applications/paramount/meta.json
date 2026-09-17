@@ -1,13 +1,23 @@
 {
   "company": "Paramount",
-  "client": "Paramount+ (via LTIMindtree)",
-  "role": "Sr. AWS Python Developer — Media Platform",
-  "location": "Los Angeles, CA or New York, NY (Onsite)",
+  "client": null,
+  "role": "Sr. AWS Python Developer",
+  "location": "Los Angeles, CA",
   "match_score": 85,
-  "status": "interview",
-  "created": "2026-07-24",
-  "updated": "2026-07-31",
-  "salary": "$140k/annum + benefits (JD); LTM cap $63/hr — confirm actual offer band",
-  "styling_notes": "Paramount navy (#003875), media-platform emphasis, Disney experience highlighted",
-  "notes": "Recruiter screen with LTM (Varun Verma) passed 2026-07-31; submitted to Paramount+ client. Awaiting first technical interview schedule. Mock prep: interview/sessions/paramount_mock.md, paramount_coding_drill.py. Strong Python/AWS + Disney media domain fit; LA onsite works. Salary $140k is $15k below $155K target — negotiate if advanced. Gaps: DynamoDB, CDK, Step Functions explicit, media file formats, C#. Staffing: LTIMindtree."
+  "status": "rejected",
+  "created": "2026-08-07",
+  "updated": "2026-08-11",
+  "salary": "$140,000 per annum + benefits",
+  "styling_notes": "The resume design utilizes a clean and professional palette, emphasizing clarity and readability, which aligns with the technical nature of the role.",
+  "notes": "Cary has extensive experience with AWS services, Python, and developing scalable systems. However, lacks specific experience with C# and media file formats.",
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd3771bb90b43b",
+    "thread_id": "19fd3771bb90b43b",
+    "subject": "Interview Request : Salary Confirmation for : Fulltime Role! Sr. AWS Python Developer (Media & Entertainment Domain) || Onsite in New York - New York - USA or Los Angeles, CA",
+    "sender": "Anurag <z7b-q1u-a93@user.dice.com>"
+  },
+  "recruiter_email": "z7b-q1u-a93@user.dice.com",
+  "recruiter_name": "Anurag"
 }

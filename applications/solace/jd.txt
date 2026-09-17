@@ -1,0 +1,23 @@
+Source: https://www.linkedin.com/comm/jobs/view/4315439256/?trackingId=BBZ1MmBuiaGbz5PhFlfJzg%3D%3D&refId=DEnZ7BQ63kLA8ZFs0zf6EQ%3D%3D
+
+Senior Backend Engineer
+Solace
+United States (Remote)
+
+We are looking for a Senior Backend Engineer to join our team at Solace. The ideal candidate will have extensive experience in backend development and microservices architecture, proficient in Python frameworks such as FastAPI and Django, and a strong background in cloud services (AWS, GCP) and DevOps practices. Experience in healthcare and regulated environments is a plus.
+
+Responsibilities:
+- Design and implement scalable backend services and APIs.
+- Collaborate with cross-functional teams to define, design, and ship new features.
+- Ensure the performance, quality, and responsiveness of applications.
+- Identify and correct bottlenecks and fix bugs.
+- Help maintain code quality, organization, and automation.
+
+Qualifications:
+- Proven experience as a Backend Engineer.
+- Strong proficiency in Python and its frameworks (FastAPI, Django).
+- Experience with cloud platforms such as AWS and GCP.
+- Familiarity with DevOps practices and tools.
+- Experience in healthcare or regulated environments is a bonus.
+
+If you are passionate about backend development and want to work in a dynamic and innovative environment, we encourage you to apply.

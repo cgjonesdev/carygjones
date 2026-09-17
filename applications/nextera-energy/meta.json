@@ -1,0 +1,24 @@
+{
+  "company": "NextEra Energy",
+  "client": null,
+  "role": "AI Software Engineer",
+  "location": "Remote CST",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design emphasizes clarity and professionalism, using a clean layout and a color palette that conveys trust and expertise.",
+  "notes": "Emphasize cloud-based delivery on AWS and GCP, ability to work with legacy and modern systems, strong backend development skills with SQL optimization, and experience collaborating with product and business stakeholders.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd2ea32679969a",
+    "thread_id": "19fd2b93b45b2a64",
+    "subject": "Re: AI Software Engineer \u2014 NextEra Energy (Remote CST)",
+    "sender": "Cary Jones <cgjonesdev@gmail.com>"
+  },
+  "recruiter_email": "cgjonesdev@gmail.com",
+  "recruiter_name": "Cary"
+}

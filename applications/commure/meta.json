@@ -1,0 +1,21 @@
+{
+  "company": "Commure",
+  "client": null,
+  "role": "Senior Software Engineer, AI Integrations",
+  "location": "Remote",
+  "match_score": 92,
+  "status": "applied",
+  "created": "2026-08-07",
+  "updated": "2026-08-12",
+  "salary": null,
+  "styling_notes": "The resume design uses a clean and modern palette to highlight technical skills and achievements, ensuring clarity and professionalism.",
+  "notes": "Extensive experience in AI and Machine Learning Integration, strong proficiency in Python and relevant frameworks, proven track record in developing scalable microservices and cloud architectures, experience in healthcare domain and HIPAA compliance. Application confirmation received 2026-08-07 \u2014 no job portal link in email.",
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd31da4cdc065a",
+    "thread_id": "19fd31da4cdc065a",
+    "subject": "Thank you for applying to Senior Software Engineer, AI Integrations at Commure",
+    "sender": "Commure Talent Team <no-reply@ashbyhq.com>"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "company": "DPR Solutions",
+  "client": null,
+  "role": "Sr Python Developer",
+  "location": "Remote - USA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-11",
+  "updated": "2026-08-11",
+  "salary": null,
+  "styling_notes": "The resume design should emphasize technical skills and project accomplishments, using a clean layout that highlights relevant experience in Python and cloud technologies.",
+  "notes": "No specific experience mentioned with Spring Boot, Azure cloud services, Azure Synapse, Databricks, or PySpark.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19ff28dca3d26f1f",
+    "thread_id": "19ff28dca3d26f1f",
+    "subject": "Hiring : Sr Python Developer : Remote - USA",
+    "sender": "Naveen M DPR <naveen.m@dprsolutionsinc.com>"
+  },
+  "recruiter_email": "naveen.m@dprsolutionsinc.com",
+  "recruiter_name": "Naveen"
+}

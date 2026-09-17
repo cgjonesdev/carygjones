@@ -1,0 +1,24 @@
+{
+  "company": "Eros Technologies Inc.",
+  "client": null,
+  "role": "Sr Full Stack Developer with Python",
+  "location": "Miami, FL",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-08",
+  "salary": null,
+  "styling_notes": "The resume design emphasizes clarity and professionalism, suitable for technical roles.",
+  "notes": "Strong alignment with Python backend development and ReactJS frontend expertise. Limited experience with .NET, Azure SQL, and knowledge graph systems.",
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd24e1c11424da",
+    "thread_id": "19fd24e1c11424da",
+    "subject": "Sr Full Stack Developer with Python || Miami, FL(Onsite) || Contract",
+    "sender": "Brajesh <brajesh@erostechnologies.com>"
+  },
+  "recruiter_email": "brajesh@erostechnologies.com",
+  "recruiter_name": "Brajesh",
+  "gmail_draft_id": "r6670341159714884571"
+}

@@ -1,0 +1,17 @@
+Subject: Re: AI Solutions Engineer (Lead) Application
+
+Dear Hiring Manager,
+
+I am writing to express my interest in the AI Solutions Engineer (Lead) position at Air Treatment Corporation. With over 15 years of experience in AI integration, cloud architecture, and leading technical teams, I am excited about the opportunity to contribute to your innovative projects and drive the development of AI-driven solutions.
+
+Throughout my career, I have successfully led cross-functional teams to integrate AI technologies into existing systems, ensuring scalability and reliability in production environments. My expertise in frameworks such as FastAPI, Sanic, and Django, coupled with my experience in AWS and GCP, aligns well with the requirements of this role. I am particularly drawn to the opportunity to mentor junior engineers and drive innovation by applying the latest AI and machine learning techniques.
+
+At CGJSoftware, Inc., I spearheaded the development of AI-augmented enterprise solutions, boosting engineering velocity by over 40% while maintaining strict code quality and security standards. My leadership as a Scrum Master has been instrumental in guiding teams through complex projects, ensuring timely delivery of high-quality software solutions.
+
+I am eager to bring my background in AI solutions engineering and cloud architecture to Air Treatment Corporation and contribute to your mission of delivering cutting-edge AI applications. Thank you for considering my application. I look forward to the opportunity to discuss how my skills and experiences align with your needs.
+
+Sincerely,
+
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com

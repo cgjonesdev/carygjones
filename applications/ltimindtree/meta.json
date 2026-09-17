@@ -1,19 +1,20 @@
 {
   "company": "LTIMindtree",
   "client": "Paramount+",
-  "role": "Sr. AWS Python Developer — Media Platform (via LTM)",
-  "location": "Los Angeles, CA or New York, NY (Onsite — confirm hybrid)",
+  "role": "Sr. AWS Python Developer \u2014 Media Platform (via LTM)",
+  "location": "Los Angeles, CA or New York, NY (Onsite \u2014 confirm hybrid)",
   "match_score": null,
-  "status": "interview",
+  "status": "rejected",
   "created": "2026-07-27",
-  "updated": "2026-07-31",
-  "salary": "$63/hr LTM cap (~$131K); client JD listed $140K + benefits — both below $155K target",
+  "updated": "2026-08-11",
+  "salary": "$63/hr LTM cap (~$131K); client JD listed $140K + benefits \u2014 both below $155K target",
   "styling_notes": null,
   "source_email": {
-    "message_id": "19fb92cf237bf183",
-    "thread_id": "19fb92cf237bf183",
-    "subject": "LTM Discussion with Cary Jones",
-    "sender": "Varun1 Verma <Varun1.Verma@ltm.com>"
+    "message_id": "19fd378b00e2e62a",
+    "thread_id": "19fd378b00e2e62a",
+    "subject": "LTIMindtree selection process - Pre-offer Document requested. Due date 06 Aug 2026",
+    "sender": "LTIMindtree Talent Acquisition <noreply@ripplehire.com>"
   },
-  "notes": "Recruiter screen passed 2026-07-31 with Varun Verma. Submitted to client Paramount+; awaiting schedule for first technical interview. Paramount+ team decides fit. See applications/paramount/ for tailored resume, JD, and prep. Comp: negotiate — $140K client band vs $63/hr LTM cap vs $155K target."
+  "notes": "Recruiter screen passed 2026-07-31 with Varun Verma. Submitted to Paramount+ client. RippleHire Self-ID completed 2026-08-05; documents approved 2026-08-05. Client technical interview completed 2026-08-07 \u2014 awaiting feedback. See applications/paramount/. Comp: negotiate $140K vs $63/hr cap vs $155K target.",
+  "recruiter_name": "LTIMindtree"
 }

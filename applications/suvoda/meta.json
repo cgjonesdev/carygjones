@@ -1,0 +1,22 @@
+{
+  "company": "Suvoda",
+  "client": null,
+  "role": "Senior Software Developer",
+  "location": "United States",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design emphasizes clarity and professionalism, aligning with the expectations for a senior software developer role.",
+  "notes": "Extensive experience in software development and architecture, strong proficiency in Python and related frameworks, experience with cloud platforms and containerization, proven ability to lead cross-functional teams.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4438770131?lipi=urn%3Ali%3Apage%3Aemail_email_jobs_saved_job_reminder_01%3Bte%2F6rlZ%2BQ0aqe%2FZoLixClg%3D%3D&midToken=AQHu2FYfZAge0g&midSig=3KFJIT3lLAcco1&trk=eml-email_jobs_saved_job_reminder_01-saved~jobs-0-external~eml~sjr~top~apply~cta&trkEmail=eml-email_jobs_saved_job_reminder_01-saved~jobs-0-external~eml~sjr~top~apply~cta-null-7pciz~msgdh5z6~5r-null-null&eid=7pciz-msgdh5z6-5r&otpToken=NjQwYzIxMzRiYmM4MDg0MjhjOGM3ZGM3MzIxZjA2MTNmYjEyMWQ1NjkxMjhlOTc0NGZlYTc4MDY3MWMxY2I3YTI4NzU4OGY0NTQwM2E2NjM3M2FhMjZiZTJkOWIyMjY1YmQ2NzVjODg1NTJhMWUzMDNhZDk3NDIxOGJhMzZkNmYwNmYyNGRhZGJiNzEsMiwx",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4438770131",
+  "source_email": {
+    "message_id": "19fd302fabc11df8",
+    "thread_id": "19fd302fabc11df8",
+    "subject": "Cary, apply now to \u2018Senior Software Developer at Suvoda\u2019",
+    "sender": "LinkedIn <jobs-noreply@linkedin.com>"
+  }
+}

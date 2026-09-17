@@ -1,0 +1,14 @@
+Hi — I'm interested in the Senior Software Engineer, AI Integrations role at Commure.
+
+Quick fit summary:
+• 15+ years Python backend + healthcare: HIPAA-compliant APIs (500k+ profiles), regulated medical device verification (Hospira), and production LLM/RAG integration in engineering workflows.
+• End-to-end integration ownership: partner data pipelines, event-driven systems (2.5M+ daily transactions), AWS/GCP, Docker, observability, and on-call reliability.
+• Based in Temple City, CA — comfortable with LA hybrid; excited about Commure's AI-native healthcare platform mission.
+
+Happy to share more or connect briefly. Resume attached if helpful.
+
+Best,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/

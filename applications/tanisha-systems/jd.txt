@@ -1,0 +1,50 @@
+Source: Tanisha Systems
+
+Subject: Application Security Engineer/ Architect – AWS - Remote - Contract
+
+Hi Cary,
+08/04/26 3:06 PM
+
+Greetings,
+
+My name is Deepak and I'm an IT recruiter at Tanisha Systems. Our records show that you are an experienced IT professional with experience in Application Security Engineer/ Architect – AWS. This experience is relevant to one of my current openings in Remote. The opening requires good communication skills in addition to the above skills. You can find more details about the job posting
+
+Role: Application Security Engineer/ Architect – AWS
+Location: Plano, TX (Remote)
+Job Type: Contract
+
+Key Responsibilities
+Perform threat modeling and secure design reviews for applications and microservices deployed on AWS (EC2, ECS/EKS, Lambda, API Gateway).
+Integrate and operate security tooling in CI/CD pipelines: SAST, DAST, SCA/dependency scanning, container image scanning, and IaC scanning.
+Configure and manage AWS-native security services: WAF, Shield, GuardDuty, Inspector, Security Hub, KMS, Secrets Manager, IAM.
+Define and enforce least-privilege IAM policies, secrets management standards, and encryption (at rest/in transit) across workloads.
+Conduct secure code reviews and vulnerability triage; partner with dev teams on remediation and secure coding practices (OWASP Top 10, CWE).
+Harden infrastructure-as-code (Terraform/CloudFormation) using policy-as-code (OPA, Checkov) and guardrails (SCPs, Config rules).
+Support penetration test coordination, findings remediation, and audit/compliance requirements (SOC 2, ISO 27001, PCI-DSS as applicable).
+Respond to application-layer security incidents; contribute to detection rules and runbooks.
+Mentor engineers and champion DevSecOps culture across delivery teams.
+Required Skills & Experience
+8+ years in application security / product security, with 3+ years securing workloads on AWS.
+Hands-on expertise with AWS security services: IAM, WAF, GuardDuty, Inspector, Security Hub, KMS, Secrets Manager, CloudTrail.
+Strong knowledge of OWASP Top 10, API security, authentication/authorization patterns (OAuth 2.0, OIDC, SAML).
+Experience with security tooling: SonarQube/Checkmarx/Veracode (SAST), Snyk/Prisma/Aqua (SCA & containers), Burp Suite/OWASP ZAP (DAST).
+Proficiency in at least one language for automation — Python, Go, or similar; ability to read Java/Node.js/.NET application code.
+Experience securing containerized (Docker, EKS/ECS) and serverless (Lambda) architectures.
+IaC security: Terraform or CloudFormation with Checkov/tfsec/cfn-nag.
+CI/CD security integration: GitHub Actions, GitLab CI, Jenkins, or AWS CodePipeline.
+Certifications: AWS Certified Security – Specialty (strongly preferred); CSSLP, OSWE, or CISSP.
+Preferred Qualifications
+Experience with CNAPP platforms (Wiz, Prisma Cloud, CrowdStrike Falcon Cloud).
+Threat modeling frameworks (STRIDE, PASTA) and secure SDLC program experience.
+Prior work in a client-facing or consulting/delivery environment with enterprise customers.
+Exposure to compliance frameworks: SOC 2, ISO 27001, PCI-DSS, HIPAA, FedRAMP.
+
+Thanks again.
+
+Website Open Jobs
+If you are qualified, available, interested, planning to make a change, or know of a friend who might have the required qualifications and interest, please call me ASAP at (732) 377-3605 Ext.539, even if we have spoken recently about a different position. If you do respond via e-mail please include a daytime phone number so I can reach you. In considering candidates, time is of the essence, so please respond ASAP. Thank you.
+
+Note: Please allow me to reiterate that I chose to contact you either because your resume had been posted to one of the internet job sites to which we subscribe, or you had previously submitted your resume to our career section page on our website. I assumed that you are either looking for a new employment opportunity, or you are interested in investigating the current job market.
+
+If you are not currently seeking employment, or if you would prefer I contact you at some later date, please indicate your date of availability so that I may honor your request. In any event, I respectfully recommend you continue to avail yourself to the employment options and job market information we provide with our e-mail notices.
+Note: Tanisha Systems is an equal opportunity employer that is committed to diversity in the workplace. Our employment decisions are made without regard to race, color, creed, religion, gender (including pregnancy, childbirth or related medical conditions), gender identity or expression, national origin, ancestry, age, family-care status, veteran status, marital status, civil union status, domestic partnership status, military service, handicap or disability or history of handicap or disability, genetic information, atypical hereditary cellular or blood trait, union affiliation, affectional or sexual orientation or preference, or any other characteristic protected by applicable federal, state, or local law, except where such considerations are bona fide occupational qualifications permitted by law. If you are interested in this position, please click here . If you would like to unsubscribe from Tanisha Systems, please click unsubscribe .

@@ -1,0 +1,32 @@
+Source: LinkedIn
+
+Subject: Cary, Exciting Remote Full Stack Developer Role | Contract to Hire
+
+Hi Cary,
+
+I hope you're having a great day! I came across your background and wanted to reach out regarding a Sr. Full Stack Developer opportunity with our client. This is a Remote Contract-to-Hire role working on modern cloud-native application development initiatives.
+
+I noticed that you are open to new opportunities, which makes this position even more relevant for you.
+
+The team is looking for strong experience with:
+• Python & JavaScript
+• Full Stack Development
+• AWS Cloud / Cloud-Native Applications
+• Frameworks such as Django, Flask, FastAPI, Falcon, or SQLAlchemy
+• Frontend technologies like React, Angular, Vue.js, or Svelte
+• Microservices, APIs, CI/CD, Docker, Kubernetes/EKS
+
+Your experience as a Senior Software Engineer & Solutions Architect with over 15 years of experience in building high-performance API microservices and cloud infrastructure aligns well with the needs of this role. Your expertise in integrating LLMs and modern AI development tooling could greatly contribute to the team's success.
+
+The role involves designing and building scalable AWS-based applications, collaborating with architects and product teams, and contributing to modernization initiatives in an Agile environment.
+
+US Citizenship or Green Card is required.
+
+If this sounds like something you’d be interested in, please send over your updated resume. Also, let me know a good time to connect for a quick discussion.
+
+Thanks & regards,
+
+Ashu Tyagi
+Sr. Recruiter
+SENECA | RESOURCES
+Ph: (703) 202-0402 | ashu@senecahq.com

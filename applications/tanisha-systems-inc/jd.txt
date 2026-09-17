@@ -1,0 +1,77 @@
+Subject: Hiring || Software Development Engineer || Redmond, WA || Fulltime
+
+Greetings !!!
+Hope you are doing great today !!
+
+We have an opening for Software Development Engineer at Redmond, WA
+Below are the requirement details, just go through it & if you feel interested, revert to me with your updated resume Your earliest reply is highly appreciated.
+
+Job Description  Software Development Engineer (SDE)  Satellite Storage Health
+Location: Redmond, WA (Onsite  5 Days/Week )
+
+Duration: Long-Term
+Job Summary
+We are seeking a highly skilled Software Development Engineer to join our satellite software platforms team. The engineer will be responsible for developing, maintaining, and supporting embedded software systems powering over-the-air (OTA) updates, storage management, and platform services across low-earth-orbit satellite infrastructure.
+The ideal candidate should have strong experience in Java, Python, Linux environments, and software testing, along with the ability to troubleshoot complex production issues and develop reliable software solutions.
+Key Responsibilities
+
+Design, develop, test, and deploy embedded software components supporting OTA update platforms.
+Develop new features, enhancements, and bug fixes using Java, Python, and Shell scripting.
+Troubleshoot and resolve complex production issues across embedded, storage, and platform services.
+Perform root cause analysis and implement corrective actions.
+Develop and maintain automated testing frameworks to improve software quality.
+Work with Linux-based development, debugging, and deployment environments.
+Collaborate with cross-functional engineering teams in Agile/Scrum environments.
+Participate in code reviews, technical discussions, and documentation activities.
+Provide recommendations to improve system reliability, scalability, and performance.
+
+Required Skills
+
+7+ years of professional software development experience.
+Strong proficiency in Java and Python.
+Experience with Bash/Shell scripting.
+Hands-on experience with Linux development environments.
+Experience with software testing methodologies and automation frameworks.
+Strong debugging and problem-solving skills.
+Experience working in Agile/Scrum development environments.
+Bachelors degree in computer science, Computer Engineering, Electrical Engineering, or related technical field (or equivalent experience).
+
+Preferred Skills
+
+Experience with embedded systems development.
+Knowledge of C++ and/or Rust.
+Experience with OTA update systems and software deployment pipelines.
+Experience with satellite, aerospace, or IoT platforms.
+Experience with incident management and root cause analysis.
+Knowledge of storage management systems and distributed software deployment.
+Experience with mission-critical software systems.
+Familiarity with CI/CD pipelines and build automation tools.
+
+Screening Questions
+
+Which Linux command is used to search for a specific text pattern within a log file?
+Answer: grep
+Which Java collection does not allow duplicate elements?
+Answer: Set
+What is returned by Pythons type() function?
+Answer: Data type of the object (example: int, str, list, dict)
+In Bash scripting, which symbol represents the exit status of the previous command?
+Answer: $?
+What is the purpose of regression testing?
+Answer: To verify existing functionality continues to work after code changes.
+
+Thanks, and Warm Regards
+Manish Kumar
+Tanisha Systems Inc
+Direct #:+1 732-377-3768
+Email: manish.kumar@tanishasystems.com
+Address:99 Wood Ave South Suite # 308,Iselin, NJ
+
+Website Open Jobs
+If you are qualified, available, interested, planning to make a change, or know of a friend who might have the required qualifications and interest, please call me ASAP at (732) 377-3768 Ext.768, even if we have spoken recently about a different position. If you do respond via e-mail please include a daytime phone number so I can reach you. In considering candidates, time is of the essence, so please respond ASAP. Thank you.
+
+Note: Please allow me to reiterate that I chose to contact you either because your resume had been posted to one of the internet job sites to which we subscribe, or you had previously submitted your resume to our career section page on our website. I assumed that you are either looking for a new employment opportunity, or you are interested in investigating the current job market.
+
+If you are not currently seeking employment, or if you would prefer I contact you at some later date, please indicate your date of availability so that I may honor your request. In any event, I respectfully recommend you continue to avail yourself to the employment options and job market information we provide with our e-mail notices.
+Note : Tanisha Systems is an equal opportunity employer that is committed to diversity in the workplace. Our employment decisions are made without regard to race, color, creed, religion, gender (including pregnancy, childbirth or related medical conditions), gender identity or expression, national origin, ancestry, age, family-care status, veteran status, marital status, civil union status, domestic partnership status, military service, handicap or disability or history of handicap or disability, genetic information, atypical hereditary cellular or blood trait, union affiliation, affectional or sexual orientation or preference, or any other characteristic protected by applicable federal, state, or local law, except where such considerations are bona fide occupational qualifications permitted by law.
+If you are interested in this position, please click here . If you would like to unsubscribe from Tanisha Systems, please click unsubscribe .

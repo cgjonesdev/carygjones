@@ -1,0 +1,15 @@
+{
+  "company": "Social Mind Solutions",
+  "client": null,
+  "role": "In-Person Tutor",
+  "location": "Multiple CA counties (in-person)",
+  "match_score": 32,
+  "status": "ready",
+  "created": "2026-08-14",
+  "updated": "2026-08-14",
+  "salary": "$25–$50/hour",
+  "styling_notes": null,
+  "notes": "Side-gig — STEM/computer tutoring pitch. Reply drafted in reply_email.txt. Attach base resume PDF (./scripts/render_base_resume.sh) or applications PDF. Apply: cathy@socialmindsolutions.org",
+  "apply_url": "mailto:cathy@socialmindsolutions.org",
+  "apply_method": "email"
+}

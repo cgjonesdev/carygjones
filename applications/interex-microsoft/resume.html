@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Technical Lead, Python &amp; Full-Stack</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #475569;
+        --accent: #0078d4;
+        --rule: #e2e8f0;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+      }
+      main { max-width: 8.5in; margin: 0 auto; padding: 0.5in 0.6in; }
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+      .fullname { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+      .title { margin-top: 0.3rem; font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+      a { color: inherit; text-decoration: none; }
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section p, section ul { margin-bottom: 0.4rem; }
+      section p { text-align: justify; }
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+      section#skills ul { list-style: none; margin-left: 0; }
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 0.4rem;
+      }
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section dl:last-child { border-bottom: none; }
+      dt { margin-bottom: 0.1rem; }
+      dt u { font-size: 0.92rem; font-weight: 600; text-decoration: none; color: var(--text); }
+      dt:not(:has(u)) { font-size: 0.82rem; color: var(--muted); }
+      dt b { color: var(--text); }
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+      b { font-weight: 700; }
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Technical Lead | Python, FastAPI &amp; Full-Stack Engineering</p>
+        <div class="contact">
+          <span>Temple City, CA 91780 (Remote US)</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Technical Lead and Senior Software Engineer</b> with 15+ years owning architecture and shipping production code in <b>Python (FastAPI, Django)</b>, <b>REST APIs</b>, and <b>PostgreSQL</b> systems. Hands-on leader who runs design reviews, mentors engineers, and stays in the codebase. Proven in <b>regulated and mission-sensitive environments</b> — HIPAA healthcare platforms, enterprise financial reporting, and medical-device verification. Experienced with <b>Docker/Kubernetes</b>, CI/CD, OAuth2/JWT authentication, and full-stack delivery (Python backends with React/Node.js frontends). U.S. Marine Corps veteran; clear communicator with senior stakeholders.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies</h1>
+        <ul>
+          <li><b>Technical Leadership:</b> Architecture ownership, design and code reviews, mentoring, Scrum Master, cross-functional delivery with product and business stakeholders</li>
+          <li><b>Python &amp; APIs:</b> FastAPI, Django, Flask, Sanic, RESTful API design, microservices, async Python, pytest, secure API patterns</li>
+          <li><b>Data &amp; Search:</b> PostgreSQL, SQLAlchemy/ORM, schema design, query optimization, Redis, MongoDB; indexing and high-volume retrieval patterns</li>
+          <li><b>Full-Stack:</b> React, Node.js, JavaScript, HTML/CSS; containerized full-stack apps on Docker; API-first integration with modern frontends</li>
+          <li><b>Platform &amp; Security:</b> Docker, Kubernetes, AWS ECS/Fargate, GCP, CI/CD (GitHub Actions, GitLab CI), OAuth2/JWT/RBAC, encryption, HIPAA-aware development</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Key Impact</h1>
+        <ul>
+          <li>Led containerized <b>FastAPI/Django microservices</b> on AWS — <b>+45% throughput</b>, API latency under <b>120ms</b>, with architecture reviews and CI/CD gates across client teams.</li>
+          <li>Engineered <b>PostgreSQL-backed financial systems</b> at Disney processing <b>$10M+ daily metrics</b> at <b>99.99% uptime</b>; cut batch reconciliation from <b>8 hours to 45 minutes</b>.</li>
+          <li>Architected <b>HIPAA-compliant REST APIs</b> (OAuth2, encryption) serving <b>500k+ user profiles</b>; established secure integration patterns for regulated healthcare delivery.</li>
+          <li>Built event-driven pipelines on <b>AWS ECS/Fargate</b> handling <b>2.5M+ daily transactions</b> at <b>99.95% accuracy</b> across PostgreSQL, Redis, and external APIs.</li>
+          <li>Containerized <b>Python, React, and Node.js</b> applications on Docker/GCP — <b>3×</b> deployment frequency improvement with documented handoff and runbooks.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Own technical direction and hands-on delivery for client <b>Python/FastAPI</b> backends on <b>AWS ECS/Fargate</b> — architecture, API contracts, PostgreSQL schemas, code reviews, and production support.</li>
+              <li>Lead design reviews and mentor engineers; establish CI/CD, testing standards, and secure integration patterns for enterprise clients.</li>
+              <li>Integrate LLM and document-automation capabilities into data pipelines while maintaining audit-friendly, maintainable codebases.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>May 2023 – July 2023 | CVS, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Led analysis decoupling legacy monolith toward domain-oriented microservices; improved Docker-based integration testing speed by <b>50%</b>.</li>
+              <li>Advised leadership on DDD and service boundaries; validated domain isolation with Python proof-of-concept harnesses.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Built scalable backend modules and <b>PostgreSQL interfaces</b> for enterprise financial reporting at <b>99.99% uptime</b>.</li>
+              <li>Co-architected Portfolio Insights tooling — transformed monolith SQL into web applications for Payroll and costing teams; partnered closely with finance stakeholders.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Software Developer and System Architect</u></dt>
+          <dt>July 2019 – October 2021 | CGJSoftware, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Containerized <b>Python, React, and Node.js</b> applications on Docker; deployed to GCP with improved release cadence and documented architecture diagrams.</li>
+              <li>Optimized PostgreSQL/Redshift reporting queries — <b>+38%</b> performance; built async AWS messaging pipelines with zero data loss at peak load.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health &amp; Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Architected secure <b>Python REST APIs</b> for HIPAA-compliant healthcare — <b>OAuth2</b>, JWT/RBAC, encryption, auditable access for <b>500k+ profiles</b>.</li>
+              <li>Scrum Master for cross-functional team; CI/CD pre-deploy scripts, production Linux hardening, and Git workflow documentation.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python API Developer</u></dt>
+          <dt>August 2013 – April 2014 | Fidelity Investments, Irving, TX</dt>
+          <dd>
+            <ul>
+              <li>Supervised junior developers; built <b>Django REST Framework</b> services with PostgreSQL — reduced provisioning errors by <b>95%</b> (4 hr → 10 min).</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education</h1>
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>ITT Technical Institute — GPA 3.67</dt>
+          <dd><ul><li>15+ years equivalent professional software engineering experience</li></ul></dd>
+        </dl>
+        <dl>
+          <dt><u>United States Marine Corps</u></dt>
+          <dt>Field Wireman &amp; Communications Specialist — Honorably Discharged</dt>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>

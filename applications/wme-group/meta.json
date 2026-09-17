@@ -1,0 +1,22 @@
+{
+  "company": "WME Group",
+  "client": null,
+  "role": "Senior Software Engineer",
+  "location": "Orange County, CA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-11",
+  "updated": "2026-08-11",
+  "salary": null,
+  "styling_notes": "The resume design utilizes a clean and modern palette to enhance readability and professionalism.",
+  "notes": "Cary has extensive experience in software engineering and cloud architecture, proficient in Python and frameworks such as FastAPI and Django, with a strong background in microservices and API development. However, specific experience in robotics or AI systems development is not mentioned, nor is there direct reference to working in the entertainment or media industry.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4402729881/?trackingId=iYQc9cm2KgQGJFRvBEm3Xw%3D%3D",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4402729881",
+  "source_email": {
+    "message_id": "19fc870d6a0fcc03",
+    "thread_id": "19fc870d6a0fcc03",
+    "subject": "Senior Software Engineer at WME Group",
+    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+  }
+}

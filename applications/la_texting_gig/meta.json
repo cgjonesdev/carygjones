@@ -1,0 +1,13 @@
+{
+  "company": "Craigslist — unknown (Los Angeles)",
+  "client": null,
+  "role": "Bulk SMS texting (not employment)",
+  "location": "Los Angeles (remote/unspecified)",
+  "match_score": 0,
+  "status": "skipped",
+  "created": "2026-08-11",
+  "updated": "2026-08-11",
+  "salary": "$40 for 1 hour",
+  "styling_notes": null,
+  "notes": "Likely scam or spam operation. Mass texting 50 numbers with templates, Google Form collects contact + payment info, no employer identity. TCPA/spam risk. Unrelated to engineering. Do not respond."
+}

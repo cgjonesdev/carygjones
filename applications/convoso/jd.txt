@@ -1,0 +1,21 @@
+Source: https://www.linkedin.com/comm/jobs/view/4434164165/?trackingId=IrnjCHeAxLQfa8%2BuIS92DQ%3D%3D&refId=kmBVbNgYIiXE9imQ1NL7jA%3D%3D
+
+Principal Software Engineer - AI
+Convoso
+Woodland Hills, CA
+
+Join our team as a Principal Software Engineer focused on AI, where you'll lead the development of cutting-edge AI solutions and cloud-based architectures. You'll work with a talented team to design and implement scalable, robust, and secure systems. The ideal candidate will have extensive experience in AI technologies, cloud environments (AWS/GCP), and microservices architecture. Leadership skills and experience as a Scrum Master are highly valued.
+
+Responsibilities:
+- Lead the design and implementation of AI-driven solutions.
+- Architect and deploy scalable cloud-based systems.
+- Collaborate with cross-functional teams to deliver high-quality products.
+- Ensure systems are robust, secure, and maintainable.
+- Mentor and guide engineering teams.
+
+Qualifications:
+- Proven experience in AI and machine learning technologies.
+- Strong background in Python and microservices architecture.
+- Experience with AWS and GCP cloud environments.
+- Excellent leadership and communication skills.
+- Experience as a Scrum Master is a plus.

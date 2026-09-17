@@ -1,0 +1,22 @@
+{
+  "company": "NexHealth",
+  "client": null,
+  "role": "Senior Software Engineer",
+  "location": "United States (Remote)",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-11",
+  "updated": "2026-08-11",
+  "salary": null,
+  "styling_notes": "The resume design emphasizes clarity and professionalism, suitable for a senior engineering role.",
+  "notes": "The role aligns with Cary's expertise in API microservices, Python, and cloud architecture.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4413152000/?trackingId=Z75dO7UHC1N84l8uJkLuIA%3D%3D&refId=uAgMtI%2BTUqojwYbedgqOMg%3D%3D",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4413152000",
+  "source_email": {
+    "message_id": "19fb9f577b36e1ac",
+    "thread_id": "19fb9f577b36e1ac",
+    "subject": "NexHealth is hiring for a Remote role",
+    "sender": "LinkedIn <jobs-noreply@linkedin.com>"
+  }
+}

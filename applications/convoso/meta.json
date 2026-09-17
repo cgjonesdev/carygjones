@@ -1,0 +1,22 @@
+{
+  "company": "Convoso",
+  "client": null,
+  "role": "Principal Software Engineer - AI",
+  "location": "Woodland Hills, CA",
+  "match_score": 90,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design utilizes a clean and professional palette with a focus on readability, emphasizing key competencies and achievements.",
+  "notes": "Extensive experience in AI and cloud architecture, strong background in Python and microservices, proven leadership as a Scrum Master, experience with AWS and GCP cloud environments.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4434164165/?trackingId=IrnjCHeAxLQfa8%2BuIS92DQ%3D%3D&refId=kmBVbNgYIiXE9imQ1NL7jA%3D%3D",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4434164165",
+  "source_email": {
+    "message_id": "19fd3b542b0a6910",
+    "thread_id": "19fd3b542b0a6910",
+    "subject": "Principal Software Engineer - AI at Convoso",
+    "sender": "LinkedIn <jobs-noreply@linkedin.com>"
+  }
+}

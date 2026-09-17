@@ -1,23 +1,14 @@
-Subject: Re: Senior/Staff Software Engineer at Flip
+Subject: Re: Thanks for your interest in Ashby!
 
-Hi Ashby team,
+Hi Team Ashby,
 
-Thank you for reaching out about the Staff Platform Engineer - Americas opportunity with Ashby. I'm very interested and would welcome the chance to move forward.
-
-A quick summary of my fit:
-
-• Platform engineering that codes: 15+ years owning AWS infrastructure (ECS, Fargate, Lambda, RDS), PostgreSQL at scale, Docker, and GitHub Actions CI/CD — not just operating systems, but building the tooling and guardrails teams ship through.
-• Event-driven architecture & data: Designed pipelines processing 2.5M+ daily transactions at 99.95% accuracy with explicit schemas, reconciliation, and observability — the kind of foundation that supports DSL-to-SQL compilers and data warehouse evolution.
-• Reliability & security: Maintained 99.99% uptime on enterprise AWS backends; built HIPAA-compliant APIs with audit-friendly access patterns. I evaluate risk deliberately and build for edge cases.
-• Async, end-to-end ownership: I deliver projects independently — from design through production and on-call — and communicate through written specs and code, not meeting-heavy process.
-
-I'm based in Temple City (Los Angeles area), available for Los Angeles, CA (Remote), and the $232k–$323k range aligns with my expectations. I'd love to learn more about the team and next steps when you have a moment.
-
-Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+Thank you for considering my application for the Staff Platform Engineer - Americas role. I am very excited about the opportunity to contribute to Ashby's innovative approach to talent acquisition software. I look forward to the possibility of discussing my application further.
 
 Best regards,
 Cary Jones
+
+Cary Jones
+Temple City, CA 91780
 (626) 272-2567
 cgjonesdev@gmail.com
-https://www.linkedin.com/in/cary-g-jones/
-https://cgjonesdev.github.io/carygjones/
+linkedin.com/in/cary-g-jones

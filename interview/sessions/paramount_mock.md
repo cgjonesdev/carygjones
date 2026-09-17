@@ -3,9 +3,11 @@
 # Client: Paramount+ via LTIMindtree
 # Role: Sr. AWS Python Developer — Media Platform
 #
-# HOW TO USE WITH CURSOR
-# ----------------------
-# Say any of these to start a live mock:
+# USE THE INTERVIEW PREP AGENT (tools/interview/.prompt)
+# ------------------------------------------------------
+# Trigger phrases:
+#   "run interview prep paramount"
+#   "prep mock for Paramount"
 #   "Start Paramount mock — behavioral"
 #   "Start Paramount mock — system design"
 #   "Start Paramount coding challenge 1"

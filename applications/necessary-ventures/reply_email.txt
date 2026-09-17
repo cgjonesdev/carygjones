@@ -1,0 +1,17 @@
+Subject: Re: Senior Backend Software Engineer Application
+
+Dear Hiring Manager,
+
+I hope this message finds you well. I am writing to express my interest in the Senior Backend Software Engineer position at Necessary Ventures. With a strong background in backend development, cloud infrastructure, and API design, I am eager to contribute to your team.
+
+I have extensive experience with Python frameworks such as FastAPI and Django, and I have successfully implemented microservices architectures that enhance system scalability and reliability. My work at CGJSoftware, Inc. has honed my skills in deploying containerized microservices on AWS, improving system throughput and reducing latency.
+
+I am particularly excited about the opportunity to work at Necessary Ventures due to your focus on innovation and excellence. I am confident that my technical skills and collaborative approach will be a valuable addition to your team.
+
+Thank you for considering my application. I look forward to the possibility of discussing how I can contribute to your projects.
+
+Best regards,
+
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com

@@ -1,0 +1,22 @@
+{
+  "company": "Otter",
+  "client": null,
+  "role": "Senior Backend Software Engineer",
+  "location": "Los Angeles, CA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-10",
+  "updated": "2026-08-10",
+  "salary": null,
+  "styling_notes": "The resume design utilizes a clean and modern palette to enhance readability and professionalism.",
+  "notes": "Extensive experience in backend development with Python frameworks (FastAPI, Django, Flask) and strong expertise in cloud services (AWS, GCP). Proven track record in building scalable REST APIs and integrating AI solutions. Specific mention of experience with on-site roles may not align with remote work preference.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4344245562/?trackingId=Sf4UWtm8Z07YrxypxnVC2Q%3D%3D&refId=YrLQEmyMvrEwopunNJuVgg%3D%3D",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4344245562",
+  "source_email": {
+    "message_id": "19fe7c4ddb0a2da4",
+    "thread_id": "19fe7c4ddb0a2da4",
+    "subject": "Senior Backend Software Engineer at Otter",
+    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+  }
+}

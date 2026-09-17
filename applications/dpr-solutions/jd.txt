@@ -1,0 +1,51 @@
+Source: DPR Solutions
+
+Subject: Hiring : Sr Python Developer : Remote - USA
+
+Greetings!!
+My name is Naveen, and I’m with DPR Solutions. I wanted to reach out regarding an exciting opportunity that I believe aligns well with your experience.
+Please take a moment to review the job details below and let me know if you're interested or would like more information.
+
+Role: Sr Python Developer
+Location: Remote - USA
+Experience: 12 Years
+Duration: Long Term
+Primary Skill : SQL, Spring Boot, Python
+
+Role Description
+
+* We are seeking an experienced Python Developer with 10–12 years of experience in designing, developing, and maintaining modern, data-driven applications.
+* The ideal candidate will have strong expertise in Python development, API development, SQL programming, and cloud-based application development.
+* This role focuses on building scalable backend services, integrating data platforms, and collaborating with cross-functional teams to deliver high-quality enterprise solutions in an Agile environment.
+
+Job Responsibilities
+
+* Design, develop, and maintain scalable applications using Python and modern backend frameworks.
+* Develop and enhance Python APIs and microservices to support enterprise applications.
+* Write, optimize, and maintain complex SQL scripts for data processing and application integration.
+* Build and consume RESTful APIs while implementing secure authentication mechanisms.
+* Collaborate with frontend developers to integrate backend services with React-based applications.
+* Develop and optimize data processing solutions using Databricks, PySpark, and SQL where applicable.
+* Participate in the complete Software Development Life Cycle including design, development, testing, deployment, and maintenance.
+* Work with Azure cloud services and Azure Synapse to build and support cloud-native applications.
+* Contribute to CI/CD pipeline implementation and deployment automation.
+* Collaborate with cross-functional teams in an Agile environment, participate in code reviews, troubleshoot production issues, and ensure application performance, scalability, and reliability.
+
+Primary Skills (Must Have)
+
+* Python
+* Python API Development
+* SQLFastAPI or Flask React JavaScript HTML5 CSS3 Databricks PySpark Azure REST APIs Microservices Git CI/CD Agile Methodology
+
+Naveen,
+
+Sr IT Recruiter,
+
+Phone: 571 685 2891 Ext 204
+
+Mail Id: naveen.m@dprsolutionsinc.com
+DPR Solutions Inc
+20130 Lakeview Center Plaza, Ste 140
+Ashburn, VA 20147
+
+🌐www.dprsolutionsinc.com

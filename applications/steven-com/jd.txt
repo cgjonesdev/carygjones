@@ -1,0 +1,30 @@
+Source: https://www.linkedin.com/comm/jobs/view/4449202593/
+
+Principal Software Engineer
+Steven.com
+Los Angeles Metropolitan Area
+
+Job Description:
+Steven.com is seeking a Principal Software Engineer to lead the development of our next-generation platform. The ideal candidate will have extensive experience in software engineering, architecture, and leadership, with a strong background in Python and cloud technologies (AWS, GCP). The role involves guiding cross-functional teams, designing scalable systems, and ensuring the delivery of high-quality software solutions.
+
+Key Responsibilities:
+- Lead the design and development of scalable software systems.
+- Collaborate with product, design, and engineering teams to deliver high-quality solutions.
+- Mentor and guide engineering teams in best practices and technical excellence.
+- Drive the adoption of modern development tools and practices.
+- Ensure system reliability, performance, and security.
+
+Qualifications:
+- 10+ years of experience in software engineering and architecture.
+- Strong expertise in Python and cloud platforms (AWS, GCP).
+- Proven leadership experience as a technical lead or Scrum Master.
+- Excellent problem-solving skills and attention to detail.
+- Experience with microservices architecture and RESTful API design.
+
+Preferred Qualifications:
+- Experience with proprietary technologies or frameworks used at Steven.com.
+- Background in the specific industry sector of Steven.com.
+- Strong communication and collaboration skills.
+
+Compensation:
+Competitive salary and benefits package.

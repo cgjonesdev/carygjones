@@ -1,34 +1,11 @@
-AnySignal — Python Software Engineer
+Source: LinkedIn
 
-Source: LinkedIn job alert (July 31, 2026)
-URL: https://www.linkedin.com/jobs/view/4447052126/
-Also listed: Software Engineer (Python) — job 4447082802
+Python Software Engineer
+AnySignal
+Los Angeles, California, United States
 
-Company: AnySignal — RF products and services for space and defense missions
-Location: Los Angeles, CA (On-site)
-Salary: $120,000 – $170,000/year + equity
+Your saved job at AnySignal is still available.
 
-Mission:
-Usher in the next generation of RF products and services with a flexible platform for demanding space and defense missions.
+Apply now
 
-Role: Python Software Engineer
-
-Responsibilities:
-- Own data aggregation, test, and automation framework for hardware, software, and DSP systems
-- Develop and maintain a Python software framework for engineers to write automated tests
-- Design and maintain systems for data aggregation and analysis
-- Build UIs that interface with hardware and software systems
-- Enable rapid, repeatable testing of space and ground segment components
-
-Requirements:
-- Expertise developing Python libraries
-- Strong understanding of networking concepts
-- Extensible, maintainable software systems supporting multiple engineering projects
-- Architecting scalable SQL and/or NoSQL databases
-- Test automation: equipment drivers, debug tools, socket interfaces
-- Docker
-- Nice to have: RF/DSP concepts, GNU Radio
-
-Eligibility: ITAR/export controls — U.S. person status typically required
-
-Tech keywords: Python, test automation, data aggregation, Docker, SQL, NoSQL, networking, socket interfaces, hardware/software integration
+https://www.linkedin.com/comm/jobs/view/4447052126?lipi=urn%3Ali%3Apage%3Aemail_email_jobs_saved_job_reminder_01%3B2%2B1%2FeTrmTxmdldEVK1Acvw%3D%3D&midToken=AQHu2FYfZAge0g&midSig=26mSpCQSUKfco1&trk=eml-email_jobs_saved_job_reminder_01-saved~jobs-0-external~eml~sjr~top~apply~cta&trkEmail=eml-email_jobs_saved_job_reminder_01-saved~jobs-0-external~eml~sjr~top~apply~cta-null-7pciz~msj8qdks~tm-null-null&eid=7pciz-msj8qdks-tm&otpToken=MzY1Y2ZmM2ZiOWI4MGZiYWE3NTY3NjU4ZmQ0YmMzZDEzYzhhOWNjNDA5ZTcwYWM0MWEwM2RkYThjYzhlODYzZjgxYTUxMzY0MGJjZGUzZjFiN2VlYjY3N2U1NzI2ZWE0Y2UzYTMyMzBmNDlhNmFhMDU2NjliZjFlNmZkOWRkZmU1MTkwMzQ2ZTUzNzcsMiwx

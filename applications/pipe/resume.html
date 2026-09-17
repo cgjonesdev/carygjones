@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Senior Backend Engineer</title>
+    <style>
+      :root {
+        --text: #18181b;
+        --muted: #52525b;
+        --accent: #7c3aed;
+        --rule: #e4e4e7;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+      }
+      main { max-width: 8.5in; margin: 0 auto; padding: 0.5in 0.6in; }
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+      .fullname { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+      .title { margin-top: 0.3rem; font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+      a { color: inherit; text-decoration: none; }
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section p, section ul { margin-bottom: 0.4rem; }
+      section p { text-align: justify; }
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+      section#skills ul { list-style: none; margin-left: 0; }
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 0.4rem;
+      }
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section dl:last-child { border-bottom: none; }
+      dt { margin-bottom: 0.1rem; }
+      dt u { font-size: 0.92rem; font-weight: 600; text-decoration: none; color: var(--text); }
+      dt:not(:has(u)) { font-size: 0.82rem; color: var(--muted); }
+      dt b { color: var(--text); }
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+      b { font-weight: 700; }
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Senior Backend Engineer | Python, PostgreSQL &amp; Cloud APIs</p>
+        <div class="contact">
+          <span>Temple City, CA 91780 (Remote)</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Senior Backend Engineer</b> with 15+ years building scalable cloud APIs, relational data systems, and distributed services on <b>AWS and GCP</b>. Deep production expertise in <b>Python</b> (FastAPI, Django) and <b>PostgreSQL</b> — schema design, query optimization, and high-integrity transaction pipelines. Proven delivering capital-adjacent systems: enterprise financial backends processing <b>$10M+ daily metrics</b>, automated reconciliation, and real-estate investment analytics. Polyglot backend engineer with <b>Go</b> proficiency; remote-first owner who leads projects from design through production and champions code review, CI/CD, and reliability standards.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies</h1>
+        <ul>
+          <li><b>Backend &amp; APIs:</b> Python (FastAPI, Django, Flask), Go, RESTful API design, microservices, event-driven architecture, distributed systems, pytest, code review</li>
+          <li><b>PostgreSQL &amp; Data:</b> Schema design, indexing, query optimization, SQLAlchemy/ORM, migrations, Redis, MongoDB, financial and transactional data modeling</li>
+          <li><b>Cloud:</b> AWS (ECS, Fargate, Lambda, RDS, S3, CloudWatch), GCP Compute, Docker, Kubernetes concepts, CI/CD (GitHub Actions), Secrets Manager</li>
+          <li><b>Leadership:</b> End-to-end project ownership, cross-functional collaboration with product and finance stakeholders, Scrum Master, mentoring, engineering best practices</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Key Impact</h1>
+        <ul>
+          <li>Engineered Python backends and <b>PostgreSQL interfaces</b> for enterprise financial systems processing <b>$10M+ daily transaction metrics</b> at <b>99.99% uptime</b> on AWS.</li>
+          <li>Co-architected automated reconciliation tooling — cut end-of-month batch processing from <b>8 hours to 45 minutes</b> through optimized SQL aggregation and pipeline redesign.</li>
+          <li>Built event-driven pipelines on <b>AWS ECS/Fargate</b> handling <b>2.5M+ daily transactions</b> at <b>99.95% accuracy</b> across PostgreSQL, Redis, and external APIs.</li>
+          <li>Deployed containerized microservices achieving API latency under <b>120ms</b> and <b>+45% throughput</b> improvement; custom ORM abstractions cut query boilerplate by <b>50%</b>.</li>
+          <li>Led cross-functional teams as <b>Scrum Master</b>; established Git workflows and CI/CD gates reducing merge conflicts by <b>70%</b>.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Design and deploy scalable <b>Python backend services</b> on <b>AWS ECS/Fargate</b> — own architecture, PostgreSQL schemas, API contracts, and production observability.</li>
+              <li>Partner with client product and business teams to translate requirements into reliable, testable deliverables with CI/CD and staged rollouts.</li>
+              <li>Conduct code reviews and establish engineering standards across distributed microservice codebases.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Engineered scalable backend modules and <b>PostgreSQL data interfaces</b> for core enterprise <b>financial reporting</b> systems at <b>99.99% uptime</b>.</li>
+              <li>Co-architected automated costing and reconciliation features with finance stakeholders — optimized relational queries and batch pipeline reliability.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Software Developer and System Architect</u></dt>
+          <dt>July 2019 – October 2021 | CGJSoftware, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Containerized services and deployed to <b>GCP</b>; optimized complex <b>PostgreSQL/Redshift</b> queries improving reporting performance by <b>38%</b>.</li>
+              <li>Built event-driven messaging pipelines on AWS with strict data-loss prevention during peak load.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, Web Developer, and System Architect</u></dt>
+          <dt>July 2016 – January 2018 | CT-REI, Inc., Austin, TX</dt>
+          <dd>
+            <ul>
+              <li>Built real-estate investment evaluation and <b>financial tracking</b> web applications; automated offer calculations boosting analysis throughput by <b>400%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python API Developer</u></dt>
+          <dt>August 2013 – April 2014 | Fidelity Investments, Irving, TX</dt>
+          <dd>
+            <ul>
+              <li>Built <b>Django REST Framework</b> APIs with robust contract design, PostgreSQL-backed automation, and comprehensive pytest coverage.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>May 2023 – July 2023 | CVS, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Decoupled legacy monolith into domain-oriented services; improved integration test speed by <b>50%</b> with Docker-based local environments.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education</h1>
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>ITT Technical Institute — GPA 3.67</dt>
+          <dd>
+            <ul>
+              <li>15+ years equivalent professional backend software engineering experience</li>
+            </ul>
+          </dd>
+        </dl>
+        <dl>
+          <dt><u>United States Marine Corps</u></dt>
+          <dt>Field Wireman &amp; Communications Specialist — Honorably Discharged</dt>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>

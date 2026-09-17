@@ -1,0 +1,130 @@
+Subject: Full time Job Opportunity - Full Stack Software Developer @ Cupertino, CA
+
+Your Email Title 
+ 
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700&display=swap');
+ body{font-size:14px;-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;font-family:'Open Sans', sans-serif, Arial, sans-serif;}
+ .atsEmail{max-width: 100%;padding:10px;font-family:'Open Sans', sans-serif, Arial, sans-serif; color:#333;} 
+ .atsMBlock *{box-sizing: border-box;} 
+ .atsEmail p{font-size:14px;}
+ .tableBlock table{border-collapse: collapse;}
+ .tableBlock th{ white-space: nowrap;} 
+ .tableBlock td, .tableBlock th{font-size:14px; padding:5px;}
+ .tableBlock {max-width: 100%; overflow: auto;}
+ .tableBlock img, .atsEmail img{max-width: 99%; width: auto;}
+ .mTitle-1{color:#333; font-size: 22px; line-height: 22px; font-family:'Open Sans', sans-serif, Arial, sans-serif; font-weight:700; float: left; width: 100%; margin-top: 10px;margin-bottom: 20px;}
+ .mTitle-2{color:#333; font-size: 22px; font-family:'Open Sans', sans-serif, Arial, sans-serif; font-weight:400; float: left; width: 100%; margin-top: 10px;margin-bottom: 20px;}
+ .mTitle-3{color:#333; font-size: 14px; font-family:'Open Sans', sans-serif, Arial, sans-serif; font-weight:600; float: left; width: 100%; margin-top: 10px;margin-bottom: 10px;}
+ .emTitle-1{font-size: 20px!important; width: 100%;font-family:'Open Sans', sans-serif, Arial, sans-serif; color:#333; font-weight: 600;}
+ .emNText{font-size: 14px!important; width: 100%;font-family:'Open Sans', sans-serif, Arial, sans-serif; color:#333; line-height: 20px;}
+ .emNText-2{font-size: 18px!important; width: 100%;font-family:'Open Sans', sans-serif, Arial, sans-serif;color:#333; font-weight: 600; margin-top:0;}
+ .emNText-3{font-family:'Open Sans', sans-serif, Arial, sans-serif;color:#333;font-size: 14px!important; line-height: 20px;}
+ .boxColM{font-family:'Open Sans', sans-serif, Arial, sans-serif;color:#333;line-height: 20px;width: 100%;max-width:49%;float: left; margin:10px 0; padding-right: 1%;}
+ .mFooterDmc{text-align: left;width: 100%;margin: 25px auto 20px;padding: 15px 0px 0;display:block;clear: both;border-top: solid 1px #ececec;float: left;}
+ .mBodyText{color:#333; font-size:14px; margin-bottom: 10px;font-family:'Open Sans', sans-serif, Arial, sans-serif; width:100%;}
+ .mBodyText ul{margin: 0; padding: 0 0 0 20px;}
+ @media screen and (max-width: 600px) { 
+ .boxColM{max-width: 100%!important; margin-top: 10px!important;padding-right: 0!important;font-size:16px!important; width: 100%;}
+ .tableBlock {max-width:530px;} 
+ .tableBlock td, .tableBlock th{font-size:16px; }
+ .tableBlock th{ white-space: nowrap;} 
+ .mTitle-1{font-size:20px!important;}
+ .emTitle-1{font-size:20px!important;}
+ .emNText-2{font-size:18px!important;}
+ .emNText{font-size:16px!important;line-height: 22px !important;}
+ .emNText-3{font-size:16px!important;line-height: 22px !important;}
+ .emNText{font-size:16px!important;}
+ } 
+ @media screen and (max-width: 500px) {
+ .atsEmail{max-width:460px;}
+ .tableBlock {width:460px!important; overflow: auto;}
+ .tableBlock td, .tableBlock th{font-size:16px!important;}
+ }
+ @media screen and (max-width: 430px) {
+ .tableBlock {width: 410px!important; overflow: auto;}
+ .atsEmail{max-width:410px;}
+ .tableBlock td, .tableBlock th{font-size:16px!important;}
+ }
+ @media screen and (max-width: 400px) {
+ .tableBlock {width:390px!important;overflow: auto;}
+ .atsEmail{max-width:390px;}
+ .tableBlock td, .tableBlock th{font-size:16px!important;}
+ 
+ } 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Hello Cary, 
+
+ This is Gulam, a Staffing Specialist with SRI Tech Solutions. We bring over 20 years of industry experience, specializing in IT staffing, consulting, and application development across healthcare, telecom, and financial services. 
+
+ Job Title: Full Stack Software Developer 
+
+ Location: Cupertino, CA (Onsite) 
+
+ 
+ 
+
+ Key Qualifications 
+
+ 
+ 5+ years of hands-on software development experience 
+ Experience designing technical solutions for complex systems 
+ Must have strong proficiency in Python and Object-Oriented Programming skills 
+ High level of expertise developing applications using in Django and Django Rest Framework 
+ Skilled in designing and building web user interfaces in React, strong understanding of UX design principles 
+ Experience with relational and NoSQL databases 
+ Excellent communication and collaboration skills 
+ Excellent problem solving and analytical thinking skills 
+ 
+
+ Description 
+
+ 
+ Youll be working in a team of data engineers to design and develop solutions that enable world class algorithms that push the state of the art. 
+ You will be working on solutions to data collection and management problems of volume, variety and velocity. 
+ Your goal is to raise the quality and productivity of the team as a whole by building services and solutions that allow everyone to work faster. 
+ 
+
+ Your job responsibilities will include: 
+
+ 
+ Develop and maintain software services required for efficient and scalable data collection processes 
+ Design solutions and features that balance multiple data consumers needs 
+ Participate in design reviews with peers and stakeholders to ensure correct solution is picked 
+ Review code with peers to provide and get feedback on implemented solution 
+ Coordinate and work closely with team members and other engineering teams 
+ 
+
+ Education/Experience 
+
+ 
+ B.S., or M.S., or 5+ years of industry experience in software development field 
+ 
+ Thanks & Best Regards, 
+Senior Technical Recruiter 
+
+ 
+ 
+ SRI Tech Solutions INC 
+ Certified Minority Business Enterprise | An E-Verify Employer 
+SRI Tech Solutions is an equal opportunity employer and does not discriminate on the basis of race, color, gender, religion, age, sexual orientation, national origin or citizenship status or ethnic origin, disability, marital status, veteran status, or any other occupationally irrelevant criteria. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ To unsubscribe from future emails or to update your email preferences click here

@@ -1,0 +1,20 @@
+Source: LinkedIn
+
+Staff Engineer, Energy Analytics
+Common River
+Arcadia, CA
+
+Common River is seeking a Staff Engineer for our Energy Analytics team. In this role, you will be responsible for designing and implementing scalable software solutions to analyze and optimize energy consumption. The ideal candidate will have a strong background in software engineering, cloud architecture, and data analytics. Experience with energy data and analytics tools is a plus.
+
+Responsibilities:
+- Develop and maintain scalable software solutions for energy analytics.
+- Collaborate with cross-functional teams to design and implement new features.
+- Optimize existing systems for performance and scalability.
+- Stay up-to-date with the latest industry trends and technologies.
+
+Qualifications:
+- Strong experience in software engineering and cloud architecture.
+- Experience with AI and machine learning integration.
+- Proven track record in building scalable microservices and APIs.
+- Familiarity with cloud platforms such as AWS and GCP.
+- Experience with energy data or analytics tools is a plus.

@@ -1,0 +1,24 @@
+Source: https://www.linkedin.com/comm/jobs/view/4402738007/?trackingId=JJfwro6cb87pLblI5BQLWg%3D%3D&refId=CReF7E9MQtpXsmjzyja%2B0Q%3D%3D
+
+Senior Software Engineer
+WME | William Morris Endeavor
+Orange County, CA
+
+This company is actively hiring
+
+WME is building the next generation of internal tools and platforms to support our global talent and media operations. We are seeking a Senior Software Engineer to join our team and drive the development of scalable, high-performance applications. You will work closely with cross-functional teams to deliver innovative solutions that enhance our business processes.
+
+Responsibilities:
+- Design, develop, and maintain high-performance, scalable applications and services.
+- Collaborate with product managers, designers, and other engineers to define and implement innovative solutions.
+- Ensure the quality and performance of applications through testing and code reviews.
+- Participate in architecture discussions and contribute to technical decisions.
+
+Qualifications:
+- Bachelor's degree in Computer Science or related field.
+- 5+ years of experience in software development.
+- Proficiency in Python and experience with frameworks such as FastAPI or Django.
+- Experience with cloud platforms such as AWS or GCP.
+- Strong understanding of microservices architecture and RESTful API design.
+- Excellent problem-solving skills and attention to detail.
+- Experience working in a collaborative, remote team environment.

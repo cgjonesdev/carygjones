@@ -1,0 +1,34 @@
+Source: LinkedIn
+
+Exciting Software Engineer Opportunities at Hadrian
+
+Hi Cary,
+
+I hope you're having a good week! My name is Abul and I'm building out our software engineering teams at Hadrian. We're designing and scaling the most futuristic factories in the world, AI, robotics, and manufacturing all in one. We raised $1.37B in our Series D at a $7.8B valuation and are scaling fast. Join early, get real ownership, and help shape the engineering org from the ground up. We're looking for A-players who want to be part of something big.
+
+If you love building 0-1, having real ownership over a product, and want to work on something that actually matters in the deep tech space, we should chat. Software where the stakes are physical, not just digital.
+
+We're hiring across the stack (Onsite out of Torrance, CA):
+Frontend, Full Stack, Backend
+
+A bit about us:
+
+* We automate the most complicated manufacturing processes down to the micron level
+* We build things that travel in space and underwater
+* Customers include the biggest names in aerospace & defense
+* Backed by Founders Fund, a16z, and Lux Capital
+* First to market and scaling fast
+* Our tech stack: Typescript, React, Next.js, AWS, Postgres, and Go
+
+Are you open to connecting to learn more?
+
+Before proceeding I need to clarify ITAR requirements. Please confirm eligibility to the below:
+
+ITAR Requirements
+To conform to U.S. Government space technology export regulations, including the International Traffic in Arms Regulations (ITAR) you must be a U.S. citizen, lawful permanent resident of the U.S., protected individual as defined by 8 U.S.C. 1324b(a)(3), or eligible to obtain the required authorizations from the U.S. Department of State.
+
+We are based onsite in LA, come join us in the sunshine.
+
+Best,
+
+Abul Mustafa

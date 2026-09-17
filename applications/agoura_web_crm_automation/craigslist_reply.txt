@@ -1,0 +1,64 @@
+Subject: CRM, automation & integrations subcontractor — LA-based senior engineer
+
+Hi,
+
+I'm applying for CRM architecture / workflow automation / integrations and website maintenance & technical support (not SEO or paid media — those aren't my focus).
+
+1. Service categories
+- CRM architecture and implementation (client-owned accounts)
+- Workflow automation (Zapier, Make, custom webhooks/API integrations)
+- Lead capture to CRM to follow-up pipelines
+- Website maintenance, technical support, and light dev (WordPress, Squarespace; integrations over greenfield design)
+- System documentation, handoff, and post-launch support
+
+2. Location / time zone
+Temple City, CA (Los Angeles County) — Pacific Time. Available remotely; can meet in LA/OC when useful.
+
+3. Platforms & tools (genuine experience)
+- Automation: Zapier, Make (Integromat), custom Python automation, webhooks, scheduled jobs
+- CRM / backends: Salesforce-adjacent patterns, custom CRM integrations via REST APIs; comfortable onboarding in HubSpot or GoHighLevel inside client accounts (not a certified GHL agency partner — strong on the technical wiring)
+- Web: WordPress, Squarespace, Django/Python backends, PostgreSQL, AWS (Lambda, S3, Secrets Manager)
+- Auth / data: OAuth2, JWT, RBAC, HIPAA-aware handling (healthcare SaaS background)
+- Not applying for: SEO, Google/Meta Ads, or creative web design-only roles
+
+4-5. Relevant work & what I personally built
+- Healthcare SaaS (Alan Health): OAuth2 authorization flows, JWT/RBAC, encrypted credential storage, third-party API integrations in a regulated environment
+- Document / workflow automation: Python pipelines for ingestion, classification, deduplication, and retrieval over large heterogeneous file sets
+- Integration patterns: Webhook receivers, retry/idempotency, error alerting, audit logging — the unglamorous parts that keep automations from breaking silently
+- Public profile: https://www.linkedin.com/in/cary-g-jones/ | https://cgjonesdev.github.io/carygjones/
+
+6. Rates
+$100/hour for consulting, automation builds, and technical support. Fixed project fees by scope after a short discovery call. Open to your $60-175 benchmark depending on complexity.
+
+7. Minimum engagement
+2-hour minimum for ad-hoc work; 4-8 hours typical for a scoped automation build or CRM integration milestone.
+
+8. Availability / turnaround
+Available for new projects within 1-2 weeks of agreement; small fixes often same-week. Turnaround agreed per milestone before work starts.
+
+9. Documentation & post-launch support
+Deliverables include: workflow diagram (triggers to actions to integrations), credential/account checklist, test cases run before handoff, and a short Loom or written runbook. Post-launch: hourly support or small monthly retainer by agreement.
+
+10. Account ownership & access
+All work in client-owned accounts wherever possible. Admin access, source files, and credentials returned at project end. I do not retain ownership of client domains, ad accounts, or CRM tenants. NDA-friendly.
+
+11. References
+Happy to provide references on request after an initial conversation. Ongoing consulting through CGJSoftware for technical automation and integration work.
+
+Automation case study (summary)
+
+Problem: Recruiting / ops team needed inbound leads from web forms to land in a CRM with correct tagging, deduplication, and automated follow-up — without manual CSV exports.
+
+What I built: Webhook endpoint to validation/normalization to CRM upsert via API to Slack notification on failure to idempotency keys to prevent duplicate records on retries. Documented field mapping, error states, and a rollback plan.
+
+Result: Reliable hands-off lead flow; team could see exactly where a lead stalled when something failed.
+
+(I can share a redacted workflow diagram or short screen recording of a similar system on a call — no confidential client data in writing.)
+
+I'm comfortable with white-label/subcontract arrangements and paid test assignments at an agreed flat fee before larger work. Happy to discuss your upcoming client projects.
+
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

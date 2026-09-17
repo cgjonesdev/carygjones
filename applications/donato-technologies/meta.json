@@ -1,0 +1,24 @@
+{
+  "company": "Donato Technologies",
+  "client": null,
+  "role": "Senior Python Developer",
+  "location": "San Ramon, CA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design is clean and professional, emphasizing technical skills and accomplishments relevant to the role.",
+  "notes": "Cary has extensive experience in Python backend development, strong knowledge of microservices architecture, and experience with cloud platforms (AWS, GCP).",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fdcef51ad6d7fa",
+    "thread_id": "19fdc85a3044e331",
+    "subject": "Re: Job Opportunity for Sr. Python Developer",
+    "sender": "Cary Jones <cgjonesdev@gmail.com>"
+  },
+  "recruiter_email": "cgjonesdev@gmail.com",
+  "recruiter_name": "Cary"
+}

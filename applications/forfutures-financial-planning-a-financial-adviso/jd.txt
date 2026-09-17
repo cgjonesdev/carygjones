@@ -1,0 +1,23 @@
+Source: https://www.linkedin.com/comm/jobs/view/4451303127/?trackingId=YAYaymlc58mbvxMLvdgWeg%3D%3D&refId=MHnEuB8q6oSemY8EhrLpQw%3D%3D
+
+Senior Software Engineer at ForFutures Financial, Planning, a financial advisory practice of Ameriprise Financial Services LLC
+
+Join a team that puts its People First! As a Senior Software Engineer at ForFutures Financial, you will be instrumental in developing cutting-edge financial advisory software solutions. We are looking for a seasoned engineer with a passion for building high-performance API microservices and a strong background in cloud architecture. The ideal candidate will have experience integrating AI and machine learning into enterprise solutions, particularly within the financial domain.
+
+Responsibilities:
+- Design, develop, and maintain scalable microservices and APIs.
+- Collaborate with cross-functional teams to integrate AI and machine learning solutions.
+- Optimize cloud infrastructure for performance and security.
+- Participate in code reviews and ensure best practices are followed.
+- Mentor junior engineers and contribute to the continuous improvement of engineering processes.
+
+Qualifications:
+- Over 10 years of experience in software engineering.
+- Expertise in Python, JavaScript, and cloud platforms such as AWS and GCP.
+- Proven experience in developing and deploying microservices.
+- Strong understanding of AI/ML integration in software solutions.
+- Experience in the financial services industry is a plus.
+
+Location: Santa Ana, CA
+
+Apply here: https://www.linkedin.com/comm/jobs/view/4451303127/?trackingId=YAYaymlc58mbvxMLvdgWeg%3D%3D&refId=MHnEuB8q6oSemY8EhrLpQw%3D%3D

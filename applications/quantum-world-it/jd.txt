@@ -1,0 +1,63 @@
+Source: Quantum World IT
+
+Role: API Integration Developer
+
+Location: Pennington - New Jersey (Onsite)
+
+Duration: Full-Time/Permanent
+
+Description:
+
+Develop and maintain provisioning and automation scripts using Python and Java.
+Design, develop, and maintain REST/SOAP API integrations between enterprise applications and platforms.
+Build and enhance workflow automation solutions using workflow orchestration platforms.
+Develop service catalog items, request fulfillment workflows, and automated provisioning processes.
+Configure and manage approval workflows, notifications, escalations, and service requests.
+Implement robust error handling, exception management, and logging frameworks.
+Integrate identity and access management (IAM), ticketing, and provisioning systems.
+Troubleshoot workflow failures, integration issues, and automation defects.
+Collaborate with business stakeholders to gather requirements and translate them into scalable automation solutions.
+Ensure solutions comply with security, governance, and operational standards.
+Maintain technical documentation and support CI/CD deployment processes.
+
+Required Skills
+
+Strong programming experience in Python and Java.
+Experience developing REST/SOAP APIs and integrating third-party applications.
+Strong knowledge of workflow orchestration, provisioning, and process automation.
+Experience creating service catalog items, approval workflows, and notifications.
+Strong understanding of JSON, XML, OAuth, JWT, and API authentication mechanisms.
+Experience with logging, monitoring, error handling, and troubleshooting.
+Familiarity with Git, CI/CD pipelines, and Agile/Scrum methodologies.
+Excellent analytical, problem-solving, and communication skills.
+
+Mandatory Skills
+
+Python
+Java
+Workflow Automation
+REST/SOAP APIs
+Automation
+Service Catalog Development
+Approval Workflows
+Provisioning
+API Integrations
+Error Handling & Logging
+
+Should you be interested, please send me a copy of your resume in word format along with the following details ASAP.
+
+Full Name:
+Current Location:
+Hourly rate on C2C/W2:
+Work Authorization:
+Earliest Available date to start:
+Date and times available to interview:
+Two Professional References:(Preferably Supervisory references):
+
+Best Regards,
+
+Sahil1 N/A
+
+N/A
+
+Sahil1@quantumworldit.com

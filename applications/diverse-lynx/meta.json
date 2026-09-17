@@ -1,0 +1,24 @@
+{
+  "company": "Diverse Lynx",
+  "client": null,
+  "role": "Full Stack Developer (ReactJS + Python)",
+  "location": "Sunnyvale, CA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-10",
+  "updated": "2026-08-10",
+  "salary": "$60-70/hr",
+  "styling_notes": "The resume design emphasizes clarity and professionalism, suitable for technical roles.",
+  "notes": "Strong proficiency in Python and PostgreSQL, experience with CI/CD, but lacks specific ReactJS and Oracle experience.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fed46cd4e93644",
+    "thread_id": "19fed46cd4e93644",
+    "subject": "Contract :Full Stack Developer (ReactJS + Python) : Sunnyvale CA",
+    "sender": "Sourav Paul <sourav.paul@diverselynx.com>"
+  },
+  "recruiter_email": "sourav.paul@diverselynx.com",
+  "recruiter_name": "Sourav"
+}

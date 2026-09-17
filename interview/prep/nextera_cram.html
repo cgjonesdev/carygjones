@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NextEra — Client Interview Cram Sheet</title>
+  <style>
+    @page { margin: 0.45in; size: letter; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 8.5pt;
+      line-height: 1.35;
+      color: #1e293b;
+      margin: 0;
+      padding: 0.4in 0.5in;
+    }
+    h1 {
+      font-size: 1.15rem;
+      color: #0c2340;
+      border-bottom: 2px solid #009639;
+      margin: 0 0 0.35rem;
+      padding-bottom: 0.2rem;
+    }
+    .meta { font-size: 8pt; color: #475569; margin-bottom: 0.5rem; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem 0.65rem; }
+    section { break-inside: avoid; }
+    h2 {
+      font-size: 8.5pt;
+      color: #009639;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0.4rem 0 0.2rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.1rem;
+    }
+    ul { margin: 0.15rem 0 0.25rem 0.9rem; padding: 0; }
+    li { margin-bottom: 0.12rem; }
+    .pitch {
+      background: #ecfdf5;
+      border-left: 3px solid #009639;
+      padding: 0.3rem 0.45rem;
+      margin: 0.25rem 0 0.4rem;
+      font-size: 8pt;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 7.8pt; margin-top: 0.15rem; }
+    th, td { border: 1px solid #e2e8f0; padding: 0.2rem 0.3rem; vertical-align: top; }
+    th { background: #f0fdf4; text-align: left; width: 28%; }
+    .full { grid-column: 1 / -1; }
+    strong { color: #0c2340; }
+  </style>
+</head>
+<body>
+
+<h1>NextEra Client Interview — Cram Sheet</h1>
+<p class="meta"><strong>Wed Sep 30, 2026 · 3:00–3:45 PM Central</strong> (= <strong>1:00–1:45 PM Pacific</strong>) · NEA Tech Screen · Ben Stelmach (FPL) · Jake’s Analytics team · Teams · <strong>Not a LeetCode screen</strong></p>
+
+<div class="pitch full"><strong>Pitch:</strong> Backend / cloud / SQL / ownership first. AI = Cursor/Copilot to ship faster with review. <strong>Interview shape (Dinesh):</strong> debug failing test → improve/own the code → production-ready + AI workflow. Judgment + communication &gt; speed.</div>
+
+<div class="grid">
+  <section class="full">
+    <h2>Tech screen logistics</h2>
+    <ul>
+      <li><strong>When:</strong> Wednesday, Sep 30, 2026 · <strong>3:00–3:45 PM Central</strong> (= <strong>1:00–1:45 PM Pacific</strong>)</li>
+      <li><strong>Title:</strong> NEA Contractor Tech Screen - Cary Jones</li>
+      <li><strong>Interviewer:</strong> Ben Stelmach · Ben.Stelmach@fpl.com (FPL / NextEra Analytics · Jake’s org)</li>
+      <li><strong>Teams:</strong> <a href="https://teams.microsoft.com/meet/220057723582770?p=gEkVwfcmcPZS8lGaaE">Join meeting</a> · ID <strong>220 057 723 582 770</strong> · pass <strong>WH9zV3ur</strong></li>
+      <li><strong>Intel:</strong> Dinesh Koraboina · “Final interview inputs” · Sep 17</li>
+      <li><strong>Join:</strong> 12:55 PM Pacific · resume.pdf · practice narrating debug</li>
+    </ul>
+  </section>
+  <section class="full">
+    <h2>Expected format (Dinesh — consistent across finals)</h2>
+    <ul>
+      <li><strong>1 · Debug:</strong> small Python app + failing unit test → root cause before fix · talk assumptions · be methodical</li>
+      <li><strong>2 · Review:</strong> improve / concerns / refactor / “if I owned this” → separation of concerns · data structures · API · errors · config · tests · scale/maintain</li>
+      <li><strong>3 · Production-ready:</strong> CI/CD · Docker · AWS/GCP · K8s · monitoring · logging · security/auth · DB/index · IaC — use <em>your</em> examples</li>
+      <li><strong>AI workflow:</strong> Cursor/Copilot/ChatGPT — generate + <strong>validate</strong> · debug assist · docs · never rubber-stamp</li>
+      <li><strong>Mindset:</strong> peer engineering conversation · think past the bug · not “fastest puzzle solver”</li>
+    </ul>
+  </section>
+  <section class="full">
+    <h2>Debug narration (say out loud)</h2>
+    <ul>
+      <li>What does the test expect? What did we get?</li>
+      <li>Trace inputs → transforms → return</li>
+      <li>Name root cause → fix → re-run test</li>
+      <li>Then: “If I owned this, next I’d…”</li>
+    </ul>
+  </section>
+  <section class="full">
+    <h2>60-sec intro (glance bullets — don’t memorize)</h2>
+    <ul>
+      <li><strong>Who:</strong> Cary · Sr SWE · 15+ yrs · Python backends · SQL · AWS/GCP · legacy modernization</li>
+      <li><strong>Disney:</strong> financial reporting · $10M+/day · AWS · 99.99% uptime · batch 8h → 45m</li>
+      <li><strong>CVS:</strong> monolith → domain boundaries → microservices path · Docker integration tests</li>
+      <li><strong>Fidelity:</strong> Django REST APIs · network automation · 4h → 10m</li>
+      <li><strong>Consulting:</strong> end-to-end with product · ECS/Fargate · schema → API → CI/CD · prod</li>
+      <li><strong>AI (one breath):</strong> Cursor/Copilot · LLM pipelines when useful · not ML research</li>
+      <li><strong>Close:</strong> want serious infra at scale — cloud + SQL · modernize without breaking prod</li>
+    </ul>
+    <div class="pitch" style="margin-top:0.35rem;">
+      <strong>30-sec pitch (optional read-through):</strong>
+      I’m Cary Jones, a senior software engineer with 15+ years building production Python backends, SQL-driven systems, and cloud services on AWS and GCP. At Disney I worked on financial reporting backends processing over $10M a day on AWS at 99.99% uptime, including cutting a batch reconciliation from eight hours to about 45 minutes. At CVS I helped analyze a monolith and map domain boundaries for a microservices migration. Through my consulting practice I’ve owned features end-to-end with product teams — schema, APIs, Docker, CI/CD, production support. I use AI tooling where it speeds delivery, but I’m not an ML researcher — I’m a backend engineer who ships reliable systems. I’m interested in this role because it’s serious infrastructure software at scale: cloud delivery, SQL depth, and modernizing legacy systems without breaking what already works.
+    </div>
+  </section>
+  <section>
+    <h2>Why NextEra</h2>
+    <ul>
+      <li>Critical infra · reliability matters · long-lived systems</li>
+      <li>Cloud + legacy modernization = my day job</li>
+      <li>Want to ship dependable software, not buzzword AI</li>
+      <li>Clean energy / scale innovation is interesting; my lane is backend that keeps ops running</li>
+    </ul>
+  </section>
+  <section class="full">
+    <h2>NextEra culture / values (if they ask “why us” or “culture fit”)</h2>
+    <p style="margin:0.15rem 0 0.25rem;font-size:8pt;">Their three values: <strong>excellence</strong> · <strong>do the right thing</strong> · <strong>treat people with respect</strong>. Culture also stresses continuous improvement, innovation, safety/reliability, accountability.</p>
+    <ul>
+      <li><strong>Excellence / continuous improvement:</strong> Disney batch 8h→45m · Fidelity 4h→10m · don’t ship sloppy for speed</li>
+      <li><strong>Do the right thing / integrity:</strong> regulated work (Disney finance, HIPAA, medical devices) · accurate data · auditability · say what I can and can’t do</li>
+      <li><strong>Respect / teamwork:</strong> Scrum Master · product partners · mentored juniors at Fidelity · remote cross-functional delivery</li>
+      <li><strong>Reliability / safety mindset (energy-adjacent):</strong> 99.99% uptime · careful legacy changes · rollback plans — software that must not casually break</li>
+      <li><strong>Innovation:</strong> AI as a tool to go faster with review/tests still owned — not research for its own sake (matches their “AI is bonus” JD)</li>
+    </ul>
+  </section>
+  <section class="full">
+    <h2>Stories (glance STAR — ~90 sec each)</h2>
+    <ul>
+      <li><strong>Disney (scale / SQL / AWS):</strong>
+        S — financial reporting backends · T — slow month-end reconcile + uptime pressure ·
+        A — PG schema/queries · AWS · pipeline redesign with finance stakeholders ·
+        R — $10M+/day · 99.99% · batch <strong>8h → 45m</strong></li>
+      <li><strong>CVS (legacy → modern):</strong>
+        S — monolith for domain migration · T — cut safe service boundaries ·
+        A — codebase analysis · DDD boundaries · Docker integration tests ·
+        R — clearer domains · faster local integration tests · path to microservices</li>
+      <li><strong>Fidelity (API / automation):</strong>
+        S — datacenter network provisioning · T — manual, error-prone, slow ·
+        A — Django REST APIs · junior mentorship · automation of device config ·
+        R — setup <strong>4h → 10m</strong> · ~95% fewer provisioning errors</li>
+      <li><strong>Consulting / CGJSoftware (ownership):</strong>
+        S — B2B clients need cloud features + legacy kept alive ·
+        A — Python on ECS/Fargate · schema → API → Docker → CI/CD → prod support · product partners ·
+        R — ship independently · straddle legacy + new without big-bang rewrites</li>
+      <li><strong>AI (keep short — bonus):</strong>
+        S — clients want faster delivery / doc workflows ·
+        A — Cursor/Copilot in review+test loop · LLM/RAG for classification when it fits ·
+        R — velocity up · still own code review + coverage · <em>not</em> ML research</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Pick story by question</h2>
+    <ul>
+      <li>Scale / SQL / cloud → <strong>Disney</strong></li>
+      <li>Legacy modernization → <strong>CVS</strong> (+ Dell if needed)</li>
+      <li>APIs / automation → <strong>Fidelity</strong></li>
+      <li>Independence / product → <strong>Consulting</strong></li>
+      <li>AI / ML → <strong>AI</strong> (one breath)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Gap pivots</h2>
+    <ul>
+      <li>No utilities → regulated + uptime + audit</li>
+      <li>AI title → backend first, AI accelerates</li>
+      <li>Schedule: 7–1 PT for 9–3 CST</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Logistics (if asked)</h2>
+    <ul>
+      <li>Temple City, CA · remote OK</li>
+      <li>Rate via Riyaz · ~$74–75/hr tgt</li>
+      <li>Start ~2 weeks</li>
+    </ul>
+  </section>
+  <section class="full">
+    <h2>Ask (pick 4–5)</h2>
+    <ul>
+      <li>What does the team own day to day?</li>
+      <li>Stack I’ll touch first — Python, cloud, data stores?</li>
+      <li>Success in 90 days on this squad?</li>
+      <li>AI here — product features vs engineering productivity?</li>
+      <li>Legacy vs greenfield mix?</li>
+      <li>Who do I work with day to day?</li>
+    </ul>
+  </section>
+  <section class="full">
+    <h2>If they ask about… (say it like this)</h2>
+    <table>
+      <tr><th>Debugging approach</th><td>I reproduce with the failing test, compare expected vs actual, trace the data path, confirm root cause before changing code, then re-run the test. I narrate assumptions so we’re aligned.</td></tr>
+      <tr><th>Own / improve this app</th><td>I’d clarify contracts (types/docs), separate IO from business logic, harden errors and config, add the tests that would have caught this class of bug, and only then talk scale.</td></tr>
+      <tr><th>Production-ready</th><td>Docker image, CI (lint/tests), deploy to ECS/Fargate or equivalent, secrets in a manager, CloudWatch (or similar) metrics+logs+alerts, staged rollout + rollback. Point to Disney uptime / consulting delivery.</td></tr>
+      <tr><th>Monolith → services</th><td>I don’t rewrite the whole monolith in one shot. I find natural boundaries, extract one service at a time (strangler), leave the old app running until each new piece is proven.</td></tr>
+      <tr><th>Slow SQL / reports</th><td>EXPLAIN ANALYZE → indexes → set-based SQL instead of row-by-row Python. Disney batch 8h → 45m.</td></tr>
+      <tr><th>AI tooling</th><td>Cursor/Copilot for scaffolding and debug hypotheses; I still read diffs, write/adjust tests, and own the merge. Not an ML researcher — practical velocity with guardrails.</td></tr>
+      <tr><th>Touching legacy safely</th><td>Analyze first, integration tests on risky paths, feature flags when possible, rollback plan before changing prod.</td></tr>
+    </table>
+  </section>
+  <section>
+    <h2>Before call</h2>
+    <ul>
+      <li>Join <strong>12:55 PM Pacific</strong> · resume.pdf open</li>
+      <li>Notepad · quiet · mic check · Teams ready</li>
+      <li>Meeting ID <strong>220 057 723 582 770</strong> · passcode <strong>WH9zV3ur</strong></li>
+    </ul>
+  </section>
+</div>
+
+</body>
+</html>

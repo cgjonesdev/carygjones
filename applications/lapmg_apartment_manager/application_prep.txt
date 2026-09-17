@@ -1,0 +1,36 @@
+LAPMG — Apartment Manager application prep
+
+Apply link:
+https://apply.teamengine.io/apply/AynU3OAEr6f_/v/B?utm_source=craigslist&sid=te-eo76rwJK79wZdlcq
+
+Property: 25 units, Cazador St., Los Angeles 90065
+Schedule: Mon–Fri, ~2.5 hrs/day, 8:00 AM – 12:00 PM (55 hrs/month)
+Comp: Rent-free 1BR + ~$200/mo cash (ADP); you pay utilities
+
+CHECK BEFORE YOU SUBMIT
+-----------------------
+[x] Spanish — conversational (English/Spanish); comfortable with resident communication in Spanish
+[x] Real-estate acquisitions + AppFolio experience
+[x] Non-smoker, no pets
+[ ] 2+ years formal onsite apartment manager title — gap acknowledged in cover letter; apply anyway
+[ ] Willing to live on-site at Cazador St. (90065)
+[ ] Available Mon–Fri 8am–12pm
+
+Suggested form fields (typical Team Engine)
+-------------------------------------------
+Name: Cary Jones
+Phone: (626) 272-2567
+Email: cgjonesdev@gmail.com
+City: Temple City (or "Available to relocate to Cazador St. on-site unit immediately")
+Can you work Mon–Fri 8am–12pm: Yes
+Authorized to work in US: Yes
+Valid driver's license: Yes (if applicable)
+
+Resume: Attach resume.pdf from this folder (property-focused — not SWE resume).
+Also paste lapmg_cover_letter.txt into any notes / cover letter field.
+
+After applying
+----------------
+- Save confirmation screenshot if offered
+- Update meta.json status to "applied"
+- If they call, emphasize reliability, on-site availability, and real-estate domain familiarity (CT-REI)

@@ -1,0 +1,21 @@
+TherapyNotes LLC — Senior Software Developer
+
+Role Overview: Design, build, and evolve agentic orchestrations, workflows, and internal toolsets for software delivery. Partner with QA, PM, eng leadership, design. Agent-based workflows, guardrails, HITL, auditable outputs. Occasional full-stack feature development.
+
+Required:
+- 5+ years Agile software development
+- BS/MS technical discipline (CS/SE preferred)
+- OOP, design patterns
+- Expertise: Angular, ASP.NET Core, C#, JavaScript, TypeScript, CSS, SASS, HTML
+- PostgreSQL, Entity Framework Core or similar ORM
+- Internal platforms, dev tools, automation, workflow engines
+- SDLC, architecture, cross-functional communication
+
+Preferred:
+- AI-assisted apps, LLM tools, agents, agentic workflows
+- Orchestration, tool-calling, RAG, prompt engineering, AI safety
+- Healthcare SaaS, regulated environments
+
+Benefits: $110,000–$135,000, remote (#LI-Remote), health/dental/vision, retirement, profit sharing
+
+Posted: 8/4/2026

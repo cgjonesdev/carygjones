@@ -4,14 +4,35 @@
   "role": "AI Software Engineer",
   "location": "Remote (CST core hours 9 AM–3 PM — 7 AM–1 PM Pacific)",
   "match_score": 86,
-  "status": "applied",
+  "status": "interview",
   "created": "2026-07-31",
-  "updated": "2026-07-31",
+  "updated": "2026-09-17",
   "salary": null,
   "styling_notes": "Clean energy / utilities client — NextEra green (#009639) with deep navy (#0c2340); legacy modernization, cloud/SQL, and product-delivery emphasis over AI branding",
-  "notes": "Recruiter outreach from Shaik Riyaz. Core fit is senior backend/cloud/SQL + legacy systems—not ML-heavy despite title. Confirm W2 vs C2C, hourly rate, and whether 9–3 CST is hard overlap vs flexible async. No direct energy/utilities domain on resume; regulated enterprise (Disney finance, Hospira devices, Alan Health) is closest parallel.",
+  "notes": "Tech screen Wed Sep 30 2026 3:00–3:45 PM CT (1:00–1:45 PM PT) — Ben Stelmach (FPL), NextEra Analytics / Jake’s team. Dinesh Koraboina (Sep 17) intel: NOT LeetCode — debug failing Python test → code review/ownership → production-ready (CI/CD, Docker, cloud, monitoring, etc.) + AI workflow (Cursor/Copilot). Prep: nextera.md + nextera_cram.html + interview/sessions/nextera_debug_drill/. Teams meet 220057723582770. Gmail inputs 1a0b04c4096cca58.",
+  "recruiter_email": "kdinesh@ustechsolutionsinc.com",
+  "recruiter_name": "Dinesh Koraboina",
+  "interview_url": "https://teams.microsoft.com/meet/220057723582770?p=gEkVwfcmcPZS8lGaaE",
+  "technical_interview": {
+    "when": "2026-09-30T15:00:00-06:00",
+    "when_pacific": "2026-09-30 1:00–1:45 PM Pacific",
+    "title": "NEA Contractor Tech Screen - Cary Jones",
+    "interviewer": "Ben Stelmach <Ben.Stelmach@fpl.com>",
+    "team": "NextEra Analytics — Jake's org (Principal/Lead)",
+    "format": "Collaborative: (1) debug failing Python unit test (2) code review/refactor/ownership (3) production-ready + AI tooling discussion — not gotcha LeetCode",
+    "platform": "Microsoft Teams",
+    "meeting_id": "220 057 723 582 770",
+    "passcode": "WH9zV3ur",
+    "dial_in": "+1 786-633-4199,,802662961#",
+    "gmail_message_id": "1a0a1803940ae1a8",
+    "prep_intel_gmail_id": "1a0b04c4096cca58",
+    "prep_intel_from": "Koraboina Dinesh <kdinesh@ustechsolutionsinc.com>"
+  },
   "source_email": {
-    "subject": "AI Software Engineer — NextEra Energy (Remote CST)",
-    "sender": "Shaik Riyaz <Riyaz@ustechsolutionsinc.com>"
-  }
+    "subject": "Cary J (NextEra - Snr. Software Developer) & Michael G. (USTech) Connect!",
+    "sender": "Michael Gonzales <michael.gonzales@ustechsolutions.com>",
+    "message_id": "19ff2748425fed31",
+    "thread_id": "19ff2748425fed31"
+  },
+  "gmail_sent_message_id": "19fd2ea32679969a"
 }

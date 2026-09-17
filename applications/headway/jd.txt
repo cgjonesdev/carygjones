@@ -1,0 +1,21 @@
+Source: LinkedIn
+
+Senior Backend Software Engineer
+Headway
+United States (Remote)
+
+Responsibilities:
+- Develop and maintain scalable backend systems and APIs using Python and frameworks like FastAPI and Django.
+- Collaborate with cross-functional teams to design and implement cloud-based solutions on platforms like AWS and GCP.
+- Integrate AI solutions into existing systems to enhance functionality and performance.
+- Ensure the security and performance of applications through best practices in software development.
+- Participate in code reviews and contribute to a culture of continuous improvement.
+
+Qualifications:
+- Extensive experience in backend development with Python and related frameworks.
+- Strong understanding of cloud infrastructure and microservices architecture.
+- Proven track record in building scalable REST APIs.
+- Experience with AI integration is a plus.
+- Excellent problem-solving skills and attention to detail.
+
+Salary: $183K-$279K / year

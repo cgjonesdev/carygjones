@@ -1,0 +1,23 @@
+Subject: Re: Senior Backend Engineer — Representation — Atticus
+
+Hi Atticus team,
+
+Thank you for reaching out about the Senior Backend Engineer — Representation opportunity with Atticus. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Backend ownership end-to-end: 15+ years designing scalable APIs, data models, and production services on AWS and GCP — from architecture through on-call, with a track record of 99.99% uptime on enterprise backends.
+• Regulated, complex workflows: Architected HIPAA-compliant Python REST APIs serving 500k+ profiles at Alan Health; five years in regulated medical device verification at Hospira — I understand the rigor required when people's wellbeing depends on your systems.
+• Product partnership, not just tickets: I shape requirements with PMs and designers, bring opinions on tradeoffs, and have delivered 0-to-1 products as a consulting technical lead — the same builder mindset your Rep Pod needs for greenfield legal tooling.
+• Mentorship & team growth: Scrum Master and technical lead experience mentoring engineers on backend patterns, testing, and operational excellence.
+
+I'm based in Temple City (Los Angeles area), available for Los Angeles, CA (Remote; periodic LA travel), and the $157,250–$230,000 + equity range aligns with my expectations. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

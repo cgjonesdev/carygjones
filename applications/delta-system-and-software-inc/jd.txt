@@ -1,0 +1,77 @@
+Source: Delta System and Software Inc.
+
+Subject: Fulltime || Remote __ Python Full Stack Developer – GCP Cloud
+
+Hello Cary Jones
+
+My name is Sudhir Kumar and I am a Staffing Specialist at Delta System and Software Inc.. I am reaching out to you on an exciting job opportunity with one of our clients.
+
+Job Description: Python Full Stack Developer – GCP Cloud
+
+Location: Remote
+
+Duration: Fulltime
+
+SALARY: Salary -70K yearly base plus standard benefits
+
+Clearance Level: Active Secret or Top Secret / SCI Required
+
+Python Full Stack Developer – GCP Cloud / Remote / Full-Time
+
+Job Description
+
+Develop, maintain, and enhance secure, scalable full-stack applications using Python within a U.S. Department of Defense (DoD) environment.
+Design and develop scalable backend services, microservices, and RESTful APIs using Django, Flask, or FastAPI.
+Develop responsive and user-friendly frontend applications using HTML, CSS, JavaScript, and modern JavaScript frameworks such as React or Angular.
+Design, develop, deploy, and maintain cloud-native applications and services on Google Cloud Platform (GCP).
+Utilize GCP services including Cloud Run, Google Kubernetes Engine (GKE), Compute Engine, Cloud SQL, Cloud Storage, Pub/Sub, IAM, Secret Manager, VPC, Cloud Logging, and Cloud Monitoring.
+Develop and deploy containerized Python applications using Docker and Kubernetes within GCP environments.
+Design, query, optimize, and maintain enterprise databases including PostgreSQL, MySQL, SQL Server, and GCP Cloud SQL.
+Develop and integrate secure APIs, cloud services, and enterprise systems while following DoD security, compliance, and software development standards.
+Implement secure coding practices and support STIG, RMF, FISMA, FedRAMP, and other applicable DoD cybersecurity requirements.
+Implement GCP IAM, service accounts, Secret Manager, encryption, network security, and least-privilege access controls to protect cloud applications and data.
+Build and maintain CI/CD pipelines for automated testing, security scanning, containerization, and deployment of applications to GCP.
+Apply DevSecOps practices throughout the software development lifecycle, including source control, automated testing, vulnerability scanning, infrastructure automation, and secure deployments.
+Implement application monitoring, logging, alerting, and troubleshooting using GCP Cloud Logging and Cloud Monitoring.
+Collaborate with cloud engineers, DevOps teams, system administrators, cybersecurity teams, government stakeholders, and distributed engineering teams in a remote/contract environment.
+Troubleshoot application, cloud infrastructure, database, networking, and integration issues across development, testing, staging, and production environments.
+Develop automated unit, integration, API, and end-to-end tests to ensure application reliability, security, and performance.
+Participate in application architecture, code reviews, technical design discussions, and continuous improvement initiatives.
+Prepare technical documentation, deployment guides, architecture documentation, and operational procedures in accordance with DoD mission and security requirements.
+Support production deployments, incident resolution, performance optimization, and ongoing maintenance of mission-critical applications.
+Ensure applications and cloud infrastructure meet organizational security controls, compliance requirements, and DoD cloud security standards.
+Work effectively in a remote, Agile, cross-functional engineering environment while delivering high-quality software within established schedules and mission requirements.
+
+Required Qualifications
+
+Strong professional experience with Python and full-stack application development.
+Experience with Django, Flask, or FastAPI.
+Strong knowledge of REST APIs, microservices, and web application architecture.
+Experience with GCP Cloud Platform and cloud-native application development.
+Hands-on experience with GCP services such as Cloud Run, GKE, Cloud SQL, Cloud Storage, IAM, Secret Manager, VPC, and Cloud Monitoring/Logging.
+Experience with PostgreSQL, MySQL, SQL Server, or other enterprise relational databases.
+Proficiency with HTML, CSS, JavaScript, and modern frontend frameworks.
+Experience with Git, Docker, CI/CD, Kubernetes, automated testing, and DevSecOps.
+Understanding of secure software development and cloud security best practices.
+Experience supporting STIG, RMF, FISMA, FedRAMP, or DoD cybersecurity/compliance requirements is highly desirable.
+Strong troubleshooting, analytical, communication, and collaboration skills.
+Ability to work effectively in a remote environment with government and distributed engineering teams.
+
+Preferred Qualifications
+
+Experience developing applications in DoD, federal government, or other highly regulated environments.
+Experience with GCP security architecture, IAM, networking, and cloud compliance.
+Experience with Infrastructure as Code (Terraform).
+Experience with Kubernetes and GKE administration/deployment.
+Experience implementing automated security and quality gates within CI/CD pipelines.
+Familiarity with Agile/Scrum, Jira, Confluence, GitLab, GitHub, or similar development tools.
+Active U.S. security clearance or ability to obtain/maintain a required DoD security clearance.
+
+Thanks and Regards,
+
+Sudhir Kumar
+
+(972) 581-1986
+sudhir.kumar@deltassi.com
+
+Delta System & Software Inc

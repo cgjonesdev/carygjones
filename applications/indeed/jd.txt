@@ -1,0 +1,23 @@
+Source: Indeed
+
+Software Engineer II
+Indeed
+Remote
+Salary: $100,000 - $210,000 a year
+Job type: Full-time
+
+Benefits:
+- Health insurance
+- Dental insurance
+- Paid time off
+- Vision insurance
+- 401(k)
+- Life insurance
+- Paid holidays
+- Disability insurance
+- Parental leave
+- Paid parental leave
+- Open paid time off
+- RSU
+
+In this role, you’ll contribute to technical design decisions, participate in design and code reviews, and use data and analytics to inform your work. Collaborate closely with partners across engineering, product, data science, and design to deliver solutions. Contribute to system architecture and technical design, validating solutions through data and experimentation where appropriate.

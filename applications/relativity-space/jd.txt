@@ -1,0 +1,24 @@
+Source: https://www.linkedin.com/comm/jobs/view/4453614949/?trackingId=yOTO3ogcU10SA1OMwniOuQ%3D%3D&refId=5roe1kUWSjulg9WCTGQxRg%3D%3D
+
+Senior Software Engineer, Agentic Infrastructure
+Relativity Space
+Long Beach, CA
+
+This company is actively hiring
+
+Relativity Space is looking for a Senior Software Engineer to join our Agentic Infrastructure team. The role involves working on cutting-edge technology to build scalable and reliable infrastructure for our rocket development and launch operations. You will be responsible for designing and implementing cloud-based solutions, developing microservices, and ensuring the robustness of our systems.
+
+Key Responsibilities:
+- Design, develop, and maintain cloud-based infrastructure to support rocket launch operations.
+- Build scalable microservices and API solutions.
+- Collaborate with cross-functional teams to integrate systems and ensure seamless operations.
+- Implement best practices for DevOps and continuous integration/continuous deployment (CI/CD).
+- Optimize system performance and reliability.
+
+Qualifications:
+- Extensive experience in software engineering with a strong focus on cloud architecture and microservices.
+- Proficiency in Python and frameworks such as FastAPI and Django.
+- Experience with AWS and GCP cloud platforms.
+- Strong understanding of DevOps practices and tools.
+- Excellent problem-solving skills and ability to work in a fast-paced environment.
+- Experience in aerospace or rocket technology is a plus but not required.

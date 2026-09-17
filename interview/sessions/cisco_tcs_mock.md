@@ -1,5 +1,8 @@
 # Cisco/TCS Mock Interview — Session Notes
 # ==========================================
+# USE THE INTERVIEW PREP AGENT (tools/interview/.prompt)
+# Trigger: "run interview prep cisco_tcs" or "Full Cisco mock interview"
+#
 # Answer each question out loud (2–3 min). Compare against model answers below.
 
 ## Round 1: Behavioral

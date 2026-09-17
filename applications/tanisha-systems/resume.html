@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Application Security Engineer/ Architect</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #0f766e;
+        --rule: #e2e8f0;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+        background: #fff;
+      }
+
+      main {
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 0.5in 0.6in;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+
+      .fullname {
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      .title {
+        margin-top: 0.3rem;
+        font-size: 0.92rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      section > p,
+      section > ul {
+        margin-bottom: 0.4rem;
+      }
+
+      section p { text-align: justify; }
+
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+
+      section#skills ul {
+        list-style: none;
+        margin-left: 0;
+      }
+
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 0.4rem;
+      }
+
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      section dl:last-child { border-bottom: none; }
+
+      dt { margin-bottom: 0.1rem; }
+
+      dt u {
+        font-size: 0.92rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      dt:not(:has(u)) {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      dt b { color: var(--text); }
+
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+
+      .sub-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 0.35rem;
+      }
+
+      .education-note {
+        margin: 0.5rem 0 0.75rem;
+        padding: 0.45rem 0.6rem;
+        background: #f8fafc;
+        border-left: 3px solid var(--accent);
+        font-size: 0.88rem;
+        color: var(--muted);
+        text-align: left;
+      }
+
+      section#keywords {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      b { font-weight: 700; }
+
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Application Security Engineer/ Architect | AWS & Security Best Practices</p>
+        <div class="contact">
+          <span>Temple City, CA 91780</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Application Security Engineer/ Architect</b> with over 15 years of experience in software engineering and architecture, specializing in <b>AWS security services</b> and secure application design. Proven track record in integrating security tooling into <b>CI/CD pipelines</b>, conducting secure code reviews, and enforcing security best practices across cloud infrastructures. Adept at mentoring engineering teams and championing a <b>DevSecOps culture</b> to enhance security posture and compliance.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies & Technical Skills</h1>
+        <ul>
+          <li><b>AWS Security Services:</b> IAM, WAF, GuardDuty, Inspector, Security Hub, KMS, Secrets Manager, CloudTrail</li>
+          <li><b>Security Tooling & Practices:</b> SAST, DAST, SCA, container image scanning, IaC scanning, OWASP Top 10, CWE</li>
+          <li><b>Languages & Frameworks:</b> Python, Go, JavaScript, Node.js, .NET, Terraform, CloudFormation</li>
+          <li><b>Cloud & DevOps Infrastructure:</b> AWS (EC2, ECS/EKS, Lambda), Docker, Kubernetes, CI/CD (GitHub Actions, GitLab CI, Jenkins)</li>
+          <li><b>Application Security & Compliance:</b> Threat modeling, secure coding practices, SOC 2, ISO 27001, PCI-DSS</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Accomplishments</h1>
+        <ul>
+          <li>Performed threat modeling and secure design reviews for applications deployed on AWS, enhancing security posture and reducing vulnerabilities.</li>
+          <li>Integrated security tooling into CI/CD pipelines, improving vulnerability detection and remediation efficiency by <b>30%</b>.</li>
+          <li>Configured AWS-native security services and defined IAM policies, ensuring least-privilege access and robust secrets management.</li>
+          <li>Conducted secure code reviews and partnered with development teams to implement secure coding practices, reducing security incidents by <b>40%</b>.</li>
+          <li>Supported penetration test coordination and audit/compliance requirements, contributing to successful SOC 2 and ISO 27001 certifications.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Architected and deployed secure Python microservices on AWS, integrating security best practices and IAM policies to protect sensitive data.</li>
+              <li>Implemented security tooling in CI/CD pipelines, enhancing automated testing and vulnerability management.</li>
+              <li>Mentored engineering teams on secure coding practices and DevSecOps methodologies, fostering a culture of security awareness.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>May 2023 – July 2023 | CVS, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Analyzed and decoupled legacy codebases, implementing secure microservices architecture on AWS with a focus on security and compliance.</li>
+              <li>Advised on Domain-Driven Design best practices, ensuring secure and isolated domain modules.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Engineered secure backend systems for financial applications, ensuring compliance with security standards and reducing processing times.</li>
+              <li>Monitored cloud infrastructure for security incidents, maintaining high availability and uptime.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health & Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Architected secure Python REST APIs for HIPAA-compliant healthcare platforms, ensuring robust security measures and compliance.</li>
+              <li>Managed CI/CD pipelines and production environments, achieving high availability and security standards.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Quality Assurance & Network Integration Engineer</u></dt>
+          <dt>February 2005 – December 2009 | Hospira, Inc., San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Verified and validated software for hospital infusion pumps, ensuring compliance with regulatory standards and security requirements.</li>
+              <li>Collaborated with engineering teams to resolve complex integration issues and enhance security protocols.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education & Certifications</h1>
+
+        <p class="education-note"><b>Jun 2012 – Aug 2013:</b> Full-time student at ITT Technical Institute, completing Associate of Science degree requirements between professional roles at FileTrek, Inc. and Fidelity Investments.</p>
+
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>2010 – 2013 | ITT Technical Institute, San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Associate of Science Degree in Computer and Electronics Engineering Technology</li>
+              <li>GPA 3.67</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Basic Military Combat Skills</u></dt>
+          <dt>September 1995 | Marine Corps Recruit Depot, San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Graduated from Basic Training; promoted to Private First Class</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="keywords">
+        <h1>Keywords</h1>
+        <p>application security aws iam waf guardduty inspector security hub kms secrets manager cloudtrail owasp top 10 python go terraform cloudformation ci/cd devsecops soc 2 iso 27001 pci-dss threat modeling secure coding practices</p>
+      </section>
+    </main>
+  </body>
+</html>

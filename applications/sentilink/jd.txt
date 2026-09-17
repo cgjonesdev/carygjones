@@ -1,0 +1,13 @@
+Source: https://www.linkedin.com/jobs/view/4401597109/
+Apply: https://jobs.ashbyhq.com/sentilink/a2463ea0-6585-429c-95f2-10dc4a8cdae8?utm_source=LinkedIn
+
+Title: Senior Software Engineer, Data Platform
+Company: SentiLink
+Location: Los Angeles, CA (Remote, US-based)
+Salary: $170,000–$230,000 + equity + benefits
+
+SentiLink provides innovative identity and risk solutions, empowering institutions and individuals to transact with confidence. Real-time APIs verify hundreds of millions of identities.
+
+Role: Own data infrastructure supporting fraud detection products. Build ETL/ELT pipelines, data observability, scalable data access. Python, Golang, PostgreSQL, OpenSearch, Redshift, EMR, Spark, Docker, Lambda, AWS.
+
+Requirements: 5+ years software/data engineering; Python or Golang; ETL/ELT at scale; AWS/GCP; RDBMS and NoSQL; Kubernetes; IaC/devops. Bonus: Spark/EMR, streaming, fintech startup.

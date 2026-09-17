@@ -1,0 +1,23 @@
+Subject: Re: Senior Backend Engineer — Pipe
+
+Hi Pipe team,
+
+Thank you for reaching out about the Senior Backend Engineer opportunity with Pipe. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Python + PostgreSQL in production: 15+ years building backend services with FastAPI and Django, designing relational schemas, optimizing queries, and operating APIs at scale — including custom ORM work that cut boilerplate by 50% and improved execution time by 28%.
+• Capital- and finance-adjacent systems: At Disney I engineered financial backends processing $10M+ in daily transaction metrics at 99.99% uptime and co-built reconciliation automation that cut batch runtime from 8 hours to 45 minutes. At CT-REI I built investment evaluation and financial tracking platforms.
+• Cloud-native APIs: Hands-on with AWS (ECS, Fargate, RDS, Lambda) and GCP — containerized microservices, event-driven pipelines handling 2.5M+ daily transactions, and CI/CD with automated testing.
+• Go: Proficient in Go as a polyglot backend engineer; my deepest production track record is Python, and I am excited to contribute across Pipe's Go and Python services.
+
+I'm based in Temple City (Los Angeles area), available for Remote (US), and the $150k–$220k range aligns with my expectations. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

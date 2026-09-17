@@ -1,0 +1,26 @@
+Hi — I'm Cary Jones, a Python engineer in Los Angeles with both automation and property-operations background (AppFolio workflows, multi-property maintenance tracking, real-estate acquisitions). Exporting maintenance history across 51+ properties with photos linked to CSV rows is a well-scoped automation project I can deliver cleanly.
+
+Relevant experience:
+• Python automation at scale — REST test clients executing 1,000+ cases/hour; ETL pipelines with structured logging and idempotent retries
+• Property ops familiarity — comfortable with maintenance ticket concepts, unit/property hierarchy, and audit-friendly exports for non-technical managers
+• Selenium/browser automation + file organization — I've built similar crawl-and-export tooling for legacy data recovery and document pipelines
+
+Proposed deliverables:
+1. Python script (config-driven credentials via env file, not hardcoded)
+2. CSV export with columns for all ticket fields + relative photo path per row
+3. Folder layout: property → unit → date, with consistent naming
+4. README: install, .env setup, running a full backup vs date-filtered run, troubleshooting
+5. One test run against a small property subset before full sweep
+
+Questions before I start:
+• Do you have FMX login credentials I can use in a dev/test account, or should I work against your production tenant with read-only intent?
+• Approximate ticket volume (order of magnitude) so I can estimate runtime?
+• Preferred OS for the one-click launcher (Windows batch vs Mac/Linux shell)?
+
+$250 fixed is acceptable for a bounded v1 if ticket volume is moderate and FMX UI is stable. If photo volume is very large (tens of thousands), I'd suggest a milestone: (1) CSV + text fields, (2) photo download + linkage.
+
+I can start within a week. Pacific time.
+
+Cary Jones
+cgjonesdev@gmail.com | (626) 272-2567
+https://www.linkedin.com/in/cary-g-jones/

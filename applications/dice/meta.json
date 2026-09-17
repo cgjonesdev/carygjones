@@ -1,0 +1,24 @@
+{
+  "company": "Dice",
+  "client": null,
+  "role": "Python Software Developer",
+  "location": "Remote",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-10",
+  "updated": "2026-08-10",
+  "salary": null,
+  "styling_notes": "The resume design is clean and professional, emphasizing technical skills and accomplishments relevant to the role.",
+  "notes": "This is a general advertisement for remote Python Software Developer positions on Dice.",
+  "apply_url": null,
+  "apply_method": "website",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fe8161278596c9",
+    "thread_id": "19fe8161278596c9",
+    "subject": "Discover remote Python Software Developer jobs",
+    "sender": "Dice <dice@connect.dice.com>"
+  },
+  "recruiter_email": "dice@connect.dice.com",
+  "recruiter_name": "Dice"
+}

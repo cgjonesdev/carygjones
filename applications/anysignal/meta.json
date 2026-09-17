@@ -2,19 +2,22 @@
   "company": "AnySignal",
   "client": null,
   "role": "Python Software Engineer",
-  "location": "Los Angeles, CA (On-site)",
-  "match_score": 84,
-  "status": "applied",
-  "created": "2026-07-31",
-  "updated": "2026-08-04",
-  "salary": "$120k–$170k + equity",
-  "styling_notes": "Defense/RF startup — deep slate (#0f172a) with signal blue (#2563eb); Python test automation, data aggregation, Docker, device-adjacent Hospira angle",
-  "notes": "Sourced from LinkedIn job alert digest. Applied 2026-08-04. Strong Python + test automation + Docker fit; Hospira device/network verification is differentiator.",
+  "location": "Los Angeles, California, United States",
+  "match_score": 85,
+  "status": "rejected",
+  "created": "2026-08-07",
+  "updated": "2026-08-11",
+  "salary": null,
+  "styling_notes": "The resume design is clean and professional, emphasizing technical skills and experience relevant to the role.",
+  "notes": "Cary has extensive experience in Python development, cloud infrastructure, and API integration, which aligns well with the job requirements.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4447052126?lipi=urn%3Ali%3Apage%3Aemail_email_jobs_saved_job_reminder_01%3B2%2B1%2FeTrmTxmdldEVK1Acvw%3D%3D&midToken=AQHu2FYfZAge0g&midSig=26mSpCQSUKfco1&trk=eml-email_jobs_saved_job_reminder_01-saved~jobs-0-external~eml~sjr~top~apply~cta&trkEmail=eml-email_jobs_saved_job_reminder_01-saved~jobs-0-external~eml~sjr~top~apply~cta-null-7pciz~msj8qdks~tm-null-null&eid=7pciz-msj8qdks-tm&otpToken=MzY1Y2ZmM2ZiOWI4MGZiYWE3NTY3NjU4ZmQ0YmMzZDEzYzhhOWNjNDA5ZTcwYWM0MWEwM2RkYThjYzhlODYzZjgxYTUxMzY0MGJjZGUzZjFiN2VlYjY3N2U1NzI2ZWE0Y2UzYTMyMzBmNDlhNmFhMDU2NjliZjFlNmZkOWRkZmU1MTkwMzQ2ZTUzNzcsMiwx",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4447052126",
   "source_email": {
-    "message_id": "19fb8fdc0d0a6ae0",
-    "thread_id": "19fb8fdc0d0a6ae0",
-    "subject": "Python Software Engineer @ AnySignal (LinkedIn alert)",
-    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+    "message_id": "19fdd596f622f0bd",
+    "thread_id": "19fdd596f622f0bd",
+    "subject": "Cary, apply now to \u2018Python Software Engineer at AnySignal\u2019",
+    "sender": "LinkedIn <jobs-noreply@linkedin.com>"
   },
-  "apply_url": "https://www.linkedin.com/jobs/view/4447052126/"
+  "recruiter_name": "LinkedIn"
 }

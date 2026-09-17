@@ -1,0 +1,21 @@
+Hi — Cary Jones here, senior Python engineer in Los Angeles. I've built exactly this class of system in production: financial data pipelines, SQL-heavy reporting, and automated reconciliation at enterprise scale.
+
+Relevant experience:
+• Disney financial reporting backends — PostgreSQL interfaces, batch reconciliation cut from 8 hours to 45 minutes via optimized SQL aggregation and pipeline redesign
+• Event-driven ETL on AWS (ECS/Fargate) handling 2.5M+ daily transactions at 99.95% accuracy across PostgreSQL, Redis, and external APIs
+• Django/FastAPI services with pytest, CI/CD, and Docker deployment for consulting clients
+
+Proposed approach:
+1. Short discovery — data sources (CSV schemas, SQL dialect, API auth), output reports, and success criteria
+2. Milestone 1 — connector layer + validation/logging + config (CSV + one SQL source)
+3. Milestone 2 — remaining sources, analysis/reporting module, tests
+4. Milestone 3 — Docker deployment, README, handoff walkthrough
+
+Your $1,041 budget is workable if we lock scope in milestones (I'd estimate ~10–12 focused hours for a well-defined v1). If the scope includes forecasting/anomaly detection across many sources, let's adjust milestones after the discovery call.
+
+Available to start this week. Pacific time; responsive on Freelancer chat.
+
+Cary Jones
+cgjonesdev@gmail.com | (626) 272-2567
+https://www.linkedin.com/in/cary-g-jones/
+https://github.com/cgjonesdev

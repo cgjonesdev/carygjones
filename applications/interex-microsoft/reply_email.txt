@@ -1,0 +1,25 @@
+Subject: Re: Technical Lead – Python / Full-Stack Engineering — InterEx Group
+
+Hi Rodrigo,
+
+Thank you for reaching out about the Technical Lead – Python / Full-Stack Engineering opportunity with InterEx Group. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Technical Lead + production engineer: As Principal Consultant at CGJSoftware and technical lead on prior engagements, I own architecture and design reviews while writing substantial production code — not a roadmap-only role.
+• Python / FastAPI / PostgreSQL: Deep production use of FastAPI, Django, REST APIs, SQLAlchemy-style ORM patterns, and PostgreSQL optimization — including Disney financial backends at 99.99% uptime and reconciliation automation (8 hr → 45 min).
+• Full-stack delivery: Built and deployed containerized Python, React, and Node.js applications; API-first backends integrated with modern frontends. Primary depth is backend; comfortable contributing across the stack.
+• Secure, regulated environments: HIPAA healthcare APIs (OAuth2/JWT, encryption, 500k+ users), enterprise finance, and medical-device verification — accustomed to careful communication, documentation, and hierarchy in sensitive contexts.
+
+I'm based in Temple City (Los Angeles area), fully remote in the US, and available to start quickly. Contract through January 2027 and extensions works well for me.
+
+Best number to reach me: (626) 272-2567
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

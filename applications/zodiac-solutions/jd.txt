@@ -1,0 +1,39 @@
+Source: Zodiac Solutions
+
+Python AWS Engineer
+
+Rahway, NJ or WestPoint, PA (onsite)
+
+contract- w2
+
+Job Description-
+
+Bachelors’ degree in Information Technology, Computer Science or any Technology stream.
+7+ years of hands-on experience working with technologies - HTML, CSS, REST API, HTTP, SQL and databases, at least one programming language from our supported stack (TypeScript / Node / React, Java, Python, .NET)
+Working with DevSecOps tools for deploying and versioning code.
+Familiarity with modern product development practices – Agile, Scrum, test driven development, UX, design thinking.
+Familiarity with DevOps practices (Git, Docker , infrastructure as code, observability, continuous integration/continuous deployment - CI/CD).
+Capability to quickly learn modern technologies and adapt to evolving project requirements.
+Cloud-native, ideally AWS certified.
+Proficiency in Python programming language.
+Experience with other programming languages (Java, TypeScript, .NET) is a nice to have.
+Knowledge of integration patterns (e.g., synchronous, asynchronous, event-driven).
+Proficiency in authentication and authorization protocols (OAuth, JWT, SAML).
+Proficiency with JSON, XML, XSLT, OData, REST, and SOA
+Strong understanding of REST API design and implementation.
+Proficiency with DataBricks, DBT, and AirFlow
+Good interpersonal and communication skills (verbal and written).
+Strong analytical and problem-solving skills.
+Product and customer-centric approach.
+
+Regards,
+
+Rekha Nainwal
+
+Sr. Technical Recruiter
+
+Desk: (610) 652 4255
+
+Email: rekha.nainwal@zodiac-solutions.com
+
+linkedin.com/in/rekha-nainwal-87654dec10

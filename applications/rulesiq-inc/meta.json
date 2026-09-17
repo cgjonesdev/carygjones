@@ -1,0 +1,24 @@
+{
+  "company": "RulesIQ Inc.",
+  "client": null,
+  "role": "Cloud Engineer",
+  "location": "Remote \u2013 Anywhere in the US",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-08",
+  "updated": "2026-08-08",
+  "salary": null,
+  "styling_notes": "The resume design uses a clean and professional palette, emphasizing clarity and readability, which aligns well with technical roles.",
+  "notes": "Candidate has strong experience with AWS and Azure, scripting in Python and Bash, CI/CD tools, Kubernetes, and disaster recovery. Gaps include specific Azure services like App Services and PowerShell scripting.",
+  "apply_url": null,
+  "apply_method": "Email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fcd2fe960f64ef",
+    "thread_id": "19fcd2fe960f64ef",
+    "subject": "Remote Role: Cloud Engineer !!",
+    "sender": "Obesh Khan <Obesh.Khan@rulesiq.com>"
+  },
+  "recruiter_email": "Obesh.Khan@rulesiq.com",
+  "recruiter_name": "Obesh"
+}

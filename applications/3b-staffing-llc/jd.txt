@@ -1,0 +1,136 @@
+Source: 3B Staffing LLC
+
+Hello Cary Jones
+
+My name is Rachna Rajput and I am a Staffing Specialist at 3B Staffing LLC. I am reaching out to you on an exciting job opportunity with one of our clients.
+
+Sr. Full Stack Python Engineer
+
+6 Month Contract-to-Hire
+
+Onsite daily in Addison, TX
+
+US Citizen or GC Holder required
+
+2 interview process (2nd/final interview is onsite)
+
+Top 3 Skills/Must Haves
+
+Full Stack Engineer owning and has experience seeing projects from end to end
+Back End: Python *, SQL, snowflake
+Front End: React, node.js, Go, Vue
+*** Manager likes IT related degrees
+Senior level resource owning and leading. No direct reports or managing in this role.
+
+*** Healthcare or Finance backgrounds are great. Not the large financial companies because they are not doing enough hands on work
+
+Role Summary
+We are seeking a highly capable Senior Full Stack Python Engineer with strong experience building end-to-end distributed software systems from the ground up.
+This is not a scripting, DevOps, or task execution role.
+We are looking for a software engineer who can design and build complete application systems — spanning backend services, APIs, distributed processing workflows, and supporting frontend integration layers — with strong emphasis on Python-based backend engineering.
+The ideal candidate naturally thinks in terms of:
+
+system design and architecture
+distributed application behavior
+service decomposition and APIs
+data and workflow flow across systems
+scalability and resiliency patterns
+production reliability and observability
+
+This role requires engineers who can translate business requirements directly into working, production-grade software systems , not isolated scripts or automation tools.
+The environment is Azure-hosted, container-first, and supports operationally critical enterprise workloads including large-scale processing and distributed workflows.
+
+What You’ll Own
+Full Stack System Development (Core Responsibility)
+
+Design and build full-stack applications with Python-based backend services and supporting UI/integration layers
+Develop RESTful APIs and backend services that support web and internal applications
+Collaborate on frontend integrations (React/JavaScript or equivalent) to enable end-to-end system functionality
+Build modular, maintainable, and production-ready software systems
+Translate business workflows into complete software solutions across backend + integration layers
+
+Python Backend & Distributed Systems Engineering
+
+Design and implement scalable Python backend services and distributed processing systems
+Build microservices-based architectures supporting enterprise workflows
+Develop event-driven and asynchronous processing systems using queues, workers, and orchestration layers
+Ensure systems are designed for:
+
+resiliency
+scalability
+fault isolation
+recoverability
+operational stability
+maintainability
+
+Large-Scale Processing & Resilient Workflows
+
+Build systems capable of processing large files and long-running workloads reliably
+Implement:
+
+streaming / chunk-based processing
+retry and recovery logic
+checkpointing and resumable workflows
+idempotent processing patterns
+failure isolation and automatic recovery
+
+Engineer systems that remain stable under:
+
+network instability
+partial system failures
+container restarts
+distributed workload interruptions
+
+Cloud-Native & Containerized Application Engineering
+
+Design and deploy containerized Python applications using Docker
+Build and deploy applications on:
+
+Azure Kubernetes Service (AKS)
+Azure Container Apps
+
+Ensure systems support:
+
+horizontal scaling
+rolling deployments
+versioned deployments
+fault-tolerant runtime behavior
+observability and monitoring integration
+
+Workflow Automation & Distributed Processing
+
+Build distributed workflows using Apache Airflow or equivalent orchestration tools
+Design queue-based and worker-based processing systems
+Ensure workflows are:
+
+observable
+recoverable
+scalable
+production-safe
+
+CI/CD, Observability & Operational Engineering
+
+Build and maintain CI/CD pipelines for full-stack applications and services
+Implement production-grade logging, monitoring, and alerting systems
+Ensure systems are fully observable and diagnosable in production environments
+
+Required Experience & Skills
+
+8–12+ years of professional software engineering experience
+Strong hands-on expertise in Python (Python 3.x) as a primary language
+Proven experience building full-stack or platform-grade software systems
+Demonstrated ability to design and implement distributed application architectures
+Strong understanding of system design principles including:
+
+microservices
+event-driven architecture
+asynchronous processing
+API-first design
+distributed workflows
+
+Technical Skills (Hands-On)
+
+Python (core requirement)
+REST API development
+Docker
+Kubernetes (AKS preferred)
