@@ -7,8 +7,9 @@ import re
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
-from html import unescape
 from typing import Any
+
+from text_clean import clean_email_body, clean_jd_text, html_to_plain_text, normalize_whitespace
 
 RECRUITER_FROM_PATTERNS = re.compile(
     r"(recruit|talent|hiring|career|staffing|linkedin|indeed|greenhouse|lever\.co|"
@@ -36,9 +37,6 @@ JD_BODY_PATTERNS = re.compile(
     re.I,
 )
 
-TAG_RE = re.compile(r"<[^>]+>")
-
-
 @dataclass
 class RecruiterEmail:
     message_id: str
@@ -54,7 +52,8 @@ class RecruiterEmail:
 
 
 def _decode_body(payload: dict[str, Any]) -> str:
-    parts: list[str] = []
+    plain_parts: list[str] = []
+    html_parts: list[str] = []
 
     def walk(part: dict[str, Any]) -> None:
         mime = part.get("mimeType", "")
@@ -63,8 +62,9 @@ def _decode_body(payload: dict[str, Any]) -> str:
         if data and mime in ("text/plain", "text/html"):
             raw = base64.urlsafe_b64decode(data.encode("utf-8")).decode("utf-8", errors="replace")
             if mime == "text/html":
-                raw = TAG_RE.sub(" ", unescape(raw))
-            parts.append(raw)
+                html_parts.append(raw)
+            else:
+                plain_parts.append(raw)
         for child in part.get("parts", []) or []:
             walk(child)
 
@@ -74,10 +74,14 @@ def _decode_body(payload: dict[str, Any]) -> str:
         for child in payload.get("parts", []) or []:
             walk(child)
 
-    text = "\n".join(parts)
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r"\n{3,}", "\n\n", text)
-    return text.strip()
+    plain = normalize_whitespace("\n".join(plain_parts))
+    if len(plain) >= 120:
+        return clean_email_body(plain)
+
+    html = normalize_whitespace("\n".join(html_parts))
+    if html:
+        return clean_email_body(html_to_plain_text(html))
+    return clean_email_body(plain)
 
 
 def _header(headers: list[dict[str, str]], name: str) -> str:
@@ -115,6 +119,7 @@ def _extract_jd_excerpt(body: str, limit: int = 2500) -> str:
     if not body:
         return ""
 
+    body = clean_jd_text(body)
     lines = [ln.strip() for ln in body.splitlines() if ln.strip()]
     start = 0
     for i, line in enumerate(lines):

@@ -27,6 +27,34 @@ for f in "$CREDS" "$TOKEN"; do
   fi
 done
 
+python3 - <<'PY' "$TOKEN"
+import json
+import sys
+from datetime import datetime, timezone
+
+path = sys.argv[1]
+token = json.loads(open(path).read())
+scopes = token.get("scopes") or []
+if not any("gmail.compose" in s for s in scopes):
+    print(
+        "WARNING: token.json lacks gmail.compose scope. "
+        "Run: python authorize_gmail_compose.py",
+        file=sys.stderr,
+    )
+expiry = token.get("expiry")
+if expiry:
+    try:
+        exp = datetime.fromisoformat(expiry.replace("Z", "+00:00"))
+        if exp <= datetime.now(timezone.utc):
+            print(
+                "WARNING: token.json is expired. "
+                "Run: python authorize_gmail_compose.py",
+                file=sys.stderr,
+            )
+    except ValueError:
+        pass
+PY
+
 gcloud config set project "$GCP_PROJECT"
 
 create_or_update_secret() {
