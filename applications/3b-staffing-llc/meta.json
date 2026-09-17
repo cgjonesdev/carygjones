@@ -1,0 +1,24 @@
+{
+  "company": "3B Staffing LLC",
+  "client": null,
+  "role": "Senior Full Stack Python Engineer",
+  "location": "Addison, TX",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-08",
+  "updated": "2026-08-08",
+  "salary": null,
+  "styling_notes": "The resume design should emphasize technical skills and project ownership, reflecting the candidate's extensive experience in full-stack development.",
+  "notes": "The role emphasizes full-stack development with a strong focus on Python backend and distributed systems. Experience with Azure and Kubernetes is beneficial.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fddb0bf5b89e7f",
+    "thread_id": "19fddb0bf5b89e7f",
+    "subject": "Onsite Python Full Stack Engineer is shared with you",
+    "sender": "Rachna Rajput <rachna@3bstaffing.com>"
+  },
+  "recruiter_email": "rachna@3bstaffing.com",
+  "recruiter_name": "Rachna"
+}

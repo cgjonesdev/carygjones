@@ -1,0 +1,21 @@
+Subject: Re: Application for Senior Software Engineer Position
+
+Dear Hiring Manager,
+
+I hope this message finds you well. I am writing to express my interest in the Senior Software Engineer position at ForFutures Financial, Planning, a financial advisory practice of Ameriprise Financial Services LLC, as advertised on LinkedIn. With over 15 years of experience in developing high-performance API microservices and cloud infrastructure, I am excited about the opportunity to contribute to your team and help drive innovative financial solutions.
+
+My extensive experience in Python and cloud platforms such as AWS and GCP, combined with my track record of integrating AI and machine learning into enterprise solutions, aligns well with the responsibilities outlined in the job description. I have a proven ability to design and maintain scalable microservices and APIs, and I am adept at collaborating with cross-functional teams to deliver secure and efficient software solutions.
+
+At CGJSoftware, Inc., I successfully led projects that involved architecting and deploying containerized Python microservices, resulting in a 45% increase in system throughput. Additionally, my role at Disney Corporation involved engineering scalable backend modules for financial systems, processing over $10M in daily transactions while maintaining 99.99% uptime.
+
+I am particularly drawn to this role at ForFutures Financial because of your commitment to putting people first and your focus on integrating cutting-edge technology to enhance financial advisory services. I am eager to bring my technical expertise and passion for innovation to your team.
+
+Thank you for considering my application. I look forward to the opportunity to discuss how my skills and experiences align with the goals of ForFutures Financial.
+
+Sincerely,
+Cary Jones
+
+Temple City, CA 91780
+(626) 272-2567
+cgjonesdev@gmail.com
+linkedin.com/in/cary-g-jones

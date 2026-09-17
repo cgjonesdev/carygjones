@@ -1,0 +1,29 @@
+Source: https://www.linkedin.com/comm/jobs/view/4449763857/?trackingId=EDWCJxzpTnuq3QSpEoi52A%3D%3D&refId=JsdnvZ%2BKTymBcdGYgFx5qg%3D%3D
+
+Senior Backend Engineer
+Instrumentl
+United States
+
+Job Description:
+
+Instrumentl is looking for a Senior Backend Engineer to join our team. As a Senior Backend Engineer, you will be responsible for designing and implementing scalable backend services and APIs. You will work closely with cross-functional teams to deliver high-quality software solutions. The ideal candidate will have extensive experience in Python frameworks such as FastAPI and Django, a strong understanding of cloud infrastructure (AWS, GCP), and a proven track record in building scalable REST APIs and microservices.
+
+Responsibilities:
+- Design, develop, and maintain backend services and APIs
+- Collaborate with cross-functional teams to define, design, and ship new features
+- Ensure the performance, quality, and responsiveness of applications
+- Identify and correct bottlenecks and fix bugs
+- Help maintain code quality, organization, and automation
+
+Qualifications:
+- Extensive experience with Python frameworks (FastAPI, Django)
+- Strong understanding of cloud infrastructure (AWS, GCP)
+- Proven track record in building scalable REST APIs and microservices
+- Experience with containerization and orchestration technologies (Docker, Kubernetes)
+- Familiarity with agile methodologies and version control systems (Git)
+
+Preferred Qualifications:
+- Experience in the domain or industry of Instrumentl
+- Familiarity with CI/CD pipelines and DevOps practices
+
+Instrumentl is an equal opportunity employer. We celebrate diversity and are committed to creating an inclusive environment for all employees.

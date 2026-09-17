@@ -1,0 +1,17 @@
+{
+  "company": "SentiLink",
+  "client": null,
+  "role": "Senior Software Engineer — Data Platform",
+  "location": "Los Angeles, CA (Remote, US)",
+  "match_score": 90,
+  "status": "rejected",
+  "created": "2026-08-06",
+  "updated": "2026-08-14",
+  "salary": "$170,000–$230,000 + equity",
+  "styling_notes": "Fintech identity / fraud prevention — deep indigo (#1e3a8a) with signal blue accent (#3b82f6); data platform precision, trust and scale",
+  "apply_url": "https://jobs.ashbyhq.com/sentilink/a2463ea0-6585-429c-95f2-10dc4a8cdae8?utm_source=LinkedIn",
+  "easy_apply": false,
+  "apply_method": "ashby_external",
+  "linkedin_job_id": "4401597109",
+  "notes": "Sourced via LinkedIn MCP fetch 2026-08-06. Strong fit: Python ETL/AWS/PostgreSQL pipelines (2.5M/day), Disney batch optimization, data quality/observability. Gaps: Spark/EMR not primary on resume — position distributed pipeline + AWS depth and ramp."
+}

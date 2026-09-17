@@ -1,0 +1,45 @@
+Source: Pyramid Technology Solutions, Inc.
+
+Subject: Job Opportunity :: Looking for Full Stack Backend Developer (Python, API’s, Azure/AWS)@ New York City, NY (3 days Hybrid)
+
+Hi,
+Hope you are doing good.
+We are looking for an expert consultant with below job description and required skills. If you are available and interested on said below positions. Please let me know so that we can discuss further. And request to share your update resume along with your interest.
+
+Title: Full Stack Backend Developer (Python, API’s & AWS/Azure)
+Location: New York City, NY (3 days Hybrid)
+Duration: 12 months
+
+Interview Mode:
+1st Interview : Teams Video
+2nd Interview: In-Person
+
+Our client is looking for the following:
+Look for strong Python Developer with API development and Cloud (AWS OR AZURE or both)
+
+* Ideal candidate would be a Senior Full Stack Backend Developer with strong expertise in Python, APIs, Azure, and one of the AI libraries.
+* However, they are absolutely open to hiring a Senior Full Stack Backend Developer with strong Python and API experience. Azure is preferred, but candidates with similar relevant experience in AWS will also be considered. The candidate must be willing to learn and work with AI libraries after joining.
+* It is a hybrid position based in New York City (NYC). Only candidates local to NY, NJ, or CT will be considered.
+
+Requirements:
+
+* Bachelor's degree in Computer Science, Engineering, or equivalent experience.
+* Proven experience as a Full Stack Developer, with a strong portfolio demonstrating Python-based projects, particularly AI-focused applications.
+* Proficiency in Python and experience with Python web framework FastAPI including Pydantic, SQL Alchemy/SQL Model.
+* Experience with AI / Agentic frameworks (Good to have) and libraries like OpenAI and Lang Chain, Lang Graph, Anthropic API's.
+* Familiarity with Azure AI Services (Good to have), including Azure OpenAI, and AI-related deployment in Azure cloud environments. Databricks experience good to have.
+* Experience building RESTful APIs using Python.
+* Strong understanding of SQL databases, with proficiency in writing efficient SQL queries and optimizing database interactions.
+* Familiarity with Azure services like Azure Functions, Logic Apps, and Azure Key Vault.
+* Experience in DevOps pipelines, including build, release, and CI/CD processes on platforms like Azure DevOps.
+* Basic front-end development skills in HTML5, CSS3, and JavaScript, with a focus on integrating AI functionalities into web interfaces using Streamlit or Plotly Dash.
+* Knowledge of version control systems (e.g., Git, Azure DevOps)
+* Excellent communication skills and the ability to thrive in a fast-paced, collaborative
+
+Thanks & Regards
+Sunil Vargans
+Phone: (317) 434 8593(Desk) / (317) 252 0917(Cell)
+Email: sunil.varaganti@pyramidinc.com
+LinkedIn: linkedin.com/in/sk-vargans-59b6ba1b
+Pyramid Technology Solutions, Inc.
+9535 E 59th Street, Suite A, Indianapolis, IN 46216

@@ -1,0 +1,22 @@
+{
+  "company": "Amazon",
+  "client": null,
+  "role": "Software Development Engineer",
+  "location": "Redmond, WA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design should maintain a clean and professional look, emphasizing technical skills and experience relevant to embedded systems and software development.",
+  "notes": "Focus on Python and Linux experience. Highlight problem-solving skills and Agile/Scrum experience.",
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd782861e3c154",
+    "thread_id": "19fd782861e3c154",
+    "subject": "Software Development Engineer / Redmond, WA / Full-Time",
+    "sender": "Anshul Yadav <anshul.yadav@excelonsolutions.com>"
+  },
+  "recruiter_name": "Anshul Yadav"
+}

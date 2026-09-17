@@ -1,0 +1,24 @@
+{
+  "company": "IT Brainiac",
+  "client": null,
+  "role": "AWS Python Consultant",
+  "location": "Houston, TX 77002",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design maintains a professional and clean aesthetic, emphasizing key competencies and achievements relevant to the role.",
+  "notes": "Onsite requirement in Houston, TX may not align with current remote work preference",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fceab8dd90b200",
+    "thread_id": "19fce40a53cb96d0",
+    "subject": "Onsite role - urgent client needs AWS Python Consultant",
+    "sender": "Alvin Stuart <alvin.stuart@itbtalent.com>"
+  },
+  "recruiter_email": "alvin.stuart@itbtalent.com",
+  "recruiter_name": "Alvin"
+}

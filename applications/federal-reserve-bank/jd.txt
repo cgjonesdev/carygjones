@@ -1,0 +1,88 @@
+Source: Enterprise Solutions, Inc.
+
+Subject: Hiring for - Cloud/DevOps Engineer - San Francisco, California(94105)-Onsite
+
+Hello Cary Jones,
+
+This Side Hirdesh from Enterprise Solution Inc. I am hiring for this role. If you are interested, please share your updated resume.
+
+Role – Cloud/DevOps Engineer - III
+
+Location- San Francisco, California (94105)-Onsite
+Duration-12 Months
+
+Job id – 2319
+
+Client -Federal Reserve Bank - San Francisco, CA
+
+Job description-
+
+• Master's Computer Science preferred
+
+• 5+ years of DevOps/Cloud engineering experience, plus 10+ years of relevant work experience
+
+• Expert-level experience with CI/CD tools (Jenkins, GitLab CI, GitHub Actions, or similar)
+
+• Hands-on experience with Docker and containerized workflows (our CI/CD pipelines and test suites run in containers)
+
+• Experience building and integrating APIs for platform connectivity and automation
+
+• Strong proficiency with Infrastructure as Code (Terraform, CloudFormation, or Ansible)
+
+• Production experience with major cloud platforms (AWS, Azure, or GCP)
+
+• Solid scripting skills (Python, Bash, or PowerShell)
+
+• Strong understanding of observability, logging, and monitoring tools (Prometheus, Grafana, ELK, Datadog, or similar)
+
+• Excellent troubleshooting skills for infrastructure and deployment issues
+
+Priority Skills
+
+• Experience with SaaS/multi-tenant platforms at scale
+
+• Experience integrating multiple third-party platforms and services
+
+• Experience with API testing and integration patterns
+
+• Working knowledge of NIST 800-53 security controls and compliance requirements
+
+Nice-to-Have Skills
+
+• Experience with Identity Governance & Administration (IGA) platforms (SailPoint, Okta, Saviynt, etc.)
+
+• Experience with disaster recovery planning and testing
+
+• Certifications: AWS/Azure/GCP Professional, CKA, Terraform Associate
+
+Responsibilities:
+
+We're seeking an experienced DevOps Engineer to design, build, and maintain the infrastructure and automation for a SaaS Identity Governance and Administration (IGA) platform. You'll own CI/CD pipelines, cloud infrastructure, and platform reliability while working closely with engineering, security, and product teams.
+
+• Design, implement, and maintain CI/CD pipelines to automate build, testing, deployment, and release processes
+
+• Manage cloud infrastructure using Infrastructure as Code (Terraform, CloudFormation, or Ansible)
+
+• Deploy, configure, and support scalable environments across development, testing, staging, and production
+
+• Build and maintain infrastructure for integrating multiple platforms and services via APIs
+
+• Develop automation scripts and tools to streamline deployment and operational workflows
+
+• Design and implement observability, logging, and monitoring solutions for platform health and performance
+
+• Provide test execution infrastructure and integrate test automation into deployment pipelines
+
+and risk management initiatives
+
+Hirdesh Yadav
+
+Sr Recruiter
+
+(331) 204-3078
+
+Enterprise Solutions, Inc.
+
+www.enterprisesolutioninc.com
+
+Warrenville, IL | Princeton NJ | Toronto, Canada | Mexico | India | Singapore

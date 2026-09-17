@@ -1,0 +1,24 @@
+{
+  "company": "LinkedIn",
+  "client": null,
+  "role": "Senior Software Engineer AI & Cloud Architecture",
+  "location": "Sunnyvale, CA",
+  "match_score": 96,
+  "status": "skipped",
+  "created": "2026-08-07",
+  "updated": "2026-08-11",
+  "salary": null,
+  "styling_notes": "The resume design utilizes a clean and modern layout with a focus on readability and organization, enhancing the presentation of technical skills and accomplishments.",
+  "notes": "This role aligns well with Cary's extensive experience in AI integration, microservices, and cloud architecture.",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd28261604cb9f",
+    "thread_id": "19fd28261604cb9f",
+    "subject": "Thanks for being a valued member, Cary",
+    "sender": "LinkedIn <linkedin@em.linkedin.com>"
+  },
+  "recruiter_email": "linkedin@em.linkedin.com",
+  "recruiter_name": "LinkedIn",
+  "gmail_draft_id": "r2451821548536311763"
+}

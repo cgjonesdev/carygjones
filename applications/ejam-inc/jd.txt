@@ -1,0 +1,24 @@
+Source: https://www.linkedin.com/comm/jobs/view/4447065442/?trackingId=kxz1oAHa5oKmcuIXtkgyDw%3D%3D&refId=6CjH2eW8UByLvuODxpTnvw%3D%3D
+
+Job Title: Staff AI Platform & Reliability Engineer
+Company: Ejam Inc
+Location: Santa Ana, CA
+
+Responsibilities:
+- Design and implement scalable AI platforms to support business objectives.
+- Ensure reliability and performance of AI systems.
+- Collaborate with cross-functional teams to integrate AI solutions.
+- Lead efforts in improving system reliability and performance metrics.
+- Utilize cloud services and infrastructure to optimize AI workloads.
+
+Qualifications:
+- Extensive experience in AI and cloud architecture.
+- Proficient in Python and microservices development.
+- Strong background in AWS and GCP cloud environments.
+- Experience with containerization and orchestration (Docker, Kubernetes).
+- Familiarity with reliability engineering practices.
+
+Preferred:
+- Experience in a team focused on AI platforms.
+- Strong analytical and problem-solving skills.
+- Excellent communication and collaboration abilities.

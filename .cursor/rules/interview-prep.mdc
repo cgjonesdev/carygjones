@@ -1,0 +1,14 @@
+---
+description: Mock interviews and pre-flight prep for scheduled interviews — interview prep agent
+globs: interview/**,tools/interview/**,applications/*/meta.json
+alwaysApply: false
+---
+
+# Interview prep
+
+Read and follow `tools/interview/.prompt` when the user says **run interview prep**, **interview prep**, **mock interview**, **prep mock**, **prep for {company}**, or **Start {company} mock**.
+
+- **In scope:** Interactive mock interviews; recruiter/technical prep from `interview/prep/` and `interview/sessions/`; pre-flight checklists; coding drills; update `meta.json` notes after mocks.
+- **Out of scope:** Application tailoring — root `.prompt`. Gmail/LinkedIn intake — **run protocols**.
+
+Conduct mocks **one question at a time**; wait for Cary's answer before model answers. Pre-flight and summary tables must include a **Links** column with embedded URLs — never "see meta.json".

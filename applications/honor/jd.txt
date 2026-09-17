@@ -1,29 +1,20 @@
-Honor Technology — Senior Backend Engineer
+Source: https://cts.indeed.com/v3/H4sIAAAAAAAA_42RTW-jMBiE_wvScloaY0pIIqFVCXTz0aSs0k2XXCrbEDDmwzE2JKn63-vuYSv1tKdXekajVzPzaihjZhRS8m42Gg3DcEObNMvSG9LWI0FGpGI_SubDDIHjJHXwlIzBxM3Mo2hrv2wxhehFnxpJUlgiQ0TSHknaNlbWWL93L1mNaGVK5tulEkx0FNaNm0-AbWLsd9ahQW6akJ8LubUjr7m0EFTqvqsPlIvtHwY3fQ3VfndfBcniUmzunLI7k57ECHRrypAs2snj-Mnaz2O0CJ8dGBYL4vEoUMuo9zhfP08PfbC8onCl-BArcjrlxfZ64CuR7mu8PAPsrhkvy2O4UfjRSo_Fwy8UzWMRJBCcXPVwPW1VEt0l35zQPDOC_V0bkrG3cXJc5IEDPBCAFb6ydJ7GsSlK_hkVSE5PSkc1vhu1MXs1ECGtauQy1Y1DMHZseOsCLaI8X7X4L7YBsG04daF9qwVSUcKeCtGqvNCiFCr7Ry8806in2aDr1_RjEA3-dxLtkOzj4ZdZjLe3d4EGjPITAgAA/x5J7_90vpUWB_U420eamc1xatfXmwFhJz6SbZJTs82s
 
-Source: Indeed job match email (July 31, 2026); Greenhouse job ID 8382000002
-URL: https://job-boards.greenhouse.io/honor/jobs/8382000002
-Note: Greenhouse board showed no active openings at time of application prep; apply via Indeed link if Greenhouse is closed.
+Senior Backend Engineer
+Honor
+Remote
+Salary: $160,000 - $180,000 a year
 
-Company: Honor (Honor Technology) — aging care innovation; portfolio includes Home Instead
-Location: Remote (U.S.)
-Salary: $160,000 – $180,000 USD
+Benefits:
+- Health insurance
+- Dental insurance
+- Vision insurance
+- 401(k)
+- 401(k) matching
+- Life insurance
+- Employee discount
+- Disability insurance
+- Wellness program
 
-Mission:
-Change the way society cares for older adults through technology, tools, and services that empower older adults to live life on their own terms.
-
-Role: Senior Backend Engineer
-
-Requirements:
-- Strong backend engineering experience building and operating production systems
-- Proficiency in Python (or transferable backend experience with willingness to learn Python)
-- Experience with API design, distributed systems, and backend performance considerations
-- Familiarity with cloud platforms (AWS preferred) and service-oriented architectures
-- Experience designing relational data models and working with databases at scale
-
-Responsibilities (Senior Backend Engineer at Honor):
-- Build and operate scalable backend production systems
-- Design APIs and distributed services
-- Work with relational data models and databases at scale
-- Collaborate in a remote-first engineering organization
-
-Tech keywords: Python, AWS, REST APIs, distributed systems, relational databases, microservices/SOA
+Job description
+You’re an excellent, proactive communicator — able to translate complex ideas (both in writing and verbally) into clear, actionable solutions for technical and non-technical partners. You’ll collaborate with thoughtful, mission-driven teammates across engineering, product, design, and operations. You thrive in diverse, cross-functional environments, collaborating with design, product, data, and more.

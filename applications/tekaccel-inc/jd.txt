@@ -1,0 +1,54 @@
+Source: Tekaccel Inc. Job Posting
+
+Subject: Remote Role for Senior Full Stack Developer! URGENT!!
+
+Hello Cary Jones
+
+My name is Deependra Kumar and I am a Staffing Specialist at Tekaccel Inc. I am reaching out to you on an exciting job opportunity with one of our clients.
+
+Senior Full Stack Developer
+
+Remote
+
+Long Term Contract!
+
+USC only -No dual citizenship | Able to clear Public trust clearance
+
+About the Role
+
+We are seeking a highly skilled Senior Full Stack Developer with strong expertise in Python, React, cloud-native application development, and AI-assisted engineering practices. The ideal candidate will be responsible for designing, developing, and maintaining scalable web applications while leveraging modern AI tools to enhance software delivery, code quality, and developer productivity.
+
+This role requires a hands-on engineer who can contribute across the entire technology stack, collaborate with cross-functional teams, and drive technical excellence through best practices in architecture, development, testing, and deployment.
+
+Key Responsibilities
+
+- Design, develop, and maintain scalable full-stack applications using Python and React.js.
+- Build and optimize RESTful APIs, microservices, and backend systems.
+- Develop responsive, user-friendly, and high-performance front-end applications.
+- Architect and implement cloud-based solutions on AWS, Azure, or GCP.
+- Leverage AI-powered development tools such as GitHub Copilot, ChatGPT, Cursor, or similar platforms to improve engineering efficiency.
+- Collaborate with Product Managers, UX Designers, QA, and stakeholders to deliver high-quality solutions.
+- Participate in system design discussions, code reviews, and architectural decision-making.
+- Implement CI/CD pipelines and DevOps best practices.
+- Ensure application security, scalability, performance, and reliability.
+- Mentor junior developers and contribute to technical leadership initiatives.
+- Drive adoption of modern engineering standards, coding practices, and AI-assisted development workflows.
+
+Required Qualifications
+
+- 6+ years of professional experience in full stack software development with a strong focus on scalable enterprise applications.
+- Strong proficiency in Python and hands-on experience with modern backend frameworks such as FastAPI, Django, or Flask.
+- Extensive experience developing and consuming RESTful APIs, microservices, and distributed systems.
+- Strong expertise in React.js, JavaScript (ES6+), TypeScript, HTML5, and CSS3 for building modern user interfaces.
+- Experience with frontend state management libraries such as Redux, Context API, or similar frameworks.
+- Solid understanding of software design principles, object-oriented programming, and clean coding practices.
+- Hands-on experience working with relational and NoSQL databases, including PostgreSQL, MySQL, MongoDB, and Redis.
+- Experience designing database schemas, optimizing queries, and improving application performance.
+- Strong knowledge of cloud platforms such as AWS, Azure, or Google Cloud Platform (GCP).
+- Hands-on experience with Docker, Kubernetes, CI/CD pipelines, and modern DevOps practices.
+- Proficiency with Git-based version control systems and collaborative development workflows.
+- Experience leveraging AI-assisted development tools such as GitHub Copilot, Cursor, ChatGPT, or similar platforms to improve development efficiency and code quality.
+- Understanding of software testing methodologies, including unit testing, integration testing, and automated testing frameworks.
+- Strong problem-solving skills with the ability to troubleshoot complex technical challenges in a fast-paced environment.
+- Excellent verbal and written communication skills with the ability to collaborate effectively across cross-functional teams.
+- Bachelor’s degree in Computer Science, Engineering, Information Technology, or a related field, or equivalent practical experience.

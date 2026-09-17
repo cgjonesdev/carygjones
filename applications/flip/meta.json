@@ -1,0 +1,22 @@
+{
+  "company": "Flip",
+  "client": null,
+  "role": "Senior/Staff Software Engineer",
+  "location": "Los Angeles, CA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design uses a clean and modern palette to highlight technical skills and accomplishments, ensuring clarity and readability.",
+  "notes": "Extensive experience in software engineering with over 15 years in the field. Strong background in cloud architecture and microservices, particularly with AWS and GCP. Proven track record of leading cross-functional teams and acting as a Scrum Master.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4448307668/?trackingId=XZ4nAgaRobLGtS%2FaB13FYQ%3D%3D&refId=51uIWmuMhONQjOL4iR6YHw%3D%3D",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4448307668",
+  "source_email": {
+    "message_id": "19fce0513ee2da9f",
+    "thread_id": "19fce0513ee2da9f",
+    "subject": "Senior/Staff Software Engineer\u00a0 at Flip",
+    "sender": "LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>"
+  }
+}

@@ -1,0 +1,18 @@
+Source: Dice
+
+Job Role for a Software Development Engineer in Irvine, CA (Hybrid)
+
+We are looking for a Software Development Engineer who has experience working with Amazon Builder Tools in the Amazon ecosystem. This person will be joining a TGS project team focused on new platform and feature enhancements to an existing system that supports billions of items of inventory and thousands of vendors. This engineer will be building new code and will also help with AI integration, DevOps, Testing, and other standard responsibilities. This will be a full stack project with many standard AWS development services (CDK, SQS, Lambda, DynamoDB, and CloudWatch).
+
+Top Skills - Must Haves:
+- Java / Python Software development
+- AWS API
+- React.js
+
+Top Skills' Details:
+- Full Stack: 8+ years experience designing and building with Java, Kotlin, Python, or similar back-end language AND 3+ years React or similar FE language
+- Prior experience at Amazon including experience with Amazon Builder Tools for coding, API Design, building event-driven systems, orchestration, etc.
+- AWS development experience with AWS CDK, Lambda, SNS, SQS, DynamoDB, RDS, Redshift, S3, Opensearch, etc.
+
+Secondary Skills - Nice to Haves:
+- Javascript

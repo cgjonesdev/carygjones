@@ -1,0 +1,12 @@
+Python Financial Data Automation Pipeline
+
+Source: https://www.freelancer.com/projects/data-analysis/python-financial-data-automation
+
+Budget: $1,041 USD (fixed price)
+Bids: ~65 | Posted: active
+
+I am building an end-to-end Python solution that automatically ingests, processes, and reports on financial data pulled from CSV files, SQL databases, and live APIs. Clean, well-structured, and easily maintainable code with modular architecture.
+
+Expected: connectors for CSV/SQL/API sources, validation, transformation, analysis, error handling, logging, testing, and deployment.
+
+Skills tagged: Python, Data Analysis, SQL, API, Automation

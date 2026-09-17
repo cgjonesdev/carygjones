@@ -1,0 +1,28 @@
+Source: https://www.linkedin.com/comm/jobs/view/4444715890/?trackingId=KBir3Z6VNeZzCsWq0pyvhg%3D%3D&refId=k94oRvlKz8YtQE0kQjnrWA%3D%3D
+
+AI Staff Engineer
+Ranger Technical Resources
+Orange County, CA
+
+Position Summary: Our company is seeking an experienced AI Staff Engineer to lead the development and deployment of AI-driven solutions. The ideal candidate will have a strong background in AI and cloud architecture, with proficiency in Python and related frameworks. Experience in microservices and API development is essential. The role requires working in a hybrid environment, blending remote and onsite work. Candidates should have experience in AI model training and deployment, and familiarity with preferred technologies and tools as outlined in the job description.
+
+Key Responsibilities:
+- Lead AI-driven solution development and deployment
+- Architect and implement cloud-based AI solutions
+- Develop and maintain microservices and APIs
+- Collaborate with cross-functional teams in a hybrid work environment
+- Ensure best practices in AI model training and deployment
+
+Qualifications:
+- Extensive experience in AI and cloud architecture
+- Proficient in Python and related frameworks (FastAPI, Django, etc.)
+- Strong background in microservices and API development
+- Experience in hybrid work environments
+- Familiarity with AI model training and deployment
+
+Preferred Skills:
+- Experience with specific AI technologies and tools
+- Strong problem-solving and analytical skills
+- Excellent communication and collaboration abilities
+
+This company is actively hiring. Apply with resume & profile.

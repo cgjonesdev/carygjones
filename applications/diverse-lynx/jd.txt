@@ -1,0 +1,49 @@
+Source: Diverse Lynx
+
+Subject: Contract :Full Stack Developer (ReactJS + Python) : Sunnyvale CA
+
+Greetings ,
+I'm Sourav Paul from Diverse Lynx, and I've contacted you about the job. If this role aligns with your profile, kindly share your most recent resume . E-mail: sourav.paul@diverselynx.com
+
+Position: Full Stack Developer (ReactJS + Python)
+Location: Sunnyvale, CA
+Job Type: Contract
+
+Salary: $60-70/hr
+
+Job Summary
+We're looking for a Full Stack Developer to design, build, and deliver features across our front-end and back-end stack for the duration of this engagement. We value strong engineering fundamentals above all — someone who can reason clearly about programming problems, write high-quality code, and adapt quickly to our existing tech stack.
+Key Responsibilities
+
+Design, develop, and maintain full stack applications — from UI to database.
+Build and consume REST APIs with strong attention to performance and security.
+Write clean, maintainable, well-tested code, treating unit and integration testing as standard practice.
+Contribute to CI/CD pipelines for build, test, and deployment automation.
+Debug and resolve issues in existing code, and support delivered features throughout the engagement.
+Collaborate closely with designers, product managers, and fellow engineers in an agile/iterative environment.
+Participate actively in code reviews and uphold established engineering best practices.
+Optimize the performance of assigned features, including API latency, query efficiency, and front-end rendering.
+Document code and APIs clearly (inline documentation, API specs).
+
+Required Skills
+
+ReactJS: Hands-on experience building production front-end applications.
+CI/CD: Practical experience with build, test, and deployment automation pipelines.
+Oracle: Solid working knowledge of Oracle databases.
+PostgreSQL: Solid working knowledge of PostgreSQL.
+Python: Strong proficiency for back-end development and scripting.
+
+Technical Skills
+
+Python
+PostgreSQL
+DevOps Continuous Integration and Continuous Delivery (CI/CD)
+ReactJS
+Oracle Database 12C Administration
+
+Thanks & Regards,
+Sourav Paul
+E-mail : sourav.paul@diverselynx.com
+Phone Number: + 1 7324521006 Ext: 550
+
+If you are interested in this position, please click here . If you would like to unsubscribe from Diverse Lynx, please click unsubscribe . Lookup Candidate

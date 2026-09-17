@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Senior Backend Engineer</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #1e3a5f;
+        --gold: #b8860b;
+        --rule: #e2e8f0;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+      }
+      main { max-width: 8.5in; margin: 0 auto; padding: 0.5in 0.6in; }
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+      header::after {
+        content: "";
+        display: block;
+        width: 3rem;
+        height: 3px;
+        background: var(--gold);
+        margin: 0.4rem auto 0;
+      }
+      .fullname { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; color: var(--accent); }
+      .title { margin-top: 0.3rem; font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+      a { color: inherit; text-decoration: none; }
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section p, section ul { margin-bottom: 0.4rem; }
+      section p { text-align: justify; }
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+      section#skills ul { list-style: none; margin-left: 0; }
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--gold);
+        margin-bottom: 0.4rem;
+      }
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      section dl:last-child { border-bottom: none; }
+      dt { margin-bottom: 0.1rem; }
+      dt u { font-size: 0.92rem; font-weight: 600; text-decoration: none; color: var(--text); }
+      dt:not(:has(u)) { font-size: 0.82rem; color: var(--muted); }
+      dt b { color: var(--text); }
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+      b { font-weight: 700; }
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Senior Backend Engineer | Scalable APIs &amp; Regulated Platforms</p>
+        <div class="contact">
+          <span>Temple City, CA 91780 (Remote, U.S.)</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Senior Backend Engineer</b> with 15+ years owning production systems end-to-end — architecture, data modeling, APIs, and on-call reliability — in <b>healthcare, financial, and regulated environments</b> where accuracy and user trust matter. Experienced partnering with product and design to shape requirements, not just implement them; mentoring engineers on backend patterns and operational excellence. Deep <b>Python</b> backend on <b>AWS and GCP</b>; comfortable ramping on <b>Go, Kubernetes, and Terraform</b> where system design and long-term health are the priority.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies</h1>
+        <ul>
+          <li><b>Backend &amp; Architecture:</b> Python (FastAPI, Django, Flask), RESTful API design, data modeling, microservices, PostgreSQL, Redis, system design reviews, pytest</li>
+          <li><b>Cloud &amp; Reliability:</b> AWS (ECS, Fargate, Lambda, RDS), GCP (container deploys), Docker, Kubernetes basics, CI/CD, observability, 99.99% uptime ownership</li>
+          <li><b>Regulated &amp; Complex Workflows:</b> HIPAA-compliant healthcare APIs, financial reporting pipelines, medical device verification (Hospira), audit-friendly access patterns</li>
+          <li><b>Product &amp; Leadership:</b> Cross-functional delivery with PMs and designers, 0-to-1 product ownership, Scrum Master, engineer mentoring, AI-augmented development (Cursor, Copilot)</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Key Impact</h1>
+        <ul>
+          <li>Architected <b>HIPAA-compliant REST APIs</b> serving <b>500k+ healthcare user profiles</b> — privacy guardrails, scheduling workflows, and <b>99.9% availability</b>.</li>
+          <li>Built <b>event-driven Python pipelines</b> on AWS handling <b>2.5M+ daily transactions</b> at <b>99.95% accuracy</b> with monitoring, documentation, and automated test coverage.</li>
+          <li>Owned enterprise backends at <b>99.99% uptime</b>; cut financial batch reconciliation from <b>8 hours to 45 minutes</b> through PostgreSQL optimization and pipeline redesign.</li>
+          <li>Deployed containerized services to <b>GCP and AWS</b>, improving release frequency <b>3×</b> while preserving rollback safety and observability.</li>
+          <li>Five years in <b>regulated healthcare</b> at Hospira — formal verification, audit trails, and hospital network integration for life-critical systems.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Own <b>backend systems end-to-end</b> for B2B clients — FastAPI/Django microservices on AWS ECS/Fargate, REST APIs, PostgreSQL, Redis, CI/CD, and production monitoring.</li>
+              <li>Partner with product stakeholders to shape requirements and architectural tradeoffs; deliver 0-to-1 features with clear ownership from design through on-call.</li>
+              <li>Mentor engineers on backend patterns, testing discipline, and reliability; reduced API latency to under <b>120ms</b> and increased throughput <b>45%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health &amp; Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Architected secure <b>Python REST APIs</b> for <b>HIPAA-compliant</b> healthcare platforms serving <b>500k+ profiles</b> — member data, scheduling, and privacy-conscious access for people navigating complex care workflows.</li>
+              <li>Led cross-functional offshore team as Scrum Master; established CI/CD and documentation practices achieving <b>99.9% availability</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Engineered scalable Python backend modules and PostgreSQL interfaces on AWS for enterprise financial systems processing <b>$10M+ daily metrics</b>.</li>
+              <li>Owned on-call for distributed backend services at <b>99.99% uptime</b>; co-architected automated costing pipeline cutting reconciliation from <b>8 hours to 45 minutes</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Software Developer and System Architect</u></dt>
+          <dt>July 2019 – October 2021 | CGJSoftware, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Containerized Python applications with Docker; deployed to <b>GCP</b> and AWS, improving deployment frequency <b>3×</b>.</li>
+              <li>Built async messaging architectures (Pub/Sub, event-driven patterns) ensuring <b>zero data loss</b> during peak loads.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Software Developer and Scrum Master</u></dt>
+          <dt>April 2014 – August 2015 | KeyIngredient, Austin, TX</dt>
+          <dd>
+            <ul>
+              <li>Built e-commerce backend APIs on Google AppEngine for a <b>two-sided marketplace</b>; partnered with product on fulfillment automation and consumer-facing features.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Quality Assurance &amp; Network Integration Engineer</u></dt>
+          <dt>February 2005 – December 2009 | Hospira, Inc., San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Regulated healthcare — requirements-based verification, audit documentation, and hospital network integration for infusion pump software serving patients in critical care.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education</h1>
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>ITT Technical Institute — GPA 3.67</dt>
+        </dl>
+        <dl>
+          <dt><u>United States Marine Corps</u></dt>
+          <dt>Field Wireman &amp; Communications Specialist — Honorably Discharged</dt>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>

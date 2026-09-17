@@ -1,0 +1,24 @@
+{
+  "company": "Pyramid Technology Solutions, Inc.",
+  "client": null,
+  "role": "Full Stack Backend Developer",
+  "location": "New York City, NY (3 days Hybrid)",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-08",
+  "updated": "2026-08-08",
+  "salary": null,
+  "styling_notes": "The resume design maintains a clean and professional look, emphasizing technical skills and accomplishments relevant to the role.",
+  "notes": "Strong expertise in Python and API development, proficient in FastAPI, SQL Alchemy, and SQL databases. Experience with AWS and willingness to learn Azure. Background in AI libraries and frameworks. Strong communication skills and collaborative experience.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fde49023f6488f",
+    "thread_id": "19fde49023f6488f",
+    "subject": "Job Opportunity :: Looking for Full Stack Backend Developer (Python, API\u2019s, Azure/AWS)@ New York City, NY (3 days Hybrid)",
+    "sender": "Sunil Kumar Varaganti <sunil.varaganti@pyramidinc.com>"
+  },
+  "recruiter_email": "sunil.varaganti@pyramidinc.com",
+  "recruiter_name": "Sunil"
+}

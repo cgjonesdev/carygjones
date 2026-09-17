@@ -1,0 +1,24 @@
+{
+  "company": "Tanisha Systems Inc",
+  "client": null,
+  "role": "Software Development Engineer",
+  "location": "Redmond, WA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design uses a clean and professional palette to enhance readability and highlight key competencies.",
+  "notes": "Strong proficiency in Python and experience with Java; hands-on experience with Linux development environments; experience in Agile/Scrum development environments; strong debugging and problem-solving skills; over 15 years of software development experience.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd33c468ddcbfa",
+    "thread_id": "19fd33c468ddcbfa",
+    "subject": "Hiring || Software Development Engineer || Redmond, WA || Fulltime",
+    "sender": "\"Manish Kumar (TSI2614)\" <Manish.kumar@tanishasystems.com>"
+  },
+  "recruiter_email": "Manish.kumar@tanishasystems.com",
+  "recruiter_name": "Manish"
+}

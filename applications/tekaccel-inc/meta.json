@@ -1,0 +1,23 @@
+{
+  "company": "Tekaccel Inc.",
+  "client": null,
+  "role": "Senior Full Stack Developer",
+  "location": "Remote",
+  "match_score": 90,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design should reflect a modern, clean aesthetic with a focus on technical skills and accomplishments, using a color palette that emphasizes professionalism.",
+  "notes": "Strong match for the role, particularly in Python, React, and cloud platforms. Emphasize AI-assisted development tools and full-stack capabilities.",
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd3aa82410890a",
+    "thread_id": "19fd3aa82410890a",
+    "subject": "Remote Role for Senior Full Stack Developer! URGENT!!",
+    "sender": "Deependra <deep@tekaccel.com>"
+  },
+  "recruiter_email": "deep@tekaccel.com",
+  "recruiter_name": "Deependra"
+}

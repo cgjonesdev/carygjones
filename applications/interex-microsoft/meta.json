@@ -1,0 +1,19 @@
+{
+  "company": "InterEx Group",
+  "client": "Microsoft (public sector)",
+  "role": "Technical Lead \u2013 Python / Full-Stack Engineering",
+  "location": "Remote (US)",
+  "match_score": 89,
+  "status": "ready",
+  "created": "2026-09-02",
+  "updated": "2026-09-02",
+  "salary": "Contract through Jan 2027 + extensions",
+  "styling_notes": "Microsoft public-sector palette \u2014 Microsoft blue (#0078d4) with neutral charcoal; professional, mission-oriented layout emphasizing technical leadership + regulated delivery.",
+  "notes": "Strong Python/FastAPI/PostgreSQL/leadership fit. Gaps: Elasticsearch (search via PostgreSQL/Redis; vector DB experience), Entra ID (OAuth2/JWT/RBAC in HIPAA \u2014 ramp quickly), Azure DevOps (deep AWS/GCP CI/CD \u2014 transferable). React/Node production history; Next.js/TypeScript as contributing full-stack. Urgent \u2014 reply with CV + (626) 272-2567.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "recruiter_name": "Rodrigo Viera",
+  "recruiter_title": "Head of Delivery, InterEx Group",
+  "gmail_draft_id": "r8264576582910586816"
+}

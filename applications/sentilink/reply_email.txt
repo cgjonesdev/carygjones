@@ -1,0 +1,23 @@
+Subject: Re: Senior Software Engineer — Data Platform — SentiLink
+
+Hi SentiLink team,
+
+Thank you for reaching out about the Senior Software Engineer — Data Platform opportunity with SentiLink. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• ETL/ELT at scale: Built event-driven Python pipelines on AWS handling 2.5M+ daily transactions at 99.95% accuracy, with monitoring, idempotent processing, and automated test coverage.
+• Data performance: Cut Disney financial batch reconciliation from 8 hours to 45 minutes through PostgreSQL optimization and pipeline redesign; optimized Redshift reporting queries 38%.
+• AWS data stack: Production experience with ECS/Fargate, Lambda, RDS/PostgreSQL, S3, async queues, Docker, and on-call ownership at 99.99% uptime.
+• Quality & mentorship: HIPAA-compliant data access at Alan Health; mentor engineers on observability, reliability, and data quality standards.
+
+I'm based in Temple City (Los Angeles area), available for Los Angeles, CA (Remote, US), and the $170,000–$230,000 + equity range aligns with my expectations. I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

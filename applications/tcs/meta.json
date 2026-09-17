@@ -1,0 +1,22 @@
+{
+  "company": "TCS",
+  "client": null,
+  "role": "DevOps Engineer",
+  "location": "Cincinnati, OH",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design maintains a clean and professional look, emphasizing technical skills and accomplishments relevant to the role.",
+  "notes": "Strong alignment with DevOps and AI-assisted development tools. Limited experience in banking or financial services.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd7df1947cface",
+    "thread_id": "19fd7df1947cface",
+    "subject": "TCS Hiring for DevOps with Claude in Cincinnati, OH - Onsite Full Time",
+    "sender": "Yash Kaushik <Yash.Kaushik@okayainc.com>"
+  }
+}

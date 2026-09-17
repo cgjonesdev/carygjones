@@ -2,19 +2,21 @@
   "company": "Honor",
   "client": null,
   "role": "Senior Backend Engineer",
-  "location": "Remote (U.S.)",
-  "match_score": 92,
+  "location": "Remote",
+  "match_score": 85,
   "status": "ready",
-  "created": "2026-07-31",
-  "updated": "2026-07-31",
-  "salary": "$160k–$180k",
-  "styling_notes": "Healthcare/aging-care mission — warm teal (#0f766e) and soft violet (#6d5cae); Python+AWS+HIPAA emphasis; Alan Health and scale metrics lead",
-  "notes": "Sourced from Gmail recruiter scan (Indeed match). Greenhouse posting 8382000002 may be closed — apply via Indeed alert link if needed. Strong healthcare fit: Alan Health HIPAA APIs, Python/AWS, PostgreSQL at scale.",
+  "created": "2026-08-12",
+  "updated": "2026-08-12",
+  "salary": "$160,000 - $180,000 a year",
+  "styling_notes": "The resume design maintains a professional and clean aesthetic, emphasizing clarity and readability, which aligns well with the collaborative nature of the role.",
+  "notes": "Cary's extensive experience in Python API and web development, along with his strong background in cloud infrastructure and microservices, makes him a strong candidate for this role. However, there is no specific mention of experience with the Honor domain or healthcare systems.",
+  "apply_url": "https://cts.indeed.com/v3/H4sIAAAAAAAA_42RTW-jMBiE_wvScloaY0pIIqFVCXTz0aSs0k2XXCrbEDDmwzE2JKn63-vuYSv1tKdXekajVzPzaihjZhRS8m42Gg3DcEObNMvSG9LWI0FGpGI_SubDDIHjJHXwlIzBxM3Mo2hrv2wxhehFnxpJUlgiQ0TSHknaNlbWWL93L1mNaGVK5tulEkx0FNaNm0-AbWLsd9ahQW6akJ8LubUjr7m0EFTqvqsPlIvtHwY3fQ3VfndfBcniUmzunLI7k57ECHRrypAs2snj-Mnaz2O0CJ8dGBYL4vEoUMuo9zhfP08PfbC8onCl-BArcjrlxfZ64CuR7mu8PAPsrhkvy2O4UfjRSo_Fwy8UzWMRJBCcXPVwPW1VEt0l35zQPDOC_V0bkrG3cXJc5IEDPBCAFb6ydJ7GsSlK_hkVSE5PSkc1vhu1MXs1ECGtauQy1Y1DMHZseOsCLaI8X7X4L7YBsG04daF9qwVSUcKeCtGqvNCiFCr7Ry8806in2aDr1_RjEA3-dxLtkOzj4ZdZjLe3d4EGjPITAgAA/x5J7_90vpUWB_U420eamc1xatfXmwFhJz6SbZJTs82s",
+  "apply_method": "Online",
+  "linkedin_job_id": null,
   "source_email": {
     "message_id": "19fb74dfe9cdd7fe",
     "thread_id": "19fb74dfe9cdd7fe",
     "subject": "Senior Backend Engineer @ Honor",
     "sender": "Indeed <donotreply@match.indeed.com>"
-  },
-  "apply_url": "https://cts.indeed.com/v3/H4sIAAAAAAAA_42S2W7iMBSG3yVSejUpjtOERUIjQsKwFJoRHTpwUzlOyOIsjmOzVX33OTDSqOJqJOvY_s5q_f7QlDbQUil5O-h0COfF-TGrojiOHmlddv4eb7iTYfJdsqGZK8FEm-GyspMeMh9yNsQxQfteZIV96qCeHT-IaHirqVsjHU9gHY_HL3UBCAqGFky3JjkY776Ejp29gEjLy-sQWr_DVhJJU0PEhMrsQGRWV0ZcGb_W73FJsgIy5LXS_YDAwxB4a-wqYkdb-mMqV6bfrc41RoWatOUu42L1m-HlocRqs54U7nZ6TpcjK29P9EADgtpFxohM696L82psxgGZem8W9tIp7XLfVTP_0OV88dbfHdzZhXhzxY-Bok2TpKvLjs9FtCnD2QmF9oLxPN97SxW-GNE-ff5J_HEg3C1Gja2eL81Kbf3RVse25cHcJ0avk69rjzrdpZWEaeJaqItcNA8vLBpHQQBRIudfH44kzxoFD9e-aaU2-NAIpbWq5CwCpTFyLBM_2QicJEnmdXjDJkKmifs2Np_AQYuMstdU1CpJwSmFiv_RM48B3X4EsKtEcP1fiSBDsmu7O4m0z88_DMTdrYkCAAA/kH22PDhpiR6m8OMNEngHWqyaMlf-4xpNJAHLIPqtwHk"
+  }
 }

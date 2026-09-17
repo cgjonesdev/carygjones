@@ -1,0 +1,23 @@
+{
+  "company": "Indeed",
+  "client": null,
+  "role": "Software Engineer II",
+  "location": "Remote",
+  "match_score": 85,
+  "status": "applied",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": "$100,000 - $210,000 a year",
+  "styling_notes": "The resume design is clean and professional, emphasizing technical skills and accomplishments relevant to the role.",
+  "notes": "Strong match for Python API development and web frameworks. Lacks specific data science or analytics experience.",
+  "apply_url": "https://cts.indeed.com/v3/H4sIAAAAAAAA_42SbW_aMBDHv0sk-mopjvNEkNDECHRAWSgEOvKmSmznOTENTgKp-t13MGmqeDXJOtu_u_uf7fOHVEtDKRbieBr2-_7xmF8ek5IyRh8JL_p_lzfcT7D_XWQjJW1onpH8PSUoHSDlIc1GvmlpGOsM68hkJDQfKjq6afbUcQ_PYLRt-0UXQEXAkDzrqbMUjH0v0cNGWEGkaqc8gNJvMBW-ILFcMZ-IpPFFwkuZlfJu-8YKP8khQ1yV7g8IPAiAY2zm8ouh7g8_ndkvz1tO7c530_dJOHdOv8NN7rhzx_X4EmKQZ5lhy2K8GWzJ9EfZxtsTPVuHzYzifIWnm-gULqqzaJZPZFHwzn61qtdMviycjay7xa5xqr3a5S_xmtVtNDYt6mRjHusTWS2WaF12e7XcaQmtDwuP8EBBdQzvYZwzcj3pltsDw1ypkUiZ_RQlq2e0DrqMTuh6DVFVevxy0aApsIVDhGLpm1RIww_JJ4TXpZhT6CxGhqpgTUfg9KNowYMbVhDGCrYUzdLAQfKEZG5c8TqKwSmqmv2jlyMDdPsBwK4tge3_tgQyRHYtd9cS6fPzD4_2d9B5AgAA/9_P3PNQvaWcKjbj8qAKFOd7zVIEZsovkksd3-Hxfpqs",
+  "apply_method": "Online application",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fdb5a439fccc2c",
+    "thread_id": "19fdb5a439fccc2c",
+    "subject": "Software Engineer II @ Indeed",
+    "sender": "Indeed <donotreply@match.indeed.com>"
+  },
+  "recruiter_name": "Indeed"
+}

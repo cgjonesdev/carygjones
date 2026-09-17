@@ -1,0 +1,22 @@
+Source: https://www.linkedin.com/comm/jobs/view/4450310665/?trackingId=mcRHVtUYt6UesWFWP3STvg%3D%3D&refId=Mvg4Qp2rVfdthdRJhU5%2Bow%3D%3D
+
+Senior Applied AI Engineer
+TEKsystems
+Irvine, CA
+
+Job Description:
+We are seeking a Senior Applied AI Engineer to join our team in Irvine, CA. The ideal candidate will have extensive experience in AI and machine learning integration, a strong background in Python and cloud architecture (AWS, GCP), and a proven track record in building scalable microservices and APIs. Experience in healthcare and regulated environments is a plus.
+
+Responsibilities:
+- Design and implement AI solutions to improve business processes.
+- Collaborate with cross-functional teams to integrate AI technologies into existing systems.
+- Develop and deploy scalable microservices and APIs.
+- Ensure compliance with industry standards and regulations.
+- Stay updated with the latest advancements in AI and machine learning.
+
+Qualifications:
+- Bachelor's degree in Computer Science, Engineering, or a related field.
+- 5+ years of experience in AI and machine learning.
+- Proficiency in Python and experience with cloud platforms like AWS and GCP.
+- Strong understanding of microservices architecture and API development.
+- Experience in healthcare or regulated environments is preferred.

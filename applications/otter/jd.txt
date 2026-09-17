@@ -1,0 +1,23 @@
+Source: https://www.linkedin.com/comm/jobs/view/4344245562/?trackingId=Sf4UWtm8Z07YrxypxnVC2Q%3D%3D&refId=YrLQEmyMvrEwopunNJuVgg%3D%3D
+
+Senior Backend Software Engineer
+Otter
+Los Angeles, CA
+
+Who We Are
+In the past, to be a successful software engineer, you needed to be a master of a single technology. Today, you need to be a master of many. At Otter, we are looking for a Senior Backend Software Engineer who is passionate about building scalable backend systems and integrating cutting-edge AI solutions. Our ideal candidate will have extensive experience in backend development with Python frameworks (FastAPI, Django, Flask), strong expertise in cloud services (AWS, GCP), and a proven track record in building scalable REST APIs. You will work on-site in Los Angeles, CA, collaborating with a team of engineers to deliver innovative solutions.
+
+Responsibilities:
+- Design, develop, and maintain scalable backend systems using Python frameworks.
+- Collaborate with cross-functional teams to integrate AI solutions into our products.
+- Optimize cloud infrastructure for performance and scalability.
+- Ensure the reliability and security of backend applications.
+
+Qualifications:
+- 5+ years of experience in backend development with Python.
+- Strong experience with cloud services such as AWS and GCP.
+- Proven track record in building and maintaining REST APIs.
+- Experience with AI integration is a plus.
+- Excellent problem-solving skills and attention to detail.
+
+Join us at Otter and be part of a team that is shaping the future of technology.

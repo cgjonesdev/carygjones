@@ -1,0 +1,29 @@
+Source: Dice
+
+Software Developer II
+
+Lumen
+
+Remote
+
+Posted 07-19-2026
+
+Job Description:
+Lumen is seeking a Software Developer II with strong experience in Python and related frameworks such as FastAPI, Django, and Flask. The ideal candidate will have a proven track record in cloud infrastructure, particularly with AWS and GCP. Experience with AI and machine learning integration is highly desirable. The role involves developing and maintaining scalable backend services and APIs, collaborating with cross-functional teams, and ensuring high performance and reliability of cloud-based applications.
+
+Responsibilities:
+- Develop and maintain scalable backend services and APIs using Python frameworks.
+- Collaborate with cross-functional teams to design and implement cloud-based solutions.
+- Ensure high performance and reliability of applications deployed on AWS and GCP.
+- Integrate AI and machine learning features into existing systems.
+
+Qualifications:
+- Strong experience with Python and related frameworks (FastAPI, Django, Flask).
+- Proven track record in cloud infrastructure (AWS, GCP).
+- Experience with AI and machine learning integration.
+- Ability to work remotely and collaborate with distributed teams.
+
+Preferred Skills:
+- Knowledge of machine learning and artificial intelligence.
+- Experience with microservices architecture.
+- Familiarity with CI/CD pipelines and DevOps practices.

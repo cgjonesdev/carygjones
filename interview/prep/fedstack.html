@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fedstack Interview Prep</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1.5rem; line-height: 1.55; color: #1e293b; }
+    h1 { color: #1e3a5f; border-bottom: 2px solid #0f766e; padding-bottom: 0.4rem; }
+    h2 { color: #334155; margin-top: 2rem; }
+    h3 { color: #475569; margin-top: 1.5rem; }
+    code { background: #f1f5f9; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.92em; }
+    blockquote { border-left: 3px solid #0f766e; margin: 1rem 0; padding: 0.5rem 1rem; background: #f8fafc; font-style: italic; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95em; }
+    th, td { border: 1px solid #e2e8f0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f1f5f9; }
+    hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+    ul { margin: 0.5rem 0 1rem 1.25rem; }
+    li { margin-bottom: 0.35rem; }
+    .badge { display: inline-block; background: #ecfdf5; color: #0f766e; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.85em; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<h1>Fedstack Interview Prep</h1>
+<p><span class="badge">Senior Software Engineer</span> · Remote · Up to $197K · <strong>U.S. citizenship required</strong></p>
+<p>Federal workforce transformation — Hire-Train-Deploy into agency/FSI software engineering roles where <strong>security, scale, and reliability</strong> matter at national scale.</p>
+
+<hr>
+
+<h2>Elevator Intro (60–90 sec)</h2>
+<blockquote>
+  I'm a Senior Software Engineer with over 15 years building secure, scalable Python APIs and cloud infrastructure. I've delivered HIPAA-compliant healthcare platforms, enterprise financial backends at Disney processing over $10 million daily on AWS, and Django REST automation at Fidelity. I'm a U.S. citizen and Marine Corps veteran, and I'm drawn to Fedstack because federal technology demands the same rigor I've practiced in regulated environments — security, reliability, and systems millions of people depend on.
+</blockquote>
+
+<h2>Role Fit</h2>
+<table>
+  <tr><th>Requirement</th><th>Your pivot</th></tr>
+  <tr><td>3+ years programming</td><td>15+ yrs Python, APIs, cloud — Fidelity, Disney, CGJSoftware</td></tr>
+  <tr><td>U.S. citizenship</td><td>U.S. citizen; USMC veteran (Field Wireman &amp; Communications)</td></tr>
+  <tr><td>Public trust clearance</td><td>Eligible; HIPAA (Alan Health), FDA-style verification (Hospira)</td></tr>
+  <tr><td>Python API &amp; web</td><td>FastAPI, Django, Sanic — Fidelity DRF, Alan Health REST</td></tr>
+  <tr><td>Federal applications</td><td>Security-first microservices, OAuth2, audit logging patterns</td></tr>
+</table>
+
+<hr>
+
+<h2>Scenario Questions (STAR)</h2>
+
+<h3>1. Secure API for sensitive / citizen data</h3>
+<ul>
+  <li>JWT/OAuth2, RBAC, TLS, encrypt PII at rest.</li>
+  <li>Immutable audit logs (who/what/when/IP).</li>
+  <li>Secrets Manager; least-privilege IAM.</li>
+  <li><strong>Pivot:</strong> Alan Health — 500k HIPAA user profiles.</li>
+</ul>
+
+<h3>2. Citizenship &amp; clearance eligibility</h3>
+<ul>
+  <li>Confirm U.S. citizenship; SF-85P readiness.</li>
+  <li>Regulated work history; Marine Corps mission accountability.</li>
+</ul>
+
+<h3>3. N+1 query performance</h3>
+<ul>
+  <li>APM → N+1; <code>select_related</code> / <code>prefetch_related</code>; Redis cache.</li>
+  <li><strong>Result:</strong> &lt;120ms API latency at CGJSoftware.</li>
+</ul>
+
+<h3>4. Zero-downtime deploy (regulated)</h3>
+<ul>
+  <li>Blue/green ECS; migrations before traffic shift; expand/contract schema.</li>
+  <li><strong>Pivot:</strong> Disney 99.99% uptime on financial systems.</li>
+</ul>
+
+<h3>5. LLM document classification (safely)</h3>
+<ul>
+  <li>Authorized endpoint; redact PII; RAG on classified corpus; human review queue.</li>
+  <li><strong>Pivot:</strong> CGJSoftware LangChain — 60% less manual data entry with guardrails.</li>
+</ul>
+
+<h3>6. Production incident response</h3>
+<ul>
+  <li>CloudWatch → logs → rollback if deploy-correlated → scale/RCA.</li>
+</ul>
+
+<h3>7. Legacy modernization</h3>
+<ul>
+  <li>Strangler fig; tests on critical paths first.</li>
+  <li><strong>Pivot:</strong> CVS monolith decoupling — +50% integration test speed.</li>
+</ul>
+
+<h3>8. API abuse / rate limiting</h3>
+<ul>
+  <li>Gateway throttling, WAF, Redis token bucket, 429 + Retry-After.</li>
+</ul>
+
+<hr>
+
+<h2>CGJSoftware Framing</h2>
+<blockquote>
+  CGJSoftware is my S-Corp for B2B engineering contracts — end-to-end delivery from architecture through AWS deployment. I'm ready to channel that into dedicated federal engineering where clearance, compliance, and national-scale impact are the norm.
+</blockquote>
+
+<hr>
+
+<h2>Gap Pivots</h2>
+<table>
+  <tr><th>Concern</th><th>Pivot</th></tr>
+  <tr><td>No federal agency names</td><td>HIPAA + medical device regulated work maps to federal constraints</td></tr>
+  <tr><td>Consulting vs. employee</td><td>S-Corp vehicle; seeking long-term mission placement via Fedstack</td></tr>
+  <tr><td>AI on resume</td><td>Guardrails, air-gapped options, audit — not move-fast-break-things</td></tr>
+</table>
+
+<hr>
+
+<h2>Resume Story Map</h2>
+<table>
+  <tr><th>Topic</th><th>Story</th><th>Metric</th></tr>
+  <tr><td>Secure APIs</td><td>Alan Health HIPAA</td><td>500k profiles</td></tr>
+  <tr><td>Scale</td><td>Disney financial backend</td><td>$10M+ daily, 99.99% uptime</td></tr>
+  <tr><td>Automation</td><td>Fidelity network API</td><td>4 hr → 10 min</td></tr>
+  <tr><td>Microservices</td><td>CGJSoftware ECS</td><td>&lt;120ms, +45% throughput</td></tr>
+  <tr><td>Regulated QA</td><td>Hospira infusion pumps</td><td>FDA-style verification</td></tr>
+  <tr><td>Mission</td><td>USMC communications</td><td>100% comm uptime</td></tr>
+</table>
+
+<hr>
+
+<h2>Questions to Ask</h2>
+<ol>
+  <li>Senior engineer path through HTD — shortened track or direct placement?</li>
+  <li>Which FSIs/agency domains for Senior SWE placements?</li>
+  <li>Day-one stack and clearance level on client projects?</li>
+  <li>Technical readiness assessment format?</li>
+  <li>Mentorship and compliance training after placement?</li>
+</ol>
+
+<hr>
+
+<h2>Pre-flight</h2>
+<ul>
+  <li><strong>Resume PDF:</strong> <code>applications/fedstack/resume.pdf</code></li>
+  <li>Citizenship docs ready if HR requests</li>
+  <li>SF-85P: gather 7-year residence/employment history</li>
+  <li>Recruiting: <a href="mailto:recruiting@fedstack.com">recruiting@fedstack.com</a></li>
+  <li>Coding drill: <code>interview/sessions/fedstack_coding_drill.py</code></li>
+</ul>
+
+<p><em>Mock session: <code>interview/sessions/fedstack_mock.md</code> · Trigger: "run interview prep fedstack"</em></p>
+
+</body>
+</html>

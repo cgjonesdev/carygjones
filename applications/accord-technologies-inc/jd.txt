@@ -1,0 +1,109 @@
+Source: N/A
+
+Subject: Job Scrum Master cum Quality Engineering (QE) Lead is shared with you
+
+.atsMBlock *{box-sizing: border-box;}
+}
+}
+}
+
+}
+
+Hello Cary Jones
+
+My name is David Smith and I am a Staffing Specialist at Accord Technologies Inc.. I am reaching out to you on an exciting job opportunity with one of our clients.
+
+Job Title - Scrum Master cum Quality Engineering (QE) Lead
+
+Job Description :
+
+Scrum Master cum Quality Engineering (QE) Lead
+Location: Piscaatway, NJ (Hybrid 3 days a back)
+Position type: W2 contract
+
+Job Summary
+
+We are seeking an experienced Scrum Master cum QE Lead to facilitate Agile delivery while leading quality engineering and testing practices across software development projects. This role combines Scrum leadership, team coordination, process improvement, test strategy, automation, and quality governance.
+
+The ideal candidate will have strong experience in Agile/Scrum methodologies, software testing, test automation, CI/CD, and stakeholder management. The person will work closely with Product Owners, developers, business stakeholders, DevOps, and other teams to ensure predictable delivery of high-quality software.
+
+Key Responsibilities
+
+Scrum Master Responsibilities
+
+Facilitate Scrum ceremonies, including:
+
+Daily stand-ups
+Sprint planning
+Sprint reviews/demos
+Sprint retrospectives
+Backlog refinement sessions
+
+QE Lead Responsibilities
+
+Define and implement the overall quality engineering and testing strategy.
+Lead QA/QE activities across the complete software development lifecycle.
+Review business and technical requirements to ensure testability, completeness, and clarity.
+Develop test plans, test scenarios, test cases, and acceptance criteria in collaboration with the team.
+Lead functional, integration, system, regression, exploratory, usability, and end-to-end testing.
+Establish and maintain test automation frameworks and standards.
+Identify suitable opportunities for automation and improve test coverage.
+Review automated test scripts and ensure code quality, maintainability, and reliability.
+Integrate automated tests into CI/CD pipelines.
+Monitor test execution results, defect trends, test coverage, and release quality metrics.
+Lead defect triage, root-cause analysis, and resolution tracking.
+Ensure defects are properly documented, prioritized, assigned, and closed.
+Partner with developers to promote shift-left testing and early defect prevention.
+Support performance, security, API, database, and compatibility testing as required.
+Define and maintain quality gates for builds and releases.
+Coordinate User Acceptance Testing and production validation activities.
+Provide release-readiness recommendations based on quality metrics and risk assessment.
+Ensure adherence to organizational QA standards, processes, and compliance requirements.
+Mentor QA engineers and promote knowledge sharing within the team.
+Continuously improve testing processes, tools, automation, and engineering practices.
+
+Required Qualifications
+
+Bachelor’s degree in Computer Science, Information Technology, Engineering, or a related field.
+5–10 years of experience in software quality assurance, quality engineering, or software testing.
+2+ years of experience as a Scrum Master or Agile Delivery Lead.
+Strong hands-on experience with Agile/Scrum methodologies.
+Experience leading cross-functional software development teams.
+Strong knowledge of software testing methodologies and quality engineering practices.
+Experience in both manual and automated testing.
+Hands-on experience with automation tools such as:
+
+Selenium,
+Cypress,
+Playwright,
+Appium,
+Rest Assured,
+Postman/Newman,
+
+Experience with API, web, mobile, integration, and regression testing.
+Experience with defect management tools such as Jira, Azure DevOps, or similar platforms.
+Experience with test management tools such as Zephyr, Xray, TestRail, or equivalent.
+Working knowledge of CI/CD tools such as Jenkins, GitHub Actions, GitLab CI, or Azure Pipelines.
+Good understanding of Git and source-code management practices.
+Experience with SQL and database validation.
+Understanding of Agile metrics, test metrics, and release management.
+Excellent communication, facilitation, leadership, and stakeholder-management skills.
+Strong analytical, problem-solving, and decision-making abilities.
+
+Should you be interested, please send me a copy of your resume in word format along with the following details ASAP.
+
+Full Name:
+Current Location:
+Hourly rate on C2C/W2:
+Work Authorization:
+Earliest Available date to start:
+Date and times available to interview:
+Two Professional References:(Preferably Supervisory references):
+
+Best Regards,
+
+David Smith
+
+N/A
+
+david.s@accordtecinc.com

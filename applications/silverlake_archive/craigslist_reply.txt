@@ -1,0 +1,19 @@
+Subject: digital archive support — experience, on-site availability, rates
+
+Hi,
+
+Thanks for posting — this is a fit for the kind of consulting work I do through CGJSoftware.
+
+**Experience:** I'm a senior software engineer with 15+ years building data pipelines, document automation, and searchable file systems. Relevant work includes LLM-assisted document classification, Office/file workflow automation, metadata and indexing over large heterogeneous file sets (email exports, Word docs, mixed media), and Python tooling for ingestion, deduplication, and retrieval. I'm not a certified archivist, but I'm strong on the technical side: getting a messy personal archive into a system you can actually search and manage day to day.
+
+**On-site:** Yes — I'm based in Temple City and available for on-site work in Silverlake.
+
+**Rates:** $100/hour for on-site consulting. I'd suggest starting with a 2–3 hour discovery session (archive size, formats, how you search today, what "good" looks like) before scoping a fixed project.
+
+Happy to talk this week if useful.
+
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

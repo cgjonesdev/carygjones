@@ -1,0 +1,22 @@
+{
+  "company": "Hitapps",
+  "client": null,
+  "role": "Python Developer",
+  "location": "Remote",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-10",
+  "updated": "2026-08-10",
+  "salary": null,
+  "styling_notes": "The resume design uses a clean, professional palette that emphasizes readability and highlights key skills and experiences.",
+  "notes": "Cary has extensive experience with Python frameworks such as Flask and Django, proven ability to design and develop REST APIs, and a strong background in AI and cloud technologies.",
+  "apply_url": "https://cts.indeed.com/v3/H4sIAAAAAAAA_42RTW-jMBiE_wvS5rRpbD6TSGiVkCYsaUMItNnmgoz5NsYpGAit-t_r7qGHPe3plZ7R6NXMvEudtJRyzq_tcjYbhuGuqOMkie8wo7MGz3BFfpXEnOMUQw2miySFqQHQJG0YNUsWFTIKxaGI43zaJAjzoke8YPU0qadPfphQVFQTTkxY9hV-xSmpNUWbAziJIvMQhjcPvxxVqJf56KvWLpMPdrgY1LKrVq4W-JYbh3agOYZFEGMP4zj0C2OkXriZv50HZFxWpH3tECmUQ7MCJ6N_BLWn9tve7u9ftvYegX3_QLU_-6pUbrG7O94_nwNd3wIc9CxynJbbaWuscX7qDlXbPW9osXDW2011ciGVvfXuKbtVZ9fPfiibyY3gyPSZddGNRyWDJ3rxDH99AfvojcRWfDxOmvL6HTUqr6SrYhFV-ilRafkuIYxZV_PfsWhcBroCZVUDQkRZ5rDoL4YA6qIdFeiGEHBVYBLkDeuyXIi86ZJvOl4TgfoiGUT9gn4NIsD_TiIcnHw9_GcW6ePjE9sFWXUTAgAA/-kIjyj6nYAYnsjKk0_hDVJMQrGZeFHXD5bjP6vQtffk",
+  "apply_method": "online",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19feacd3836aa096",
+    "thread_id": "19feacd3836aa096",
+    "subject": "Python Developer @ Hitapps",
+    "sender": "Indeed <donotreply@match.indeed.com>"
+  }
+}

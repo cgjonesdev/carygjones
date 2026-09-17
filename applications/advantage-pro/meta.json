@@ -1,0 +1,22 @@
+{
+  "company": "Advantage Pro",
+  "client": null,
+  "role": "Senior Software Engineer",
+  "location": "Remote",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-10",
+  "updated": "2026-08-10",
+  "salary": "$70 - $80 an hour",
+  "styling_notes": "The resume design is clean and professional, emphasizing technical skills and accomplishments relevant to the role.",
+  "notes": "Extensive experience in Python API development and web frameworks. Strong background in designing scalable and resilient systems. Proficient in cloud technologies and DevOps practices.",
+  "apply_url": "https://cts.indeed.com/v3/H4sIAAAAAAAA_42RS2_aQBRG_4ulelWHmcE2NpJVQSA8GggY0xg21ng8fr8Yjx8Q5b932kUWXXV1pfPdu7jf-ZBaaSrFnNfNdDTq-_4pKQNKgydSFSNGRiTPfqSZZUKAAjTRAh_5eGxgOWRVYaWVnyDsiVFgTmKFUUx40mGeVKVCS-V88miBk1zmmQXTLrkFRRfnNIkMAGXft1hqsOe5d-tthko_an5BZ96E-GfgJ9vTvp4tketWdsMp3teqjialEpfAOfUvDwSW7yvbuxprsnfhG-HxvXGQ9x4ZVZrzEIbb4XjgD01Rd8XGsxv3bB8hy_rb8TC_tK254avg1VGvazgZNKjfrxfzsnCL0lu0UF-5j-3ubQC7l1kXuftQGbTlt_FCHjLiW6dqdtYnu3F0N9RhRov1FWz9RxY8B4eDzNL669W8q5FpUgA06btUSNMPCRNStSXfBKJxBPQxRKoGRIijaFv5f7GpAd2ACOmq4CRPSObErGqjWGSctfSL3msqUJfQXrQv6B8fAvyvEXHBM7H_rxXp8_M3EckKcBICAAA/e1TtWiidcgBtehv0RGmiqTpDsIWRRqTzJWl_JGUAqlE",
+  "apply_method": "online",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fe5a6ea23c7d0c",
+    "thread_id": "19fe5a6ea23c7d0c",
+    "subject": "Senior Software Engineer @ Advantage Pro",
+    "sender": "Indeed <donotreply@match.indeed.com>"
+  }
+}

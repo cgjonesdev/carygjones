@@ -1,0 +1,21 @@
+Source: https://www.linkedin.com/comm/jobs/view/4434647102/?trackingId=4h6Ha7uCRxyDmSGwiuYIYg%3D%3D&refId=M3etxgCBT1S13B5Q5LIeBA%3D%3D&lipi=urn%3Ali%3Apage%3Aemail_email_jobs_viewed_job_reminder_01%3B90uCr%2F%2BRRPu2Kh8WAwEOVg%3D%3D&midToken=AQHu2FYfZAge0g&midSig=0x6ApHOO4zfIo1&trk=eml-email_jobs_viewed_job_reminder_01-similar_jobs-0-view_job&trkEmail=eml-email_jobs_viewed_job_reminder_01-similar_jobs-0-view_job-null-7pciz~msjqmaj7~by-null-null&eid=7pciz-msjqmaj7-by&otpToken=NGFmNDUwNmZlNzJiODZmYjU4NjMxMGY4MGVjZmIwZmRmM2VjOWVmY2IxMTlhNmY0Yzg1MDdmZDdjODNmNDQzYmYyNzdmMDQ3NmI3NWNhYjNmZmM4NmQ4YjYyOWFlMDI1NTE0MzEyZjI2ZDk4NzdhMTUyZWMyMjE3ZGM1Y2Q1YzYzOTZkYjdiMTk5MzcsMiwx
+
+Senior Software Engineer
+myPlace Health
+Long Beach
+
+Responsibilities:
+- Lead the development and deployment of scalable software solutions.
+- Collaborate with cross-functional teams to design, develop, and implement software applications.
+- Ensure the performance, quality, and responsiveness of applications.
+- Identify bottlenecks and bugs, and devise solutions to these problems.
+- Maintain code quality, organization, and automation.
+
+Qualifications:
+- Proven experience as a Senior Software Engineer.
+- Strong experience in full-stack development, particularly with Python.
+- Experience with cloud infrastructure and architecture.
+- Familiarity with healthcare industry standards and regulations is a plus.
+- Excellent problem-solving skills and attention to detail.
+
+Source: LinkedIn

@@ -1,0 +1,24 @@
+{
+  "company": "Direct Customer",
+  "client": null,
+  "role": "Sr. Python Developer",
+  "location": "Irving, TX & Jacksonville, FL",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design is clean and professional, emphasizing technical skills and experience relevant to the role.",
+  "notes": "Strong alignment with Python, FastAPI, and AI/ML libraries. Lacks specific TensorFlow, PyTorch, or Keras experience.",
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd86e1ab19e1b2",
+    "thread_id": "19fd86e1ab19e1b2",
+    "subject": "Full Time Role Sr Python Developer in Irving TX & Jacksonville FL",
+    "sender": "Rishabh <rishabh@vitsus.com>"
+  },
+  "recruiter_email": "rishabh@vitsus.com",
+  "recruiter_name": "Rishabh",
+  "gmail_draft_id": "r2230776157108925845"
+}

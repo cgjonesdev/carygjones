@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Software Engineer</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #0f766e;
+        --rule: #e2e8f0;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+        background: #fff;
+      }
+
+      main {
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 0.5in 0.6in;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+
+      .fullname {
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      .title {
+        margin-top: 0.3rem;
+        font-size: 0.92rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      section > p,
+      section > ul {
+        margin-bottom: 0.4rem;
+      }
+
+      section p { text-align: justify; }
+
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+
+      section#skills ul {
+        list-style: none;
+        margin-left: 0;
+      }
+
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 0.4rem;
+      }
+
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      section dl:last-child { border-bottom: none; }
+
+      dt { margin-bottom: 0.1rem; }
+
+      dt u {
+        font-size: 0.92rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      dt:not(:has(u)) {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      dt b { color: var(--text); }
+
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+
+      .sub-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 0.35rem;
+      }
+
+      .education-note {
+        margin: 0.5rem 0 0.75rem;
+        padding: 0.45rem 0.6rem;
+        background: #f8fafc;
+        border-left: 3px solid var(--accent);
+        font-size: 0.88rem;
+        color: var(--muted);
+        text-align: left;
+      }
+
+      section#keywords {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      b { font-weight: 700; }
+
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Software Engineer | AI & Cloud Architecture</p>
+        <div class="contact">
+          <span>Temple City, CA 91780</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Software Engineer</b> with over 15 years of experience in building high-performance <b>API microservices</b>, cloud infrastructure, and <b>AI-augmented enterprise solutions</b> using frameworks such as <b>FastAPI, Sanic, Django</b>, and Flask. Proven leader adept at guiding cross-functional teams, refactoring monolithic legacy systems into resilient microservices, and orchestrating scalable AWS/GCP cloud environments.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies & Technical Skills</h1>
+        <ul>
+          <li><b>Languages & Frameworks:</b> Python (Python 3, Asyncio, Sanic, FastAPI, Django, Flask), JavaScript, Go (Golang), SQL, HTML5, CSS3, Zsh/Bash Scripting, VBA</li>
+          <li><b>Cloud & DevOps Infrastructure:</b> AWS (EC2, ECS, Lambda, S3, RDS, CodeDeploy), GCP, Linode, Docker, Kubernetes, CI/CD (GitHub Actions, GitLab CI), NGINX, Linux Administration</li>
+          <li><b>Architecture & Methodologies:</b> Microservices, RESTful API Design, Event-Driven Architecture, Unit/Integration Testing (pytest), Agile/Scrum, Git Version Control, Security Standards & Hardening</li>
+          <li><b>AI & Machine Learning Integration:</b> LLM API Integration (OpenAI, Anthropic), Retrieval-Augmented Generation (RAG), Vector Databases (Pinecone, ChromaDB), LangChain, AI Code Generation Tools (GitHub Copilot, Cursor, Claude Code, ChatGPT Enterprise)</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Accomplishments</h1>
+        <ul>
+          <li>Engineered event-driven ETL pipelines using AWS ECS, Fargate, and Airflow, handling over <b>2.5M daily transactions</b> with <b>99.95% data processing accuracy</b> across PostgreSQL, Redis, and external APIs.</li>
+          <li>Integrated AI coding assistance tools (Cursor, Claude, Copilot) into core engineering workflows, resulting in a <b>35% increase in feature delivery speed</b> and expanding automated test coverage from <b>65% to 92%</b>.</li>
+          <li>Architected custom Object-Relational Mappers (ORMs) and metaprogramming abstractions in Python, reducing database query boilerplate code by <b>50%</b> and speeding up execution time by <b>28%</b>.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Architected and deployed containerized Python microservices (FastAPI, Django, Sanic) on AWS (ECS, Fargate) and Docker, increasing system throughput by <b>45%</b> and reducing API latency to under <b>120ms</b>.</li>
+              <li>Integrated LLMs and vector search capabilities (OpenAI API, LangChain) into client data pipelines, automating document classification and cutting manual data entry time by <b>60%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Engineered scalable backend modules for core enterprise financial and reporting systems processing over <b>$10M+ in daily transaction metrics</b>.</li>
+              <li>Co-architected an automated accounting costing system, cutting end-of-month financial reconciliation processing times from <b>8 hours down to 45 minutes</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health & Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Architected secure Python backend REST APIs for HIPAA-compliant healthcare platforms, servicing over <b>500k active user profiles</b>.</li>
+              <li>Managed a cross-functional offshore development team as Scrum Master, conducting PR reviews and establishing automated CI/CD pre-deploy scripts to eliminate code conflicts.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education & Certifications</h1>
+
+        <p class="education-note"><b>Jun 2012 – Aug 2013:</b> Full-time student at ITT Technical Institute, completing Associate of Science degree requirements between professional roles at FileTrek, Inc. and Fidelity Investments.</p>
+
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>2010 – 2013 | ITT Technical Institute, San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Associate of Science Degree in Computer and Electronics Engineering Technology</li>
+              <li>GPA 3.67</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="keywords">
+        <h1>Keywords</h1>
+        <p>python python3 async asyncio LLM RAG vector database generative ai github copilot cursor sanic asynchronous api backend flask fastapi django linux bash scripting cloud architecture aws docker microservices git agile rest api postgresql performance optimization benchmark vba com excel office interop macro automation embedded systems CAN bus medical devices infusion pump symbiq plum a+ firmware verification TCP/IP</p>
+      </section>
+    </main>
+  </body>
+</html>

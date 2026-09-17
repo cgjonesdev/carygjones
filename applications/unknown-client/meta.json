@@ -1,0 +1,24 @@
+{
+  "company": "Unknown Client",
+  "client": null,
+  "role": "API Developer",
+  "location": "Pittsburgh, Pennsylvania",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design maintains a professional and clean aesthetic, emphasizing clarity and readability, suitable for technical roles.",
+  "notes": "No specific experience mentioned with Java, Node.js, or C#. No explicit mention of using Swagger or Postman for API documentation.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd2387e0cdfe29",
+    "thread_id": "19fd2387e0cdfe29",
+    "subject": "API Developer || Pittsburgh, Pennsylvania || Onsite Job Opportunity || Local Preferred",
+    "sender": "Ankur Bhatnagar <ankur.bhatnagar@tekgence.com>"
+  },
+  "recruiter_email": "ankur.bhatnagar@tekgence.com",
+  "recruiter_name": "Ankur"
+}

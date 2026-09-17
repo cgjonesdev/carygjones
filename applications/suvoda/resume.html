@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cary Jones — Senior Software Developer</title>
+    <style>
+      :root {
+        --text: #1e293b;
+        --muted: #64748b;
+        --accent: #0f766e;
+        --rule: #e2e8f0;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+        color: var(--text);
+        background: #fff;
+      }
+
+      main {
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 0.5in 0.6in;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 2.5px solid var(--accent);
+      }
+
+      .fullname {
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      .title {
+        margin-top: 0.3rem;
+        font-size: 0.92rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .contact {
+        margin-top: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.15rem 1.1rem;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      h1 {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin: 1rem 0 0.45rem;
+        padding-bottom: 0.18rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      section > p,
+      section > ul {
+        margin-bottom: 0.4rem;
+      }
+
+      section p { text-align: justify; }
+
+      ul { margin-left: 1rem; }
+      li { margin-bottom: 0.28rem; }
+
+      section#skills ul {
+        list-style: none;
+        margin-left: 0;
+      }
+
+      section#skills li {
+        padding-left: 0.65rem;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 0.4rem;
+      }
+
+      dl {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      section dl:last-child { border-bottom: none; }
+
+      dt { margin-bottom: 0.1rem; }
+
+      dt u {
+        font-size: 0.92rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      dt:not(:has(u)) {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      dt b { color: var(--text); }
+
+      dd { margin-left: 0; }
+      dd ul { margin-top: 0.25rem; }
+
+      .sub-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 0.35rem;
+      }
+
+      .education-note {
+        margin: 0.5rem 0 0.75rem;
+        padding: 0.45rem 0.6rem;
+        background: #f8fafc;
+        border-left: 3px solid var(--accent);
+        font-size: 0.88rem;
+        color: var(--muted);
+        text-align: left;
+      }
+
+      section#keywords {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      b { font-weight: 700; }
+
+      @media print {
+        main { padding: 0.4in 0.5in; }
+        body { font-size: 9.5pt; }
+        h1 { margin-top: 0.85rem; }
+        dl { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="fullname">Cary Jones</p>
+        <p class="title">Senior Software Developer | AI & Cloud Architecture</p>
+        <div class="contact">
+          <span>Temple City, CA 91780</span>
+          <span><a href="tel:+1.626.272.2567">(626) 272-2567</a></span>
+          <span><a href="mailto:cgjonesdev@gmail.com">cgjonesdev@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/cary-g-jones/">linkedin.com/in/cary-g-jones</a></span>
+          <span><a href="https://github.com/cgjonesdev">github.com/cgjonesdev</a></span>
+          <span><a href="https://cgjonesdev.github.io/carygjones/">cgjonesdev.github.io/carygjones</a></span>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h1>Summary</h1>
+        <p><b>Senior Software Developer</b> with over 15 years of experience building high-performance <b>API microservices</b>, cloud infrastructure, and <b>AI-augmented enterprise solutions</b> using frameworks such as <b>FastAPI, Sanic, Django</b>, and Flask. Recognized expert in integrating LLMs, vector search, and modern AI development tooling (<b>Cursor, Claude Code, GitHub Copilot</b>) to boost engineering velocity by over <b>40%</b> while enforcing strict code quality and security standards. Proven leader and <b>Scrum Master</b> adept at guiding cross-functional teams, refactoring monolithic legacy systems into resilient microservices, and orchestrating scalable AWS/GCP cloud environments.</p>
+      </section>
+
+      <section id="skills">
+        <h1>Core Competencies & Technical Skills</h1>
+        <ul>
+          <li><b>AI & Machine Learning Integration:</b> LLM API Integration (OpenAI, Anthropic), Retrieval-Augmented Generation (RAG), Vector Databases (Pinecone, ChromaDB), LangChain, AI Code Generation Tools (GitHub Copilot, Cursor, Claude Code, ChatGPT Enterprise)</li>
+          <li><b>Languages & Frameworks:</b> Python (Python 3, Asyncio, Sanic, FastAPI, Django, Flask), JavaScript, Go (Golang), SQL, HTML5, CSS3, Zsh/Bash Scripting, VBA</li>
+          <li><b>Office & Desktop Automation:</b> VBA, COM/Office Interop, Microsoft Excel programmatic automation, macro development, Windows desktop integration</li>
+          <li><b>Cloud & DevOps Infrastructure:</b> AWS (EC2, ECS, Lambda, S3, RDS, CodeDeploy), GCP, Linode, Docker, Kubernetes, CI/CD (GitHub Actions, GitLab CI), NGINX, Linux Administration</li>
+          <li><b>Database & Data Engineering:</b> PostgreSQL, MySQL, Redis, MongoDB, ORM/SQLAlchemy, Database Optimization & Query Indexing</li>
+          <li><b>Architecture & Methodologies:</b> Microservices, RESTful API Design, Event-Driven Architecture, Unit/Integration Testing (pytest), Agile/Scrum, Git Version Control, Security Standards & Hardening</li>
+          <li><b>Embedded & Medical Devices:</b> Infusion pump software verification (Symbiq, Plum A+), embedded systems testing, CAN bus and serial device communication, firmware upgrade/recovery, TCP/IP and wireless LAN integration for hospital medical devices</li>
+        </ul>
+      </section>
+
+      <section id="accomplishments">
+        <h1>Accomplishments</h1>
+        <ul>
+          <li>Engineered event-driven ETL pipelines using AWS ECS, Fargate, and Airflow, handling over <b>2.5M daily transactions</b> with <b>99.95% data processing accuracy</b> across PostgreSQL, Redis, and external APIs.</li>
+          <li>Integrated AI coding assistance tools (Cursor, Claude, Copilot) into core engineering workflows, resulting in a <b>35% increase in feature delivery speed</b> and expanding automated test coverage from <b>65% to 92%</b>.</li>
+          <li>Architected custom Object-Relational Mappers (ORMs) and metaprogramming abstractions in Python, reducing database query boilerplate code by <b>50%</b> and speeding up execution time by <b>28%</b>.</li>
+          <li>Designed and launched full-stack web applications, landing pages, and automated payment/messaging systems for real estate and logistics clients, increasing sales conversion rates by <b>24%</b>.</li>
+          <li>Developed secure microservice architectures with custom Fernet encryption and OAuth2 authentication, successfully mitigating high-risk security vulnerabilities across healthcare web platforms.</li>
+          <li>Led international and domestic engineering teams as Scrum Master, capturing technical objectives into structured Sprints that accelerated MVP launch timelines by <b>3 weeks</b> and attracted key client investment.</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h1>Professional Experience</h1>
+
+        <dl>
+          <dt><u>Principal Software Engineering Consultant / Technical Lead</u></dt>
+          <dt>Jan 2023 – Present | Los Angeles, CA / Remote</dt>
+          <dt><b>CGJSoftware, Inc.</b></dt>
+          <dd>
+            <ul>
+              <li>Operated corporate entity (CGJSoftware, Inc.) facilitating high-level B2B engineering contracts, advisory services, and cloud modernization for enterprise partners across healthcare, e-commerce, and data domains.</li>
+              <li>Architected and deployed containerized Python microservices (FastAPI, Django, Sanic) on AWS (ECS, Fargate) and Docker, increasing system throughput by <b>45%</b> and reducing API latency to under <b>120ms</b>.</li>
+              <li>Integrated LLMs and vector search capabilities (OpenAI API, LangChain) into client data pipelines, automating document classification and cutting manual data entry time by <b>60%</b>.</li>
+              <li>Pioneered AI-augmented development practices across client teams using Cursor, Claude, and GitHub Copilot, slashing bug fix resolution times by <b>40%</b> and streamlining PR code review cycles.</li>
+              <li>Delivered targeted legacy maintenance, cross-border software compliance reviews, and international cloud architecture strategies for remote enterprise clients.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>May 2023 – July 2023 | CVS, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Analyzed and decoupled legacy monolithic codebases in preparation for domain-driven, microservices-oriented backend architecture.</li>
+              <li>Constructed containerized domain modules using Docker and Docker-Compose, improving localized integration testing speed by <b>50%</b>.</li>
+              <li>Advised engineering leadership on Domain-Driven Design (DDD) best practices, reducing inter-service dependencies across core application modules.</li>
+              <li>Executed proof-of-concept testing harness in Python to validate domain isolation without regressing critical business logic.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Senior Software Engineer</u></dt>
+          <dt>October 2021 – November 2022 | Disney Corporation, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Engineered scalable backend modules for core enterprise financial and reporting systems processing over <b>$10M+ in daily transaction metrics</b>.</li>
+              <li>Co-architected an automated accounting costing system, cutting end-of-month financial reconciliation processing times from <b>8 hours down to 45 minutes</b>.</li>
+              <li>Monitored and optimized cloud infrastructure on AWS, achieving <b>99.99% uptime</b> across critical reporting web applications.</li>
+              <li>Created high-performance Python database interfaces and Java unit test suites for PostgreSQL, ensuring <b>100% data integrity</b> during system migration.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Software Developer and System Architect</u></dt>
+          <dt>July 2019 – October 2021 | CGJSoftware, Inc. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Served as primary architect and developer via S-Corp engagement, delivering customized cloud software and automated API architectures for mid-to-large business clients.</li>
+              <li>Containerized Python, React, and Node.js applications using Docker and deployed to GCP (Google Cloud Platform) using gcloud CLI, improving deployment frequency by <b>3x</b>.</li>
+              <li>Designed non-blocking asynchronous architectures utilizing AWS Pub/Sub messaging and Boto3 SDK, preventing application bottlenecks and ensuring <b>zero data loss</b> during peak loads.</li>
+              <li>Optimized complex SQL queries for AWS Redshift stress tests, increasing data warehouse reporting query performance by <b>38%</b>.</li>
+              <li>Created technical routing diagrams, system sequence charts, and detailed site maps to guide frontend engineering teams through complex application flows.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, System Architect, DevOps Engineer, and Scrum Master</u></dt>
+          <dt>January 2018 – July 2019 | Alan Health & Science Corp. (Remote)</dt>
+          <dd>
+            <ul>
+              <li>Architected secure Python backend REST APIs for HIPAA-compliant healthcare platforms, servicing over <b>500k active user profiles</b>.</li>
+              <li>Managed a cross-functional offshore development team as Scrum Master, conducting PR reviews and establishing automated CI/CD pre-deploy scripts to eliminate code conflicts.</li>
+              <li>Configured production Linux Ubuntu environments, domain DNS (TXT, CNAME, MX), SSL/TLS security, and automated crontab backup procedures with <b>99.9% system availability</b>.</li>
+              <li>Authored comprehensive Git branching/rebasing documentation and trained junior engineers, reducing merge conflict incidents by <b>70%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>API Developer, Web Developer, and System Architect</u></dt>
+          <dt>July 2016 – January 2018 | CT-REI, Inc., Austin, TX</dt>
+          <dd>
+            <ul>
+              <li>Architected and built real estate investment evaluation and financial tracking web applications, growing organic web traffic by <b>45%</b> via technical SEO.</li>
+              <li>Provisioned and managed Nginx web servers and MongoDB clusters on Google Cloud Compute, maintaining <b>sub-200ms load times</b> for end-users.</li>
+              <li>Developed custom Python web scrapers to ingest appraisal district records, automating property offer calculations and boosting investment analysis throughput by <b>400%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Quality Assurance Engineer</u></dt>
+          <dt>Sept 2016 – Oct 2016 | Headway-Services, Austin, TX</dt>
+          <dd>
+            <ul>
+              <li>Designed comprehensive test plans and converted manual regression tests into fully automated test suites.</li>
+              <li>Provided Agile/Scrum process consultation to streamline quality assurance workflows.</li>
+              <li>Built an automated test framework in Python using Unittest, Requests, and Nosetests to interface with Xojo desktop apps via HTTP, improving test execution speed by <b>65%</b>.</li>
+              <li>Created custom XML parsing scripts to fix CDATA enclosure errors and transformed raw XML into clean HTML email templates using XSLT.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python Programmer</u></dt>
+          <dt>May 2016 – July 2016 | Dell, Inc., Austin, TX</dt>
+          <dd>
+            <ul>
+              <li>Refactored legacy automated test framework software in Python to support enterprise server hardware testing.</li>
+              <li>Eliminated circular dependencies and duplicated code across the project, reducing overall code bloat by <b>25%</b>.</li>
+              <li>Refactored core ConfigParser modules into object-oriented models, reducing framework crash rates during long-running automated test executions by <b>80%</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Software Developer in Test</u></dt>
+          <dt>October 2015 – May 2016 | Rackspace, Inc., Austin, TX</dt>
+          <dd>
+            <ul>
+              <li>Authored automated test protocols for ticket routing engines and customer-facing RESTful ticketing APIs.</li>
+              <li>Developed an object-oriented Python REST client that executed <b>1,000+ automated test cases per hour</b> against core ticket processing services.</li>
+              <li>Designed a dynamic test-generator using Python introspection to evaluate ticketing rulesets, uncovering critical edge-case bugs prior to production releases.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Software Developer and Scrum Master</u></dt>
+          <dt>April 2014 – August 2015 | KeyIngredient, Austin, TX</dt>
+          <dd>
+            <ul>
+              <li>Guided cross-functional Scrum teams, conducted peer code reviews, and implemented core e-commerce backend API endpoints on Google AppEngine.</li>
+              <li>Automated B2B customer order fulfillment scripts compliant with ASC X12 EDI standards, cutting manual processing time by <b>90%</b>.</li>
+              <li>Extracted and analyzed Google AppEngine datastore metrics to uncover consumer spending trends, driving a <b>15% increase in seasonal email campaign ROI</b>.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Python API Developer</u></dt>
+          <dt>August 2013 – April 2014 | Fidelity Investments, Irving, TX</dt>
+          <dd>
+            <ul>
+              <li>Supervised junior developers while building backend API services using Django REST Framework for datacenter network device automation.</li>
+              <li>Architected and delivered a web API that automated network device configuration, reducing manual provisioning errors by <b>95%</b> and setup time from <b>4 hours to 10 minutes</b>.</li>
+              <li>Mentored junior team members in Python best practices, API contract design, and Agile story estimation.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Software Developer — QA Automation Engineer</u></dt>
+          <dt>January 2011 – June 2012 | FileTrek, Inc., Los Angeles, CA</dt>
+          <dd>
+            <ul>
+              <li>Developed VBA macros and COM/Office interop scripts to automate Microsoft Excel and Office workflows for enterprise file-management operations.</li>
+              <li>Built programmatic integrations between desktop Office applications and backend systems, extracting structured data and reducing manual document processing.</li>
+              <li>Debugged and maintained automation scripts across macro-enabled workbooks and COM-dependent Office components on Windows.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Quality Assurance & Network Integration Engineer</u></dt>
+          <dt>February 2005 – December 2009 | Hospira, Inc., San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Verified and validated software for <b>Symbiq</b> and <b>Plum A+</b> hospital infusion pumps — requirements-based manual testing, smoke testing, formal verification, and defect tracking in regulated medical device workflows.</li>
+              <li>Collaborated with firmware and hardware engineers to test embedded device behavior, troubleshoot software upgrades, and resolve complex integration issues across pump, server, and hospital network environments.</li>
+              <li>Supported embedded systems over wired and wireless LANs; built recovery scripts and tools to restore infusion device software and configuration after firmware upgrade failures.</li>
+              <li>Worked with <b>CAN bus</b> and embedded communication architectures; developed a .NET Telnet client automating host-to-device communication for verification and field-support scenarios.</li>
+              <li>Installed and validated drug library management client/server software for networked infusion devices; served as verification team technical lead for device and PC networking issues.</li>
+              <li>Built enterprise wireless security test architecture (EAP, Cisco ACS, FreeRadius) and delivered <b>5 formal verification run-throughs</b> for first-lot-to-stock ahead of schedule.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Field Wireman & Communications Specialist</u></dt>
+          <dt>September 1995 – September 1999 | United States Marine Corps, San Diego, CA & Overseas</dt>
+          <dd>
+            <ul>
+              <li>Configured and deployed tactical field telecommunications and wire networks under high-pressure military operations, achieving <b>100% mission communication uptime</b>.</li>
+              <li>Awarded early promotion to Private First Class and Non-Commissioned Officer leadership responsibilities for exceptional accountability and performance.</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education & Certifications</h1>
+
+        <p class="education-note"><b>Jun 2012 – Aug 2013:</b> Full-time student at ITT Technical Institute, completing Associate of Science degree requirements between professional roles at FileTrek, Inc. and Fidelity Investments.</p>
+
+        <dl>
+          <dt><u>Associate of Science, Computer Electronics</u></dt>
+          <dt>2010 – 2013 | ITT Technical Institute, San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Associate of Science Degree in Computer and Electronics Engineering Technology</li>
+              <li>GPA 3.67</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><u>Basic Military Combat Skills</u></dt>
+          <dt>September 1995 | Marine Corps Recruit Depot, San Diego, CA</dt>
+          <dd>
+            <ul>
+              <li>Graduated from Basic Training; promoted to Private First Class</li>
+            </ul>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="keywords">
+        <h1>Keywords</h1>
+        <p>python python3 async asyncio LLM RAG vector database generative ai github copilot cursor sanic asynchronous api backend flask fastapi django linux bash scripting cloud architecture aws docker microservices git agile rest api postgresql performance optimization benchmark vba com excel office interop macro automation embedded systems CAN bus medical devices infusion pump symbiq plum a+ firmware verification TCP/IP</p>
+      </section>
+    </main>
+  </body>
+</html>

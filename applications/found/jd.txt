@@ -1,0 +1,21 @@
+Source: LinkedIn
+
+Lead Software Engineer
+FOUND
+Santa Monica, CA
+
+Responsibilities:
+- Lead the design and development of scalable software solutions.
+- Collaborate with cross-functional teams to define, design, and ship new features.
+- Ensure the performance, quality, and responsiveness of applications.
+- Mentor junior engineers and foster a culture of continuous improvement.
+- Stay updated with the latest industry trends and technologies.
+
+Requirements:
+- Proven experience as a Lead Software Engineer or similar role.
+- Strong expertise in software engineering and architecture.
+- Experience with cloud infrastructure and microservices.
+- Proficient in Python and related frameworks (FastAPI, Django, Flask).
+- Excellent leadership and team management skills.
+
+Apply here: https://www.linkedin.com/comm/jobs/view/4447663495/?trackingId=ha2%2FMQ8hPXK1QMJ1Bthqkw%3D%3D&refId=qP3CCUNT5ckXII%2FnnLVejA%3D%3D

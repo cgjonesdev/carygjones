@@ -1,0 +1,22 @@
+{
+  "company": "Solace",
+  "client": null,
+  "role": "Senior Backend Engineer",
+  "location": "United States (Remote)",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-08",
+  "updated": "2026-08-08",
+  "salary": null,
+  "styling_notes": "The resume design uses a clean and professional palette that emphasizes readability and highlights key achievements.",
+  "notes": "The candidate's extensive experience in backend development and cloud services aligns well with the role. However, specific experience with Solace's tech stack is not highlighted.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4315439256/?trackingId=BBZ1MmBuiaGbz5PhFlfJzg%3D%3D&refId=DEnZ7BQ63kLA8ZFs0zf6EQ%3D%3D",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4315439256",
+  "source_email": {
+    "message_id": "19fde01f6f9e08b2",
+    "thread_id": "19fde01f6f9e08b2",
+    "subject": "Solace is hiring for a Remote role",
+    "sender": "LinkedIn <jobs-noreply@linkedin.com>"
+  }
+}

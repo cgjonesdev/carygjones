@@ -1,0 +1,24 @@
+{
+  "company": "Next Step Systems",
+  "client": null,
+  "role": "Member of Technical Staff, Machine Learning, Artificial Intelligence (AI)",
+  "location": "Remote",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design is clean and professional, emphasizing technical skills and accomplishments relevant to the role.",
+  "notes": "Extensive experience in Python and AI integration, strong background in cloud architecture (AWS, GCP), proven track record in developing scalable microservices and APIs.",
+  "apply_url": null,
+  "apply_method": "online",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fdd06660c76eb5",
+    "thread_id": "19fdd06660c76eb5",
+    "subject": "Apply today to Python Software Developer jobs that match your profile!",
+    "sender": "Dice <dice@connect.dice.com>"
+  },
+  "recruiter_email": "dice@connect.dice.com",
+  "recruiter_name": "Dice"
+}

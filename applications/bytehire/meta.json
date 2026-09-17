@@ -1,0 +1,24 @@
+{
+  "company": "ByteHire",
+  "client": null,
+  "role": "Senior Python Backend Engineer",
+  "location": "Remote",
+  "match_score": 90,
+  "status": "ready",
+  "created": "2026-08-08",
+  "updated": "2026-08-08",
+  "salary": null,
+  "styling_notes": "The resume design uses a clean and professional palette that emphasizes readability and highlights key competencies effectively.",
+  "notes": "Extensive experience in Python backend development with frameworks like FastAPI and Django. Strong background in cloud infrastructure (AWS, GCP) and microservices architecture. Proven ability to integrate AI and machine learning tools into backend systems.",
+  "apply_url": "https://applicants.bytehire.io/screening/aa90d88d-0284-4fb0-b6d3-4796a67c3cd6",
+  "apply_method": "online",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fcc84a8a3a006e",
+    "thread_id": "19fcc84a8a3a006e",
+    "subject": "Senior Python Backend Engineer - Progressing to Screening Phase",
+    "sender": "ByteHire Team <recruitment@bytehire.io>"
+  },
+  "recruiter_email": "recruitment@bytehire.io",
+  "recruiter_name": "ByteHire"
+}

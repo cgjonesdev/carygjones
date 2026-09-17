@@ -1,0 +1,24 @@
+Source: https://www.linkedin.com/comm/jobs/view/4419367405/?trackingId=thkiZXAnSBaqSCDty%2FHKpw%3D%3D&refId=GoAWwB7kF7hUo0%2FB6HqsXA%3D%3D
+
+Senior AI Engineering
+East West Bank
+Pasadena, CA
+
+This company is actively hiring
+Apply with resume & profile
+
+Since 1973, East West Bank has served as a bridge between the East and West, providing financial services to help customers reach further and connect globally. We are seeking a Senior AI Engineer to join our team in Pasadena, CA. The ideal candidate will have a strong background in AI, machine learning, and cloud architecture, with a focus on developing scalable solutions and microservices. Experience in the banking or financial services domain is a plus.
+
+Responsibilities:
+- Lead AI and machine learning projects from concept to deployment.
+- Develop scalable microservices and APIs to support AI initiatives.
+- Collaborate with cross-functional teams to integrate AI solutions into existing systems.
+- Ensure compliance with industry standards and regulations.
+- Optimize cloud infrastructure for AI workloads.
+
+Qualifications:
+- Extensive experience in AI and machine learning integration.
+- Strong background in cloud architecture (AWS, GCP).
+- Proven track record in developing scalable microservices and APIs.
+- Experience in regulated environments, particularly healthcare.
+- Excellent problem-solving and communication skills.

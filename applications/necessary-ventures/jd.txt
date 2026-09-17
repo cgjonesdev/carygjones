@@ -1,0 +1,21 @@
+Source: https://www.linkedin.com/comm/jobs/view/4451056113/?trackingId=kuzOzLkKmSZqRPv9LnxaBA%3D%3D&refId=OdhkBevmy8wY0dYpHES2UA%3D%3D
+
+Position: Senior Backend Software Engineer
+Company: Necessary Ventures
+Location: Torrance, CA
+
+Job Description:
+- Develop and maintain scalable backend services and APIs using Python frameworks such as FastAPI and Django.
+- Design and implement microservices architecture to support high-availability and fault-tolerant systems.
+- Collaborate with cross-functional teams to define, design, and ship new features.
+- Ensure the performance, quality, and responsiveness of applications.
+- Identify and correct bottlenecks and fix bugs.
+- Help maintain code quality, organization, and automation.
+
+Qualifications:
+- Proven experience in backend development with Python frameworks (FastAPI, Django).
+- Strong understanding of cloud infrastructure (AWS, GCP).
+- Experience with microservices architecture and API development.
+- Familiarity with healthcare and regulated environments is a plus.
+- Ability to work in a fast-paced, startup environment.
+- Strong problem-solving skills and attention to detail.

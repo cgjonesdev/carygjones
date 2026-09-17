@@ -1,0 +1,23 @@
+Subject: Re: Senior Backend Engineer — Weave
+
+Hi Weave team,
+
+Thank you for reaching out about the Senior Backend Engineer opportunity with Weave. I'm very interested and would welcome the chance to move forward.
+
+A quick summary of my fit:
+
+• Healthcare backend at scale: Architected HIPAA-compliant Python REST APIs serving 500k+ profiles; five years in regulated medical device verification at Hospira — I understand the rigor healthcare platforms require.
+• APIs & distributed systems: 15+ years designing RESTful services, event-driven pipelines (2.5M+ daily transactions), PostgreSQL, Redis, and async inter-service communication on AWS and GCP.
+• Production ownership: I own services from design through on-call — 99.99% uptime on enterprise backends, observability-minded delivery, and mentoring peers on reliability practices.
+• Cross-functional delivery: Experienced partnering with product and frontend teams remotely across U.S. and international time zones; outcome-oriented from project inception through production.
+
+I'm based in Temple City (Los Angeles area), available for United States (Remote). I'd love to learn more about the team and next steps when you have a moment.
+
+Resume and cover letter are attached. Happy to jump on a call this week — just let me know what works.
+
+Best regards,
+Cary Jones
+(626) 272-2567
+cgjonesdev@gmail.com
+https://www.linkedin.com/in/cary-g-jones/
+https://cgjonesdev.github.io/carygjones/

@@ -1,0 +1,24 @@
+{
+  "company": "IMCS Group",
+  "client": null,
+  "role": "Software Development Engineer",
+  "location": "Irvine, CA (Hybrid)",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-10",
+  "updated": "2026-08-10",
+  "salary": null,
+  "styling_notes": "The resume design maintains a professional and clean aesthetic, emphasizing key competencies and achievements relevant to the job role.",
+  "notes": "Cary has extensive experience in Python and Java development, strong AWS skills, and proven ability to design clean code. However, lacks direct experience with Amazon Builder Tools and has limited React.js experience.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fec8c480beb136",
+    "thread_id": "19fec8c480beb136",
+    "subject": "Job Role for a Software Development Engineer in Irvine, CA (Hybrid)",
+    "sender": "Garv Bhalla <mr2-ey9-kwe@user.dice.com>"
+  },
+  "recruiter_email": "mr2-ey9-kwe@user.dice.com",
+  "recruiter_name": "Garv"
+}

@@ -1,0 +1,22 @@
+{
+  "company": "Lyra Health",
+  "client": null,
+  "role": "Sr. Software Engineer",
+  "location": "United States (Remote)",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design utilizes a clean and modern palette to highlight technical skills and achievements, ensuring clarity and professionalism.",
+  "notes": "Extensive experience in software engineering with a focus on cloud architecture and AI integration. Proven track record in building scalable microservices and RESTful APIs. Strong background in healthcare technology and compliance, particularly HIPAA.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4448540849/?trackingId=KIXOLEkeSRKFc8CwqceFjw%3D%3D&refId=WDmyUGTmTwGQEMQRSKmR6A%3D%3D",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4448540849",
+  "source_email": {
+    "message_id": "19fcf259784fcecf",
+    "thread_id": "19fcf259784fcecf",
+    "subject": "Cary, your application was sent to Lyra Health",
+    "sender": "LinkedIn <jobs-noreply@linkedin.com>"
+  }
+}

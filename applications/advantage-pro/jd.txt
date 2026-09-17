@@ -1,0 +1,10 @@
+Source: Indeed
+
+Senior Software Engineer
+Advantage Pro
+Remote
+Salary: $70 - $80 an hour
+Job type: Full-time
+Work setting: Remote
+
+Experience contributing to the architecture and design (architecture, design patterns, reliability, and scaling) of new and current systems. Collaborate with your team to design and develop scalable, resilient and distributed systems. Participate in design and code reviews, contribute to automated testing, and maintain a high bar on code quality by applying best practices.

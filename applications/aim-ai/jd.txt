@@ -1,0 +1,22 @@
+Source: LinkedIn
+
+Senior Software Engineer
+AIM AI
+Los Angeles, CA
+
+AIM AI is a bootstrapped company focusing on innovative AI solutions. We are seeking a Senior Software Engineer to join our dynamic team. The ideal candidate will have a strong background in software engineering, cloud architecture, and AI integration. You will be responsible for designing and implementing scalable software solutions, collaborating with cross-functional teams, and driving technical excellence.
+
+Responsibilities:
+- Design, develop, and maintain high-performance software solutions.
+- Collaborate with AI researchers and product teams to integrate AI capabilities.
+- Lead technical projects from concept to completion.
+- Ensure software quality and security through code reviews and testing.
+
+Qualifications:
+- Extensive experience in software engineering and cloud architecture.
+- Proficient in Python and frameworks like FastAPI and Django.
+- Strong background in AI and machine learning integration.
+- Experience with remote work and collaboration in cross-functional teams.
+
+Apply with resume & profile
+View job: https://www.linkedin.com/comm/jobs/view/4448251297/?trackingId=Xzh%2BrHqYYBenO9C9lkhxVA%3D%3D&refId=YKsFoSd3knH4lC3iEQBiWA%3D%3D

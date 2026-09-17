@@ -1,0 +1,22 @@
+{
+  "company": "Hadrian",
+  "client": null,
+  "role": "Software Engineer",
+  "location": "Torrance, CA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-14",
+  "updated": "2026-08-14",
+  "salary": null,
+  "styling_notes": "The resume design is clean and professional, emphasizing technical skills and accomplishments relevant to the role.",
+  "notes": "Cary has a strong background in cloud technologies and API development, which aligns well with Hadrian's needs. However, lacks direct experience with the frontend technologies mentioned.",
+  "apply_url": null,
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19ffc5e4851266fd",
+    "thread_id": "19ffc5e4851266fd",
+    "subject": "Exciting Software Engineer Opportunities at Hadrian",
+    "sender": "Abul Mustafa <inmail-hit-reply@linkedin.com>"
+  }
+}

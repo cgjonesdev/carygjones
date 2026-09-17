@@ -1,0 +1,38 @@
+Source: Unknown
+
+Subject: API Developer || Pittsburgh, Pennsylvania || Onsite Job Opportunity || Local Preferred
+
+Hi,
+
+Hope You Doing Well,
+
+This is Ankur Bhatnagar. I am currently working with a client who has an exciting job opportunity. Please find the job description below. If you’re interested, kindly share your updated resume at your earliest convenience.
+
+Job Tittle: API Developer
+
+Location: Pittsburgh, Pennsylvania
+
+Duration: 12+ Months Job Contract
+
+Job Type: Long Term Contract
+
+Note: Onsite Job Opportunity ~ Local Preferred
+
+Job Description:
+
+Overall 10+ Years of Experience.
+
+An API Developer designs| builds| and maintains application programming interfaces that allow different software systems and services to communicate seamlessly.
+Key duties include developing RESTful or GraphQL endpoints| ensuring security and data encryption| and writing clear documentation.
+Core Responsibilities Design & Build: Create scalable| secure| and high-performance REST| SOAP| or GraphQL APIs.
+Integration: Connect internal platforms and third-party vendor services.
+Security: Implement robust authorization and authentication mechanisms like OAuth2| JWT| and API keys.
+Documentation: Produce clear technical guides and endpoint references using tools like Swagger or Postman.
+Testing & Debugging: Run unit and integration tests to resolve errors and optimize latency under high traffic.
+
+Required Skills & Qualifications Languages:
+
+Proficiency in backend languages such as Python| Java| Node.js| or C#.
+Architectural Styles: Deep knowledge of REST| microservices| and event-driven patterns.
+Databases: Experience with SQL (MySQL| PostgreSQL) and NoSQL (MongoDB| Redis) systems.
+Cloud & DevOps: Familiarity with AWS| Azure| Docker| and CI/CD deployment pipelines.

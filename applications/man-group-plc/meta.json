@@ -1,0 +1,24 @@
+{
+  "company": "Man Group plc",
+  "client": null,
+  "role": "Full Stack Developer",
+  "location": "New York, United States",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": "USD 130,000/yr",
+  "styling_notes": "The resume design emphasizes clarity and professionalism, suitable for a financial technology environment.",
+  "notes": "Extensive experience in full stack development and proficiency in Python and JavaScript frameworks. Strong background in cloud infrastructure and microservices. Experience working in remote environments.",
+  "apply_url": "https://haystack.cv/go?j=2e07ba7a-5101-410d-bcce-650b02348f4b&s=searches-email&sub=7260a8f9-0dc6-4c60-b170-a9e7f965c844&u=https%3A%2F%2Fclick.appcast.io%2Ft%2Fxlr0oAG6rFS-rSe030XJ8tCck309b6BwjZUrC9HtVoyuSeR1AspUSs4xF4w3RAjt&t=Full%20Stack%20Developer&c=Man%20Group%20plc",
+  "apply_method": "online",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fd12343b97f4be",
+    "thread_id": "19fd12343b97f4be",
+    "subject": "Man Group plc is hiring - USD 130,000/yr",
+    "sender": "Haystack Jobs <alerts@alerts.haystack.cv>"
+  },
+  "recruiter_email": "alerts@alerts.haystack.cv",
+  "recruiter_name": "Haystack"
+}

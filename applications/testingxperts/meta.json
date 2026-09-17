@@ -1,0 +1,24 @@
+{
+  "company": "TestingXperts",
+  "client": null,
+  "role": "Full Stack Engineer (Python & React)",
+  "location": "Santa Clara, CA (Hybrid)",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-11",
+  "updated": "2026-08-11",
+  "salary": null,
+  "styling_notes": "The resume design uses a clean and modern layout that emphasizes technical skills and accomplishments, aligning with the requirements of the role.",
+  "notes": "Strong experience in Python and React, proficient in Docker and Google Cloud Platform, with experience in Bash scripting and databases like MySQL and MongoDB. Limited experience with Airflow and Google Cloud Composer.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fc844f9744a424",
+    "thread_id": "19fc844f9744a424",
+    "subject": "FULL TIME ROLE Full Stack Engineer (Python & React) Santa Clara, CA (Hybrid)",
+    "sender": "Hitakshi Kumar <Hitakshi@testingxperts.com>"
+  },
+  "recruiter_email": "Hitakshi@testingxperts.com",
+  "recruiter_name": "Hitakshi"
+}

@@ -1,0 +1,12 @@
+Linux Backend Engineer — Python/FastAPI REST APIs for Security Platform
+
+Source: https://www.freelancer.com/projects/fastapi/linux-backend-engineer-python-fastapi
+
+Budget: $539 USD (fixed price)
+Bids: ~58 | Posted: active (6 days left at scan)
+
+We're hiring an experienced backend engineer to build, deploy, and maintain REST APIs for a security-focused, self-hosted incident response / case-management platform running on Linux.
+
+Responsibilities include FastAPI REST endpoints, Docker deployment on Ubuntu, and production-ready backend architecture for a security platform.
+
+Skills tagged: Python, FastAPI, Software Architecture, Linux, Automation, Web Scraping, PHP, Selenium, Data Processing

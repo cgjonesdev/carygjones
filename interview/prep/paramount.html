@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Paramount+ Interview Prep</title>
+  <style>
+    @page { margin: 0.6in; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      max-width: 52rem;
+      margin: 1.5rem auto;
+      padding: 0 1.25rem;
+      line-height: 1.5;
+      color: #1e293b;
+      font-size: 10.5pt;
+    }
+    h1 {
+      color: #003875;
+      border-bottom: 2.5px solid #003875;
+      padding-bottom: 0.35rem;
+      font-size: 1.55rem;
+      margin-bottom: 0.5rem;
+    }
+    .meta { color: #475569; font-size: 0.95em; margin-bottom: 1rem; }
+    h2 { color: #334155; margin-top: 1.6rem; font-size: 1.15rem; page-break-after: avoid; }
+    h3 { color: #475569; margin-top: 1.1rem; font-size: 1rem; page-break-after: avoid; }
+    code {
+      background: #f1f5f9;
+      padding: 0.08em 0.3em;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    blockquote {
+      border-left: 3px solid #003875;
+      margin: 0.75rem 0;
+      padding: 0.45rem 0.85rem;
+      background: #f0f4f8;
+      font-style: italic;
+    }
+    table { border-collapse: collapse; width: 100%; margin: 0.75rem 0; font-size: 0.92em; }
+    th, td { border: 1px solid #e2e8f0; padding: 0.4rem 0.6rem; text-align: left; vertical-align: top; }
+    th { background: #f1f5f9; }
+    hr { border: none; border-top: 1px solid #e2e8f0; margin: 1.25rem 0; }
+    ul, ol { margin: 0.35rem 0 0.75rem 1.1rem; }
+    li { margin-bottom: 0.25rem; }
+    .checklist { list-style: none; margin-left: 0; padding-left: 0; }
+    .checklist li { padding-left: 1.4rem; position: relative; }
+    .checklist li::before { content: "☐"; position: absolute; left: 0; color: #64748b; }
+    a { color: #003875; word-break: break-all; }
+    .callout { background: #eff6ff; border: 1px solid #93c5fd; border-radius: 6px; padding: 0.6rem 0.85rem; margin: 0.75rem 0; }
+    .callout strong { color: #003875; }
+    .callout.warn { background: #fffbeb; border-color: #fcd34d; }
+    .callout.urgent { background: #fef2f2; border-color: #fca5a5; }
+    .hint { font-size: 0.9em; color: #64748b; margin-top: 0.35rem; }
+    .hint strong { color: #475569; }
+  </style>
+</head>
+<body>
+
+<h1>Paramount+ — Client Technical Interview Prep</h1>
+<p class="meta">
+  <strong>Role:</strong> Sr. AWS Python Developer — Media Platform<br>
+  <strong>Client:</strong> Paramount+ (via LTIMindtree / Okaya)<br>
+  <strong>Interview:</strong> Fri Aug 7, 2026 · <strong>6:00 AM PST</strong> · Virtual<br>
+  <strong>Comp confirmed:</strong> $140K + benefits (below $155K target — negotiate if advanced)<br>
+  <strong>Resume:</strong> <code>applications/paramount/resume.pdf</code>
+</p>
+
+<div class="callout urgent">
+  <strong>Due Aug 6:</strong> LTM Self-Identification form on RippleHire (login <strong>cgjonesdev@gmail.com</strong>)<br>
+  <a href="https://mail.google.com/mail/u/0/#inbox/19fd378b00e2e62a">Gmail — pre-offer doc request</a>
+  · <a href="https://mail.google.com/mail/u/0/#inbox/19fd307206fb881f">Gmail — pre-interview doc</a>
+  · <a href="mailto:Varun1.Verma@ltimindtree.com">Varun Verma (LTM)</a>
+</div>
+
+<div class="callout">
+  <strong>Interview thread:</strong>
+  <a href="https://mail.google.com/mail/u/0/#inbox/19fd3771bb90b43b">Gmail — Okaya scheduling</a>
+  · <a href="mailto:anurag.chaudhary@okayainc.com">Anurag Chaudhary (Okaya)</a>
+</div>
+
+<hr>
+
+<h2>What this round is</h2>
+<p>LTM recruiter screen is <strong>done</strong> (Varun Verma, Jul 31). This is the <strong>Paramount+ client technical</strong> — expect Python + AWS depth, media/platform scenarios, and possibly live coding or system design.</p>
+<table>
+  <tr><th>Round</th><th>Focus</th><th>Duration</th></tr>
+  <tr><td>1 — Recruiter / HM</td><td>LTM → Paramount+ submission</td><td>Done ✓</td></tr>
+  <tr><td>2 — Technical</td><td>Python + AWS (Lambda, ECS, event-driven)</td><td>45–60 min</td></tr>
+  <tr><td>3 — System design</td><td>Media ingest, catalog, partner APIs</td><td>45–60 min (may combine)</td></tr>
+  <tr><td>4 — Team / final</td><td>Culture, onsite, comp</td><td>30 min (later)</td></tr>
+</table>
+
+<hr>
+
+<h2>Pre-flight checklist</h2>
+<ul class="checklist">
+  <li>Complete RippleHire Self-ID form by <strong>Aug 6</strong></li>
+  <li>Join virtual interview <strong>Fri 6:00 AM PST</strong> — test audio/video night before</li>
+  <li>Resume PDF open: <code>applications/paramount/resume.pdf</code></li>
+  <li>Quiet room, water, notepad for names and next steps</li>
+  <li>Block 60 min on calendar (6 AM is early — sleep plan matters)</li>
+</ul>
+
+<hr>
+
+<h2>60-second intro</h2>
+<p><strong>Bullet cues</strong> (glance, don't read):</p>
+<ul>
+  <li><strong>Who:</strong> Cary Jones · Senior Software Engineer · <strong>15+ years</strong></li>
+  <li><strong>Python/AWS:</strong> Production serverless + containers — Lambda, ECS/Fargate, event-driven pipelines</li>
+  <li><strong>Disney:</strong> Media &amp; entertainment backend — $10M+ daily, batch 8hr→45min, 99.99% uptime</li>
+  <li><strong>CGJSoftware:</strong> Lambda/ECS microservices, 2.5M daily transactions, &lt;120ms latency</li>
+  <li><strong>Why Paramount+:</strong> Build scalable media platform systems — ingest, catalog, high-availability APIs</li>
+  <li><strong>AI tools:</strong> Cursor/Copilot in dev workflow — tests, refactors, never unreviewed ship</li>
+</ul>
+<blockquote>
+  "I'm Cary Jones, a Senior Software Engineer with 15 years building Python backends on AWS. At Disney I worked on media and financial reporting backends at enterprise scale — $10 million plus daily, 99.99% uptime — including batch pipelines I cut from eight hours to forty-five minutes. Through CGJSoftware I've architected event-driven Python services on Lambda and ECS processing millions of daily transactions. I'm excited about Paramount+ because this role is exactly that intersection: scalable media platform engineering, serverless and container patterns, and production rigor. I use AI coding tools daily to accelerate tests and refactors, but I always review and own what ships."
+</blockquote>
+
+<hr>
+
+<h2>Behavioral — likely questions</h2>
+
+<h3>Q1. Tell me about yourself / why Paramount+?</h3>
+<p><strong>Probe:</strong> Disney media, AWS scale, W2 motivation.</p>
+<blockquote>
+  15 yrs Python/AWS. Disney = media &amp; entertainment backend, $10M+ daily metrics, 99.99% uptime. CGJSoftware = Lambda/ECS event-driven pipelines, 2.5M daily transactions. Want to build scalable media platform systems at Paramount+ on a long-term product team.
+</blockquote>
+<p class="hint"><strong>Polish:</strong> Say <em>batch processing</em>, <em>quadrants</em>, <em>disbursement</em>. CGJSoftware = <strong>2.5M daily transactions</strong> (volume). Add <strong>99.99% uptime</strong> at Disney; one W2 line if probed.</p>
+<p class="hint"><strong>If follow-up:</strong> “How does Disney map to streaming?” → Enterprise media/financial backends; same SLAs (volume, pipeline reliability). Not consumer playback, but production rigor matches platform work.</p>
+
+<h3>Q2. Disney experience — relation to streaming/media platforms?</h3>
+<blockquote>
+  At Disney I was on enterprise media and financial reporting — high-throughput pipelines, strict uptime, cross-team integration during platform changes. When Disney acquired Hulu, our group was part of the streaming ecosystem: higher release cadence, media-adjacent dependencies, consumer platform pressure. I owned backend batch and reporting on AWS; the media org context Paramount+ operates in is familiar.
+</blockquote>
+<p class="hint"><strong>Scope:</strong> Own backend batch/reporting on AWS; cite Hulu acquisition exposure and streaming-adjacent environment. Frame as enterprise media pipelines + platform migration pressure.</p>
+<p class="hint"><strong>Polish:</strong> Drop one metric — batch <strong>8hr → 45min</strong> or <strong>99.99% uptime</strong>.</p>
+
+<h3>Q3. CGJSoftware — what did you build? Why W2 now?</h3>
+<blockquote>
+  Consulting entity for B2B/C2C contracts — Python microservices on Lambda/ECS, event-driven messaging, CI/CD ownership. Not a gap; active end-to-end delivery. Moving to W2 for long-term product team, shared codebase, and Paramount-scale media platform impact.
+</blockquote>
+<p class="hint"><strong>Add if light on detail:</strong> ~<strong>2.5M daily transactions</strong>, <strong>sub-120ms</strong> on hot path.</p>
+<p class="hint"><strong>W2 why (expand):</strong> Shared roadmap, code review culture, multi-year product ownership vs. project-by-project consulting.</p>
+
+<h3>Q4. How do you use AI coding tools in production?</h3>
+<blockquote>
+  Cursor/Copilot/Claude for boilerplate, tests, refactors — coverage 65%→92%, delivery +35%. Never ship unreviewed AI code; enforce pytest, ruff, human review. Aligns with JD requirement.
+</blockquote>
+<p class="hint"><strong>Optional close:</strong> “AI accelerates drafts; I still own design, edge cases, and production behavior.”</p>
+
+<h3>Q5. Improved reliability or performance under load (STAR)</h3>
+<p>Pick one:</p>
+<ul>
+  <li><strong>Disney (payment processing):</strong> Monolith SQL functions for month-end payroll — DBAs avoided touching it. Pitched API + lightweight UI; parallelized hub-and-spoke ingest (Jira, Airtable, costing). <strong>8hr → 45min</strong> after 3 months.</li>
+  <li><strong>CGJSoftware:</strong> ECS latency &lt;120ms, +45% throughput — connection pooling, cache layer, auto-scaling</li>
+</ul>
+<p class="hint"><strong>Polish:</strong> Say <em>quadrants</em>, <em>disbursement</em>. Tie to Paramount: “parallel ingest from multiple sources, idempotent stages, observable batch jobs.”</p>
+<p class="hint"><strong>STAR shape:</strong> Situation = monolith + disbursement office pain → Task = managers wanted API/UI → Action = you modeled backend + parallelized hub-and-spoke → Result = 8hr→45min in 3 months.</p>
+
+<hr>
+
+<h2>Python + AWS technical</h2>
+
+<h3>Lambda vs ECS Fargate?</h3>
+<ul>
+  <li><strong>Lambda:</strong> short-lived, spiky, event-triggered (S3, API Gateway, SQS); low ops; pay per invoke; OK with cold starts</li>
+  <li><strong>Fargate:</strong> long-running APIs, WebSockets, sustained traffic, custom deps, cold-start intolerance</li>
+  <li><strong>Hybrid:</strong> API on Fargate, async workers on Lambda</li>
+</ul>
+<p class="hint"><strong>Polish:</strong> Fargate = <em>long-running / always-on</em> (APIs, WebSockets). Lambda = cost-efficient for sporadic, event-driven work. Hybrid: API on Fargate, async workers on Lambda.</p>
+<p class="hint"><strong>Media example:</strong> Upload webhook → Lambda metadata extract; catalog API on Fargate; transcoding fan-out via SQS → Lambda workers.</p>
+
+<h3>Testable Lambda handler structure</h3>
+<p><strong>Layers:</strong> Thin handler (parse event) → service layer (business logic) → repository (DynamoDB/S3). DI for unit tests. Idempotency key from <code>message_id</code> / event ID. JSON structured logging. Config from env / Secrets Manager.</p>
+<p class="hint"><strong>Focus:</strong> Thin handler → service → repository. Pipeline (SQS/S3/DynamoDB) is separate from code structure inside the function.</p>
+<p class="hint"><strong>One-liner:</strong> “Handler is 10 lines — parse, delegate, return. All logic lives in a service class I can pytest without AWS.”</p>
+<p class="hint"><strong>Idempotency:</strong> Check dedupe table keyed on SQS <code>messageId</code> before processing; safe on at-least-once delivery.</p>
+
+<h3>Event-driven media asset ingestion</h3>
+<p>S3 upload → EventBridge/S3 notification → SQS → Lambda (validate, metadata) → DynamoDB catalog → Step Functions transcoding → SNS completion. DLQ for failures. At-least-once → idempotent handlers.</p>
+<p class="hint"><strong>30-second interview answer:</strong> “Upload goes to S3, the event lands on SQS, Lambda validates and writes metadata to DynamoDB, Step Functions handle transcoding, SNS signals completion, and handlers are idempotent because SQS can deliver again.”</p>
+<p class="hint"><strong>Polish:</strong> Handlers are idempotent because <em>SQS can deliver again</em>. Add DLQ for repeated failures; EventBridge routes the S3 event.</p>
+<p class="hint"><strong>Disney tie-in:</strong> Same hub-and-spoke idea — parallel stages, multiple sources, observable batch jobs.</p>
+
+<h3>DynamoDB content catalog access patterns</h3>
+<p>PK = <code>CONTENT#&lt;id&gt;</code>, SK = <code>METADATA</code> | <code>EPISODE#&lt;n&gt;</code>. GSI1: slug lookup. GSI2: genre#date browse. Design keys around reads; avoid scans.</p>
+<p class="hint"><strong>30-second answer:</strong> Single-table design — PK <code>CONTENT#id</code>, SK <code>METADATA</code> or <code>EPISODE#n</code>. GSI on slug for URL lookups; GSI on genre with date-prefixed sort key for browse. Every path is a query/index lookup — no scans.</p>
+<p class="hint"><strong>Polish:</strong> Say <em>keyed lookups, no table scans</em> for every access path.</p>
+<p class="hint"><strong>Postgres pivot:</strong> “Deepest prod DB work is PostgreSQL; I understand PK/SK/GSI and idempotent writes — ramp quickly on catalog patterns.”</p>
+
+<h3>Step Functions partial failures</h3>
+<p>Retry + backoff on transient errors; Catch → DLQ/SNS on permanent failure. Compensation where needed. CloudWatch on state transitions. Idempotent downstream steps for safe replay.</p>
+<p class="hint"><strong>30-second answer:</strong> “Retry transient failures with backoff inside the state machine. Catch permanent failures → SNS alert + mark catalog <code>failed</code> + optional DLQ/ops replay. Downstream steps idempotent so replays are safe. CloudWatch on state transitions.” Step Functions uses <strong>Retry</strong> and <strong>Catch</strong> on each state.</p>
+<p class="hint"><strong>Example:</strong> MediaConvert timeout → Retry 3× → Catch → update DynamoDB status <code>transcode_failed</code> → SNS to ops.</p>
+
+<hr>
+
+<h2>System design prompts</h2>
+
+<h3>Design: process uploaded video files for streaming</h3>
+<p><strong>Core flow:</strong> S3 ingest → EventBridge → SQS → Lambda (validate + metadata) → DynamoDB catalog → Step Functions → MediaConvert transcode → publish to CDN origin → status API.</p>
+<p class="hint"><strong>30-second skeleton:</strong> “Upload to S3, queue the event, Lambda validates and writes metadata, Step Functions orchestrate transcoding, outputs land on CDN-backed storage, catalog/API reflects status.”</p>
+<p class="hint"><strong>Include:</strong> <strong>MediaConvert</strong> (or worker fleet) for transcoding — packaged HLS/bitrate outputs, then CDN origin.</p>
+<p class="hint"><strong>Duplicate upload (idempotency):</strong> Check catalog for existing <code>asset_id</code> + status ≥ <code>transcoding</code>; conditional write on first insert; return success without re-enqueueing transcode. Dedupe key = content ID or SQS <code>messageId</code>.</p>
+<p class="hint"><strong>One-liner:</strong> “If asset_id already exists and transcode started, short-circuit — idempotent handler returns success, no double MediaConvert job.”</p>
+
+<h3>Design: rate-limited partner API (1000 req/min global, 10 req/sec per partner)</h3>
+<p>API Gateway usage plans OR Redis token bucket per partner key. Async heavy work via SQS. 429 + Retry-After. CloudWatch per partner.</p>
+
+<hr>
+
+<h2>Coding practice (live or take-home)</h2>
+<p>Run drills: <code>python interview/sessions/paramount_coding_drill.py</code></p>
+<table>
+  <tr><th>#</th><th>Problem</th><th>JD tie-in</th></tr>
+  <tr><td>1</td><td>LRU Cache</td><td>Metadata / session cache</td></tr>
+  <tr><td>2</td><td>Merge overlapping intervals</td><td>Broadcast windows / schedules</td></tr>
+  <tr><td>3</td><td>Top K frequent titles</td><td>Popularity / analytics</td></tr>
+  <tr><td>4</td><td>Idempotent Lambda handler sketch</td><td>Serverless best practice</td></tr>
+  <tr><td>5</td><td>Sliding window rate limiter</td><td>Partner API protection</td></tr>
+  <tr><td>6</td><td>Parse HLS #EXTINF manifest</td><td>Media metadata</td></tr>
+</table>
+<p><strong>Interview tip:</strong> Talk through approach 2–3 min before coding. Target 20–25 min per problem.</p>
+
+<h3>Problem 2 — merge intervals (pseudocode)</h3>
+<pre>function merge(intervals):
+    if intervals is empty: return []
+
+    sort intervals by start
+    merged = [copy of intervals[0]]
+    for each [start, end] in intervals[1:]:
+        last = merged[-1]
+        if start &lt;= last.end:          # overlap or touch
+            last.end = max(last.end, end)
+        else:
+            merged.append([start, end])
+    return merged</pre>
+<p class="hint">O(n log n) sort + O(n) scan. Edge cases: empty, single interval, one nested inside another.</p>
+
+<h3>Problem 3 — top K frequent (common mistakes)</h3>
+<pre>def top_k_frequent(ids, k):
+    counts = Counter(ids)           # 1. count frequencies
+    # 2. pick top k by freq (heap, sort, or bucket)
+    return [id for id, _ in counts.most_common(k)]</pre>
+<p class="hint"><strong>Key:</strong> <code>k</code> = number of results to return. Use <code>Counter.most_common(k)</code> or sort by frequency descending, take first k IDs.</p>
+
+<h3>Problem 1 — LRU cache (common mistakes)</h3>
+<p><strong>LRU:</strong> evict <em>least recently used</em> — track <strong>recency order</strong> in OrderedDict (<code>move_to_end</code>, <code>popitem(last=False)</code>).</p>
+<pre>from collections import OrderedDict
+
+class LRUCache:
+    def __init__(self, capacity):
+        self.cap = capacity
+        self.cache = OrderedDict()
+
+    def get(self, key):
+        if key not in self.cache:
+            return None
+        self.cache.move_to_end(key)   # mark recently used
+        return self.cache[key]
+
+    def put(self, key, value):
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        self.cache[key] = value
+        if len(self.cache) > self.cap:
+            self.cache.popitem(last=False)  # evict oldest (LRU)</pre>
+<p class="hint"><strong>Trace cap=2:</strong> put(a,1), put(b,2), get(a), put(c,3) → evicts <strong>b</strong> (not used since a was touched).</p>
+
+<h3>Problem 5 — sliding window rate limiter</h3>
+<pre>class SlidingWindowRateLimiter:
+    def __init__(self, limit, window_sec):
+        self.limit = limit
+        self.window_sec = window_sec
+        self._hits = defaultdict(list)  # partner_id → timestamps
+
+    def allow(self, partner_id, now=None):
+        now = now or time.time()
+        cutoff = now - self.window_sec
+        hits = [t for t in self._hits[partner_id] if t > cutoff]
+        if len(hits) >= self.limit:
+            self._hits[partner_id] = hits
+            return False
+        hits.append(now)
+        self._hits[partner_id] = hits
+        return True</pre>
+<p class="hint"><strong>Say:</strong> Per partner, prune hits older than window; if count ≥ limit return <code>False</code>, else append timestamp and return <code>True</code>.</p>
+
+<hr>
+
+<h2>Resume story map</h2>
+<table>
+  <tr><th>Topic</th><th>Story</th><th>Metric</th></tr>
+  <tr><td>Media / enterprise scale</td><td>Disney financial &amp; media backend</td><td>$10M+ daily, 99.99% uptime</td></tr>
+  <tr><td>Batch / pipeline perf</td><td>Disney PostgreSQL optimization</td><td>8 hr → 45 min</td></tr>
+  <tr><td>Serverless / ECS</td><td>CGJSoftware Lambda + Fargate</td><td>2.5M daily txns, &lt;120ms</td></tr>
+  <tr><td>Event-driven</td><td>SQS/SNS messaging pipelines</td><td>+45% throughput</td></tr>
+  <tr><td>Testing / CI</td><td>pytest, ruff, GitHub Actions</td><td>65% → 92% coverage</td></tr>
+  <tr><td>AI-assisted dev</td><td>Cursor/Copilot in workflow</td><td>+35% delivery speed</td></tr>
+</table>
+
+<hr>
+
+<h2>Gaps — honest pivots</h2>
+<table>
+  <tr><th>Gap</th><th>Pivot</th></tr>
+  <tr><td>DynamoDB depth</td><td>Strong PostgreSQL + MongoDB; understand PK/SK, GSI, idempotent writes</td></tr>
+  <tr><td>CDK</td><td>CloudFormation/Terraform awareness; eager to adopt CDK for IaC</td></tr>
+  <tr><td>Step Functions</td><td>Designed async workflows with queues; Step Functions = visual orchestration</td></tr>
+  <tr><td>Media containers (MP4/HLS)</td><td>Disney media domain; ingest → metadata → transcode conceptually</td></tr>
+  <tr><td>C#</td><td>Python-primary; can read .NET interop if needed</td></tr>
+  <tr><td>K8s</td><td>ECS/Fargate production exp; K8s concepts familiar, ready to deepen</td></tr>
+</table>
+
+<hr>
+
+<h2>Questions to ask Paramount+ interviewers</h2>
+<ol>
+  <li>What does the media platform team own — ingest, catalog, playback APIs, or internal tooling?</li>
+  <li>Lambda-heavy vs ECS/K8s split on the team?</li>
+  <li>How is DynamoDB used in the content catalog?</li>
+  <li>CI/CD and testing expectations for serverless deploys?</li>
+  <li>On-site LA vs NY — hybrid flexibility?</li>
+  <li>What does success look like in the first 90 days?</li>
+</ol>
+
+<hr>
+
+<h2>Self-scoring (mock practice)</h2>
+<table>
+  <tr><th>Score</th><th>Meaning</th></tr>
+  <tr><td>3</td><td>Structured answer, metrics, tradeoffs</td></tr>
+  <tr><td>2</td><td>Correct but rambling or missing depth</td></tr>
+  <tr><td>1</td><td>Vague or wrong — review model answer</td></tr>
+</table>
+<p>Interactive mock: <code>run interview prep paramount</code> · Full guide: <code>interview/sessions/paramount_mock.md</code></p>
+
+</body>
+</html>

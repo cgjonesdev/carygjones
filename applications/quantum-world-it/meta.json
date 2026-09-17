@@ -1,0 +1,24 @@
+{
+  "company": "Quantum World IT",
+  "client": null,
+  "role": "API Integration Developer",
+  "location": "Pennington, NJ",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-11",
+  "updated": "2026-08-11",
+  "salary": null,
+  "styling_notes": "The resume design is clean and professional, emphasizing technical skills and accomplishments relevant to the role.",
+  "notes": "Strong match on Python and REST API experience. No Java experience mentioned, which is a gap.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fb9a854939e9e4",
+    "thread_id": "19fb9a854939e9e4",
+    "subject": "Immediate interview Slot :: API\u00a0Integration Developer :: Pennington - New Jersey (Onsite) :: Full-Time/Permanent\u00a0",
+    "sender": "Sahil1 <Sahil1@quantumworldit.com>"
+  },
+  "recruiter_email": "Sahil1@quantumworldit.com",
+  "recruiter_name": "Sahil1"
+}

@@ -1,0 +1,22 @@
+{
+  "company": "Seneca Resources",
+  "client": null,
+  "role": "Senior Full Stack Developer",
+  "location": "Remote",
+  "match_score": 90,
+  "status": "ready",
+  "created": "2026-08-07",
+  "updated": "2026-08-07",
+  "salary": null,
+  "styling_notes": "The resume design utilizes a clean and modern palette to highlight technical skills and experience effectively.",
+  "notes": "Strong match for backend and cloud skills. No specific mention of frontend technologies like React, Angular, Vue.js, or Svelte in the resume.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fcee0cf27dce10",
+    "thread_id": "19fcee0cf27dce10",
+    "subject": "Cary, Exciting Remote Full Stack Developer Role | Contract to Hire",
+    "sender": "Ashu Tyagi <inmail-hit-reply@linkedin.com>"
+  }
+}

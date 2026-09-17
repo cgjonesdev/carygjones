@@ -1,0 +1,18 @@
+{
+  "company": "Trader Joe's",
+  "role": "Crew",
+  "locations": [
+    "Eagle Rock #55 — 1566 Colorado Blvd, 90041",
+    "Glendale #53 — 103 E Glenoaks Blvd, 91207",
+    "Pasadena #51 — 610 S Arroyo Pkwy, 91105",
+    "South Pasadena #18 — 613 Mission St, 91030"
+  ],
+  "status": "ready_to_apply",
+  "apply_url": "https://traderjoes.avature.net/careers/SearchJobs",
+  "pay_range": "$18–22/hr (SoCal estimate; store-specific when posted)",
+  "notes": "No official Crew postings for Eagle Rock/Glendale zips as of 2026-08-14. Walk-in + Avature job alerts recommended. TJ's uses one title (Crew) for register/stocking/signage. Evenings/weekends critical.",
+  "files": {
+    "in_store_pitch": "in_store_pitch.txt",
+    "online_application": "avature_application.txt"
+  }
+}

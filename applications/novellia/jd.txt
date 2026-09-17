@@ -1,0 +1,23 @@
+Source: https://www.linkedin.com/comm/jobs/view/4443984693/?trackingId=CFYD596ZKlh3HKxYLehL4g%3D%3D&refId=FTI01KMT1BD5fMTn2G5Euw%3D%3D
+
+Senior Backend Engineer
+Novellia
+United States
+
+We are seeking a Senior Backend Engineer to join our dynamic team at Novellia. In this remote role, you will be responsible for designing, developing, and maintaining scalable backend systems. You will work closely with cross-functional teams to integrate AI and machine learning capabilities into our products. This position requires strong expertise in Python, cloud platforms, and containerization technologies.
+
+Key Responsibilities:
+- Design and implement robust backend systems and APIs.
+- Collaborate with data scientists to integrate AI and machine learning models.
+- Optimize application performance and scalability.
+- Ensure high code quality and maintainability.
+- Participate in code reviews and contribute to team best practices.
+
+Qualifications:
+- Extensive experience in backend development and API design.
+- Proficiency in Python and frameworks such as FastAPI and Django.
+- Experience with cloud platforms like AWS and GCP.
+- Knowledge of containerization technologies such as Docker.
+- Strong problem-solving skills and attention to detail.
+
+Salary: $150K-$200K / year

@@ -1,0 +1,17 @@
+{
+  "company": "Weave",
+  "client": null,
+  "role": "Senior Backend Engineer",
+  "location": "United States (Remote)",
+  "match_score": 84,
+  "status": "ready",
+  "created": "2026-08-05",
+  "updated": "2026-08-05",
+  "salary": null,
+  "styling_notes": "Healthcare practice SaaS — clinical teal (#0d9488) with warm slate; patient-platform APIs, GCP/AWS distributed services, HIPAA-adjacent regulated healthcare emphasis",
+  "notes": "Sourced via LinkedIn MCP search (2026-08-05). External apply via Ashby. Strong fit: healthcare (Alan Health HIPAA, Hospira regulated), REST APIs, distributed/event-driven systems, PostgreSQL/Redis, GCP deployment experience, on-call ownership. Gap: primary stack is Golang — Cary's strength is Python backend with Go listed on resume and willingness to ramp; Kafka/gRPC/protobuf less prominent but pub/sub and microservices overlap.",
+  "apply_url": "https://jobs.ashbyhq.com/weave/489a2df5-c6a7-4fd7-9499-55ee399c24ac?utm_source=AvJaxJqGKY",
+  "easy_apply": false,
+  "apply_method": "ashby_external",
+  "linkedin_job_id": "4364914924"
+}

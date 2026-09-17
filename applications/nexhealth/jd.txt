@@ -1,0 +1,27 @@
+Source: LinkedIn
+
+Senior Software Engineer, Remote
+NexHealth
+United States
+
+NexHealth is seeking a Senior Software Engineer to join our remote team. As a Senior Software Engineer, you will be responsible for developing and maintaining our core platform, focusing on API microservices and cloud architecture. You will work closely with cross-functional teams to design, implement, and optimize scalable solutions that enhance our healthcare platform.
+
+Key Responsibilities:
+- Design and develop high-performance API microservices using Python and frameworks such as FastAPI and Django.
+- Collaborate with product and engineering teams to define and implement scalable cloud solutions on AWS and GCP.
+- Optimize existing systems for performance, scalability, and security.
+- Integrate with third-party APIs and services to enhance platform capabilities.
+- Participate in code reviews and ensure adherence to best practices and coding standards.
+
+Qualifications:
+- 5+ years of experience in software engineering with a focus on backend development and API microservices.
+- Proficiency in Python and experience with frameworks such as FastAPI and Django.
+- Strong understanding of cloud platforms (AWS, GCP) and DevOps practices.
+- Experience with containerization technologies such as Docker and Kubernetes.
+- Excellent problem-solving skills and ability to work independently in a remote setting.
+
+Preferred Qualifications:
+- Experience in the healthcare industry or with healthcare-related technologies.
+- Familiarity with modern AI development tools and practices.
+
+Apply here: https://www.linkedin.com/comm/jobs/view/4413152000/?trackingId=Z75dO7UHC1N84l8uJkLuIA%3D%3D&refId=uAgMtI%2BTUqojwYbedgqOMg%3D%3D

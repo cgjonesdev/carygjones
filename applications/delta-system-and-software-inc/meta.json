@@ -1,0 +1,24 @@
+{
+  "company": "Delta System and Software Inc.",
+  "client": null,
+  "role": "Python Full Stack Developer \u2013 GCP Cloud",
+  "location": "Remote",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-14",
+  "updated": "2026-08-14",
+  "salary": "70K yearly base plus standard benefits",
+  "styling_notes": "The resume design should maintain a professional and clean layout, emphasizing technical skills and relevant experience to align with the job's focus on cloud and security.",
+  "notes": "Strong alignment with Python, GCP, and backend services. Lacks specific DoD cybersecurity compliance experience.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19ffbd39fb0bc06b",
+    "thread_id": "19ffbd39fb0bc06b",
+    "subject": "Fulltime || Remote __ Python Full Stack Developer \u2013 GCP Cloud",
+    "sender": "Sudhir Kumar <sudhir.kumar@deltassi.com>"
+  },
+  "recruiter_email": "sudhir.kumar@deltassi.com",
+  "recruiter_name": "Sudhir"
+}

@@ -1,0 +1,22 @@
+{
+  "company": "Steven.com",
+  "client": null,
+  "role": "Principal Software Engineer",
+  "location": "Los Angeles Metropolitan Area",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-13",
+  "updated": "2026-08-13",
+  "salary": null,
+  "styling_notes": "The resume design emphasizes clarity and professionalism, aligning with the expectations for a senior engineering role.",
+  "notes": "Extensive experience in software engineering and architecture. Strong background in Python and cloud technologies (AWS, GCP). Proven leadership as a Scrum Master and technical lead.",
+  "apply_url": "https://www.linkedin.com/comm/jobs/view/4449202593/?trackingId=HWZu2%2FJ7vD8vmAzyh0mzUg%3D%3D&refId=ThLDESIVStgY8Yc0AYVhAQ%3D%3D",
+  "apply_method": "LinkedIn",
+  "linkedin_job_id": "4449202593",
+  "source_email": {
+    "message_id": "19ff8030e25edb2d",
+    "thread_id": "19ff8030e25edb2d",
+    "subject": "Principal Software Engineer at Steven.com",
+    "sender": "LinkedIn <jobs-noreply@linkedin.com>"
+  }
+}

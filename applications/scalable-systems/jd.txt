@@ -1,0 +1,100 @@
+Subject: DevOps Engineer- GCP || Urgent Requirement || Duluth, GA || Contract
+
+Hi,
+
+Hope you are doing well. My Name is Harsh and I’m reaching you for a Job Opportunity with one of our Client.
+
+Job Title: DevOps Engineer- GCP
+Location: Duluth, GA 30097 - Hybrid - 2 Days Mandatory Work From Office
+Contract Duration:6+ Months
+
+Job Description:
+
+DevOps/Cloud Engineering experience, with strong experience supporting and managing lower/non-production environments such as DEV, QA, E2E/UAT and PERF, (GCP and ON-Prem (Linux, Windows, Solaris)) including environment readiness and stability.
+
+Strong hands-on experience with Jenkins CI/CD, including building pipelines from scratch, deployment automation, credentials management and troubleshooting failed builds/deployments across lower environments.
+
+Hands-on GCP experience, with good knowledge of:
+
+· GKE/Kubernetes
+
+· Pub/Sub
+
+· BigQuery
+
+· Cloud Storage
+
+· IAM
+
+· Secret Manager
+
+· Cloud Logging/Monitoring
+
+· Supporting cloud-based application environments
+
+Strong experience with Kubernetes/GKE, Docker, Helm and Terraform, covering:
+
+· Application deployments
+
+· Infrastructure/configuration changes
+
+· Scaling
+
+· Environment provisioning
+
+· Troubleshooting
+
+· Strong scripting and automation skills using Python, Bash/Shell and Groovy, with the ability to automate repetitive environment readiness, deployment, validation and operational activities.
+
+Strong troubleshooting skills across:
+
+· Applications
+
+· CI/CD
+
+· GCP
+
+· Linux/Windows servers
+
+· IAM/service accounts
+
+· DNS
+
+· Certificates
+
+· Firewall/network connectivity
+
+· Application integrations
+
+· With the ability to drive issues to resolution across multiple teams.
+
+Experience managing lower-environment deployments and readiness, including:
+
+· Application configuration
+
+· Environment refreshes
+
+· Test-data dependencies
+
+· Integration validation
+
+· Release/deployment support
+
+· Coordination with SRE, Platform, DBA, Network and application teams
+
+Experience with observability/monitoring tools such as:
+
+· Dynatrace
+
+· OpenTelemetry
+
+· GCP Monitoring
+
+· Along with knowledge of Java/microservices-based applications.
+
+With Best Regards,
+Harsh Singh
+Sr Tech Recruiter
+Scalable Systems
+✉️ harsh.singh@scalable-systems.com
+📞 +1 (732) 200-7439

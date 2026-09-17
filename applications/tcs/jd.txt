@@ -1,0 +1,70 @@
+Source: Okaya Infocom
+
+Subject: TCS Hiring for DevOps with Claude in Cincinnati, OH - Onsite Full Time
+
+Job Description
+
+DevOps with Claude
+
+• The DevOps Engineer is responsible for the design, implementation, and operation of software engineering platforms, DevOps capabilities, and automation solutions that improve delivery velocity, operational efficiency, and system reliability.
+
+• The ideal candidate possesses hands-on experience with AI-assisted development tools such as Claude Code CLI, GitHub Copilot, Cursor, Cline, Aider, or similar platforms, and has experience building agentic engineering harnesses that automate software development lifecycle activities. Experience applying AI agents to software development, testing, deployment, incident management, vulnerability remediation, and production support is highly desirable.
+
+Key Responsibilities
+
+• Design, develop, implement, and maintain software engineering, DevOps, and automation platforms.
+
+• Build and support agentic engineering harnesses that automate software development lifecycle activities, including development, testing, deployment, and operational support.
+
+• Develop AI-enabled workflows that improve engineering productivity, software quality, and operational efficiency.
+
+• Design, implement, and maintain CI/CD pipelines, environment provisioning, and infrastructure automation capabilities.
+
+• Automate operational processes, incident management workflows, vulnerability remediation, and production support functions.
+
+• Develop solutions that assist with issue triage, root cause analysis, and production problem resolution.
+
+• Integrate engineering platforms with source control, ticketing, monitoring, observability, and operational systems.
+
+• Configure, maintain, monitor, and optimize application and platform performance.
+
+• Ensure solutions comply with enterprise security, compliance, governance, and risk management requirements.
+
+• Implement human-in-the-loop controls for AI-assisted development and operational processes.
+
+• Promote adoption of modern engineering practices, automation frameworks, cloud technologies, and AI-enabled development capabilities.
+
+Required Qualifications
+
+• Experience designing and implementing CI/CD pipelines, infrastructure automation, and cloud-native solutions.
+
+• Hands-on experience with AI-assisted development tools such as Claude Code CLI, GitHub Copilot, Cursor, Cline, Aider, or similar technologies.
+
+• Experience building agentic workflows, AI orchestration frameworks, engineering automation platforms, or software development harnesses.
+
+• Strong understanding of software development lifecycle processes, testing practices, deployment methodologies, and production support.
+
+• Experience integrating development platforms with tools such as GitHub, GitLab, Azure DevOps, Jira, ServiceNow, Datadog, Splunk, or equivalent systems.
+
+• Strong programming, scripting, and automation skills.
+
+Preferred Qualifications
+
+• Experience within banking, payments, financial services, fintech, or other highly regulated industries.
+
+• Knowledge of enterprise software governance, security, compliance, audit, and risk management practices.
+
+• Experience with Large Language Models (LLMs), Model Context Protocol (MCP), Retrieval-Augmented Generation (RAG), agent-based architectures, and AI orchestration frameworks.
+
+• Experience implementing AI governance, Responsible AI, or Model Risk Management controls.
+
+• Experience automating incident response, production support, operational workflows, and vulnerability management.
+
+Thanks and Regards,
+
+Yash Kaushik
+Technical Recruiter
+OKAYA Inc
+418 Broadway #7195, Albany, NY 12207, USA
++1 631 (210) 7158
+Yash.Kaushik@okayainc.com || www.okayainc.com

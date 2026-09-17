@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Virta Health Interview Prep</title>
+  <style>
+    @page { margin: 0.6in; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      max-width: 52rem;
+      margin: 1.5rem auto;
+      padding: 0 1.25rem;
+      line-height: 1.5;
+      color: #1e293b;
+      font-size: 10.5pt;
+    }
+    h1 {
+      color: #059669;
+      border-bottom: 2.5px solid #059669;
+      padding-bottom: 0.35rem;
+      font-size: 1.55rem;
+      margin-bottom: 0.5rem;
+    }
+    .meta { color: #475569; font-size: 0.95em; margin-bottom: 1rem; }
+    h2 { color: #334155; margin-top: 1.6rem; font-size: 1.15rem; page-break-after: avoid; }
+    h3 { color: #475569; margin-top: 1.1rem; font-size: 1rem; page-break-after: avoid; }
+    code { background: #f1f5f9; padding: 0.08em 0.3em; border-radius: 3px; font-size: 0.9em; }
+    blockquote {
+      border-left: 3px solid #059669;
+      margin: 0.75rem 0;
+      padding: 0.45rem 0.85rem;
+      background: #f0fdf4;
+      font-style: italic;
+    }
+    table { border-collapse: collapse; width: 100%; margin: 0.75rem 0; font-size: 0.92em; }
+    th, td { border: 1px solid #e2e8f0; padding: 0.4rem 0.6rem; text-align: left; vertical-align: top; }
+    th { background: #f1f5f9; }
+    hr { border: none; border-top: 1px solid #e2e8f0; margin: 1.25rem 0; }
+    ul { margin: 0.35rem 0 0.75rem 1.1rem; }
+    li { margin-bottom: 0.25rem; }
+    .checklist { list-style: none; margin-left: 0; padding-left: 0; }
+    .checklist li { padding-left: 1.4rem; position: relative; }
+    .checklist li::before { content: "☐"; position: absolute; left: 0; color: #64748b; }
+    a { color: #047857; word-break: break-all; }
+    .callout { background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 0.6rem 0.85rem; margin: 0.75rem 0; }
+    .callout strong { color: #065f46; }
+    .warn { background: #fffbeb; border-color: #fcd34d; }
+  </style>
+</head>
+<body>
+
+<h1>Virta Health — Veton AI Screen Prep</h1>
+<p class="meta">
+  <strong>Role:</strong> Senior Software Engineer II — Data Engagement Platform<br>
+  <strong>Format:</strong> Phone interview with Emma (Veton AI) · ~20–30 min<br>
+  <strong>Comp:</strong> $176.5K–$228K · Remote U.S.
+</p>
+
+<div class="callout">
+  <strong>Start interview:</strong>
+  <a href="https://virtahealth.careers.veton.ai/interviews/fbb5dd7e-af50-48c9-a7ff-0e602e94e8de/confirmation?phone=16262722567">Veton reset link</a>
+  · Phone <strong>(626) 272-2567</strong> · Support: hello@veton.ai
+</div>
+
+<div class="callout warn">
+  <strong>AI interview rules:</strong> Prep with AI is OK. During the live call — your own voice, no reading scripts, no live coaching. Virta will ask about practical AI tool use. Humans review the transcript.
+</div>
+
+<hr>
+
+<h2>What this call is</h2>
+<p>Recruiter-style AI screen — background, role fit, healthcare/data experience, AI tooling judgment. Not live coding.</p>
+<p><strong>Role focus:</strong> Partner data → eligibility decisions → campaign-ready member audiences (Member Marketing + Coverage Eligibility).</p>
+
+<hr>
+
+<h2>60-second intro — bullet cues</h2>
+<ul>
+  <li><strong>Who:</strong> Cary Jones · Senior Software Engineer · <strong>15+ years</strong></li>
+  <li><strong>Focus:</strong> Event-driven <strong>data platforms</strong>, partner integrations, healthcare/regulated systems</li>
+  <li><strong>Virta fit:</strong> Partner data → eligibility + member audiences</li>
+  <li><strong>Alan Health:</strong> HIPAA APIs · <strong>500k+</strong> profiles · identity/eligibility workflows</li>
+  <li><strong>CGJSoftware:</strong> Event-driven ETL · <strong>2.5M/day</strong> · idempotency · reconciliation · 99.95%</li>
+  <li><strong>AI stance:</strong> Cursor/Copilot for velocity · deterministic controls for correctness</li>
+  <li><strong>Why Virta:</strong> Mission + correctness-first data systems for member outreach</li>
+</ul>
+
+<hr>
+
+<h2>Likely questions + answers</h2>
+
+<h3>1. Why Virta / why this role?</h3>
+<blockquote>
+  "Virta's data engagement platform turns partner records into trusted eligibility and outreach — that's high-stakes, correctness-first backend work. I've built HIPAA-compliant systems and event-driven pipelines at scale, and I want that impact on a mission I care about: reversing metabolic disease."
+</blockquote>
+
+<h3>2. Relevant data platform experience</h3>
+<ul>
+  <li><strong>Data contracts:</strong> Pydantic schemas, versioned formats, fail-fast validation</li>
+  <li><strong>Idempotency:</strong> Dedup keys, safe replays on at-least-once delivery</li>
+  <li><strong>Reconciliation:</strong> Source vs destination counts, quarantine bad rows, alert on drift</li>
+  <li><strong>Partner/B2B:</strong> File + API ingestion, webhook pipelines, observability end-to-end</li>
+  <li><strong>Regulated:</strong> Audit trail, provenance, consent/suppression concepts</li>
+</ul>
+
+<h3>3. Disney / healthcare stories (STAR)</h3>
+<table>
+  <tr><th>Story</th><th>Metric</th></tr>
+  <tr><td>Alan Health HIPAA REST APIs</td><td>500k+ user profiles</td></tr>
+  <tr><td>CGJSoftware event-driven ETL</td><td>2.5M/day · 99.95% accuracy</td></tr>
+  <tr><td>Disney batch reconciliation</td><td>8 hr → 45 min · 99.99% uptime</td></tr>
+</table>
+
+<h3>4. AI-assisted development (Virta will ask)</h3>
+<ul>
+  <li><strong>Use AI for:</strong> Tests, boilerplate, docs, data mapping exploration, refactors</li>
+  <li><strong>Don't:</strong> Ship unreviewed AI code on correctness-critical paths</li>
+  <li><strong>Controls:</strong> pytest gates, human review, deterministic validation on ingest</li>
+  <li><strong>Result:</strong> +35% delivery speed · coverage 65% → 92%</li>
+</ul>
+
+<h3>5. CGJSoftware — address directly</h3>
+<blockquote>
+  "CGJSoftware was my consulting entity for enterprise backend and data contracts — active delivery, not a gap. I'm moving to W2 to join a product team building long-term healthcare data platforms."
+</blockquote>
+
+<h3>6. Golang gap (if asked)</h3>
+<blockquote>
+  "Production depth in Python; comfortable adopting Go for services. Same fundamentals — APIs, events, idempotency, observability. Strong GCP/SQL overlap with your stack."
+</blockquote>
+
+<hr>
+
+<h2>Match themes vs JD</h2>
+<table>
+  <tr><th>JD need</th><th>Your proof</th></tr>
+  <tr><td>Event-driven integrations</td><td>ECS/Fargate pipelines, Pub/Sub-style messaging</td></tr>
+  <tr><td>Identity, eligibility, dedup</td><td>Alan Health, partner data validation</td></tr>
+  <tr><td>Observability & reconciliation</td><td>2.5M/day pipelines, 99.95% accuracy</td></tr>
+  <tr><td>Regulated auditability</td><td>HIPAA, provenance, replay patterns</td></tr>
+  <tr><td>AI-augmented engineering</td><td>Cursor/Copilot + deterministic controls</td></tr>
+  <tr><td>GCP / BigQuery / dbt</td><td>GCP exposure; SQL/PostgreSQL depth — eager on dbt</td></tr>
+</table>
+
+<hr>
+
+<h2>Virta mission one-liner</h2>
+<blockquote>
+  "Virta reverses type 2 diabetes through virtual care and nutrition — I want to build the data systems that make member outreach accurate and trustworthy."
+</blockquote>
+
+<hr>
+
+<h2>Questions to ask (if prompted)</h2>
+<ol>
+  <li>How does the data engagement platform split Member Marketing vs Coverage Eligibility?</li>
+  <li>Event-driven vs file-based — what's the modernization roadmap?</li>
+  <li>Go vs Python split on the team?</li>
+  <li>What does the interview process look like after this screen?</li>
+</ol>
+
+<hr>
+
+<h2>Logistics checklist</h2>
+<ul class="checklist">
+  <li>Strong cell signal — use reset link (not old 62c180f8 link)</li>
+  <li>Quiet room · phone on Do Not Disturb</li>
+  <li>Resume PDF open on second screen</li>
+  <li>Speak naturally — bullets, not scripts</li>
+  <li>If disconnected: wait 30 sec, retry link once, then hello@veton.ai</li>
+</ul>
+
+<hr>
+
+<h2>Do / Don't</h2>
+<table>
+  <tr><th>Do</th><th>Don't</th></tr>
+  <tr><td>Use specific metrics</td><td>Read verbatim from screen</td></tr>
+  <tr><td>Emphasize correctness + healthcare</td><td>Apologize for Python-over-Go</td></tr>
+  <tr><td>Pause 1–2 sec before answering</td><td>Multitask during call</td></tr>
+  <tr><td>Mention AI tools with guardrails</td><td>Invent experience</td></tr>
+</table>
+
+</body>
+</html>

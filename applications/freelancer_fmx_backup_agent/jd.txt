@@ -1,0 +1,21 @@
+AI Agent for FMX Backup
+
+Source: https://www.freelancer.com/projects/automation/agent-for-fmx-backup
+
+Budget: $250 USD (fixed price)
+Bids: ~68 | Posted: active (6 days left at scan)
+
+I need a lightweight AI-driven script that can log in to our FMX account, sweep through every maintenance ticket ever opened across our 51+ properties, and export the full record — text fields and attached photos — in one pass.
+
+Requirements:
+- All tickets saved as CSV rows
+- Photos in organized folder structure: property name → unit number → ticket-date
+- Filenames echo the same pattern
+- CSV row must link to photo path/filename for audit trail
+- FMX has no native backup — likely Python + Selenium (or unofficial endpoints)
+- Repeatable one-click run for non-technical manager
+- README: setup, credentials handling, date range changes
+
+Acceptance: run script without manual intervention; every ticket and image in CSV + folder layout.
+
+Skills tagged: Python, Automation, Linux, PHP, Selenium, Web Scraping, Software Architecture

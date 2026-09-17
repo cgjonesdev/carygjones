@@ -1,0 +1,192 @@
+{
+  "campaign": "job_market_recruiter_outreach",
+  "created": "2026-08-14",
+  "batch_size": 10,
+  "next_index": 3,
+  "drafts_file": "outreach/linkedin_job_market_outreach_drafts.md",
+  "contacts": [
+    {
+      "name": "Prasant Gobburu",
+      "url": "https://www.linkedin.com/in/prasant-gobburu",
+      "message": "Hi Prasant,\n\nThanks for connecting recently \u2014 wanted to follow up now that I'm actively exploring my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time W2.\n\nIf Donato (or your clients) have senior backend / Python / AWS openings, I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "sent",
+      "sent_at": "2026-08-14T22:02:39Z",
+      "workflow_id": "wf-5899734e-3f24-4271-aa3a-d69b8004ed2a"
+    },
+    {
+      "name": "Karan Singh",
+      "url": "https://www.linkedin.com/in/karan-singh-b08011154",
+      "message": "Hi Karan,\n\nThanks for connecting recently \u2014 wanted to follow up now that I'm actively exploring my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). Python backends (FastAPI/Django), AWS, data pipelines, and regulated environments (Disney finance, HIPAA healthcare). Open to remote or hybrid SoCal; contract or full-time.\n\nIf RG Talent has senior backend / full-stack Python reqs, I'd appreciate a heads-up. Happy to share my resume.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/",
+      "status": "sent",
+      "sent_at": "2026-08-14T22:02:39Z",
+      "workflow_id": "wf-a9579d3e-5bb9-4415-81c6-6066429b33b1"
+    },
+    {
+      "name": "Edith Rayo",
+      "url": "https://www.linkedin.com/in/edith-r-9a51b3137",
+      "message": "Hi Edith,\n\nHope you're doing well. I noticed you're recruiting emerging talent at HubSpot from LA \u2014 I'm exploring senior backend opportunities and wanted to stay on your radar.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "sent",
+      "sent_at": "2026-08-14T22:02:39Z",
+      "workflow_id": "wf-e1c88042-4846-4497-8759-ccdde62f12d2"
+    },
+    {
+      "name": "Aaron Allen",
+      "url": "https://www.linkedin.com/in/aaronallen9581",
+      "message": "Hi Aaron,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Deepak Kumar Singh",
+      "url": "https://www.linkedin.com/in/deepak-kumar-singh-216a801a5",
+      "message": "Hi Deepak,\n\nThanks for connecting recently \u2014 wanted to follow up now that I'm actively exploring my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "sent",
+      "sent_at": "2026-08-14T22:02:39Z",
+      "workflow_id": "wf-134f8e64-a391-4aad-bd66-721b9d780307"
+    },
+    {
+      "name": "Malathi C",
+      "url": "https://www.linkedin.com/in/malathi-c-8b5114232",
+      "message": "Hi Malathi,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "sent",
+      "sent_at": "2026-08-14T22:02:39Z",
+      "workflow_id": "wf-3248f624-8237-425a-a7f8-25afc2ca8a4e"
+    },
+    {
+      "name": "Paneendra Rayudu V",
+      "url": "https://www.linkedin.com/in/paneendra-rayudu-v-0865b0185",
+      "message": "Hi Paneendra,\n\nThanks for connecting recently \u2014 wanted to follow up now that I'm actively exploring my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Adarsh Sharma",
+      "url": "https://www.linkedin.com/in/adarsh-sharma-40aa1725b",
+      "message": "Hi Adarsh,\n\nThanks for connecting recently \u2014 wanted to follow up now that I'm actively exploring my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Varun Anand",
+      "url": "https://www.linkedin.com/in/varun-anand-077316246",
+      "message": "Hi Varun,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Vijay Reddy",
+      "url": "https://www.linkedin.com/in/vj8686053531",
+      "message": "Hi Vijay,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Shlok Srivastava",
+      "url": "https://www.linkedin.com/in/shlok-srivastava-15212221b",
+      "message": "Hi Shlok,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Rahul Singh",
+      "url": "https://www.linkedin.com/in/rahul-singh-06846697",
+      "message": "Hi Rahul,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "ANUPAM CHAKRAVARTI",
+      "url": "https://www.linkedin.com/in/anupam-chakravarti-10a9b2131",
+      "message": "Hi ANUPAM,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Bhagyeswari D",
+      "url": "https://www.linkedin.com/in/bhagyeswari-d-b59042185",
+      "message": "Hi Bhagyeswari,\n\nHope you're doing well. I'm reaching out to my recruiter network to share that I'm actively exploring my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Kyla Salac",
+      "url": "https://www.linkedin.com/in/kylasalac",
+      "message": "Hi Kyla,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Kate Fairchild",
+      "url": "https://www.linkedin.com/in/kfairchild1",
+      "message": "Hi Kate,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Rebecca Fouts, MA",
+      "url": "https://www.linkedin.com/in/rebeccafouts",
+      "message": "Hi Rebecca,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Jackie \ud83d\udc3a Wileman",
+      "url": "https://www.linkedin.com/in/jedijackie",
+      "message": "Hi Jackie,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Aswathy Anup",
+      "url": "https://www.linkedin.com/in/aswathy-anup-9573409b",
+      "message": "Hi Aswathy,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "James Thompson",
+      "url": "https://www.linkedin.com/in/jamesathompson-cydio",
+      "message": "Hi James,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "James Ramirez",
+      "url": "https://www.linkedin.com/in/james-p-ramirez",
+      "message": "Hi James,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    },
+    {
+      "name": "Jason Shotwell",
+      "url": "https://www.linkedin.com/in/shotwelljason",
+      "message": "Hi Jason,\n\nHope you're doing well. Given your focus on technical/engineering recruiting, I wanted to share that I'm actively looking for my next role.\n\nI'm Cary Jones \u2014 a senior software engineer based in Temple City, CA (15+ years). I specialize in Python backends (FastAPI/Django), AWS/cloud, and data-heavy systems. Recent highlights include Disney financial reporting backends ($10M+ daily metrics, 99.99% uptime), legacy-to-microservices modernization, and HIPAA-compliant healthcare APIs. Open to remote or hybrid in Southern California; contract or full-time.\n\nIf you have anything open for senior backend / platform / full-stack Python roles \u2014 or clients hiring in that space \u2014 I'd appreciate being kept in mind. Happy to send my resume or jump on a quick call.\n\nThanks,\nCary Jones\n(626) 272-2567 | cgjonesdev@gmail.com\nhttps://www.linkedin.com/in/cary-g-jones/\nhttps://cgjonesdev.github.io/carygjones/",
+      "status": "pending",
+      "sent_at": null,
+      "workflow_id": null
+    }
+  ],
+  "last_batch": {
+    "date": "2026-08-14",
+    "requested": 10,
+    "sent": 5,
+    "remaining_in_batch": 5
+  },
+  "notes": "Batch 1 partial: 5/10 sent via Linked API. Remaining batch-1: Aaron Allen, Paneendra Rayudu V, Adarsh Sharma, Varun Anand, Vijay Reddy. Say 'send next 10' or 'finish batch 1' to continue."
+}

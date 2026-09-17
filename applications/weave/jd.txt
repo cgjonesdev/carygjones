@@ -1,0 +1,39 @@
+Source: https://www.linkedin.com/jobs/view/4364914924/
+Apply: https://jobs.ashbyhq.com/weave/489a2df5-c6a7-4fd7-9499-55ee399c24ac?utm_source=AvJaxJqGKY
+
+Senior Backend Engineer — Weave (NYSE: WEAV)
+Location: United States (Remote)
+Posted: ~2 days ago | 100+ applicants
+
+---
+
+At Weave (NYSE: WEAV), we're on a mission to elevate the patient experience by giving healthcare practices the tools they need to run more efficiently and meaningfully connect with their patients. With 30,000+ customers and growing, Weave's all-in-one platform supports every interaction—from scheduling and payments to communication and reviews—making it easier for healthcare professionals to focus on what matters most: patient care.
+
+As a Senior Backend Engineer, you'll join a high-trust, high-impact team helping to shape the future of healthcare technology. You'll work in a deeply collaborative environment, partnering with teammates across the U.S. and India to design and deliver resilient, scalable backend systems that power critical features in our platform. This isn't just about building APIs—you'll influence architecture, drive outcomes, and improve how 40K+ healthcare practices operate day-to-day.
+
+What You'll Own
+- Design, build, and maintain scalable backend services and APIs using Golang microservices.
+- Drive technical architecture and contribute to long-term system health by anticipating scaling and maintenance needs.
+- Collaborate cross-functionally with product, design, and frontend teams to deliver high-impact features.
+- Participate in system design reviews, propose and implement robust solutions, and contribute to Weave's overall engineering strategy.
+- Own the quality, reliability, and observability of your code from development to production.
+- Help plan and execute projects from inception to delivery, with a strong sense of ownership and outcome-orientation.
+- Mentor peers and junior engineers by sharing your knowledge and encouraging best practices.
+- Participate in on-call rotation and escalation as needed.
+- Establish and maintain operational excellence standards, including SLAs/SLOs, monitoring, alerting, and incident response processes.
+
+What You'll Need
+- 5+ years of backend engineering experience with modern programming languages such as Golang, Java, Python, Ruby, or C# (Golang preferred or willingness to learn).
+- Experience designing and building RESTful APIs and backend services.
+- Strong understanding of distributed systems and inter-service communication (e.g., protobufs/gRPC, REST, Kafka, Redis).
+- Experience working with relational databases and SQL.
+- Willingness to participate in an on-call rotation with your team and take responsibility for production systems.
+
+What Will Make Us Love You
+- Deployed and maintained services in cloud environments, especially Google Cloud Platform (GCP).
+- Comfortable with Docker/Kubernetes, observability tooling (metrics, alerts, tracing), and service reliability.
+- Experience with protobufs/gRPC, Temporal, and breaking monoliths into microservices.
+- Thoughtful about technical debt and scalability.
+- Value cross-functional collaboration and can explain complex systems to both technical and non-technical stakeholders.
+
+Employment with Weave is contingent upon the successful completion of a background check.

@@ -1,0 +1,37 @@
+Source: Recruiter InMail — Rodrigo Viera, InterEx Group
+Client: Microsoft (public-sector engagement)
+Apply: Reply with CV + phone
+
+---
+
+Work for Microsoft! | Technical Lead – Python / Full-Stack Engineering | Public Sector
+
+Hi Cary,
+
+I'm currently supporting Microsoft on an urgent Technical Lead / Full-Stack Engineering opportunity supporting a long-term public-sector engagement.
+
+They're looking for a hands-on Technical Lead who can own architecture and technical direction while still writing a significant amount of production code.
+
+Key areas they're focused on:
+- Strong Python, ideally FastAPI
+- REST API design and backend development
+- React / Next.js / TypeScript
+- PostgreSQL / SQLAlchemy
+- Elasticsearch
+- Entra ID / authentication
+- Docker / Kubernetes
+- Azure DevOps / CI/CD
+- Technical leadership across architecture, mentoring, code reviews and design reviews
+- Secure application development within sensitive or regulated environments
+
+Don't need experience in everything, python most important + fse skillset.
+
+Communication is also extremely important. Mission-driven public-sector environment — mature, situationally aware, comfortable with senior stakeholders, hierarchy, adapting technical decisions to the wider mission.
+
+Fully remote within the US. Initial engagement through January 2027, strong likelihood of long-term extensions.
+
+If relevant, send latest CV and best number to reach you.
+
+Best,
+Rodrigo Viera
+Head of Delivery at InterEx Group

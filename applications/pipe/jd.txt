@@ -1,0 +1,25 @@
+We are hiring a Senior Backend Engineer to work in our Go, Python, and Postgres stack. You'll work on cloud based APIs and databases that power our capital products. The successful candidate will have production experience with a language like Go, Java, Python, or similar, and experience with a relational database like PostgreSQL or MySQL. Fintech experience is not required.
+
+Your Key Responsibilities Will Include
+
+Designing, developing, and deploying scalable and reliable backend services, primarily using Go and Python.
+Architecting, optimizing, and maintaining relational database tables in PostgreSQL.
+Leading technical projects from concept to launch, ensuring high quality and reliability.
+Collaborating with cross-functional teams, including product managers and other engineers, to define requirements and implement solutions.
+Conducting thorough code reviews and championing engineering best practices.
+
+Required qualifications:
+
+5-7+ years of experience in backend software development.
+Production experience with a language like Go, Java, Python, or similar.
+Experience with a relational database like PostgreSQL or MySQL.
+Experience building and operating scalable APIs and services.
+Experience with cloud infrastructure (e.g., GCP, AWS, or Azure).
+Working knowledge of coding tools such as GitHub, VSCode, or similar.
+Understanding of software architecture, design patterns, and distributed systems.
+Good written and verbal communication skills.
+Bachelor's degree in Computer Science, Engineering, or a related technical field.
+
+Remote-first startup. Capital products.
+
+$150,000–$220,000 annual US base salary.

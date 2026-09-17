@@ -1,0 +1,24 @@
+{
+  "company": "TCS (Tata Consulting Services)",
+  "client": null,
+  "role": "Python Django Developer",
+  "location": "San Jose, CA",
+  "match_score": 85,
+  "status": "ready",
+  "created": "2026-08-08",
+  "updated": "2026-08-08",
+  "salary": "$145K/annum + benefits",
+  "styling_notes": "The resume should emphasize cloud and compliance experience while maintaining a clean, professional layout.",
+  "notes": "Emphasize experience with Python, Django, and cloud environments. Highlight any relevant compliance experience.",
+  "apply_url": null,
+  "apply_method": "email",
+  "linkedin_job_id": null,
+  "source_email": {
+    "message_id": "19fcde6820f725a1",
+    "thread_id": "19fae2a9fa7f7eaf",
+    "subject": "Re: regarding Interview // Salary confirmation of Cary Jones for Python Django Developer/ / San Jose,",
+    "sender": "Cary Jones <cgjonesdev@gmail.com>"
+  },
+  "recruiter_email": "cgjonesdev@gmail.com",
+  "recruiter_name": "Cary"
+}

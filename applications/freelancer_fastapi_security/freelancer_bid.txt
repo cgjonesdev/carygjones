@@ -1,0 +1,20 @@
+Hi — I'm Cary Jones, a senior backend engineer in Los Angeles (Pacific time). This project is a strong match for my day-to-day work: Python/FastAPI microservices, Docker on Linux, and security-conscious API design.
+
+Relevant experience:
+• Deploy containerized Python services (FastAPI, Django) on AWS ECS/Fargate at 99.99% uptime — API latency under 120ms on production financial reporting systems
+• HIPAA-compliant REST APIs at Alan Health (OAuth2, encryption, auditable access patterns) — directly applicable to a security/incident-response platform
+• CI/CD, integration testing, and staged rollouts for enterprise clients via CGJSoftware consulting
+
+Proposed approach:
+1. Scope call — confirm endpoint list, auth model, and Ubuntu/Docker target environment
+2. Milestone 1 — FastAPI service skeleton + core endpoints + Docker Compose (local/dev)
+3. Milestone 2 — production hardening, tests, deployment docs, handoff
+
+Budget note: $539 fixed works only if scope is clearly bounded (e.g., a defined set of endpoints + one deployment environment). If this is ongoing platform ownership, I'd prefer milestone pricing or hourly ($100/hr) after we align on hours.
+
+I can start within a few days and communicate daily. Happy to share LinkedIn/GitHub on request.
+
+Cary Jones
+cgjonesdev@gmail.com | (626) 272-2567
+https://www.linkedin.com/in/cary-g-jones/
+https://github.com/cgjonesdev

@@ -1,0 +1,48 @@
+Source: https://www.linkedin.com/jobs/view/4392161396/
+Apply: https://jobs.ashbyhq.com/atticus/7663356d-e896-48d0-b884-1fe685c2509e/application?utm_source=ye7J1OmoJn
+
+Title: Senior Backend Engineer - Representation
+Company: Atticus
+Location: Los Angeles, CA (Fully remote; quarterly–yearly LA travel)
+Salary: $157,250 – $230,000 + equity
+
+About Atticus
+
+At any given time, 16 million Americans are experiencing a crisis that requires urgent help from our legal system or government. The right assistance could transform their lives. But today, most never get it.
+
+Atticus makes it easy for any sick or injured American to get life-changing aid. Our mission is to tear down barriers between people in crisis and the aid they deserve. In the last six years, we've become the leading platform connecting people with disabilities to government benefits.
+
+We also help victims of accidents, misconduct, and violence get compensation from insurance. So far, we've helped hundreds of thousands of people access over $10 billion in life-changing aid — and earned over 20,000 five-star reviews.
+
+The Job
+
+Atticus works in an industry dominated by outdated technology that is ripe for fresh thinking. Our core competitors rely on massive call centers, antiquated CRMs, and paper checks. As a VC-backed tech company, our engineering team powers everything we do — from creating elegant and intuitive product experiences for people in crisis who are seeking legal aid, to building powerful tools for our network of attorneys that actually help them win the benefits they need.
+
+We're looking for a backend-leaning senior software engineer to join our Representation Pod, a cross-functional team of engineers, PMs, and designers building the core tools that help the law firms in our network deliver consistent and effective representation for our clients. The Rep Pod is building new products from scratch: reimagining what legal experiences for our clients and attorneys with today's technology.
+
+This is a senior individual contributor role. You'll own complex backend challenges around how we structure data, systems, and APIs — while staying deeply connected to the clients & lawyers who use the products you build. That means bringing both genuine user empathy and sharp product instincts alongside the technical depth to make hard architectural decisions and see them through.
+
+What You'll Do
+
+- Own significant backend systems end-to-end: set and hold a high bar for architecture, design, implementation, and production health.
+- Partner closely with product and design to shape requirements, not just implement them — we trust your intuitions and want you to have opinions
+- You'll bring 0-to-1 product thinking to an area where your work has a tangible impact on our client's wellbeing.
+- Mentor engineers on the team, with particular emphasis on backend patterns
+- Work across the stack as needed, everything from frontend UI work to data systems.
+
+What We're Looking For
+
+Required:
+- 5+ years of experience building production software, including meaningful time at a seed-stage startup or as an early member of a new product team at a later-stage company — with clear evidence of increasing scope and ownership over time
+- Experience on a high-performing product team, working closely with strong PMs and designers to ship user-focused solutions
+- Experience designing and operating reliable, scalable backend systems and APIs, with a high bar for data modeling and architecture
+- Deep user empathy — you think carefully about the people using what you build, not just the technical implementation
+- A track record of mentoring engineers and genuine excitement about helping teammates grow
+
+Bonus / Nice to Have:
+- Experience with Go
+- Experience with Google Cloud Platform, Kubernetes, Terraform, & Docker
+- Background in industries with complex workflows — legal, healthcare, or financial services
+- Experience building products for consumers or two-sided marketplaces
+- Experience evolving systems as teams and traffic scale
+- Interest in developer experience, internal tooling, or team process improvement
