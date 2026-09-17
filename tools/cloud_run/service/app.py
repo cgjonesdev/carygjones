@@ -62,6 +62,12 @@ class RunRequest(BaseModel):
     parallel: bool = False
 
 
+class GcsSyncRequest(BaseModel):
+    inbox: bool = True
+    applications: bool = True
+    rebuild_admin_data: bool = True
+
+
 class ApplicationSettingsUpdate(BaseModel):
     recruiter_email: str | None = None
     recruiter_name: str | None = None
@@ -162,6 +168,11 @@ def health() -> dict[str, Any]:
         "mode": "cloud",
         "gcs_bucket": os.environ.get("GCS_BUCKET") or None,
         "llm": bool(os.environ.get("OPENAI_API_KEY", "").strip()),
+        "protocols": {
+            "freelancer": True,
+            "craigslist": True,
+            "indeed": True,
+        },
     }
 
 
@@ -364,6 +375,23 @@ def api_run_indeed(_: None = Depends(_require_admin_key)) -> dict[str, Any]:
 @app.post("/api/run/all")
 def api_run_all(body: RunRequest, _: None = Depends(_require_admin_key)) -> dict[str, Any]:
     return run_all(parallel=body.parallel)
+
+
+@app.post("/api/sync")
+def api_sync(body: GcsSyncRequest, _: None = Depends(_require_admin_key)) -> dict[str, Any]:
+    scripts_dir = REPO_ROOT / "scripts"
+    if str(scripts_dir) not in sys.path:
+        sys.path.insert(0, str(scripts_dir))
+    from local_sync_server import run_gcs_sync
+
+    try:
+        return run_gcs_sync(
+            applications=body.applications,
+            inbox=body.inbox,
+            do_rebuild_admin_data=body.rebuild_admin_data,
+        )
+    except RuntimeError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 @app.post("/api/jd/manual")

@@ -78,9 +78,10 @@
   let localAppSyncPromise = null;
 
   async function loadApplicationsFromLocalSync() {
-    if (!isLocalAdminHost() || !(await AdminAuth.isLocalSyncReachable())) return null;
+    const base = await AdminAuth.resolveLocalDevApiBase();
+    if (!base) return null;
     try {
-      const resp = await fetch(`${AdminAuth.localSyncBase()}/api/applications`);
+      const resp = await fetch(`${base}/api/applications`);
       if (!resp.ok) return null;
       const data = await resp.json();
       return data.applications || null;
@@ -90,13 +91,14 @@
   }
 
   async function syncLocalApplicationsFromGcs(force = false) {
-    if (!isLocalAdminHost() || !(await AdminAuth.isLocalSyncReachable())) return false;
+    const base = await AdminAuth.resolveLocalDevApiBase();
+    if (!base) return false;
     const throttleKey = "jobSearchAdminAppSyncAt";
     const last = Number(sessionStorage.getItem(throttleKey) || 0);
     if (!force && Date.now() - last < LOCAL_APP_SYNC_THROTTLE_MS) {
       return false;
     }
-    const resp = await fetch(`${AdminAuth.localSyncBase()}/api/sync`, {
+    const resp = await fetch(`${base}/api/sync`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ inbox: false, applications: true, rebuild_admin_data: true }),
@@ -110,7 +112,7 @@
   }
 
   async function resolveLocalApplications(staticApps) {
-    if (!AdminAuth.isLocalAdminHost() || !(await AdminAuth.isLocalSyncReachable())) {
+    if (!AdminAuth.isLocalAdminHost() || !(await AdminAuth.resolveLocalDevApiBase())) {
       return staticApps;
     }
     const liveApps = await loadApplicationsFromLocalSync();
@@ -123,7 +125,7 @@
   function backgroundSyncLocalApplications() {
     if (localAppSyncPromise) return localAppSyncPromise;
     localAppSyncPromise = (async () => {
-      if (!isLocalAdminHost() || !(await AdminAuth.isLocalSyncReachable())) return;
+      if (!isLocalAdminHost() || !(await AdminAuth.resolveLocalDevApiBase())) return;
       const statusEl = document.getElementById("local-sync-status");
       try {
         const didSync = await syncLocalApplicationsFromGcs(false);
@@ -153,7 +155,11 @@
     }
     setStatus(statusEl, "Pulling from GCS…", "running");
     try {
-      const resp = await fetch(`${localSyncBase()}/api/sync`, {
+      const base = await AdminAuth.resolveLocalDevApiBase();
+      if (!base) {
+        throw new Error("Start ./scripts/serve_admin_local.sh (unified API on port 8080).");
+      }
+      const resp = await fetch(`${base}/api/sync`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ inbox: true, applications: true, rebuild_admin_data: true }),
@@ -166,7 +172,7 @@
     } catch (err) {
       const hint =
         err.message === "Failed to fetch"
-          ? "Start ./scripts/serve_admin_local.sh (or run local_sync_server.py in another terminal)."
+          ? "Start ./scripts/serve_admin_local.sh (unified API on port 8080)."
           : err.message;
       setStatus(statusEl, hint, "err");
     }
@@ -1279,9 +1285,10 @@
   }
 
   async function fetchProtocolRun() {
-    if (AdminAuth.isLocalAdminHost() && (await AdminAuth.isLocalSyncReachable())) {
+    const localBase = await AdminAuth.resolveLocalDevApiBase();
+    if (localBase) {
       try {
-        const resp = await fetch(`${localSyncBase()}/api/protocols/latest`);
+        const resp = await fetch(`${localBase}/api/protocols/latest`);
         if (resp.ok) return resp.json();
       } catch (_) {
         /* fall through to Cloud Run / static */
@@ -1294,8 +1301,10 @@
   }
 
   async function localSyncSupportsProtocol(protocolKey) {
+    const base = await AdminAuth.resolveLocalDevApiBase();
+    if (!base) return false;
     try {
-      const resp = await fetch(`${localSyncBase()}/api/health`);
+      const resp = await fetch(`${base}/api/health`);
       if (!resp.ok) return false;
       const data = await resp.json();
       return data?.protocols?.[protocolKey] === true;
@@ -1320,18 +1329,18 @@
         return;
       }
 
-      const syncUp = await AdminAuth.isLocalSyncReachable();
-      if (!syncUp) {
+      const localBase = await AdminAuth.resolveLocalDevApiBase();
+      if (!localBase) {
         throw new Error(
-          `${label} runs locally — start ./scripts/serve_admin_local.sh (sync server on port 8765).`
+          `${label} runs locally — start ./scripts/serve_admin_local.sh (port 8080).`
         );
       }
       if (!(await localSyncSupportsProtocol(protocolKey))) {
         throw new Error(
-          "Local sync server is outdated — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again)."
+          "Local admin API is outdated — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again)."
         );
       }
-      const data = await apiFetch(endpoint, { method: "POST" }, localSyncBase());
+      const data = await apiFetch(endpoint, { method: "POST" }, localBase);
       state.protocolRun = data;
       renderProtocolOutputs(document.getElementById("protocol-output"), data);
       const generated = (data.phases || []).flatMap((p) => p.generated || []);
@@ -1371,20 +1380,20 @@
     document.querySelectorAll(".run-btn").forEach((b) => (b.disabled = true));
     try {
       let data;
-      const syncUp =
-        AdminAuth.isLocalAdminHost() && (await AdminAuth.isLocalSyncReachable());
-      if (syncUp) {
+      const localBase =
+        AdminAuth.isLocalAdminHost() && (await AdminAuth.resolveLocalDevApiBase());
+      if (localBase) {
         if (!(await localSyncSupportsProtocol("indeed"))) {
           throw new Error(
-            "Local sync server is outdated — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again)."
+            "Local admin API is outdated — restart ./scripts/serve_admin_local.sh (Ctrl+C, then run again)."
           );
         }
-        data = await apiFetch("/api/run/indeed", { method: "POST" }, localSyncBase());
+        data = await apiFetch("/api/run/indeed", { method: "POST" }, localBase);
       } else if (shouldFetchLiveApi()) {
         data = await apiFetch("/api/run/indeed", { method: "POST" });
       } else if (AdminAuth.isLocalAdminHost()) {
         throw new Error(
-          "Indeed — start ./scripts/serve_admin_local.sh (sync server on port 8765) or save admin password for Cloud Run."
+          "Indeed — start ./scripts/serve_admin_local.sh (port 8080) or save admin password for Cloud Run."
         );
       } else {
         throw new Error("Indeed requires Cloud Run API (set ADMIN_API_BASE_URL and sign in).");
@@ -1394,7 +1403,7 @@
       const generated = (data.phases || []).flatMap((p) => p.generated || []);
       setStatus(
         statusEl,
-        syncUp ? `Indeed finished locally (${generated.length} new).` : `Indeed finished (${generated.length} new).`,
+        localBase ? `Indeed finished locally (${generated.length} new).` : `Indeed finished (${generated.length} new).`,
         "ok"
       );
       await loadApplications();

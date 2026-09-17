@@ -54,6 +54,10 @@ def apply_url_from_source(source: dict | None) -> str:
 
 
 def reply_to_address(source: dict | None, meta: dict) -> str:
+    direct = (meta.get("recruiter_email") or "").strip()
+    if direct and not is_noreply_address(direct):
+        return direct
+
     if source:
         _, addr = parseaddr(source.get("sender", ""))
         if addr and not is_noreply_address(addr):

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -32,15 +33,53 @@ def repo_applications_dir() -> Path:
     return repo_root() / "applications"
 
 
-def download_applications_prefix(dest: Path) -> int:
-    """Download gs://{bucket}/applications/ into local applications/."""
+def _import_meta_merge():
+    scripts = repo_root() / "scripts"
+    if str(scripts) not in sys.path:
+        sys.path.insert(0, str(scripts))
+    from app_meta_merge import merge_meta_files
+
+    return merge_meta_files
+
+
+def _sync_meta_json(blob, target: Path, *, push_local_meta: bool) -> tuple[int, int]:
+    """Merge remote meta.json with local; optionally push merged meta back to GCS."""
+    merge_meta_files = _import_meta_merge()
+    remote_text = blob.download_as_text(encoding="utf-8")
+    local_text = target.read_text(encoding="utf-8") if target.exists() else None
+    merged_text, push = merge_meta_files(local_text, remote_text)
+
+    changed = (not target.exists()) or (target.read_text(encoding="utf-8") != merged_text)
+    if changed:
+        target.write_text(merged_text, encoding="utf-8")
+
+    pushed = 0
+    if push and push_local_meta:
+        blob.upload_from_string(merged_text, content_type="application/json; charset=utf-8")
+        pushed = 1
+
+    return (1 if changed else 0, pushed)
+
+
+def download_applications_prefix(dest: Path) -> tuple[int, int]:
+    """Download gs://{bucket}/applications/ into local applications/.
+
+    meta.json files are merged with local copies so interview status and Zoom links
+    are not clobbered by stale GCS data. When local wins, merged meta is pushed back.
+    """
     from google.cloud import storage
 
     prefix = "applications/"
     client = storage.Client()
     bucket = client.bucket(bucket_name())
     dest.mkdir(parents=True, exist_ok=True)
+    push_local_meta = os.environ.get("GCS_PUSH_LOCAL_META", "1").strip().lower() not in {
+        "0",
+        "false",
+        "no",
+    }
     count = 0
+    pushed = 0
     for blob in client.list_blobs(bucket, prefix=prefix):
         name = blob.name
         if name.endswith("/"):
@@ -50,11 +89,20 @@ def download_applications_prefix(dest: Path) -> int:
             continue
         target = dest / rel
         target.parent.mkdir(parents=True, exist_ok=True)
+
+        if rel.endswith("meta.json"):
+            file_count, push_count = _sync_meta_json(
+                blob, target, push_local_meta=push_local_meta
+            )
+            count += file_count
+            pushed += push_count
+            continue
+
         if target.exists() and target.stat().st_size == blob.size:
             continue
         blob.download_to_filename(str(target))
         count += 1
-    return count
+    return count, pushed
 
 
 def main() -> int:
@@ -96,7 +144,7 @@ def main() -> int:
 
     if args.applications or args.all:
         try:
-            apps_count = download_applications_prefix(args.apps_dest)
+            apps_count, meta_pushed = download_applications_prefix(args.apps_dest)
         except Exception as exc:
             print(exc, file=sys.stderr)
             return 1
@@ -104,6 +152,8 @@ def main() -> int:
             f"Downloaded/updated {apps_count} file(s) from "
             f"gs://{bucket_name()}/applications/ → {args.apps_dest}"
         )
+        if meta_pushed:
+            print(f"Pushed {meta_pushed} merged meta.json file(s) back to GCS (local interview state preserved)")
 
     return 0
 

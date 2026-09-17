@@ -8,7 +8,6 @@ import os
 import re
 import subprocess
 import sys
-import threading
 import importlib.util
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -19,7 +18,42 @@ CLOUD_RUN = REPO_ROOT / "tools" / "cloud_run"
 SYNC_SCRIPT = REPO_ROOT / "tools" / "gmail" / "sync_gcs_inbox.py"
 BUILD_SCRIPT = REPO_ROOT / "scripts" / "build_admin_data.py"
 PROTOCOL_STATE = REPO_ROOT / "website" / "admin" / "data" / "latest_protocol_run.json"
+DEFAULT_GCS_BUCKET = "cgjonesdev-recruiter-inbox"
 DEFAULT_PORT = int(os.environ.get("LOCAL_SYNC_PORT", "8765"))
+
+
+def _load_env_file(path: Path) -> None:
+    if not path.is_file():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[7:].strip()
+        if "=" not in line:
+            continue
+        key, _, val = line.partition("=")
+        key = key.strip()
+        val = val.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = val
+
+
+def bootstrap_gcs_env() -> str:
+    """Match run_admin_api_local.sh: config.env → .env → default bucket."""
+    existing = os.environ.get("GCS_BUCKET", "").strip()
+    if existing:
+        return existing
+    for rel in ("tools/cloud_run/cloud/config.env", "tools/gmail/cloud/config.env"):
+        _load_env_file(REPO_ROOT / rel)
+    _load_env_file(REPO_ROOT / ".env")
+    bucket = os.environ.get("GCS_BUCKET", "").strip() or DEFAULT_GCS_BUCKET
+    os.environ["GCS_BUCKET"] = bucket
+    return bucket
+
+
+bootstrap_gcs_env()
 ALLOWED_ORIGINS = {
     "http://localhost:8080",
     "http://127.0.0.1:8080",
@@ -112,6 +146,48 @@ def save_local_protocol_run(summary: dict) -> None:
     PROTOCOL_STATE.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
 
 
+def run_gcs_sync(
+    *,
+    applications: bool = True,
+    inbox: bool = True,
+    do_rebuild_admin_data: bool = True,
+) -> dict[str, object]:
+    """Pull inbox/applications from GCS and optionally rebuild admin JSON."""
+    bucket = bootstrap_gcs_env()
+    if not bucket:
+        raise RuntimeError("GCS_BUCKET is not configured.")
+
+    cmd = [sys.executable, str(SYNC_SCRIPT)]
+    if inbox and applications:
+        cmd.append("--all")
+    elif applications:
+        cmd.append("--applications")
+
+    proc = subprocess.run(
+        cmd,
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(
+            proc.stderr.strip() or proc.stdout.strip() or "sync_gcs_inbox.py failed"
+        )
+
+    rebuild_out = ""
+    if do_rebuild_admin_data:
+        ok, rebuild_out = rebuild_admin_data()
+        if not ok:
+            raise RuntimeError(rebuild_out or "build_admin_data.py failed")
+
+    return {
+        "status": "ok",
+        "sync_stdout": proc.stdout.strip(),
+        "rebuild_stdout": rebuild_out,
+    }
+
+
 def load_local_protocol_run() -> dict:
     if not PROTOCOL_STATE.is_file():
         return {"phases": [], "empty": True}
@@ -196,7 +272,14 @@ def discover_interview_prep_for_slug(slug: str) -> list[dict]:
         return []
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    return mod.discover_interview_prep(slug)
+    meta_path = REPO_ROOT / "applications" / slug / "meta.json"
+    meta = None
+    if meta_path.is_file():
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            meta = None
+    return mod.discover_interview_prep(slug, meta)
 
 
 def run_generate_for_slug_local(slug: str) -> dict:
@@ -387,17 +470,17 @@ class SyncHandler(BaseHTTPRequestHandler):
             return
 
         uploaded = False
+        gcs_error = ""
         if os.environ.get("GCS_BUCKET", "").strip():
-            threading.Thread(
-                target=upload_meta_to_gcs,
-                args=(slug, updated),
-                daemon=True,
-            ).start()
-            uploaded = True
+            uploaded = upload_meta_to_gcs(slug, updated)
+            if not uploaded:
+                gcs_error = "GCS upload failed — changes kept on disk only until retry succeeds."
 
         payload = application_response(slug, updated)
         payload["saved_to_gcs"] = uploaded
-        payload["gcs_upload"] = "queued" if uploaded else "skipped"
+        payload["gcs_upload"] = "ok" if uploaded else "skipped"
+        if gcs_error:
+            payload["gcs_warning"] = gcs_error
         if rebuild_out:
             payload["rebuild_stdout"] = rebuild_out
         self._send_json(200, payload)
@@ -467,77 +550,25 @@ class SyncHandler(BaseHTTPRequestHandler):
             self._send_json(404, {"error": "Not found"})
             return
 
-        if not os.environ.get("GCS_BUCKET", "").strip():
-            self._send_json(
-                400,
-                {
-                    "error": "Set GCS_BUCKET before starting the sync server.",
-                    "hint": "GCS_BUCKET=cgjonesdev-recruiter-inbox python scripts/local_sync_server.py",
-                },
-            )
-            return
-
         try:
             body = self._read_json_body()
         except ValueError as exc:
             self._send_json(400, {"error": str(exc)})
             return
 
-        applications = body.get("applications", True)
-        inbox = body.get("inbox", True)
-        rebuild = body.get("rebuild_admin_data", True)
-
-        cmd = [sys.executable, str(SYNC_SCRIPT)]
-        if inbox and applications:
-            cmd.append("--all")
-        elif applications:
-            cmd.append("--applications")
-
         try:
-            proc = subprocess.run(
-                cmd,
-                cwd=str(REPO_ROOT),
-                capture_output=True,
-                text=True,
-                check=False,
+            payload = run_gcs_sync(
+                applications=bool(body.get("applications", True)),
+                inbox=bool(body.get("inbox", True)),
+                do_rebuild_admin_data=bool(body.get("rebuild_admin_data", True)),
             )
-        except OSError as exc:
-            self._send_json(500, {"error": str(exc)})
+        except RuntimeError as exc:
+            msg = str(exc)
+            status = 400 if "GCS_BUCKET" in msg else 500
+            self._send_json(status, {"error": msg})
             return
 
-        if proc.returncode != 0:
-            self._send_json(
-                500,
-                {
-                    "error": "sync_gcs_inbox.py failed",
-                    "stderr": proc.stderr.strip(),
-                    "stdout": proc.stdout.strip(),
-                },
-            )
-            return
-
-        rebuild_out = ""
-        if rebuild:
-            ok, rebuild_out = rebuild_admin_data()
-            if not ok:
-                self._send_json(
-                    500,
-                    {
-                        "error": "build_admin_data.py failed",
-                        "sync_stdout": proc.stdout.strip(),
-                        "stderr": rebuild_out,
-                    },
-                )
-                return
-
-        self._send_json(
-            200,
-            {
-                "status": "ok",
-                "sync_stdout": proc.stdout.strip(),
-                "rebuild_stdout": rebuild_out,
-            },
-        )
+        self._send_json(200, payload)
 
 
 def main() -> int:
@@ -555,10 +586,10 @@ def main() -> int:
                 file=sys.stderr,
             )
         raise SystemExit(1) from exc
-    bucket = os.environ.get("GCS_BUCKET", "")
+    bucket = bootstrap_gcs_env()
     print(f"Local GCS sync server on http://127.0.0.1:{port}")
     print(f"  Repo:   {REPO_ROOT}")
-    print(f"  Bucket: {bucket or '(set GCS_BUCKET)'}")
+    print(f"  Bucket: {bucket}")
     print("  Admin UI: Pull from GCS + save settings + run side-gig/Indeed scans locally")
     try:
         server.serve_forever()

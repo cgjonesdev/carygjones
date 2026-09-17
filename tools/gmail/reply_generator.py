@@ -7,6 +7,7 @@ import re
 from email.utils import parseaddr
 from html import unescape
 from pathlib import Path
+import os
 
 TAG_RE = re.compile(r"<[^>]+>")
 NOREPLY_LOCAL_RE = re.compile(
@@ -148,15 +149,28 @@ def build_reply_body(
     return "\n".join(line for line in lines if line is not None)
 
 
+def contact_json_path(root: Path) -> Path:
+    assets = os.environ.get("ASSETS_DIR")
+    if assets:
+        path = Path(assets) / "contact.json"
+        if path.exists():
+            return path
+    path = root / "website" / "contact.json"
+    if path.exists():
+        return path
+    return root / "contact.json"
+
+
 def generate_reply_text(
     slug: str,
     *,
     inbox_json: Path | None = None,
+    root: Path | None = None,
 ) -> str:
-    root = repo_root()
+    root = root or repo_root()
     app_dir = root / "applications" / slug
     meta = load_json(app_dir / "meta.json")
-    contact = load_json(root / "website" / "contact.json")
+    contact = load_json(contact_json_path(root))
 
     source: dict | None = None
     if inbox_json and inbox_json.exists():
@@ -166,7 +180,10 @@ def generate_reply_text(
 
     sender = (source or {}).get("sender", "")
     company = meta.get("company", "")
-    greeting = recruiter_first_name(sender, company=company.split("(")[0].strip())
+    if meta.get("recruiter_name"):
+        greeting = meta["recruiter_name"].split()[0]
+    else:
+        greeting = recruiter_first_name(sender, company=company.split("(")[0].strip())
     bullets = extract_bullets(app_dir / "cover_letter.html")
     subject = reply_subject(meta, source)
     body = build_reply_body(
@@ -178,8 +195,9 @@ def generate_reply_text(
     return f"Subject: {subject}\n\n{body}\n"
 
 
-def write_reply_file(slug: str, *, inbox_json: Path | None = None) -> Path:
-    app_dir = repo_root() / "applications" / slug
+def write_reply_file(slug: str, *, inbox_json: Path | None = None, root: Path | None = None) -> Path:
+    root = root or repo_root()
+    app_dir = root / "applications" / slug
     path = app_dir / "reply_email.txt"
-    path.write_text(generate_reply_text(slug, inbox_json=inbox_json))
+    path.write_text(generate_reply_text(slug, inbox_json=inbox_json, root=root))
     return path

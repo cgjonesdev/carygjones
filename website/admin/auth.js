@@ -128,6 +128,16 @@
     }
   }
 
+  /** Prefer unified admin API on :8080; fall back to legacy sync on :8765. */
+  async function resolveLocalDevApiBase() {
+    const same = await probeSameOriginApi();
+    if (same) return same;
+    if (isLocalAdminHost() && (await isLocalSyncReachable())) {
+      return localSyncBase();
+    }
+    return "";
+  }
+
   /** Where application settings PATCH should go — unified API on same host, else legacy local sync. */
   async function resolveSaveApiBase(config) {
     const same = await probeSameOriginApi();
@@ -646,6 +656,7 @@
     probeSameOriginApi,
     resolveSaveApiBase,
     isLocalSyncReachable,
+    resolveLocalDevApiBase,
     usesUnifiedGcsApi,
     formatSaveStatus,
     saveBlockedMessage,
